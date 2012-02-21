@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping SYSTEM "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+<hibernate-mapping>
+  <class name="cccf.ma.model.LocationInfo" table="location">  
+  
+    <id name="id" type="string" unsaved-value="null" >
+        <column name="lid"  not-null="true"/>
+        <generator class="uuid.hex"/>
+    </id>
+    
+    <property name="name" type="string">
+         <column name="name"  not-null="false"/>
+     </property>
+    <many-to-one name="parent" column="parent" lazy="false"/> 
+  </class>   
+</hibernate-mapping>

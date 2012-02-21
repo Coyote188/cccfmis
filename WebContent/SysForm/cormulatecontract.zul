@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<zk>
+<window apply="cccf.ma.web.zk.CormulateContractController" width="100%" height="100%" contentStyle="overflow:none;"  vflex="false">
+		<tree id="tlTre" vflex="true" checkmark="true" multiple="true" >
+					<treecols visible="false">
+						<treecol label="企业名称" width="250px" />
+						<treecol label="任务名称"/>
+						<treecol label="发起人员" width="100px"
+							align="center" />
+						<treecol label="发起时间" width="100px"/>
+						<treecol label="操  &#160;&#160;作" width="150px" align="center"/>
+					</treecols>
+					<treechildren>
+						<treeitem value="${each}" forEach="${epgroup}"
+							open="false" forward="onOpen=onTreeLargeClassOpen" checkable="false">
+							<treerow>
+								<treecell label="${each}" span="3" style="font-weight:bold;color:#3C3C3C;"/>
+								<treecell span="2" >
+									<div align="right">
+									<button label="合同制定" tooltiptext="为该企业选中的产品制定合同" forward="onFormulateContract">
+									</button>
+									<button label="预览合同" tooltiptext="预览该合同">
+									</button>
+									<button label="提交">
+									</button>
+									</div>
+								</treecell>
+							</treerow>
+							<treechildren />
+						</treeitem>
+					</treechildren>
+				</tree>
+</window>
+</zk>

@@ -1,0 +1,89 @@
+<!-- 合同制定 -->
+<?init class="org.zkoss.zkplus.databind.AnnotateDataBinderInit" arg0="./FinanceWin"?>
+<window width="100%" closable="true" height="100%" title="财务收费 " border="normal" id="FinanceWin"
+	apply="cccf.mis.web.tsak.finance.FinanceController" forward="onCreate=onInited">
+	<style>tr.z-row td.z-row-inner { background: white; border: 0;margin: 0px; padding: 1px; }</style>
+	<vlayout spacing="3" vflex="true" hflex="true" style="overflow: auto;">
+		<include src="/views/public/Apply_msg.zul"></include>
+		<include src="/views/public/Bills_read.zul"></include>
+		<grid model="@{outherContracts}">
+			<auxhead>
+				<auxheader colspan="4" image="/res/icons/page.png" label="相关合同"></auxheader>
+			</auxhead>
+			<columns>
+				<column label="合同编号"></column>
+				<column label="合同附件"></column>
+				<column label="创建人"></column>
+				<column label="创建日期"></column>
+			</columns>
+			<rows>
+				<row self="@{each=item}">
+					<cell>
+						<label value="@{item.contractno}"></label>
+					</cell>
+					<cell>
+						<label value="打开/下载"></label>
+					</cell>
+					<cell>
+						<label value="-"></label>
+					</cell>
+					<cell>
+						<label value="-"></label>
+					</cell>
+				</row>
+			</rows>
+		</grid>
+		<grid model="@{outherBills}">
+			<auxhead>
+				<auxheader colspan="6" image="/res/icons/page.png" label="相关收费单"></auxheader>
+			</auxhead>
+			<columns>
+				<column label="收费单号"></column>
+				<column label="金额"></column>
+				<column label="生成日期"></column>
+				<column label="收费日期"></column>
+				<column label="是否已收费"></column>
+				<column label="收费人"></column>
+			</columns>
+			<rows>
+				<row self="@{each=item}">
+					<cell>
+						<label value="-"></label>
+					</cell>
+					<cell>
+						<label value="-"></label>
+					</cell>
+					<cell>
+						<label value="-"></label>
+					</cell>
+					<cell>
+						<label value="-"></label>
+					</cell>
+					<cell>
+						<label value="-"></label>
+					</cell>
+				</row>
+			</rows>
+		</grid>
+		<grid id="appoveGrid">
+			<columns>
+				<column width="80px" align="left"></column>
+				<column align="left"></column>
+			</columns>
+			<rows>
+				<row>
+					<label value="" />
+					<cell>
+						<listbox visible="false" id="resultListbox" mold="select" rows="1" width="200" />
+						<button mold="trendy" label="提交" image="/image/16/up.png" id="submitBtn" forward="onSubmit" />
+					</cell>
+				</row>
+				<row align="left">
+					<label value="备注:" />
+					<textbox id="approveMemo" rows="4" cols="140" hflex="true" />
+				</row>
+			</rows>
+		</grid>
+		<include src="/views/public/processlog.zul?sioid=${arg.contract.applyno}"></include>
+	</vlayout>
+</window>

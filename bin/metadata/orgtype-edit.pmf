@@ -1,0 +1,45 @@
+<pagemodel>
+<page>
+   <name>orgtype-edit</name>
+   <entityModel>OrganizationType</entityModel>
+   <emfFile>metadata/OrganizationType.emf</emfFile>
+   <pageType>EDIT</pageType>
+   <pageTitle>机构类型编辑</pageTitle>
+   <pageFooter>null</pageFooter>
+   <pageUITemplate>null</pageUITemplate>
+   <pageSize>15</pageSize>
+   <editPage>.zul</editPage>
+   <pageFieldList>
+     <pageField>
+	      <name>id</name>
+	      <label>ID</label>
+	      <entityField>id</entityField>
+	      <uiType>TEXTBOX</uiType>
+	      <width>100</width>
+	  </pageField>
+     <pageField>
+	      <name>name</name>
+	      <label>名称</label>
+	      <entityField>name</entityField>
+	      <uiType>TEXTBOX</uiType>
+	      <width>100</width>
+	  </pageField>
+    </pageFieldList>
+    
+    
+    <buttonList>
+      <button>
+	      <name>buttonSave</name>
+	      <label>保存</label>
+	      <command>onSave</command>
+	      <imageUrl>/image/common/save.png</imageUrl>
+	  </button>
+      <button>
+	      <name>buttonCancel</name>
+	      <label>关闭</label>
+	      <command>onCancel</command>
+	      <imageUrl>/image/common/close.png</imageUrl>
+	  </button>
+    </buttonList>
+  </page>
+</pagemodel>

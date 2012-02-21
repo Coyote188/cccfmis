@@ -1,0 +1,161 @@
+K 25
+svn:wc:ra_dav:version-url
+V 58
+/dlyhc.cccfmis/!svn/ver/463/trunk/src/openjframework/model
+END
+MessageInfo.java
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/dlyhc.cccfmis/!svn/ver/463/trunk/src/openjframework/model/MessageInfo.java
+END
+ProfileInfo.hbm.xml
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/dlyhc.cccfmis/!svn/ver/226/trunk/src/openjframework/model/ProfileInfo.hbm.xml
+END
+PoliticalStatusInfo.java
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/dlyhc.cccfmis/!svn/ver/2/trunk/src/openjframework/model/PoliticalStatusInfo.java
+END
+RoleInfo.hbm.xml
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/dlyhc.cccfmis/!svn/ver/257/trunk/src/openjframework/model/RoleInfo.hbm.xml
+END
+InstantMessageInfo.java
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/dlyhc.cccfmis/!svn/ver/273/trunk/src/openjframework/model/InstantMessageInfo.java
+END
+ResourceInfo.java
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/dlyhc.cccfmis/!svn/ver/287/trunk/src/openjframework/model/ResourceInfo.java
+END
+OrganizationInfo.hbm.xml
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/dlyhc.cccfmis/!svn/ver/210/trunk/src/openjframework/model/OrganizationInfo.hbm.xml
+END
+PositionInfo.hbm.xml
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/dlyhc.cccfmis/!svn/ver/2/trunk/src/openjframework/model/PositionInfo.hbm.xml
+END
+PermissionInfo.java
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/dlyhc.cccfmis/!svn/ver/287/trunk/src/openjframework/model/PermissionInfo.java
+END
+ResourceTypeInfo.java
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/dlyhc.cccfmis/!svn/ver/2/trunk/src/openjframework/model/ResourceTypeInfo.java
+END
+ProfileInfo.java
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/dlyhc.cccfmis/!svn/ver/416/trunk/src/openjframework/model/ProfileInfo.java
+END
+RoleInfo.java
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/dlyhc.cccfmis/!svn/ver/257/trunk/src/openjframework/model/RoleInfo.java
+END
+UserInfo.hbm.xml
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/dlyhc.cccfmis/!svn/ver/210/trunk/src/openjframework/model/UserInfo.hbm.xml
+END
+UserLogInfo.hbm.xml
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/dlyhc.cccfmis/!svn/ver/2/trunk/src/openjframework/model/UserLogInfo.hbm.xml
+END
+PositionInfo.java
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/dlyhc.cccfmis/!svn/ver/2/trunk/src/openjframework/model/PositionInfo.java
+END
+OrganizationInfo.java
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/dlyhc.cccfmis/!svn/ver/210/trunk/src/openjframework/model/OrganizationInfo.java
+END
+NoticeInfo.hbm.xml
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/dlyhc.cccfmis/!svn/ver/306/trunk/src/openjframework/model/NoticeInfo.hbm.xml
+END
+MessageInfo.hbm.xml
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/dlyhc.cccfmis/!svn/ver/126/trunk/src/openjframework/model/MessageInfo.hbm.xml
+END
+PoliticalStatusInfo.hbm.xml
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/dlyhc.cccfmis/!svn/ver/2/trunk/src/openjframework/model/PoliticalStatusInfo.hbm.xml
+END
+InstantMessageInfo.hbm.xml
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/dlyhc.cccfmis/!svn/ver/307/trunk/src/openjframework/model/InstantMessageInfo.hbm.xml
+END
+ResourceInfo.hbm.xml
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/dlyhc.cccfmis/!svn/ver/287/trunk/src/openjframework/model/ResourceInfo.hbm.xml
+END
+PermissionInfo.hbm.xml
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/dlyhc.cccfmis/!svn/ver/287/trunk/src/openjframework/model/PermissionInfo.hbm.xml
+END
+ResourceTypeInfo.hbm.xml
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/dlyhc.cccfmis/!svn/ver/2/trunk/src/openjframework/model/ResourceTypeInfo.hbm.xml
+END
+UserInfo.java
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/dlyhc.cccfmis/!svn/ver/273/trunk/src/openjframework/model/UserInfo.java
+END
+UserLogInfo.java
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/dlyhc.cccfmis/!svn/ver/2/trunk/src/openjframework/model/UserLogInfo.java
+END
+NoticeInfo.java
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/dlyhc.cccfmis/!svn/ver/266/trunk/src/openjframework/model/NoticeInfo.java
+END

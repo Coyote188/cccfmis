@@ -1,0 +1,61 @@
+<?init class="org.zkoss.zkplus.databind.AnnotateDataBinderInit" arg0="./formWin"?>
+<window forward="onCreate=onInited" title="受理分工" id="formWin" border="normal"
+	apply="cccf.mis.web.tsak.accept.AcceptDivisionController" closable="true" width="85%" height="85%" >
+	<vlayout hflex="true" vflex="true">
+		<listbox checkmark="true" multiple="true" vflex="true" hflex="true" id="task_list">
+			<listhead>
+				<listheader label="申请号" width="180px"></listheader>
+				<listheader label="企业名称" width="240px"></listheader>
+				<listheader label="所在地区" width="80px"></listheader>
+				<listheader label="业务类型" width="80px"></listheader>
+				<listheader label="产品大类" width="160px"></listheader>
+				<listheader label="质检中心" width="100px"></listheader>
+				<listheader label="申请类型" width="80px"></listheader>
+				<listheader label="申请时间" width="78px"></listheader>
+			</listhead>
+			<listitem self="@{each=item}" value="@{item}">
+				<!-- 申请号 -->
+				<listcell label="@{item.no}"></listcell>
+				<!-- 企业名称 -->
+				<listcell label="@{item.enterprise}"></listcell>
+				<!-- 国家 -->
+				<listcell label="@{item.state}">
+					<label value="-"></label>
+					<!-- 地区 -->
+					<label value="@{item.region}"></label>
+				</listcell>
+				<!-- 业务类型-->
+				<listcell label="@{item.business_type}"></listcell>
+				<!-- 产品大类 -->
+				<listcell label="@{item.product_catalog}"></listcell>
+				<!-- 质检中心 -->
+				<listcell label="@{item.surver_orgname}"></listcell>
+				<!-- 申请类型-->
+				<listcell label="@{item.apply_type}"></listcell>
+				<!-- 申请时间-->
+				<listcell label="@{item.apply_date}"></listcell>
+			</listitem>
+		</listbox>
+		<grid id="appoveGrid" >
+			<columns>
+				<column width="100px" align="left"></column>
+				<column></column>				 
+			</columns>
+			<rows>
+				<row>
+					<label value="符合性审查人员:"></label>
+					<cell>
+					<combobox id="reveiwUser" model="@{reviewUserList}" constraint="no empty:请选择一位符合性审查人员" autodrop="true"
+						width="200px" readonly="true">
+						<comboitem self="@{each=person}" label="@{person.name}" value="@{person.id}" />
+					</combobox>
+					<button label="提交" image="/image/16/up.png" id="btSubmit" forward="onSubmit" /></cell>
+				</row>
+				<row>
+					<label value="备注:" />
+					<textbox id="approveMemo" hflex="true" rows="3" cols="140" />					 
+				</row>
+			</rows>
+		</grid>
+	</vlayout>
+</window>

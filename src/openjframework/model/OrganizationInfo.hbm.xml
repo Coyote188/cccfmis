@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping SYSTEM "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+<hibernate-mapping>
+  <class name="openjframework.model.OrganizationInfo" table="organization">  
+  
+    <id name="id" type="string" unsaved-value="null" >
+        <column name="did"  not-null="true"/>
+        <generator class="uuid.hex"/>
+    </id>
+    
+    <property name="organizationNo" type="string">
+         <column name="organizationNo"  not-null="true"/>
+     </property>
+    <property name="organizationName" type="string">
+         <column name="organizationName"  not-null="true"/>
+     </property>
+    <property name="organizationSimp" type="string">
+         <column name="organizationSimp"  not-null="false"/>
+     </property>
+    <property name="organizationAddr" type="string">
+         <column name="organizationAddr"  not-null="false"/>
+     </property>
+    <property name="checkCenter" type="boolean">
+         <column name="checkCenter"  not-null="true"/>
+     </property>
+    <property name="contacts" type="string">
+         <column name="contacts"  not-null="false"/>
+     </property>
+    <property name="telephone" type="string">
+         <column name="telephone"  not-null="false"/>
+     </property>
+    <property name="fax" type="string">
+         <column name="fax"  not-null="false"/>
+     </property>
+    <property name="email" type="string">
+         <column name="email"  not-null="false"/>
+     </property>
+    <property name="bank" type="string">
+         <column name="bank"  not-null="false"/>
+     </property>
+    <property name="bankAccount" type="string">
+         <column name="bankAccount"  not-null="false"/>
+     </property>
+    <property name="accountName" type="string">
+         <column name="accountName"  not-null="false"/>
+     </property>
+    <property name="organizationLevel" type="java.lang.Integer">
+         <column name="organizationLevel"  not-null="true"/>
+     </property>
+    <many-to-one name="organizationParent" column="organization_ID" 
+    			 class="openjframework.model.OrganizationInfo"
+    			 lazy="false"/> 
+    <set name="organizationChildren" lazy="false" inverse="false" 
+            cascade="all-delete-orphan">
+        <key column="organization_ID" />
+        <one-to-many class="openjframework.model.OrganizationInfo" />
+    </set>
+  </class>   
+</hibernate-mapping>

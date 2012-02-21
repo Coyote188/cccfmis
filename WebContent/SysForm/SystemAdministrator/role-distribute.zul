@@ -1,0 +1,80 @@
+<?page title="new page title" contentType="text/html;charset=UTF-8"?>
+<?init class="org.zkoss.zkplus.databind.AnnotateDataBinderInit" root="./frmRoleDistribute"?>
+<zk>
+	<window id="frmRoleDistribute" 
+		border="none" width="100%" height="100%"
+		apply="openjframework.web.zk.RoleDistributeController">
+		
+		<borderlayout>
+			<west width="35%" style="overflow-y:scroll">
+				<div id="divRoleList">
+					<grid id="grdRoleList" model="@{frmRoleDistribute$composer.roles }" style="position:relative; padding-top;"
+						width="95%">
+						<auxhead>
+							<auxheader colspan="3" label="角色名" style="font-size:14px;color:#0F3B82;font-weight:bold;"/>
+							<auxheader label="备注" colspan="3" style="font-size:14px;color:#0F3B82;font-weight:bold;"/>
+							<auxheader colspan="5">
+								<toolbarbutton id="btnAdd" label="添加角色"
+									style="text-Decoration:underline;color:#3300cc;font-size:10px" />
+							</auxheader>
+						</auxhead>
+						<columns></columns>
+						<rows>
+							<row self="@{each=role }" value="@{role }"
+								spans="3,3,5">
+								<label value="" tooltiptext="@{role.name }">
+									<attribute name="onCreate">
+										{
+											if (self.getTooltiptext() != null) {
+												if (self.getTooltiptext().length() > 4)
+													self.setValue(self.getTooltiptext().substring(0, 4)+"..");
+												else
+													self.setValue(self.getTooltiptext());
+											}
+										}
+									</attribute>
+								</label>
+								<label value="" tooltiptext="@{role.memo }">
+									<attribute name="onCreate">
+										{
+											if (self.getTooltiptext() != null) {
+												if (self.getTooltiptext().length() > 4)
+													self.setValue(self.getTooltiptext().substring(0, 4)+"..");
+												else
+													self.setValue(self.getTooltiptext());
+											}
+										}
+									</attribute>
+								</label>
+								<hbox>
+									<toolbarbutton label="分配"
+										id="btnDistribute" 
+										style="text-Decoration:underline;color:#3300cc;;font-size:10px">
+										<custom-attributes
+											role="@{role }" />
+									</toolbarbutton>
+									<toolbarbutton id="btnModify"
+										label="修改" style="text-Decoration:underline;color:#3300cc;;font-size:10px">
+										<custom-attributes
+											role="@{role }" />
+									</toolbarbutton>
+									<toolbarbutton id="btnRemove"
+										label="删除" style="text-Decoration:underline;color:#3300cc;;font-size:10px">
+										<custom-attributes
+											role="@{role }" />
+									</toolbarbutton>
+								</hbox>
+							</row>
+						</rows>
+					</grid>
+				</div>
+			</west>
+			<center border="0" style="overflow-y:scroll">
+				<div id="divUserList" width="95%">
+					
+				</div>
+			</center>
+		</borderlayout>
+		
+	</window>
+</zk>

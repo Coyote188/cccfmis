@@ -1,0 +1,53 @@
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/dlyhc.cccfmis/!svn/ver/633/trunk/src-trilby/net/modellite/jdbcp
+END
+JExecAdapter.java
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/dlyhc.cccfmis/!svn/ver/475/trunk/src-trilby/net/modellite/jdbcp/JExecAdapter.java
+END
+JWrapDriver.java
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/dlyhc.cccfmis/!svn/ver/475/trunk/src-trilby/net/modellite/jdbcp/JWrapDriver.java
+END
+DriverManagerDataSource.java
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/dlyhc.cccfmis/!svn/ver/475/trunk/src-trilby/net/modellite/jdbcp/DriverManagerDataSource.java
+END
+JdbcpException.java
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/dlyhc.cccfmis/!svn/ver/475/trunk/src-trilby/net/modellite/jdbcp/JdbcpException.java
+END
+JEntityHandler.java
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/dlyhc.cccfmis/!svn/ver/475/trunk/src-trilby/net/modellite/jdbcp/JEntityHandler.java
+END
+JEntityHandlerEvent.java
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/dlyhc.cccfmis/!svn/ver/475/trunk/src-trilby/net/modellite/jdbcp/JEntityHandlerEvent.java
+END
+JEntityAdapter.java
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/dlyhc.cccfmis/!svn/ver/491/trunk/src-trilby/net/modellite/jdbcp/JEntityAdapter.java
+END
+Driver.java
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/dlyhc.cccfmis/!svn/ver/562/trunk/src-trilby/net/modellite/jdbcp/Driver.java
+END

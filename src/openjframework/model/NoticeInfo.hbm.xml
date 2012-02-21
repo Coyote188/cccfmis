@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping SYSTEM "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+<hibernate-mapping>
+  <class name="openjframework.model.NoticeInfo" table="notice">  
+  
+    <id name="id" type="string" unsaved-value="null" >
+        <column name="nid"  not-null="true"/>
+        <generator class="uuid.hex"/>
+    </id>
+    
+    <property name="subject" type="string">
+         <column name="subject"  not-null="false"/>
+     </property>
+    <property name="content" type="string">
+         <column name="content"  not-null="false" length="2048"/>
+     </property>
+    <property name="type" type="java.lang.Integer">
+         <column name="type"  not-null="false"/>
+     </property>
+     <property name="sendDate">
+         <column name="senddate" sql-type="datetime" not-null="false"/>
+     </property>
+    <property name="isHaveRead" type="java.lang.Integer">
+         <column name="isread"  not-null="false"/>
+     </property>
+    <property name="attachment" type="string">
+         <column name="attachment"  not-null="false"/>
+     </property>
+    <property name="rating" type="java.lang.Integer">
+         <column name="rating"  not-null="false"/>
+     </property>
+    
+     <many-to-one name="sendUser" column="senduser" lazy="false"
+       class="openjframework.model.UserInfo" />    
+  </class>   
+</hibernate-mapping>

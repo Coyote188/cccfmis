@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.0.xsd">
+  <bean id="dataSource" class="com.aidi.core.spring.DynamicDataSource">
+    <property name="targetDataSources">
+      <map key-type="java.lang.String">
+        <entry key="cccf" value-ref="cccf"/>
+      </map>
+    </property>
+    <property name="defaultTargetDataSource" ref="cccf"/>
+  </bean>
+  <!-- Choose the dialect that matches your "dataSource" definition -->
+  <bean id="mySessionFactory" class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
+    <property name="dataSource" ref="dataSource"/>
+    <property name="mappingResources">
+      <list>
+        <value>com/aidi/framework/model/DataDictInfo.hbm.xml</value>
+        <value>com/aidi/bpm/model/Approve.hbm.xml</value>
+        <value>com/aidi/bpm/model/ProcessForm.hbm.xml</value>
+        <value>com/aidi/bpm/model/TaskForm.hbm.xml</value>
+        <value>openjframework/model/OrganizationTypeInfo.hbm.xml</value>
+        <value>openjframework/model/TitleInfo.hbm.xml</value>
+        <value>openjframework/model/PositionInfo.hbm.xml</value>
+        <value>openjframework/model/PermissionInfo.hbm.xml</value>
+        <value>openjframework/model/ResourceTypeInfo.hbm.xml</value>
+        <value>openjframework/model/ResourceInfo.hbm.xml</value>
+        <value>openjframework/model/SexInfo.hbm.xml</value>
+        <value>openjframework/model/RoleInfo.hbm.xml</value>
+        <value>openjframework/model/PoliticalStatusInfo.hbm.xml</value>
+        <value>openjframework/model/UserStatusInfo.hbm.xml</value>
+        <value>openjframework/model/UserInfo.hbm.xml</value>
+        <value>openjframework/model/UserLogInfo.hbm.xml</value>
+        <value>openjframework/model/OrganizationInfo.hbm.xml</value>
+        <value>openjframework/model/MessageInfo.hbm.xml</value>
+        <value>cccf/ma/model/ProductCatalogueInfo.hbm.xml</value>
+        <value>cccf/ma/model/ApplicationInfo.hbm.xml</value>
+      </list>
+    </property>
+    <property name="hibernateProperties">
+      <props>
+        <prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop>
+        <prop key="hibernate.show_sql">true</prop>
+        <prop key="hibernate.cache.provider_class">org.hibernate.cache.HashtableCacheProvider</prop>
+        <prop key="hibernate.hbm2ddl.auto">update</prop>
+      </props>
+    </property>
+  </bean>
+  <!-- Transaction manager for a single Hibernate SessionFactory (alternative to JTA) -->
+  <bean id="myTransactionManager" class="org.springframework.orm.hibernate3.HibernateTransactionManager">
+    <property name="sessionFactory" ref="mySessionFactory"/>
+  </bean>
+  <bean id="RoleInfoService" class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
+    <property name="transactionManager">
+      <ref bean="myTransactionManager"/>
+    </property>
+    <property name="target">
+      <ref bean="RoleInfoServiceTarget"/>
+    </property>
+    <property name="transactionAttributes">
+      <props>
+        <prop key="find*">PROPAGATION_REQUIRED,readOnly,-InfoObjectException</prop>
+        <prop key="save*">PROPAGATION_REQUIRED,-InfoObjectException</prop>
+      </props>
+    </property>
+  </bean>
+  <bean id="RoleInfoServiceTarget" class="openjframework.service.impl.RoleInfoServiceImpl"/>
+  <bean id="UserInfoService" class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
+    <property name="transactionManager">
+      <ref bean="myTransactionManager"/>
+    </property>
+    <property name="target">
+      <ref bean="UserInfoServiceTarget"/>
+    </property>
+    <property name="transactionAttributes">
+      <props>
+        <prop key="find*">PROPAGATION_REQUIRED,readOnly,-InfoObjectException</prop>
+        <prop key="save*">PROPAGATION_REQUIRED,-InfoObjectException</prop>
+      </props>
+    </property>
+  </bean>
+  <bean id="UserInfoServiceTarget" class="openjframework.service.impl.UserInfoServiceImpl"/>
+  <bean id="cccf" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+    <property name="driverClassName">
+      <value>com.mysql.jdbc.Driver</value>
+    </property>
+    <property name="url">
+      <value>jdbc:mysql://127.0.0.1:3306/cccfmis?useUnicode=true&amp;characterEncoding=UTF-8</value>
+    </property>
+    <property name="username">
+      <value>root</value>
+    </property>
+    <property name="password">
+      <value>111111</value>
+    </property>
+  </bean>
+  <bean id="ProductCatalogueInfoService" class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
+    <property name="transactionManager">
+      <ref bean="myTransactionManager"/>
+    </property>
+    <property name="target">
+      <ref bean="ProductCatalogueInfoServiceTarget"/>
+    </property>
+    <property name="transactionAttributes">
+      <props>
+        <prop key="find*">PROPAGATION_REQUIRED,readOnly,-InfoObjectException</prop>
+        <prop key="save*">PROPAGATION_REQUIRED,-InfoObjectException</prop>
+      </props>
+    </property>
+  </bean>
+  <bean id="ProductCatalogueInfoServiceTarget" class="cccf.ma.service.impl.ProductCatalogueInfoServiceImpl"/>
+  <bean id="ApplicationInfoService" class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
+    <property name="transactionManager">
+      <ref bean="myTransactionManager"/>
+    </property>
+    <property name="target">
+      <ref bean="ApplicationInfoServiceTarget"/>
+    </property>
+    <property name="transactionAttributes">
+      <props>
+        <prop key="find*">PROPAGATION_REQUIRED,readOnly,-InfoObjectException</prop>
+        <prop key="save*">PROPAGATION_REQUIRED,-InfoObjectException</prop>
+      </props>
+    </property>
+  </bean>
+  <bean id="ApplicationInfoServiceTarget" class="cccf.ma.service.impl.ApplicationInfoServiceImpl"/>
+</beans>

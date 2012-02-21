@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?init class="cccf.ma.web.zk.ProductionmodelmanageWindowInit" root="./productionmodelmanageWindow"?>
+<window xmlns:a="http://www.zkoss.org/2005/zk/annotation" id="productionmodelmanageWindow" width="100%"
+	sizable="true" closable="true">
+	<separator width="5px" />
+	<div align="center">
+		<listbox mold="paging" id="productionModel" width="99%" pageSize="10" model="@{productionModelList}">
+			<listhead sizable="true">
+				<listheader label="制造商" />
+				<listheader label="生产厂" />
+				<listheader label="检验报告编号" />
+				<listheader label="检验机构" />
+				<listheader label="检验依据" />
+				<listheader label="检验结论" />
+				<listheader label="签发日期" />
+				<listheader label="检验类型" />
+				<listheader label="检验报告" />
+				<listheader label="规格型号" />
+				<listheader label="特性描述" />
+				<listheader label="产品图片" />
+				<listheader label="产品设计文件" />
+				<listheader label="其它文件" />
+			</listhead>
+			<listitem value="@{productionModelInfo.id}" self="@{each=productionModelInfo}">
+				<listcell label="@{productionModelInfo.menuname}" />
+				<listcell label="@{productionModelInfo.productname}" />
+				<listcell label="@{productionModelInfo.checkno}" />
+				<listcell label="@{productionModelInfo.orgname}" />
+				<listcell label="@{productionModelInfo.checkby}" />
+				<listcell label="@{productionModelInfo.report}" />
+				<listcell label="@{productionModelInfo.frmSetdate}"></listcell>
+				<listcell label="@{productionModelInfo.checktype}" />
+				<listcell>
+				    <a href="@{productionModelInfo.checkfile}" target="_blank">
+						<attribute name="onCreate">
+	                      self.setLabel(self.getHref() == null || self.getHref() == "" ? "" : "下载");
+                        </attribute>
+					</a>
+				</listcell>
+				<listcell label="@{productionModelInfo.model}" />
+				<listcell label="@{productionModelInfo.name}" />
+				<listcell>
+				    <a href="@{productionModelInfo.productimage}" target="_blank">
+						<attribute name="onCreate">
+	                      self.setLabel(self.getHref() == null || self.getHref() == "" ? "" : "下载");
+                        </attribute>
+					</a>
+				</listcell>
+				<listcell>
+				    <a href="@{productionModelInfo.designfile}" target="_blank">
+						<attribute name="onCreate">
+	                      self.setLabel(self.getHref() == null || self.getHref() == "" ? "" : "下载");
+                        </attribute>
+					</a>
+				</listcell>
+				<listcell>
+					<a href="@{productionModelInfo.otherfile}" target="_blank">
+						<attribute name="onCreate">
+	                      self.setLabel(self.getHref() == null || self.getHref() == "" ? "" : "下载");
+                        </attribute>
+					</a>
+				</listcell>
+			</listitem>
+		</listbox>
+	</div>
+</window>

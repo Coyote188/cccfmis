@@ -1,0 +1,212 @@
+<?page title="new page title" contentType="text/html;charset=UTF-8"?>
+<?init class="org.zkoss.zkplus.databind.AnnotateDataBinderInit" root="./frmfactureEdit"?>
+<zk>
+	<window id="frmfactureEdit"
+		apply="cccf.ma.web.zk.ManuEditController">
+		<style>.grd-inner {background: white; border: 0; }</style>
+		<groupbox width="99%">
+			<grid zclass="grd">
+				<columns>
+					<column width="30%" />
+					<column width="70%" />
+				</columns>
+				<rows>
+					<row>
+						<hbox align="center">
+							<label value="*" style="color:#ff0000" />
+							<label value="生产企业名称:" />
+						</hbox>
+						<textbox
+							value="@{frmfactureEdit$composer.manu.name }" width="200px" />
+
+					</row>
+					<row>
+						<hbox align="center">
+							<label value="*" style="color:#ff0000" />
+							<label value="生产企业名称(英文):" />
+						</hbox>
+						<textbox
+							value="@{frmfactureEdit$composer.manu.manuNameEn }"
+							width="200px" />
+
+					</row>
+					<row>
+						<hbox align="center">
+							<label value="*" style="color:#ff0000" />
+							<label value="生产企业组织机构代码:" />
+						</hbox>
+						<textbox
+							value="@{frmfactureEdit$composer.manu.manucode }" width="200px" />
+
+					</row>
+					<row>
+						<hbox align="center">
+							<label value="*" style="color:#ff0000" />
+							<label value="生产企业法人(负责人):" />
+						</hbox>
+						<textbox
+							value="@{frmfactureEdit$composer.manu.manuLegalPerson }"
+							width="200px" />
+
+					</row>
+					<row>
+						<hbox align="center">
+							<label value="*" style="color:#ff0000" />
+							<label value="生产企业机构类型:" />
+						</hbox>
+						<textbox
+							value="@{frmfactureEdit$composer.manu.manuType }" width="200px" />
+
+					</row>
+					<row>
+						<hbox align="center">
+							<label value="*" style="color:#ff0000" />
+							<label value="生产企业经济行业:" />
+						</hbox>
+						<textbox
+							value="@{frmfactureEdit$composer.manu.manuEcocalling }"
+							width="200px" />
+
+					</row>
+					<row>
+						<hbox align="center">
+							<label value="*" style="color:#ff0000" />
+							<label value="生产企业经济行业(新国标代码):" />
+						</hbox>
+						<textbox
+							value="@{frmfactureEdit$composer.manu.manuEcocallingNew }"
+							width="200px" />
+
+					</row>
+					<row>
+						<hbox align="center">
+							<label value="*" style="color:#ff0000" />
+							<label value="生产企业经济类型:" />
+						</hbox>
+						<textbox
+							value="@{frmfactureEdit$composer.manu.manuEcotype }"
+							width="200px" />
+
+					</row>
+					<row>
+						<hbox align="center">
+							<label value="*" style="color:#ff0000" />
+							<label value="生产企业经济类型(新国标代码):" />
+						</hbox>
+						<textbox
+							value="@{frmfactureEdit$composer.manu.manuEcotypeNew }"
+							width="200px" />
+
+					</row>
+					<row>
+						<hbox align="center">
+							<label value="*" style="color:#ff0000" />
+							<label value="生产企业经营范围:" />
+						</hbox>
+						<textbox
+							value="@{frmfactureEdit$composer.manu.manuEcotypeNew }"
+							width="200px" />
+
+					</row>
+					<row>
+						<hbox align="center">
+							<label value="*" style="color:#ff0000" />
+							<label value="生产企业标志:" />
+						</hbox>
+						<textbox
+							value="@{frmfactureEdit$composer.manu.manuFlag }" width="200px" />
+
+					</row>
+					<row>
+						<hbox align="center">
+							<label value="*" style="color:#ff0000" />
+							<label value="生产企业所在国家地区:" />
+						</hbox>
+						<textbox
+							value="@{frmfactureEdit$composer.manu.manuCountry }"
+							width="200px" />
+
+					</row>
+					<row>
+						<hbox align="center">
+							<label value="*" style="color:#ff0000" />
+							<label value="生产企业所在地区:" />
+						</hbox>
+						<textbox
+							value="@{frmfactureEdit$composer.manu.manuDistrict }"
+							width="200px" />
+
+					</row>
+					<row>
+						<hbox align="center">
+							<label value="*" style="color:#ff0000" />
+							<label value="生产企业地址:" />
+						</hbox>
+						<textbox
+							value="@{frmfactureEdit$composer.manu.manuAddress }"
+							width="200px" />
+
+					</row>
+					<row>
+						<hbox align="center">
+							<label value="*" style="color:#ff0000" />
+							<label value="生产企业地址(英文):" />
+						</hbox>
+						<textbox
+							value="@{frmfactureEdit$composer.manu.manuAddressEn }"
+							width="200px" />
+
+					</row>
+					<row>
+						<hbox align="center">
+							<label value="*" style="color:#ff0000" />
+							<label value="生产企业邮编:" />
+						</hbox>
+						<textbox
+							value="@{frmfactureEdit$composer.manu.manuZip }" width="200px" />
+
+					</row>
+					<row>
+						<hbox align="center">
+							<label value="*" style="color:#ff0000" />
+							<label value="生产企业电子邮件:" />
+						</hbox>
+						<textbox
+							value="@{frmfactureEdit$composer.manu.manuEmail }" width="200px" />
+
+					</row>
+					<row>
+						<hbox align="center">
+							<label value="*" style="color:#ff0000" />
+							<label value="生产企业联系人:" />
+						</hbox>
+						<textbox
+							value="@{frmfactureEdit$composer.manu.manuLinkMan }"
+							width="200px" />
+
+					</row>
+					<row>
+						<hbox align="center">
+							<label value="*" style="color:#ff0000" />
+							<label value="生产企业联系电话:" />
+						</hbox>
+						<textbox
+							value="@{frmfactureEdit$composer.manu.manuTel }" width="200px" />
+
+					</row>
+					<row>
+						<hbox align="center">
+							<label value="*" style="color:#ff0000" />
+							<label value="生产企业传真:" />
+						</hbox>
+						<textbox
+							value="@{frmfactureEdit$composer.manu.manuFax }" width="200px" />
+
+					</row>
+				</rows>
+			</grid>
+		</groupbox>
+		<button id="btnSubmit" width="68px" height="26px" label="提交" />
+		<button id="btnClean" width="68px" height="26px" label="清空" />
+	</window>
+</zk>

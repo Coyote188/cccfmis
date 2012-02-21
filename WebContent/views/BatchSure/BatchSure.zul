@@ -1,0 +1,152 @@
+<?page title="工厂检查-批次确认" contentType="text/html;charset=UTF-8"?>
+<?init class="org.zkoss.zkplus.databind.AnnotateDataBinderInit" arg0="./BatchSureWin"?>
+<window border="normal" closable="true" title="批次确认" height="100%" width="100%" id="BatchSureWin"
+	apply="cccf.mis.web.tsak.batch.sure.BatchSureController">
+	<vlayout vflex="true">
+		<listbox checkmark="true" multiple="true" hflex="true">
+			<listhead>
+				<listheader label="批次号 " width="180px"></listheader>
+				<listheader label="批次名称" width="240px"></listheader>
+				<listheader label="创建时间" width="80px"></listheader>
+				<listheader label="创建人" width="80px"></listheader>
+				<listheader label="企业数 " width="60px"></listheader>
+				<listheader label="批次状态 " width="100px"></listheader>
+				<listheader label="备注" width="80px"></listheader>				 
+			</listhead>
+			<listitem>
+				<!-- 批次号 -->
+				<listcell label="@{arg.apply.batch_no}"></listcell>
+				<!-- 批次名称 -->
+				<listcell label="@{arg.apply.batch_name}"></listcell>
+				<!-- 创建时间 -->
+				<listcell label="@{arg.apply.create_date}"></listcell>
+				<!-- 创建人-->
+				<listcell label="@{arg.apply.created}"></listcell>
+				<!-- 企业数  -->
+				<listcell label="@{arg.apply.enterprises}"></listcell>
+				<!-- 批次状态-->
+				<listcell label="@{arg.apply.status}"></listcell>
+				<!-- 备注-->
+				<listcell label="@{arg.apply.nodes}"></listcell>
+			</listitem>
+		</listbox>
+		<listbox vflex="true" hflex="true" id="batchappslist">
+			<listhead sizable="true">
+				<listheader label="任务号"></listheader>
+				<listheader label="企业名称"></listheader>
+				<listheader label="地区"></listheader>
+				<listheader label="产品列表"></listheader>
+				<listheader label="派组日期"></listheader>
+				<listheader label="天数"></listheader>
+				<listheader label="组长"></listheader>
+				<listheader label="派组人员"></listheader>
+				<listheader label="见习见证人员"></listheader>
+			</listhead>
+			<listitem self="@{each=item}" height="26px" value="@{item}">
+				<!-- 任务号(合同号) -->
+				<listcell label="@{item.no}"></listcell>
+				<!-- 企业名称 -->
+				<listcell label="--"></listcell>
+				<!-- 国家 -->
+				<listcell label="@{item.state}">
+					<label value="-"></label>
+					<!-- 地区 -->
+					<label value="@{item.region}"></label>
+				</listcell>
+				<!-- 产品列表 -->
+				<listcell label="--"></listcell>
+				<!-- 派组日期 -->
+				<listcell label="@{item.date}"></listcell>
+				<!-- 派组天数  -->
+				<listcell label="@{item.days}"></listcell>
+				<!-- 组长-->
+				<listcell label="--"></listcell>
+				<!-- 派组人员-->
+				<listcell label="--"></listcell>
+				<!-- 见习见证人员-->
+				<listcell label="--">
+					<toolbarbutton label="选择" forward="onSelectParticipants"></toolbarbutton>
+				</listcell>
+			</listitem>
+		</listbox>
+		<grid>
+			<auxhead>
+				<auxheader colspan="2" label="通知列表"></auxheader>
+			</auxhead>
+			<columns>
+				<column label="序号" width="40px"></column>
+				<column label="名称"></column>
+			</columns>
+			<rows>
+				<row>
+					<label></label>
+					<label></label>
+					<hbox>
+						<toolbarbutton label="修改"></toolbarbutton>
+					</hbox>
+				</row>
+			</rows>
+		</grid>
+		<groupbox mold="3d" closable="false">
+			<grid id="appoveGrid">
+				<columns>
+					<column width="100px" align="left"></column>
+					<column></column>
+				</columns>
+				<rows>
+					<row>
+
+						<label></label>
+						<button label="提交" image="/image/16/up.png" width="68px" id="btSubmit" height="26px" style=""
+							forward="onSubmit" />
+
+					</row>
+					<row visible="false">
+						<label value="分工人员" />
+						<cell>
+							<combobox id="reveiwUser" model="@{reviewUserList}" autodrop="true" width="200px" readonly="true">
+								<comboitem self="@{each=person}" label="@{person.name}" value="@{person.id}" />
+							</combobox>
+						</cell>
+					</row>
+					<row visible="false">
+						<label value="处理结论" />
+						<listbox id="resultListbox" mold="select" rows="1" width="200"></listbox>
+					</row>
+					<row>
+						<label value="意见:" />
+						<textbox id="approveMemo" rows="3" cols="140" />
+					</row>
+				</rows>
+			</grid>
+		</groupbox>
+		<popup id="popup" width="800px">
+
+			<listbox mold="paging" pageSize="20" id="participantlist" checkmark="true" multiple="true">
+				<listhead sizable="true">
+					<listheader label="人员" width="80px"></listheader>
+					<listheader label="性别" width="40px"></listheader>
+					<listheader label="资质" width="180px"></listheader>
+					<listheader label="级别" width="100px"></listheader>
+					<listheader label="单位" width="200px"></listheader>
+					<listheader label="年度检查次数" width="100px"></listheader>
+					<listheader label="组长" width="32px"></listheader>
+				</listhead>
+				<listitem self="@{each=part}" height="26px" value="@{part}">
+					<listcell label="@{part.name}"></listcell>
+					<listcell label="@{part.sex}"></listcell>
+					<listcell label="@{part.qualification}"></listcell>
+					<listcell></listcell>
+					<listcell label="@{part.organization}"></listcell>
+					<listcell></listcell>
+					<listcell>
+						<radio checked="@{part.iszz}" value="@{part}"></radio>
+					</listcell>
+				</listitem>
+			</listbox>
+			<div>
+				<button label="确定" forward="onSaveParticipants"></button>
+			</div>
+		</popup>
+	</vlayout>
+</window>

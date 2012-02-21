@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?init class="org.zkoss.zkplus.databind.AnnotateDataBinderInit" root="./commTreatyWin" ?>
+<window id="commTreatyWin" closable="true" apply="cccf.ma.web.zk.CommonTreatyController">
+	<vlayout hflex="true" vflex="true">
+		<div align="left" hflex="true">
+			<separator height="5px" />
+			<label id="titleLab" value="@{commTreatyWin$composer.title }" style="font-size:20px;font-weight:bold;" />
+			<separator height="5px" />
+		</div>
+		<textbox hflex="true" vflex="true" Style="width:99%;" rows="20" value="@{commTreatyWin$composer.treaty }" readonly="true" />
+		<separator height="10px" />	 
+	</vlayout>
+	<checkbox id="chooseCkb" label="我已阅读协议,并接受该协议中的任何条例" checked="false" />
+	<div align="right" style="margin-right:20px">
+		<button id="nextBtn" label="下一步" style="width:78px;height:26px" disabled="true" image="/image/16/next.png" />
+		<space />
+		<button id="cancelBtn" label="取消" image="/image/common/close.png" style="width:68px;height:26px" />
+	</div>
+</window>

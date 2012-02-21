@@ -1,0 +1,40 @@
+<!-- 合同列表 -->
+<listbox checkmark="true" multiple="true" vflex="true" hflex="true">
+	<listhead sizable="true">
+		<listheader label="合同号 " width="160px"></listheader>
+		<listheader label="企业名称" width="240px"></listheader>
+		<listheader label="所在地区" width="120px"></listheader>
+		<listheader label="业务类型" width="80px"></listheader>
+		<listheader label="审核时间 " width="78px"></listheader>
+		<listheader label="合同状态 " width="100px"></listheader>
+		<listheader width="85px"></listheader>
+		<listheader></listheader>
+	</listhead>
+	<listitem self="@{each=item}" value="@{item}">
+		<!-- 合同号 -->
+		<listcell label="@{item.contractno}"></listcell>
+		<!-- 企业名称 -->
+		<listcell label="@{item.enterprise}"></listcell>
+		<!-- 国家 -->
+		<listcell label="@{item.state}">
+			<label value="-"></label>
+			<!-- 地区 -->
+			<label value="@{item.region}"></label>
+		</listcell>
+		<!-- 业务类型-->
+		<listcell label="@{item.business_type}"></listcell>
+		<!-- 审核时间 -->
+		<listcell label="@{item.audit_date}"></listcell>
+		<!-- 合同状态-->
+		<listcell label="@{item.contract_status}"></listcell>
+		<listcell>
+			<button mold="trendy" label="@{itemButlabel}" forward="onDoSelfItem"></button>
+		</listcell>
+		<listcell></listcell>
+	</listitem>
+	<listfoot>
+		<listfooter span="9" style="margin: 0px; padding: 1px;">
+			<paging id="list_paging" pageSize="20" style="margin: 0px; padding: 0px;"></paging>
+		</listfooter>
+	</listfoot>
+</listbox>

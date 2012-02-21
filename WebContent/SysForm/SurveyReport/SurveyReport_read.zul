@@ -1,0 +1,157 @@
+<?page title="new page title" contentType="text/html;charset=UTF-8"?>  
+<zk>
+	<window title="查看检验报告" border="normal" closable="true" width="99%" id="winSurveyReportForm" 
+		height="1000"  > 
+      <zscript><![CDATA[ 
+               Map surveyReport  =  Executions.getCurrent().getArg();  
+              
+               List productModelList = (List)surveyReport.get("productModelList");
+               boolean isAudit = false;
+               if(surveyReport.get("toAudit")!=null){
+            	   isAudit = true;
+               }else{
+            	   isAudit = false;
+               }
+         ]]>
+      </zscript>
+     
+		<grid>
+			<rows>
+				<row>
+					<cell width="200px" align="right">企业名称 :</cell>
+			        <label value="${surveyReport.enterpriseInfo_name}" />   
+				</row>
+				<row>
+					<cell width="200" align="right">产品名称 :</cell>
+					<label value="${surveyReport.productCatalogueInfo_productName}" />  
+				</row>
+				<row>
+					<cell width="200" align="right">检验报告编号 :</cell>
+					<label value="${surveyReport.surveyReportSN}" />  
+				</row>
+				<row>
+					<cell width="200" align="right">检验日期 :</cell>
+					<hbox>
+						自
+						<label value="${surveyReport.surveyFromDate}" /> 
+						至
+						<label value="${surveyReport.surveyToDate}" />  
+					</hbox>
+				</row>
+				<row>
+					<cell width="200" align="right">检验机构名称 :</cell>
+					 <label value="${surveyReport.surveyToDate}" />  
+				</row>
+				<row>
+					<cell width="200" align="right">检验依据 :</cell>
+					 <label value="${surveyReport.surveyToDate}" /> 
+				</row>
+				<row>
+					<cell width="200" align="right">检验结论 :</cell>
+					<vbox>
+					    <label value="${surveyReport.surverVerdict}"> 
+					        <attribute name="onCreate">
+								if(self.getValue().equals("1")){ 
+								   self.setValue("合格");
+								} else{
+									self.setValue("不合格");
+								}
+							</attribute>
+					    </label>
+						<label value="${surveyReport.surverVerdictContent}" />   
+					</vbox>
+				</row>
+				<row>
+					<cell width="200" align="right">签发日期 :</cell>
+					<label value="${surveyReport.issuingDate}" />  
+				</row>
+				<row>
+					<cell width="200" align="right">检验类型 :</cell>
+					<label value="${surveyReport.surverType}" />  
+				</row>
+				<row>
+					<cell width="200" align="right">制造商 :</cell>
+					<label value="${surveyReport.productionEnterpriseInfo_name}" />   
+				</row>
+				<row>
+					<cell width="200" align="right">生产厂名称 :</cell>
+					<label value="${surveyReport.manufactureInfo_name}" />  
+				</row>
+				<row>
+					<cell width="200" align="right">委托单位 :</cell>
+					<label value="${surveyReport.agentOrg}" />  
+				</row>
+				<row>
+					<cell width="200" align="right">抽样单位 :</cell>
+					<label value="${surveyReport.samplingOrg}" /> 
+				</row>  
+							<row spans="2">
+				  <listbox id="lb_productModelList">
+						<listhead>
+							<listheader label="规格型号" sort="auto" width="100px"/>
+							<listheader label="是否是主型" sort="auto" width="100px" /> 
+							<listheader label="特性描述" sort="auto" width="100px"/>
+							<listheader label="附件"  />
+							<listheader label="操作"  width="100px"/>
+						</listhead>
+						<listitem forEach="${productModelList }"  >
+						    <listcell label="${each.specification}" /> 
+							<listcell label="${each.isMainModel}" >
+								 <attribute name="onCreate">
+									  String iRet =self.getLabel();
+									  if("false".equals(iRet)){
+										    self.setLabel("分型");
+									  }else{
+										   self.setLabel("主型");
+									  }
+								  </attribute> 
+							</listcell>
+							<listcell label="${each.characterization}" />
+							<listcell > 
+							    <grid style="border:0;">
+									 <columns><column width="100px" /><column /> </columns> 
+									<rows>
+										<row forEach="${each.productModelAttachmentList }">
+											<label value="${each.name}"/>
+											<label value="${each.fileName}"/> 
+										</row>
+									</rows>
+								 </grid>
+							</listcell>
+							<listcell > 
+							    <toolbarbutton label="查看" image="/image/16/find.png"/> 
+							</listcell>
+						</listitem>
+						 
+					</listbox>  
+				</row>   
+				<row spans="2" align="center" visible="${isAudit }">
+				    审核检验报告！
+				</row>
+				 <row spans="2">
+					<cell align="center"> 
+					    <toolbarbutton label="通过" visible="${isAudit }"
+							image="/image/16/apply.png">
+							<attribute name="onClick">
+									 Events.sendEvent(Events.ON_CLOSE, winSurveyReportForm, 1);
+							 </attribute>
+						</toolbarbutton>
+						<toolbarbutton label="不通过" visible="${isAudit }"
+							image="/image/16/button_cancel.png">
+							<attribute name="onClick">
+									 Events.sendEvent(Events.ON_CLOSE, winSurveyReportForm, 0);
+							 </attribute>
+						</toolbarbutton>
+						<toolbarbutton label="关闭"
+							image="/image/16/button_cancel.png">
+							<attribute name="onClick">
+									 Events.sendEvent(Events.ON_CLOSE, winSurveyReportForm, -1);
+							 </attribute>
+						</toolbarbutton>
+					</cell>
+				</row>
+			</rows>
+			 
+		</grid>
+	</window>
+</zk>

@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping SYSTEM "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+<hibernate-mapping>
+  <class name="cccf.ma.model.ProductCatalogueInfo" table="productcatalogue">  
+  
+    <id name="id" type="string" unsaved-value="null" >
+        <column name="pid"  not-null="true"/>
+        <generator class="uuid.hex"/>
+    </id>
+    
+    <property name="productNo" type="string">
+         <column name="productNo"  not-null="true"/>
+     </property>
+    <property name="productName" type="string">
+         <column name="productName"  not-null="true"/>
+     </property>
+    <many-to-one name="productParent" column="product_ID" 
+    			 class="cccf.ma.model.ProductCatalogueInfo" 
+      			 lazy="false"/> 
+    <set name="productChildren" lazy="false" inverse="true" 
+            cascade="all-delete-orphan">
+        <key column="product_ID" />
+        <one-to-many class="cccf.ma.model.ProductCatalogueInfo" />
+    </set>
+    <property name="productLevel" type="java.lang.Integer">
+         <column name="productLevel"  not-null="true"/>
+     </property>
+    <property name="activateStatus" type="java.lang.Integer">
+         <column name="activateStatus"  not-null="true"/>
+     </property>
+    <property name="observedStandard" type="string">
+         <column name="observedStandard"  not-null="false" length="10240"/>
+     </property>
+    <property name="technicalRequirement" type="string">
+         <column name="technicalRequirement"  not-null="false" length="10240"/>
+     </property>
+    <property name="certificatesNo" type="string">
+         <column name="certificatesNo"  not-null="false"/>
+     </property>
+    <property name="productDescribe" type="string">
+         <column name="productDescribe"  not-null="false" length="10240"/>
+     </property>
+     <property name="modelStatus" type="boolean">
+         <column name="modelstatus"  not-null="false"/>
+     </property>
+     <property name="fireEngineStatus" type="boolean">
+         <column name="fireEngineStatus"  not-null="false"/>
+     </property>
+     <many-to-one name="productPerson" column="productPerson" 
+     			  class="openjframework.model.UserInfo"  
+     			  lazy="false"/> 
+     <property name="certificationTypeNo" length="10"/>	
+      <property name="businessType" length="40"/>	
+      <property name="systemStandards" length="40"/>
+      <property name="caRule" length="40"/>		
+      <property name="productNameEn"  />	  
+  </class>   
+</hibernate-mapping>

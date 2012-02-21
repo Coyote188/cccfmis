@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping SYSTEM "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+<hibernate-mapping>
+	<class name="cccf.ma.model.FactoryCheckUser" table="_factorycheckuser"> 
+		<id name="id" >
+			  <generator class="identity"/> 
+		</id> 
+		<property name="usid" length="40" />
+		<property name="name" length="20"/>
+		<property name="sex" length="12"/> 
+		<property name="organization" /> 
+        <property name="qualification" length="1000"/> 
+        <property name="telephone" length="20"/> 
+        <property name="adress"  /> 
+		<property name="station" length="12"/> 
+		<property name="nature" length="20"/> 
+	</class>
+</hibernate-mapping>

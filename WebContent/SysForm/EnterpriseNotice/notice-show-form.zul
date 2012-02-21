@@ -1,0 +1,28 @@
+<?page title="new page title" contentType="text/html;charset=UTF-8"?>
+<?init class="org.zkoss.zkplus.databind.AnnotateDataBinderInit" root="./frmNoticeList"?>
+<zk>
+	<window id="frmNoticeList" border="none" width="100%"
+		apply="cccf.ma.web.zk.NoticeListController">
+		<tabbox>
+			<tabs>
+				<tab id="tbUnread" label="未读通知"/>
+				<tab id="tbReaded" label="已读通知" />
+				<tab id="tbAll" label="所有通知" />
+			</tabs>
+		</tabbox>
+					<div id="divNoticeList">
+						<grid id="grdNoticeList" style="border:0"
+							mold="paging" pageSize="10">
+							<columns>
+								<column label="" width="5%" />
+								<column label="主题" width="45%" />
+								<column label="时间" width="30%" />
+								<!--			<column label="消息类型" width="10%"/>-->
+								<!--			<column label="消息级别" width="10%"/>-->
+								<column label="操作" width="20%" />
+							</columns>
+						</grid>
+					</div>
+				
+	</window>
+</zk>

@@ -1,0 +1,139 @@
+<?page title="new page title" contentType="text/html;charset=UTF-8"?>
+<?init class="org.zkoss.zkplus.databind.AnnotateDataBinderInit" arg0="./BatchPlanWin"?>
+<window id="BatchPlanWin" title="派组批次" border="normal" height="100%" closable="true"
+	apply="cccf.mis.web.tsak.batch.BatchPlanController" forward="onCreate=onInited">
+	<vlayout vflex="true">
+		<grid id="batchslist">
+			<columns sizable="true">
+				<column label="批次号"></column>
+				<column label="批次名称"></column>
+				<column label="创建时间"></column>
+				<column label="产品数"></column>
+				<column label="批次状态"></column>
+				<column label="备注"></column>
+				<column label="操作"></column>
+			</columns>
+			<rows>
+				<row>
+					<label></label>
+					<textbox id="batch_name"></textbox>
+					<label></label>
+					<label value="@{batch.application_count}"></label>
+					<label value="@{batch.state}"></label>
+					<textbox></textbox>
+					<textbox></textbox>
+				</row>
+			</rows>
+		</grid>
+		<vlayout vflex="true" spacing="3px">
+			<toolbar style="border:1px solid #CCC;border-buttom:0px">
+				<button disabled="true" mold="trendy" image="/res/icons/add.png" label="添加审请"></button>
+			</toolbar>
+			<listbox checkmark="true" multiple="true" vflex="true" hflex="true" id="task_list">
+				<listhead sizable="true">
+					<listheader label="任务号"></listheader>
+					<listheader label="申请企业"></listheader>
+					<listheader label="地区"></listheader>
+					<listheader label="业务类型"></listheader>
+					<listheader label="产品大类"></listheader>
+					<listheader label="检查组组长"></listheader>
+					<listheader label="分配人员"></listheader>
+					<listheader label="详细信息"></listheader>
+					<listheader label=""></listheader>
+				</listhead>
+				<listitem self="@{each=item}" height="26px" value="@{item}">
+					<listcell label="@{item.no}" style="white-space: nowrap;"></listcell>
+					<listcell label="@{item.enterprise}" style="white-space: nowrap;"></listcell>
+					<listcell label="@{item.state}" style="white-space: nowrap;">
+						<label value="-"></label>
+						<!-- 地区 -->
+						<label value="@{item.region}"></label>
+					</listcell>
+					<listcell label="@{item.business_type}" style="white-space: nowrap;"></listcell>
+					<listcell label="@{item.product_catalog}" style="white-space: nowrap;"></listcell>
+					<listcell label="-" style="white-space: nowrap;"></listcell>
+					<listcell label="-" style="white-space: nowrap;"></listcell>
+					<listcell>
+						<toolbarbutton label="选择人员" forward="onSelectParticipants"></toolbarbutton>
+					</listcell>
+					<listcell>
+						<toolbarbutton label="查看"></toolbarbutton>
+					</listcell>
+				</listitem>
+			</listbox>
+		</vlayout>
+		<grid>
+			<auxhead>
+				<auxheader colspan="2" label="通知列表"></auxheader>
+				<auxheader>
+					<button mold="trendy" label="生成通知"></button>
+				</auxheader>
+			</auxhead>
+			<columns>
+				<column label="序号" width="40px"></column>
+				<column label="名称"></column>
+				<column label="操作 " width="100px"></column>
+			</columns>
+			<rows>
+				<row>
+					<label></label>
+					<label></label>
+					<hbox>
+						<toolbarbutton label="修改"></toolbarbutton>
+					</hbox>
+				</row>
+			</rows>
+		</grid>
+		<grid id="appoveGrid">
+			<columns>
+				<column width="100px" align="left"></column>
+				<column></column>
+			</columns>
+			<rows>
+				<row>
+					<label></label>
+					<cell>
+						<combobox visible="false" id="reveiwUser" model="@{reviewUserList}" constraint="no empty:请选择一位符合性审查人员"
+							autodrop="true" width="200px" readonly="true">
+							<comboitem self="@{each=person}" label="@{person.name}" value="@{person.id}" />
+						</combobox>
+						<button label="提交" image="/image/16/up.png" id="btSubmit" forward="onSubmit" />
+					</cell>
+				</row>
+				<row>
+					<label value="备注:" />
+					<textbox id="approveMemo" hflex="true" rows="3" cols="140" />
+				</row>
+			</rows>
+		</grid>
+		<popup id="popup" width="800px">
+			<radiogroup id="zzradiogroup">
+				<listbox mold="paging" pageSize="20" id="participantlist" checkmark="true" multiple="true">
+					<listhead sizable="true">
+						<listheader label="人员" width="80px"></listheader>
+						<listheader label="性别" width="40px"></listheader>
+						<listheader label="资质" width="180px"></listheader>
+						<listheader label="级别" width="100px"></listheader>
+						<listheader label="单位" width="200px"></listheader>
+						<listheader label="年度检查次数" width="100px"></listheader>
+						<listheader label="组长" width="32px"></listheader>
+					</listhead>
+					<listitem self="@{each=part}" height="26px" value="@{part}">
+						<listcell label="@{part.name}"></listcell>
+						<listcell label="@{part.sex}"></listcell>
+						<listcell label="@{part.qualification}"></listcell>
+						<listcell></listcell>
+						<listcell label="@{part.organization}"></listcell>
+						<listcell></listcell>
+						<listcell>
+							<radio checked="@{part.iszz}" value="@{part}"></radio>
+						</listcell>
+					</listitem>
+				</listbox>
+				<div>
+					<button label="确定" forward="onSaveParticipants"></button>
+				</div>
+			</radiogroup>
+		</popup>
+	</vlayout>
+</window>

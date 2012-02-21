@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<zk><window id="chatRoomWin">
+	<borderlayout height="460px" apply="openjframework.InstantMessage.ChatRoomComposer">
+		<center>
+			<panel>
+				<panelchildren >
+					<div id="viewerDiv"  style="overflow-x:hidden;overflow-Y:scroll;" height="360px"/>
+				</panelchildren>
+			</panel>
+		</center>
+		<south splittable="true" size="80px" flex="true" collapsible="true">
+			<panel>
+				<panelchildren>
+					<borderlayout height="80px">
+						<center>
+						  <div >
+							<textbox id="contentTbx" multiline="true"
+								width="100%" height="70px" style="margin:0px"
+								value="大家好！我是 ${sessionScope.name} !" />
+							</div>
+						</center>
+						<east Style="Width:100px">
+							<div>
+								<image src="/image/InstantMessage/send_butt.png"
+									id="sendBtn" style="cursor:normal;" onClick='Clients.evalJavaScript("sc()")'/>
+							</div>
+						</east>
+					</borderlayout>
+				</panelchildren>
+			</panel>
+		</south>
+	</borderlayout>
+	
+	<script type="text/javascript">
+						<![CDATA[ 
+						function sc()
+						{
+							var $d=jq("$viewerDiv");
+							$d.scrollTop($d.height());
+
+						}
+						
+						 ]]> 
+					</script>
+	</window>
+</zk>

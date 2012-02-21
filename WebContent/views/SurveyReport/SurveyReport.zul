@@ -1,0 +1,221 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?init class="org.zkoss.zkplus.databind.AnnotateDataBinderInit" root="./cofirmWin"?>
+<window title="添加检验报告" border="normal" closable="true" width="95%" height="95%"  id="cofirmWin" 
+	apply="cccf.mis.web.survey.ReportController"  forward="onCreate=onInit">
+	 
+	<vlayout vflex="true"  style="overflow:auto;"> 
+		<grid>
+			<columns>
+				<column width="100px" align="right"></column>
+				<column></column>
+				<column width="100px" align="right"></column>
+				<column></column>
+			</columns>
+			<rows>
+				<row>
+					<cell>企业名称 :</cell>
+					<bandbox forward="onOpen=onQueryEnterprise" width="250px"
+					    id="bb_enterpriseList" >
+						<bandpopup  width="550px">
+							<listbox checkmark="true" multiple="false" mold="paging"
+							     id="lb_searchEnterprise" 
+							     forward="onSelect=onSelectEnterprise">
+								<listhead>
+									<listheader label="企业名称" />
+									<listheader label="国家" />
+									<listheader label="地区" />
+									<listheader label="联系人" />
+								</listhead>
+								<listitem self="@{each=enterprise}" value="@{enterprise}">
+									<listcell label="@{enterprise.name}" />
+									<listcell label="@{enterprise.state}" />
+									<listcell label="@{enterprise.location}" />
+									<listcell label="@{enterprise.contactPerson}" />
+								</listitem>
+							</listbox>
+						</bandpopup>
+					</bandbox>
+					<cell align="right">制造商 :</cell>
+					<bandbox width="250px" readonly="true"
+					       forward="onOpen=onQueryProductionEnterpriseInfo"
+					       id="bb_ProductionEnterpriseInfo">
+						<bandpopup width="550px">
+							<listbox checkmark="true" multiple="false" mold="paging"
+							    id="lb_searchProductionEnterpriseInfo"
+								forward="onSelect=onSelectProductionEnterpriseInfo">
+								<listhead>
+									<listheader label="制造商名称" />
+									<listheader label="所在地区" />
+									<listheader label="地址" />
+									<listheader label="联系人" />
+								</listhead>
+								<listitem self="@{each=product}" value="@{product}">
+									<listcell label="@{product.name}" />
+									<listcell label="@{product.facDistrict}" />
+									<listcell label="@{product.registeredAddress}" />
+									<listcell label="@{product.facLinkMan}" />
+								</listitem>
+							</listbox>
+						</bandpopup>
+					</bandbox>
+				</row>
+				<row>
+					<cell align="right">产品名称 :</cell>
+					<bandbox width="250px"  readonly="true"
+					      forward="onOpen=onQueryProduct"
+					       id="bb_Product">
+						<bandpopup  width="550px">
+							<listbox checkmark="true" multiple="false" mold="paging" 
+							  id="lb_searchProduct" forward="onSelect=onSelectProduct">
+								<listhead>
+									<listheader label="产品名称" />
+								</listhead>
+								<listitem self="@{each=item}" value="@{item}">
+									<listcell label="@{item.productName}" />
+								</listitem>
+							</listbox>
+						</bandpopup>
+					</bandbox>
+					<cell align="right">生产厂名称 :</cell>
+					<bandbox width="250px" readonly="true"
+					     forward="onOpen=onQueryManufactureInfo"
+					       id="bb_ManufactureInfo">
+						<bandpopup width="550px">
+							<listbox checkmark="true" multiple="false" mold="paging" 
+							    id="lb_searchManufactureInfo" forward="onSelect=onSelectManufactureInfo">
+								<listhead>
+									<listheader label="制造商名称" />
+									<listheader label="制造商地区" />
+									<listheader label="制造商地址" />
+									<listheader label="联系人" />
+								</listhead>
+								<listitem self="@{each=product}" value="@{product}">
+									<listcell label="@{product.name}" /> 
+									<listcell label="@{product.manuDistrict}" />
+									<listcell label="@{product.registeredAddress}" />
+									<listcell label="@{product.manuLinkMan}" />
+								</listitem>
+							</listbox>
+						</bandpopup>
+					</bandbox>
+				</row>
+				<row>
+					<cell align="right">检验报告编号 :</cell>
+					<textbox id="surveyReportSN"/>
+					<cell align="right">检验日期 :</cell>
+					<cell>
+						<datebox id="surveyFromDate" />
+						<label value="至"></label>
+						<datebox id="surveyToDate"/>
+					</cell>
+				</row>
+				<row>
+					<cell align="right">委托单位 :</cell>
+					<textbox id="agentOrg" />
+					<cell align="right">抽样单位 :</cell>
+					<textbox id="samplingOrg" />
+				</row>
+				<row>
+					<cell align="right">检验类型 :</cell>
+					<combobox id="surveyType" value="—请选择—" autodrop="true" readonly="true" >
+						<comboitem self="@{each=item}" label="@{item.dataValue}" value="@{item}"></comboitem>
+					</combobox>
+					<cell align="right">检验依据 :</cell>
+					<textbox hflex="true" width="400" id="surverAccording" />
+				</row>
+				<row>
+					<cell rowspan="2" align="right">检验结论 :</cell>
+					<vlayout>
+						<radiogroup id="surverVerdict">
+							<radio label="合格" selected="true" value="1" />
+							<radio label="不合格" value="0" />
+						</radiogroup>
+					</vlayout>
+					<cell align="right">签发日期 :</cell>
+					<datebox id="issuingDate" />
+				</row>
+				<row spans="3">
+					<textbox id="surverVerdictContent" hflex="true" multiline="true" rows="3" />
+				</row>
+				<row>
+					<cell rowspan="2" align="right">检验单位 :</cell>
+					<label id="lb_organizationInfo"/>
+					<cell align="right">完整报告</cell>
+					<div  hflex="true" >
+					    <toolbarbutton id="tb_read_SurveyReport" image="/image/common/download.png"  visible="false"
+									    forward="onDownloadSurveyReport()"  
+									    tooltiptext="下载文件" dir="reverse" >   
+						 </toolbarbutton>   
+						 <toolbarbutton id="tb_del_SurveyReport" image="/image/common/close.png"  visible="false"
+									    forward="onDeleteSurveyReport()"  
+									    tooltiptext="删除文件" dir="reverse" >   
+						 </toolbarbutton>   
+						 <fileupload id="fl_SurveyReport"  forward="onUpload=onSurveyReportUpload" label="上传..." />
+					 </div>
+				</row>
+			</rows>
+		</grid>
+		<toolbar> 
+			 <button forward="onClick=onAddProductModel" mold="trendy" image="/res/icons/table_add.png" label="添加"></button>
+			 <button mold="trendy" image="/res/icons/table_add.png" label="删除"></button> 
+		 </toolbar>
+		<listbox checkmark="true"   id="lb_productModelList" >
+			<listhead>
+				<listheader width="40px"></listheader>
+				<listheader label="规格型号" width="100px" />
+				<listheader label="是否是主型" width="100px" />
+				<listheader label="特性描述" />
+				<listheader label="附件" width="340px" />
+			</listhead>
+			<listitem self="@{each=productModel}" value="@{productModel}">
+				<listcell />
+				<listcell >
+					<textbox value="@{productModel.specification }"  hflex="true"  vflex="true" />
+				</listcell>
+				<listcell>
+				    <checkbox checked="@{productModel.isMainModel }"  hflex="true"/> 
+				</listcell>
+				<listcell>
+					<textbox value="@{productModel.characterization }"  hflex="true"  vflex="true" />
+				</listcell>
+				<listcell >
+					<listbox model="@{productModel.productModelAttachment}">
+						<listhead>
+							<listheader></listheader>
+							<listheader width="80px"></listheader>
+						</listhead>
+						<listitem self="@{each=attach}" value="@{attach}">
+							<listcell label="@{attach.name }">
+							   <label value="@{attach.attachment.name }" />
+							</listcell>
+							<listcell> 
+							     <toolbarbutton image="/image/common/close.png" 
+								    forward="onDeleteAttachfile()"  
+								    tooltiptext="删除文件" dir="reverse" >   
+								    <custom-attributes  attachment="@{attach}"/> 
+								 </toolbarbutton>    
+							</listcell>
+						</listitem> 
+						<listfoot>
+							<listfooter> 
+							  <combobox  value="产品图片"  hflex="true" >
+								<comboitem  label="产品图片" value="产品图片"></comboitem>
+								<comboitem  label="产品设计文件 " value="产品设计文件 "></comboitem>
+								<comboitem  label="其它文件" value="其它文件"></comboitem>
+							  </combobox>
+							</listfooter>
+							<listfooter>
+							   <fileupload  forward="onUpload=onAttachmentUpload" label="上传..." /> 
+							</listfooter>
+						</listfoot>
+					</listbox>
+				</listcell>
+			</listitem> 
+		</listbox>
+		<toolbar>
+			<button image="/res/icons/page_find.png" mold="trendy" label="保存" forward="onSave" />
+			<button image="/res/icons/page_add.png" mold="trendy" label="取消" />
+		</toolbar>
+	</vlayout>
+	
+</window>

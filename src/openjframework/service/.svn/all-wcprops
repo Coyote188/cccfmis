@@ -1,0 +1,179 @@
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/dlyhc.cccfmis/!svn/ver/991/trunk/src/openjframework/service
+END
+UserLogInfoServiceUtil.java
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/dlyhc.cccfmis/!svn/ver/173/trunk/src/openjframework/service/UserLogInfoServiceUtil.java
+END
+NoticeInfoService.java
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/dlyhc.cccfmis/!svn/ver/266/trunk/src/openjframework/service/NoticeInfoService.java
+END
+UserLogInfoService.java
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/dlyhc.cccfmis/!svn/ver/2/trunk/src/openjframework/service/UserLogInfoService.java
+END
+LoginServiceUtil.java
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/dlyhc.cccfmis/!svn/ver/26/trunk/src/openjframework/service/LoginServiceUtil.java
+END
+InstantMessageInfoServiceUtil.java
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/dlyhc.cccfmis/!svn/ver/991/trunk/src/openjframework/service/InstantMessageInfoServiceUtil.java
+END
+MessageInfoServiceUtil.java
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/dlyhc.cccfmis/!svn/ver/991/trunk/src/openjframework/service/MessageInfoServiceUtil.java
+END
+InstantMessageInfoService.java
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/dlyhc.cccfmis/!svn/ver/273/trunk/src/openjframework/service/InstantMessageInfoService.java
+END
+ResourceTypeInfoServiceUtil.java
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/dlyhc.cccfmis/!svn/ver/2/trunk/src/openjframework/service/ResourceTypeInfoServiceUtil.java
+END
+PositionInfoServiceUtil.java
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/dlyhc.cccfmis/!svn/ver/2/trunk/src/openjframework/service/PositionInfoServiceUtil.java
+END
+MessageInfoService.java
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/dlyhc.cccfmis/!svn/ver/2/trunk/src/openjframework/service/MessageInfoService.java
+END
+ProfileInfoServiceUtil.java
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/dlyhc.cccfmis/!svn/ver/235/trunk/src/openjframework/service/ProfileInfoServiceUtil.java
+END
+ResourceTypeInfoService.java
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/dlyhc.cccfmis/!svn/ver/2/trunk/src/openjframework/service/ResourceTypeInfoService.java
+END
+PositionInfoService.java
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/dlyhc.cccfmis/!svn/ver/2/trunk/src/openjframework/service/PositionInfoService.java
+END
+UserInfoServiceUtil.java
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/dlyhc.cccfmis/!svn/ver/326/trunk/src/openjframework/service/UserInfoServiceUtil.java
+END
+ProfileInfoService.java
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/dlyhc.cccfmis/!svn/ver/191/trunk/src/openjframework/service/ProfileInfoService.java
+END
+UserInfoService.java
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/dlyhc.cccfmis/!svn/ver/2/trunk/src/openjframework/service/UserInfoService.java
+END
+ResourceInfoServiceUtil.java
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/dlyhc.cccfmis/!svn/ver/287/trunk/src/openjframework/service/ResourceInfoServiceUtil.java
+END
+PoliticalStatusInfoServiceUtil.java
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/dlyhc.cccfmis/!svn/ver/2/trunk/src/openjframework/service/PoliticalStatusInfoServiceUtil.java
+END
+PermissionInfoServiceUtil.java
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/dlyhc.cccfmis/!svn/ver/301/trunk/src/openjframework/service/PermissionInfoServiceUtil.java
+END
+ResourceInfoService.java
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/dlyhc.cccfmis/!svn/ver/2/trunk/src/openjframework/service/ResourceInfoService.java
+END
+PoliticalStatusInfoService.java
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/dlyhc.cccfmis/!svn/ver/2/trunk/src/openjframework/service/PoliticalStatusInfoService.java
+END
+PermissionInfoService.java
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/dlyhc.cccfmis/!svn/ver/2/trunk/src/openjframework/service/PermissionInfoService.java
+END
+OrganizationInfoServiceUtil.java
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/dlyhc.cccfmis/!svn/ver/218/trunk/src/openjframework/service/OrganizationInfoServiceUtil.java
+END
+OrganizationInfoTreeService.java
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/dlyhc.cccfmis/!svn/ver/210/trunk/src/openjframework/service/OrganizationInfoTreeService.java
+END
+RoleInfoServiceUtil.java.bak
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/dlyhc.cccfmis/!svn/ver/227/trunk/src/openjframework/service/RoleInfoServiceUtil.java.bak
+END
+OrganizationInfoService.java
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/dlyhc.cccfmis/!svn/ver/2/trunk/src/openjframework/service/OrganizationInfoService.java
+END
+RoleInfoServiceUtil.java
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/dlyhc.cccfmis/!svn/ver/257/trunk/src/openjframework/service/RoleInfoServiceUtil.java
+END
+NoticeInfoServiceUtil.java
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/dlyhc.cccfmis/!svn/ver/266/trunk/src/openjframework/service/NoticeInfoServiceUtil.java
+END
+RoleInfoService.java
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/dlyhc.cccfmis/!svn/ver/2/trunk/src/openjframework/service/RoleInfoService.java
+END

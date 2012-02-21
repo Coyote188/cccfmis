@@ -1,0 +1,60 @@
+<?page title="工厂检查-批次审核" contentType="text/html;charset=UTF-8"?>
+<?init class="org.zkoss.zkplus.databind.AnnotateDataBinderInit" arg0="./gcjcPCwinqr"?>
+<window border="none" height="100%" id="gcjcPCwinqr" apply="cccfmis.gcjc.zk.ApplyGcjcqrWindow">
+	<listbox vflex="true" hflex="true" id="batchappslist">
+		<listhead sizable="true">
+			<listheader label="任务号"></listheader>
+			<listheader label="申请企业-生产厂"></listheader>
+			<listheader label="地区"></listheader>
+			<listheader label="业务类型"></listheader>
+			<listheader label="产品名称"></listheader>
+			<listheader label="产品型号"></listheader>
+			<listheader label="申请类型"></listheader>
+			<listheader label="检验中心"></listheader>
+			<listheader label="天数"></listheader>
+			<listheader label="派组人员"></listheader>
+			 
+		</listhead>
+		<listitem self="@{each=item}" height="26px" value="@{item}">
+		 
+		</listitem>
+	</listbox>
+	<groupbox mold="3d" closable="false">
+		<grid id="appoveGrid">
+			<columns>
+				<column label="审核" width="100px" align="left"></column>
+				<column></column>
+			</columns>
+			<rows>
+				<row>
+					<cell colspan="2">
+						<radiogroup>
+							<radio label="通过"></radio>
+							<radio label="重新分配"></radio>
+							<radio label="重新派人"></radio>
+						</radiogroup>
+						<button label="提交" image="/image/16/up.png" width="68px" id="btSubmit" height="26px" style=""
+							forward="onSubmit" />
+					</cell>
+				</row>
+				<row visible="false">
+					<label value="分工人员" />
+					<cell>
+						<combobox id="reveiwUser" model="@{reviewUserList}" autodrop="true" width="200px" readonly="true">
+							<comboitem self="@{each=person}" label="@{person.name}" value="@{person.id}" />
+						</combobox>
+
+					</cell>
+				</row>
+				<row visible="false">
+					<label value="处理结论" />
+					<listbox id="resultListbox" mold="select" rows="1" width="200"></listbox>
+				</row>
+				<row>
+					<label value="意见:" />
+					<textbox id="approveMemo" rows="3" cols="140" />
+				</row>
+			</rows>
+		</grid>
+	</groupbox>
+</window>

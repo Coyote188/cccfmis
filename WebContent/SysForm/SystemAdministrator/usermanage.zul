@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?init class="org.zkoss.zkplus.databind.AnnotateDataBinderInit" root="./uMWin" ?>
+<zk>
+<window id="uMWin" apply="openjframework.web.zk.UserManageComposer"
+	xmlns:n="native"  
+    xmlns:w="client"
+	xmlns="http://www.zkoss.org/2005/zul"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation=" http://www.zkoss.org/2005/zul http://www.zkoss.org/2005/zul/zul.xsd">
+	<tabbox tabscroll="false"  width="100%" >
+		<tabs>
+			<tab label="评定中心人员列表" image="/image/files/right.png"/>
+		</tabs>
+		<tabpanels>
+			<tabpanel >
+				<div>
+					<separator height="10px"/>
+					<groupbox width="99%"> 
+						<hbox id="querybox">
+							用户姓名:<textbox id="nameTbx" /><separator width="10px" /> 
+							工作单位:<textbox id="depTbx"/><separator width="10px" /> 
+							<button id="queryBtn" label="查询" image="/image/16/find.png" />
+						</hbox>
+					</groupbox>
+					<separator height="10px"/>
+					<listbox id="userLbx" model="@{uMWin$composer.userlist }" mold="paging" width="99%" pageSize="10"  checkmark="true"
+							 pagingPosition="bottom" selectedItem="@{uMWin$composer.profile}">
+						<listhead height="20px">
+							<listheader label="序号" width="60px"/>
+							<listheader label="用户编号" width="100px"/>
+							<listheader label="用户姓名" width="100px"/>
+							<listheader label="性别" width="60px"/>
+							<listheader label="工作单位"/>
+							<listheader label="职务" width="100px"/>
+							<listheader label="相关操作" width="100px"/>
+						</listhead>
+						<listitem self="@{each=user}">
+							<listcell label="${self.parent.index+1}" />
+							<listcell label="@{user.userNo }" />
+							<listcell label="@{user.name }" />
+							<listcell label="@{user.sexname}" />
+							<listcell label="@{user.organization.organizationName }" />
+							<listcell label="@{user.position.name }" />
+							<listcell>
+							  <toolbarbutton id="detailTlb" label="详细资料" forward="onDetail" style="color:Blue;">
+							  	<custom-attributes profile="@{user}" />
+							  </toolbarbutton>
+							</listcell>
+						</listitem>
+					</listbox>
+				</div>
+			</tabpanel>
+			
+		</tabpanels>
+	</tabbox>
+	<div align="center" style="margin-top:10px;">
+		<hbox>
+		<button id="addBtn" label="增加" image="/image/common/add.png" style="width:68px;height:26px"/>
+		<button id="updateBtn" label="修改" image="/image/common/edit.png" style="width:68px;height:26px"/>
+		<button id="deleteBtn" label="删除" image="/image/common/delete.png" style="width:68px;height:26px"/>
+		</hbox>
+	</div>
+	说明:<n:br/>1.修改用户资料时用户密码可以为空;
+</window>
+</zk>

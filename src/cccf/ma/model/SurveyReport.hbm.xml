@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping SYSTEM "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+<hibernate-mapping>
+	<class name="cccf.ma.model.SurveyReport" table="tb_surveyreport">
+
+		<id name="id" type="string" unsaved-value="null" length="36" >
+			<column name="sid" not-null="true" />
+			<generator class="uuid.hex" />
+		</id>
+          
+		<property name="surveyReportSN" type="string" length="50" unique="true"/>
+		<property name="surveyFromDate" type="string" length="10" />
+		<property name="surveyToDate" type="string" length="10" />
+		<property name="surverOrgName" type="string" length="50" />
+		<property name="surverAccording" type="string" length="300" />
+		<property name="surverVerdict" type="integer" />
+		<property name="surverVerdictContent" type="string" length="300" />
+		<property name="issuingDate" type="string" length="10" />
+		<property name="surverType" type="string" length="50" />
+		<property name="agentOrg" type="string" length="50" />
+		<property name="samplingOrg" type="string" length="50" />
+		<property name="organizer" type="string" length="50" />
+		<property name="organizeTime" type="string" length="25" />
+		<property name="auditor" type="string" length="50" />
+		<property name="auditTime" type="string" length="25" />
+		<property name="status" type="integer" />
+		
+		<many-to-one name="organizationInfo" column="organizationInfo_id"/>
+		<many-to-one name="enterpriseInfo" column="enterpriseInfo_id"/>
+		<many-to-one name="productCatalogueInfo" column="productCatalogueInfo_id"/>
+		<many-to-one name="productionEnterpriseInfo" column="productionEnterpriseInfo_id"/>
+		<many-to-one name="manufactureInfo" column="manufactureInfo_id"/>
+		<many-to-one name="attachment" column="attachment_id"/>
+	</class>
+</hibernate-mapping>

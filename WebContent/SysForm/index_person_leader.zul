@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?page id="index" title="消防产品网上认证业务系统"  contentType="text/html;charset=UTF-8"?>
+<zk>
+<div align="center" height="100%" style="background:#FFF;">
+<!--首页大小已在1024×768下测试-->
+<window id="Indexwindow"  apply="openjframework.web.zk.IndexPersonController"
+	xmlns:n="native" xmlns:w="client"
+	xmlns="http://www.zkoss.org/2005/zul"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation=" http://www.zkoss.org/2005/zul http://www.zkoss.org/2005/zul/zul.xsd"
+	position="top" width="100%"
+			minwidth="1024" height="100%" minheight="768">
+      <zscript>
+		<![CDATA[
+			
+		]]>
+	</zscript>
+      <borderlayout height="100%">
+	   	<north size="80px" border="0" style="background:#074389 url(../image/files/top_bg.png) no-repeat left;">
+		  <div id="top_div" style="background-repeat: no-repeat;">
+			<div align="right" style="position:relative; padding-top:15px;padding-right:20px;">
+				<html>
+				<![CDATA[ 
+					<span id="jnkc" class="STYLE1" style="font-size:12px;color:#ECECEC;font-weight:bold;">  
+						<SCRIPT>document.getElementById('jnkc').innerHTML=new Date().toLocaleString()+' 星期'+'日一二三四五六'.charAt(new Date().getDay());setInterval("document.getElementById('jnkc').innerHTML=new Date().toLocaleString()+' 星期'+'日一二三四五六'.charAt(new Date().getDay());",1000);</SCRIPT> 
+					</span>
+					]]> 
+				</html>
+			</div>
+		   </div>  
+		</north>
+	
+		<west width="160px" border="0" title="" style="border: 1px solid #9ECAD8;" flex="true"  splittable="true" collapsible="true" maxsize="200">
+		  <div id="viewerDiv" style="overflow:auto;" height="100%">
+			<panel height="145px" title="欢迎${sessionScope.name}" border="normal" >
+				<panelchildren>
+				 <div align="left" style="padding-top:10px;">		
+				    		<hbox align="start">				   		
+							上次登录:<label id="lastlogtime"/>
+							</hbox>
+							<hbox>				
+							上次登录IP:<label id="lastlogip"/>
+							</hbox>
+							<separator/>
+							<hbox align="left">
+							<toolbarbutton id="Pmsg" label="系统消息" forward="onPeMssage" style="font-size:9pt;color:#000;" image="/image/common/laba.gif" dir="reverse"/>
+								<toolbarbutton id="msgimg" image="/image/common/msg.gif" visible="false" popup="msgpop" >
+									<attribute name="onClick">
+									usermsg.setValue("来自["+msgInfo.sendUser.name+"]的消息");
+									subject.setValue(msgInfo.subject);
+									content.setValue(msgInfo.content);
+									self.setVisible(false);
+									</attribute>     
+								</toolbarbutton>
+								
+								<popup id="msgpop" width="270px" draggable="true" focus="true">
+									<hbox >
+										<label id="usermsg" value="" style="font-size:12px;color:#097EE4;font-weight:bold;"/>
+										<separator width="120px"/>
+										<image src="/image/files/close.gif" onClick="msgpop.close()"/>
+									</hbox>
+									<separator height="5px"/>
+								    <label id="subject" value=""/>
+								    <textbox id="content" value="" width="240px"  rows="6" readonly="true"/>
+								     	
+								</popup> 
+							</hbox>
+							<separator/>
+							<hbox align="center">
+							  <button id="modifyBtn" label="修改密码" style="width:72px;height:24px" /> 
+							  <button id="logoutBtn" label="安全退出" style="width:72px;height:24px" /> 
+							 
+							</hbox>
+							</div>
+			  	</panelchildren>
+			</panel>
+			<panel height="100%" title="常用功能" border="normal" id="jhPanel">
+				<panelchildren>
+			  	   <div align="left">
+			  	   <!-- 临时设置的目录 -->
+			  	    <tree id="tempCataTre">
+						<treecols>
+							<treecol label="" />
+						</treecols>
+						
+					</tree>
+			  	   </div>
+			    </panelchildren>
+	  		</panel>
+	  	  </div>
+		</west>
+		<center border="none" autoscroll="true" flex="true">
+		  	<div align="left">
+		  	<tabbox id="mainTab"  height="100%">
+				<tabs>
+					<tab label="个人中心"/>
+				</tabs>
+				<tabpanels>
+					<tabpanel id="firstTab" style="overflow:auto">
+						 <attribute name="onCreate">
+						 		Window objWindow = (Window) Executions.createComponents("person_leader_centered.zul",null,null); 
+						 		objWindow.setParent(firstTab); 
+						 		objWindow.setContentStyle("width:100%;height:100%;overflow:auto");
+						 		objWindow.doEmbedded();
+						 </attribute> 
+					</tabpanel>
+				</tabpanels>
+			</tabbox>
+			</div>
+		</center>
+		<south size="25px" border="0" style="background:#CAE8F0;">
+			<toolbar mold="panel" align="center">
+				消防产品网上认证业务系统		
+			</toolbar>
+	  </south>
+     </borderlayout>
+</window>
+</div>
+</zk>

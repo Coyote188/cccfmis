@@ -1,0 +1,12 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<datasources>
+<datasource>
+<name>cccf</name>
+ <dialect>org.hibernate.dialect.MySQLDialect</dialect>
+<driver>com.mysql.jdbc.Driver</driver>
+<url>jdbc:mysql://127.0.0.1:3306/cccfmis?useUnicode=true&amp;characterEncoding=UTF-8</url>
+<username>root</username>
+<password>111111</password>
+<default>true</default>
+</datasource>
+</datasources>

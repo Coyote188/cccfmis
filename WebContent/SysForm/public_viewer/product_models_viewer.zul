@@ -1,0 +1,96 @@
+<?page title="new page title" contentType="text/html;charset=UTF-8"?>
+<?init class="org.zkoss.zkplus.databind.AnnotateDataBinderInit" root="./frmProductModelViewer"?>
+<zk>
+	<window id="frmProductModelViewer" apply="cccf.ma.web.zk.publicform.ProductModelViewerController" border="none">
+		<groupbox mold="3d">
+			<caption label="申请认证产品" />
+			<listbox id="lbxProductModels" checkmark="${isMultiple }" multiple="${isMultiple }" model="@{frmProductModelViewer$composer.productModels }">
+				<listhead>
+					<listheader width="7%" label="序号" />
+					<listheader width="23%" label="产品名称" />
+					<listheader width="10%" label="主/分型" />
+					<listheader width="15%" label="型号规格" />
+					<listheader width="10%" label="申请类型" />
+					<listheader width="10%" label="质检中心" />
+					<listheader width="15%" label="制造厂" />
+					<listheader width="10%" label="证书编号" />
+				</listhead>
+				<listitem self="@{each=t }" value="@{t.id }" selected="@{t.whetherSign }">
+					<listcell label="@{t.sn }"/>
+					<listcell label="">
+						<toolbarbutton forward="onProductView"
+							label="@{t.productName }"
+							style="text-Decoration:underline;color:#3300cc">
+							<custom-attributes
+								productmodel="@{t.productModel_id }" />
+						</toolbarbutton>
+					</listcell>
+					<listcell label="@{t.isMainModel }">
+						<attribute name="onCreate">
+							if ("true".equals(self.getLabel().toString())) {
+								self.setLabel("主型");
+							} else {
+								self.setLabel("分型");
+							}
+						</attribute>
+					</listcell>
+					<listcell label="@{t.specification }" />
+					<listcell label="@{t.applyType }" />
+					<listcell label="@{t.surverOrgName }" />
+					<listcell label="@{t.productionEnterpriseName }" />
+					<listcell label="@{ }" />
+				</listitem>
+			</listbox>
+		</groupbox>
+		
+		<popup id="ppProductInfo">
+			<grid width="600px">
+				<columns>
+					<column width="15%" />
+					<column width="35%" />
+					<column width="15%" />
+					<column width="35%" />
+				</columns>
+				<rows >
+					<row>
+						<label value="产品名称" />
+						<label id="productName" value="" />
+						<label value="产品大类" />
+						<label id="applyProduct_name" value="" />
+					</row>
+					<row>
+						<label value="业务类型" />
+						<label id="businessType" value="" />
+						<label value="申请类型" />
+						<label id="applyType" value="" />
+					</row>
+					<row>
+						<label value="规格型号" />
+						<label id="specification" value="" />
+						<label value="执行标准" />
+						<label id="observedStandard" value="" />
+					</row>
+					<row>
+						<label value="质检中心" />
+						<label id="surverOrgName" value="" />
+						<label value="生产厂" />
+						<label id="productionEnterpriseName" value="" />
+					</row>
+					<row>
+						<label value="申请企业" />
+						<label id="applyEnterprise_name" value="" />
+						<label value="制造商" />
+						<label id="manufactureInfo_name" value="" />
+					</row>
+					<row>
+						<label value="申请时间" />
+						<label id="applydate" value="" />
+						<label id="" value="证书编号" />
+						<label value="" />
+					</row>
+				</rows>
+			</grid>
+		</popup>
+		
+	</window>
+</zk>

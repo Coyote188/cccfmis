@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping SYSTEM "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+<hibernate-mapping>
+  <class name="openjframework.model.ResourceInfo" table="resource">  
+  
+    <id name="id" type="string" unsaved-value="null" >
+        <column name="id"  not-null="true"/>
+        <generator class="uuid.hex"/>
+    </id>
+    
+    <property name="no" type="string">
+         <column name="no"  not-null="false"/>
+     </property>
+    <property name="name" type="string">
+         <column name="name"  not-null="true"/>
+     </property>
+    <property name="resDesc" type="string">
+         <column name="resDesc"  not-null="false"/>
+     </property>
+    <many-to-one name="type" column="type" lazy="false"/> 
+  </class>   
+</hibernate-mapping>

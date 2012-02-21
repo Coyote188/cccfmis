@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<zk>
+<window width="160px" id="userlistWin" sizable="true">
+	<div id="userListDiv"
+		apply="openjframework.InstantMessage.UserListComposer">
+		<listbox id="userListbox" forEach="@{userListDiv$UserListComposer.userList}"
+			model="@{userListDiv$UserListComposer.userList}"  height="445px" innerWidth="100%" fixedLayout="true">
+			<listhead>
+				<listheader label="" width="35px"></listheader>
+			</listhead>
+			<listitem self="@{each=user}" value="@{user}" tooltiptext="@{user.name }">
+				<listcell tooltiptext="@{user.statusname}">
+					<attribute name="onCreate">
+						
+						if("在线".equals(self.getTooltiptext()))
+						{
+							self.setImage("/image/InstantMessage/fireunline.png");
+						}
+						else
+						{
+							self.setImage("/image/InstantMessage/fireonline.png");
+						}
+					</attribute>
+				</listcell>
+				<listcell  tooltiptext="@{user.name}" style="white-space:nowrap;">
+					<label value="@{user.name}"/>
+					<label value="(" style="color:#949494"/>
+					<label value="@{user.username}" style="color:#949494"/>
+					<label value=")" style="color:#949494"/>
+				</listcell>
+<!--				<listcell label="@{user.name}"  style="white-space:nowrap;"/>-->
+				<custom-attributes userInfo="@{user}"/>
+			</listitem>
+		</listbox>
+		<bandbox id="searchBbx" 
+				 width="160px" autodrop="true"
+				 apply="openjframework.InstantMessage.SearchUserListComposer">
+			<bandpopup  width="135px" > 
+				<listbox  id="searchUserListbox" 
+						  style="border: 0px;" 
+						  model="@{searchBbx$SearchUserListComposer.searchUserList}">
+					<listhead>
+						<listheader width="80px"></listheader>
+						<listheader></listheader>
+					</listhead>
+					<listitem self="@{each=user}" value="@{user.username }">
+						<listcell label="@{user.username}" style="white-space:nowrap;"/>
+						<listcell label="@{user.name}" style="white-space:nowrap;"/>
+						<custom-attributes userInfo="@{user}"/>
+					</listitem>
+				</listbox>
+			</bandpopup>
+		</bandbox>
+	</div>
+	</window>
+</zk>

@@ -1,0 +1,301 @@
+<?page title="new page title" contentType="text/html;charset=UTF-8"?>
+<window apply="cccf.mis.web.pub.SeeFileController">
+ 
+	<grid>
+		<auxhead>
+			<auxheader label="申请信息" image="/image/16/doc.png" style="font-size:14px;font-weight:bold;" colspan="6" />
+		</auxhead>
+		<columns></columns>
+		<rows>
+			<row height="26px" spans="1,2,1,2">
+				<cell>
+					<label value="申请号" />
+				</cell>
+				<cell>
+					<label value="${applyInfo.applyno}" />
+				</cell>
+				<cell>
+					<label value="提交日期" />
+				</cell>
+				<cell>
+					<label value="${applyInfo.applydate}" />
+				</cell>
+			</row>
+			<row height="26px" spans="1,2,1,2">
+				<cell>
+					<label value="申请企业" />
+				</cell>
+				<cell>
+					<label value="${applyInfo.enterprise_name}" />
+				</cell>
+				<cell>
+					<label value="所在地区" />
+				</cell>
+				<cell>
+					<label value="${applyInfo.enterprise_state} - ${applyInfo.enterprise_location}" />
+				</cell>
+			</row>
+			<row height="26px" spans="1,2,1,2">
+				<cell>
+					<label value="申请类型" />
+				</cell>
+				<cell>
+					<label value="${applyInfo.applyType}" />
+				</cell>
+				<cell>
+					<label value="业务类型" />
+				</cell>
+				<cell>
+					<label value="${applyInfo.businessType}" />
+				</cell>
+			</row>
+			<row height="26px" spans="1,2,1,2">
+				<cell>
+					<label value="企业注册地址" />
+				</cell>
+				<cell>
+					<label value="${applyInfo.registeredAddress}" />
+				</cell>
+				<cell>
+					<label value="邮编" />
+				</cell>
+				<cell>
+					<label value="${applyInfo.postalcode}" />
+				</cell>
+			</row>
+			<row height="26px" spans="1,2,1,2">
+				<cell>
+					<label value="法人姓名" />
+				</cell>
+				<cell>
+					<label value="${applyInfo.enterprise_legalPerson}" />
+				</cell>
+				<cell>
+					<label value="法人电话" />
+				</cell>
+				<cell>
+					<label value="${applyInfo.enterprise_telForLegal}" />
+				</cell>
+			</row>
+		</rows>
+	</grid>
+	<separator></separator>
+	<!--申请材料列表-->
+	<groupbox closable="false" mold="3d">
+		<caption label="申请材料列表"></caption>
+		<grid>
+			<columns>
+				<column width="60px" align="center" />
+				<column />
+				<column width="100px" align="center" />
+				<column />
+			</columns>
+			<rows>
+				<row style="background-color: #EEEEEE;height:26px">
+					<cell>
+						<label value="序号" />
+					</cell>
+					<cell>
+						<label value="文件名"></label>
+					</cell>
+					<cell>
+						<label value="审核状态" />
+					</cell>
+					<cell>
+						<label value="审核意见" />
+					</cell>
+				</row>
+				<row forEach="${applyInfo.attachments}">
+					<cell>
+						<label value="${forEachStatus.index+1}" />
+					</cell>
+					<cell>
+						<toolbarbutton image="/res/icons/page_attach.png" forward="onSeeFile" label="${each.name }"
+							style="color:blue;">
+							<custom-attributes file_path="${each.file_path}" />
+						</toolbarbutton>
+						<label value="${each.path}"></label>
+					</cell>
+					<cell>
+						<label id="result${forEachStatus.index+1}" value="${each.approveResult}" />
+					</cell>
+					<cell>
+						<label id="mome${forEachStatus.index+1}" value="${each.approveMemo}" />
+					</cell>
+				</row>
+			</rows>
+		</grid>
+	</groupbox>
+	<separator></separator>
+	<!--申请产品信息列表-->
+	<groupbox closable="false" mold="3d">
+		<caption label="产品信息"></caption>
+		<grid forEach="${applyInfo.productList}">
+			<columns>
+				<column width="120px"></column>
+				<column></column>
+				<column></column>
+				<column></column>
+				<column></column>
+				<column></column>
+			</columns>
+			<rows>
+				<row height="26px" spans="1,2,1,2">
+					<cell>
+						<label style="font-weight: bold;" value="产品[${forEachStatus.index +1}]" />
+					</cell>
+					<cell>
+						<label value="名称: " />
+						<label value="${each.productName}" style="color:blue;"></label>
+					</cell>
+					<cell>
+						<label style="font-weight: bold;" value="质检中心" />
+					</cell>
+					<cell>
+						<label value="${each.surverOrgName }" />
+					</cell>
+				</row>
+				<row height="26px" spans="1,2,1,2">
+					<cell>
+						<label style="font-weight: bold;" value="产品大类" />
+					</cell>
+					<cell>
+						<label value="${each.productCatalog}" />
+					</cell>
+					<cell>
+						<label style="font-weight: bold;" value="检验报告" />
+					</cell>
+					<cell>
+						<toolbarbutton forward="onOpenSurvey" image="/res/icons/page.png" label="${each.surveyReportSN}">
+							<custom-attributes survey="${each.surveyReportSN}" />
+						</toolbarbutton>
+					</cell>
+				</row>
+				<row height="26px" spans="1,2,1,2">
+					<cell>
+						<label style="font-weight: bold;" value="执行标准" />
+					</cell>
+					<cell>
+						<label value="${each.observedStandard }" />
+					</cell>
+					<cell>
+						<label style="font-weight: bold;" value="认证规则" />
+					</cell>
+					<cell>
+						<label value="" />
+					</cell>
+				</row>
+				<row height="26px" spans="1,2,1,2">
+					<cell>
+						<label style="font-weight: bold;" value="体系标准" />
+					</cell>
+					<cell>
+						<label value="" />
+					</cell>
+					<cell>
+						<label style="font-weight: bold;" value="制造商" />
+					</cell>
+					<cell>
+						<label value="${each.manufactureName }" />
+					</cell>
+				</row>
+				<row height="26px" spans="1,2,1,2">
+					<cell>
+						<label style="font-weight: bold;" value="生产厂" />
+					</cell>
+					<cell>
+						<label value="${each.productionEnterpriseName }" />
+					</cell>
+					<cell>
+						<label style="font-weight: bold;" value="实际生产地址" />
+					</cell>
+					<cell>
+						<label value="${each.registeredAddress }" />
+					</cell>
+				</row>
+				<row spans="6">
+					<vlayout>
+						<grid forEach="${each.productModelList}">
+							<columns>
+								<column width="78px"></column>
+								<column width="40px"></column>
+								<column width="80px"></column>
+								<column width="60px"></column>
+								<column width="80px"></column>
+								<column></column>
+							</columns>
+							<rows>
+								<row height="26px">
+									<cell colspan="2">
+										<label style="font-weight: bold;" value="${each.specification }"></label>
+									</cell>
+									<cell>
+										<label style="font-weight: bold;" value="主/分型"></label>
+									</cell>
+									<cell>
+										<label value="${each.isMainModel?'是':'否'}"></label>
+									</cell>
+									<cell>
+										<label style="font-weight: bold;" value="特性描述"></label>
+									</cell>
+									<cell>
+										<label value="${each.characterization }"></label>
+									</cell>
+								</row>
+								<row spans="2,4">
+									<label value="${forEachStatus.index +1 }"></label>
+									<grid>
+										<columns>
+											<column width="40px"></column>
+											<column></column>
+											<column></column>
+											<column></column>
+										</columns>
+										<rows>
+											<row style="background-color: #EEEEEE;height:26px">
+												<cell style="background-color: #EEEEEE;">
+													<label style="font-weight: bold; " value="序号"></label>
+												</cell>
+												<cell style="background-color: #EEEEEE;">
+													<label style="font-weight: bold; " value="文件名"></label>
+												</cell>
+												<cell style="background-color: #EEEEEE;">
+													<label style="font-weight: bold; " value="审查状态"></label>
+												</cell>
+												<cell style="background-color: #EEEEEE;">
+													<label style="font-weight: bold; " value="审查意见"></label>
+												</cell>
+											</row>
+											<row height="26px" forEach="${each.productModelAttachmentList }">
+												<cell>
+													<label value="${forEachStatus.index +1}" />
+												</cell>
+												<cell>
+													<toolbarbutton image="/res/icons/page_attach.png" forward="onSeeFile"
+														label="${each.name }" style="color:blue;">
+														<custom-attributes file_path="${each.file_path}" />
+													</toolbarbutton>
+												</cell>
+												<cell>
+													<label id="result${each.productModel_id}${forEachStatus.index +1}"
+														value="${each.approveResult}" />
+												</cell>
+												<cell>
+													<label id="mome${each.productModel_id}${forEachStatus.index +1 }"
+														value="${each.approveMemo}">
+													</label>
+												</cell>
+											</row>
+										</rows>
+									</grid>
+								</row>
+							</rows>
+						</grid>
+					</vlayout>
+				</row>
+			</rows>
+		</grid>
+	</groupbox>
+	<include src="/views/public/processlog.zul?sioid=${applyInfo.applyno}"></include>
+	 
+</window>

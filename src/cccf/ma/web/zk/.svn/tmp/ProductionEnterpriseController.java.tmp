@@ -1,0 +1,265 @@
+package cccf.ma.web.zk;
+
+import java.util.List;
+
+import org.zkoss.zk.ui.Component;
+import org.zkoss.zk.ui.event.Event;
+import org.zkoss.zk.ui.event.EventListener;
+import org.zkoss.zk.ui.event.Events;
+import org.zkoss.zk.ui.util.GenericForwardComposer;
+import org.zkoss.zul.Button;
+import org.zkoss.zul.Combobox;
+import org.zkoss.zul.Div;
+import org.zkoss.zul.Grid;
+import org.zkoss.zul.Hbox;
+import org.zkoss.zul.Label;
+import org.zkoss.zul.ListModel;
+import org.zkoss.zul.ListModelList;
+import org.zkoss.zul.Messagebox;
+import org.zkoss.zul.Popup;
+import org.zkoss.zul.Row;
+import org.zkoss.zul.RowRenderer;
+import org.zkoss.zul.RowRendererExt;
+import org.zkoss.zul.SimpleListModel;
+import org.zkoss.zul.Textbox;
+import org.zkoss.zul.Toolbarbutton;
+
+import cccf.ma.model.EnterpriseInfo;
+import cccf.ma.model.LocationInfo;
+import cccf.ma.model.ProductionEnterpriseInfo;
+import cccf.ma.model.StateInfo;
+import cccf.ma.service.EnterpriseInfoServiceUtil;
+import cccf.ma.service.LocationInfoServiceUtil;
+import cccf.ma.service.ProductionEnterpriseInfoServiceUtil;
+import cccf.ma.service.StateInfoServiceUtil;
+import cccf.ma.web.zk.override.EditableDiv;
+import cccf.ma.web.zk.override.EditableRow;
+
+@SuppressWarnings( { "serial", "unchecked" })
+public class ProductionEnterpriseController extends GenericForwardComposer {
+	private List<ProductionEnterpriseInfo> proList;
+	private EnterpriseInfo enterprise;
+	public ProductionEnterpriseInfo pro;
+
+	public List<StateInfo> sList;
+	public List<LocationInfo> pList;
+	public List<LocationInfo> cList;
+
+	private Combobox cbxProvince, cbxState, cbxCity;
+	private Grid grdPro, grdAddItem;
+	private Textbox tbxLocation;
+	private Textbox tbxName;
+	private Button btnOnCreate;
+
+	@Override
+	public void doAfterCompose(Component comp) throws Exception {
+		super.doAfterCompose(comp);
+		load();
+		grdPro.setRowRenderer(new EditRowBtnRenderer());
+		sList = StateInfoServiceUtil.getAll();
+		pList = LocationInfoServiceUtil.getProvinceList();
+	}
+
+	private void load() {
+		enterprise = EnterpriseInfoServiceUtil.getCurrentEnterprise();
+		proList = ProductionEnterpriseInfoServiceUtil
+				.getProductionEnterprise(enterprise);
+		ListModel model = new SimpleListModel(proList);
+		grdPro.setModel(model);
+	}
+
+	public void onSave(ProductionEnterpriseInfo pro2)
+			throws InterruptedException {
+		int reply = Messagebox.show("是否确认保存修改?", "警告", Messagebox.YES
+				| Messagebox.NO, Messagebox.QUESTION);
+		if (reply == Messagebox.YES) {
+			pro2.setStatus(0);
+			pro2.setEnterprise(enterprise);
+			ProductionEnterpriseInfoServiceUtil.saveOrUpdate(pro2);
+			
+		} else {
+			return;
+		}
+	}
+
+	public void onClick$btnOnSave() {
+		if (validateData() == false)
+			return;
+		pro = new ProductionEnterpriseInfo();
+		pro.setStatus(0);
+		pro.setContactAddress(tbxLocation.getText());
+		pro.setName(tbxName.getText());
+		try {
+			onSave(pro);
+			load();
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+	}
+
+	public void onRemove(ProductionEnterpriseInfo pro)
+			throws InterruptedException {
+		int reply = Messagebox.show("是否确认删除:" + pro.getName() + "?", "警告",
+				Messagebox.YES | Messagebox.NO, Messagebox.QUESTION);
+		if (reply == Messagebox.YES) {
+			ProductionEnterpriseInfoServiceUtil.delete(pro);
+<<<<<<< .mine
+			proList = ProductionEnterpriseInfoServiceUtil.getProductionEnterprise(enterprise);
+			ListModel proListModel = new SimpleListModel(proList);
+			grdPro.setModel(proListModel);
+		}else {
+=======
+			load();
+		} else {
+>>>>>>> .r136
+			return;
+		}
+	}
+
+	// 重写Grid 内部类
+	private class EditRowBtnRenderer implements RowRenderer, RowRendererExt {
+
+		@Override
+		public Row newRow(Grid grid) {
+			// Create EditableRow instead of Row(default)
+			Row row = new EditableRow();
+			row.applyProperties();
+			return row;
+		}
+
+		@Override
+		public Component newCell(Row row) {
+			return null;// Default Cell
+		}
+
+		@Override
+		public int getControls() {
+			return RowRendererExt.DETACH_ON_RENDER; // Default Value
+		}
+
+		@Override
+		public void render(Row row, Object data) throws Exception {
+			final ProductionEnterpriseInfo productione = (ProductionEnterpriseInfo) data;
+			final EditableRow editRow = (EditableRow) row;
+			final EditableDiv edivManuName = new EditableDiv(productione
+					.getName(), false);
+			edivManuName.setParent(editRow);
+			edivManuName.getTxb().setConstraint(
+			"no empty:不能为空");
+			final EditableDiv edivManuAdd = new EditableDiv(productione
+					.getContactAddress(), false);
+			edivManuAdd.setParent(editRow);
+			edivManuAdd.getTxb().setConstraint(
+			"no empty:不能为空");
+			new Label(productione.getStatusName()).setParent(editRow);
+			final Hbox hbox = new Hbox();
+			hbox.setParent(editRow);
+
+			final Toolbarbutton removeBtn = new Toolbarbutton("删除");
+			removeBtn.setStyle("color:#466BAE;");
+			// removeBtn.setMold("os");
+			// removeBtn.setHeight("20px");
+			// removeBtn.setWidth("30px");
+
+			final Toolbarbutton editBtn = new Toolbarbutton("修改");
+			editBtn.setStyle("color:#466BAE;");
+			// editBtn.setMold("os");
+			// editBtn.setHeight("20px");
+			// editBtn.setWidth("30px");
+			editBtn.setParent(hbox);
+			editBtn.addEventListener(Events.ON_CLICK, new EventListener() {
+				public void onEvent(Event event) throws Exception {
+					final Toolbarbutton submitBtn = new Toolbarbutton("保存");
+					submitBtn.setStyle("color:#466BAE;");
+					final Toolbarbutton cancelBtn = new Toolbarbutton("取消");
+					cancelBtn.setStyle("color:#466BAE;");
+					// submitBtn.setMold("os");
+					// submitBtn.setHeight("20px");
+					// submitBtn.setWidth("30px");
+					submitBtn.addEventListener(Events.ON_CLICK,
+							new EventListener() {
+								public void onEvent(Event event)
+										throws Exception {
+
+									edivManuName.getTxb().getValue();
+									edivManuAdd.getTxb().getValue();
+									
+									editRow.toggleEditable(true);
+
+									productione.setName(edivManuName.getText());
+									productione.setContactAddress(edivManuAdd
+											.getText());
+									
+									onSave(productione);
+
+									submitBtn.detach();
+									cancelBtn.detach();
+									editBtn.setParent(hbox);
+									removeBtn.setParent(hbox);
+
+									
+								}
+							});
+
+					// cancelBtn.setMold("os");
+					// cancelBtn.setHeight("20px");
+					// cancelBtn.setWidth("30px");
+					cancelBtn.addEventListener(Events.ON_CLICK,
+							new EventListener() {
+								public void onEvent(Event event)
+										throws Exception {
+									editRow.toggleEditable(false);
+									submitBtn.detach();
+									cancelBtn.detach();
+									editBtn.setParent(hbox);
+									removeBtn.setParent(hbox);
+								}
+							});
+					submitBtn.setParent(hbox);
+					cancelBtn.setParent(hbox);
+					editRow.toggleEditable(true);
+					editBtn.detach();
+					removeBtn.detach();
+				}
+			});
+
+			removeBtn.setParent(hbox);
+			removeBtn.addEventListener(Events.ON_CLICK, new EventListener() {
+
+				@Override
+				public void onEvent(Event arg0) throws Exception {
+					onRemove(productione);
+				}
+
+			});
+
+		}
+
+	}
+
+	public List<StateInfo> getSList() {
+		return sList;
+	}
+
+	public void setSList(List<StateInfo> list) {
+		sList = list;
+	}
+
+	public ProductionEnterpriseInfo getPro() {
+		return pro;
+	}
+
+	public void setPro(ProductionEnterpriseInfo pro) {
+		this.pro = pro;
+	}
+
+	public boolean validateData() {
+		tbxLocation.setConstraint("no empty:名称不能为空");
+		tbxLocation.getValue();
+		tbxName.setConstraint("no empty:通讯地址不能为空");
+		tbxName.getValue();
+
+		return true;
+	}
+
+}

@@ -1,0 +1,273 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?page id="index" title="消防产品网上认证业务系统"  contentType="text/html;charset=UTF-8"?>
+<zk>
+	<div height="100%" style="background:#FFF;">
+		<!--首页大小已在1024×768下测试-->
+		<window id="Indexwindow" apply="openjframework.web.zk.IndexPersonController" xmlns:n="native" xmlns:w="client"
+			xmlns="http://www.zkoss.org/2005/zul" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+			xsi:schemaLocation=" http://www.zkoss.org/2005/zul http://www.zkoss.org/2005/zul/zul.xsd" position="top" width="100%"
+			minwidth="1024" height="100%" minheight="768">
+
+			<borderlayout height="100%">
+				<north id="mainlayoutnorth" open="false" splittable="true" collapsible="true" height="80px">
+					<div id="top_div" height="80px" style="background:#074389 url(../image/files/top_bg.png) no-repeat left;">
+						<div align="right" style="position:relative; padding-top:15px;padding-right:20px;">
+							<html>
+								
+								<![CDATA[ <span id="jnkc" class="STYLE1" style="font-size:12px;color:#ECECEC;font-weight:bold;">
+								<SCRIPT>document.getElementById('jnkc').innerHTML=new Date().toLocaleString()+'
+								星期'+'日一二三四五六'.charAt(new
+								Date().getDay());setInterval("document.getElementById('jnkc').innerHTML=new
+								Date().toLocaleString()+' 星期'+'日一二三四五六'.charAt(new Date().getDay());",1000);</SCRIPT> </span>
+								]]>
+								 
+							</html>
+						</div>
+					</div>
+				</north>
+				<west id="mainlayoutwest" title="欢迎${sessionScope.name}" width="160px" border="normal"
+					splittable="true" collapsible="true" maxsize="200">
+					<div id="viewerDiv" height="100%">
+						<panel height="120px" border="none">
+							<panelchildren>
+								<div align="left" style="margin-top:10px;">
+									<hbox align="start">
+										上次登录:
+										<label id="lastlogtime" />
+									</hbox>
+									<hbox>
+										上次登录IP:
+										<label id="lastlogip" />
+									</hbox>
+									<separator />
+									<hbox align="left">
+										<toolbarbutton id="Pmsg" label="系统消息" forward="onPeMssage"
+											style="font-size:9pt;color:#000;" image="/image/common/laba.gif" dir="reverse" />
+										<toolbarbutton id="msgimg" image="/image/common/msg.gif" visible="false"
+											popup="msgpop">
+											<attribute name="onClick">
+	if (msgInfo.type != 2)
+		usermsg.setValue("来自[" + msgInfo.sendUser.name + "]的消息");
+	else
+		usermsg.setValue("系统消息");
+	subject.setValue(msgInfo.subject);
+	content.setValue(msgInfo.content);
+	self.setVisible(false);</attribute>
+										</toolbarbutton>
+										<popup id="msgpop" width="270px" draggable="true" focus="true">
+											<hbox>
+												<label id="usermsg" value=""
+													style="font-size:12px;color:#097EE4;font-weight:bold;" />
+												<separator width="120px" />
+												<image src="/image/files/close.gif" onClick="msgpop.close()" />
+											</hbox>
+											<separator height="5px" />
+											<label id="subject" value="" />
+											<textbox id="content" value="" width="240px" rows="6" readonly="true" />
+
+										</popup>
+									</hbox>
+									<separator />
+									<hbox align="center">
+										<button mold="trendy" id="modifyBtn" label="修改密码" style="width:72px;height:24px" />
+										<button mold="trendy" id="logoutBtn" label="安全退出" style="width:72px;height:24px" />
+									</hbox>
+								</div>
+							</panelchildren>
+						</panel>
+						<panel border="none" id="jhPanel">
+							<panelchildren >
+								<div align="left" style="overflow:auto;">
+									<!-- 临时设置的目录 -->
+									<tree id="tempCataTre">
+										<treecols>
+											<treecol label="常用功能" />
+										</treecols>
+										<treechildren>
+											<treeitem value="/SysForm/AcceptDivision/AcceptDivision_list.zul">
+												<treerow>
+													<treecell label="受理分工" image="/image/common/submit.png"
+														style="padding:3px;" />
+												</treerow>
+											</treeitem>
+											<treeitem value="/SysForm/conformityreview/confirmity_list.zul">
+												<treerow>
+													<treecell label="符合性审查" image="/image/common/submit.png"
+														style="padding:3px;" />
+												</treerow>
+											</treeitem>
+											<treeitem value="/SysForm/conformityreview/confirmity_approve_list.zul">
+												<treerow>
+													<treecell label="符合性审核" image="/image/common/submit.png"
+														style="padding:3px;" />
+												</treerow>
+											</treeitem>
+											<treeitem value="/SysForm/enterprise-active.zul">
+												<treerow>
+													<treecell label="企业注册受理" image="/image/common/submit.png"
+														style="padding:3px;" />
+												</treerow>
+											</treeitem>
+											<treeitem  value="/SysForm/productactivateapprove.zul">
+												<treerow>
+													<treecell label="产品激活受理" image="/image/common/submit.png"
+														style="padding:3px;" />
+												</treerow>
+											</treeitem>
+											<treeitem  value="/SysForm/manufacture-active.zul">
+												<treerow>
+													<treecell label="生产企业/制造商激活" image="/image/common/submit.png"
+														style="padding:3px;" />
+												</treerow>
+											</treeitem>
+											<treeitem value="/SysForm/SurveyReport/SurveyReport_list.zul">
+												<treerow>
+													<treecell label="检验报告上传" image="/image/common/submit.png"
+														style="padding:3px;" />
+												</treerow>
+											</treeitem>																					
+											<treeitem  value="/cccfpage/apply-batch-pzfp.zul">
+												<treerow>
+													<treecell label="工厂检查分工" image="/image/common/submit.png"
+														style="padding:3px;" />
+												</treerow>
+											</treeitem>
+											<treeitem  value="/cccfpage/apply-pzjyjh.zul">
+												<treerow>
+													<treecell label="派组检验计划" image="/image/common/submit.png"
+														style="padding:3px;" />
+												</treerow>
+											</treeitem>
+											<treeitem value="/cccfpage/apply-batch-pzgl.zul">
+												<treerow>
+													<treecell label="批次计划(派组计/人员添加)" image="/image/common/submit.png"
+														style="padding:3px;" />
+												</treerow>
+											</treeitem>
+											
+											<treeitem  value="/cccfpage/apply-gcjc-pcqr.zul">
+												<treerow>
+													<treecell label="批次审核" image="/image/common/submit.png"
+														style="padding:3px;" />
+												</treerow>
+											</treeitem>	
+											<treeitem value="/cccfpage/apply-gcjc-pcsh.zul">
+												<treerow>
+													<treecell label="批次确认" image="/image/common/submit.png"
+														style="padding:3px;" />
+												</treerow>
+											</treeitem>
+											<treeitem value="/cccfpage/apply-gcjc-pcsp.zul">
+												<treerow>
+													<treecell label="批次审批" image="/image/common/submit.png"
+														style="padding:3px;" />
+												</treerow>
+											</treeitem>
+											<treeitem  value="/cccfpage/factory/factoryUserList.zul">
+												<treerow>
+													<treecell label="工厂检人员库管理" image="/image/common/submit.png"
+														style="padding:3px;" />
+												</treerow>
+											</treeitem>
+											<treeitem  value="/SysForm/EnterpriseNotice/notice-edit-form.zul">
+												<treerow>
+													<treecell label="发送通知" image="/image/common/submit.png"
+														style="padding:3px;" />
+												</treerow>
+											</treeitem>
+											<treeitem value="/SysForm/profileModify.zul">
+												<treerow>
+													<treecell label="信息维护 " image="/image/common/submit.png"
+														style="padding:3px;" />
+												</treerow>
+											</treeitem>
+											<treeitem value="/SysForm/businessStatistics.zul">
+												<treerow>
+													<treecell label="业务统计" image="/image/common/submit.png"
+														style="padding:3px;" />
+												</treerow>
+											</treeitem>
+										</treechildren>
+									</tree>
+									<popup id="ppNewEAcitveInfo" focus="true" draggable="true" width="220px">
+										<vbox width="100%">
+											<hbox>
+												<image src="/image/files/z.png" width="13px" height="13px" />
+												<label value="新企业注册!" style="color:red" />
+											</hbox>
+											<separator bar="true" />
+											<label value="点击企业注册受理，激活注册企业!" />
+										</vbox>
+									</popup>
+								</div>
+							</panelchildren>
+						</panel>
+					</div>
+				</west>
+				<center flex="true">
+					<div>
+						<tabbox id="mainTab" vflex="true" hflex="true" width="100%" height="100%">
+							<tabs>
+								<tab label="个人中心" />
+								<tab label="消息中心" />
+							</tabs>
+							<tabpanels vflex="true" hflex="true">
+								<tabpanel id="firstTab" vflex="true" hflex="true">
+									<attribute name="onCreate">
+	Window	objWindow	= (Window) Executions.createComponents("person_centered.zul", null, null);	objWindow.setParent(self);
+	objWindow.doEmbedded();</attribute>
+								</tabpanel>
+								<tabpanel vflex="true" hflex="true">
+									<include src="/SysForm/InstantMessage/Messagepush-index.zul" />
+								</tabpanel>
+							</tabpanels>
+						</tabbox>
+					</div>
+				</center>
+				<south size="25px" border="0" style="background:#CAE8F0;">
+					<toolbar mold="panel" align="center">消防产品网上认证业务系统</toolbar>
+				</south>
+			</borderlayout>
+			<div id="bottomFixedLayout" sclass="bottom_fixed" align="left"
+				apply="openjframework.InstantMessage.PopupMessageComposer" xmlns:w="http://www.zkoss.org/2005/zk/annotation"
+				xmlns="http://www.zkoss.org/2005/zul" xmlns:n="native" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+				xsi:schemaLocation="http://www.zkoss.org/2005/zul http://www.zkoss.org/2005/zul/zul.xsd">
+				<div id="_mini_window" sclass="mini_window">
+					<div sclass="mini_window_title">
+						<div style="float:left;font-weight:bold;">
+							<image src="/image/files/new3.gif" />
+							消息盒子
+						</div>
+						<div align="right" style="float:right;">
+							<image src="/image/files/close.gif" style="margin-top:2px;margin-right:2px;cursor:pointer;"
+								onClick='Clients.evalJavaScript("hideMini()")' hover="/image/16/button_cancel.png" tooltiptext=" 关闭消息盒子" />
+						</div>
+					</div>
+					<div style="padding-bottom:10px">
+						<listbox id="userLbx" style="border:0px" model="@{bottomFixedLayout$composer.userlist}"
+							innerWidth="100%">
+							<listhead>
+								<listheader width="30px" />
+								<listheader />
+							</listhead>
+							<listitem self="@{each=user }">
+								<listcell image="/image/treelink/lt.png" />
+								<listcell label="@{user.nameAndorganization}" forward="onClick=bottomFixedLayout.onOpenItem"
+									style="white-space:nowrap;">
+									<custom-attributes user="@{user}" />
+								</listcell>
+							</listitem>
+
+						</listbox>
+					</div>
+				</div>
+			</div>
+		</window>
+		<style src="/css/global.css" />
+		<script type="text/javascript">
+			function showMini() { var $d=jq("$_mini_window"); $d.hide().fadeIn(2500); } function hideMini() { var
+			$d=jq("$_mini_window"); $d.slideUp("slow"); }
+		</script>
+
+	</div>
+</zk>

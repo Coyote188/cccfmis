@@ -1,0 +1,24 @@
+<?page title="new page title" contentType="text/html;charset=UTF-8"?>
+<?init class="org.zkoss.zkplus.databind.AnnotateDataBinderInit" root="./frmEnterpriseList"?>
+
+<zk>
+	<window id="frmEnterpriseList"
+		apply="openjframework.web.zk.MsgEnterpriseListController" >
+		<listbox id="lbxEList" model="@{frmEnterpriseList$composer.eList }"
+			checkmark="true" multiple="true">
+			<listhead>
+				<listheader label="企业名" />
+				<listheader label="国家" />
+				<listheader label="地区" />
+			</listhead>
+			<listitem id="ltmEnterprise" self="@{each=e }" value="@{e }">
+				<listcell label="@{e.name }" />
+				<listcell label="@{e.state }" />
+				<listcell label="@{e.location }" />
+			</listitem>
+		</listbox>
+	<div align="right">
+		<button id="btnOk" label="确认" />
+	</div>
+	</window>
+</zk>

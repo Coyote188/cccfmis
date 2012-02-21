@@ -1,0 +1,121 @@
+package cccf.ma.web.zk;
+
+import java.util.Map;
+
+import net.modellite.spring.BeanAdapter;
+import openjframework.model.UserInfo;
+import openjframework.service.UserInfoServiceUtil;
+
+import org.zkoss.zk.ui.Component;
+import org.zkoss.zk.ui.Executions;
+import org.zkoss.zk.ui.Page;
+import org.zkoss.zk.ui.event.ForwardEvent;
+import org.zkoss.zk.ui.metainfo.ComponentInfo;
+import org.zkoss.zk.ui.util.GenericForwardComposer;
+import org.zkoss.zul.Label;
+import org.zkoss.zul.Toolbarbutton;
+
+import cccf.ma.function.Functions;
+import cccf.ma.model.ObjectApproveInfo;
+import cccf.ma.service.ObjectApproveService;
+
+/**
+ * @author JOINYO
+ * @E-mail JOINYO@YEAH.NET
+ * @date 创建于2011-5-19上午12:26:18
+ * @version 1.0
+
+ * @describe
+ * ALL RIGHTS RESERVED,COPYRIGHT(C) FCH LIMITED 2011
+ */
+public class ConformityReviewController extends GenericForwardComposer{
+	private static final long serialVersionUID = 1L;
+	Map params=Executions.getCurrent().getArg();
+	private Map applyInfo;
+<<<<<<< .mine
+	private Map tasks;//接收传递过来的任务列表
+	private ObjectApproveService objectApproveService;
+=======
+	private List<Map> tasks;//接收传递过来的任务列表
+	private ConformityReviewService conformityReviewService;
+	private Grid appoveGrid;
+	private List<ObjectApproveInfo> fileApprovelist;
+	private UserInfo user;
+	private Button submitBtn;
+	private Window cofirmWin;
+>>>>>>> .r914
+	@Override
+	public void doAfterCompose(Component comp) throws Exception {
+		// TODO Auto-generated method stub
+		super.doAfterCompose(comp);
+	}
+
+	@Override
+	public ComponentInfo doBeforeCompose(Page page, Component parent,
+			ComponentInfo compInfo) {
+		String applyId=(String) params.get("applyId");
+		tasks=(Map) params.get("tasks");//取得任务列表
+		System.out.println(tasks);//打印
+		applyInfo=Functions.getConformityInfo(applyId);
+		 System.out.println(applyInfo);
+		 page.setAttribute("applyInfo", applyInfo);
+		 objectApproveService= BeanAdapter.getBean("ObjectApproveService", ObjectApproveService.class);
+		 page.setAttribute("isCreateOperate", params.get("isCreateOperate"));
+		return super.doBeforeCompose(page, parent, compInfo);
+	}
+	
+	public void onApprove(ForwardEvent event)
+	{
+		Toolbarbutton bar=(Toolbarbutton) event.getOrigin().getTarget();
+		String attId=(String) bar.getAttribute("attId");//取得附件文件的ID
+		Label shLab=(Label) bar.getFellow(attId+"_shLab");//取得审批结果控件对象
+		Label yjLab=(Label) bar.getFellow(attId+"_yjLab");//取得审批意见控件对象
+		String shvalue=shLab.getValue();//取得审批结果
+		String yjvalue=yjLab.getValue();//取得审批意见对象
+		ObjectApproveInfo approveInfo=new ObjectApproveInfo();
+		approveInfo.setApproveResult(shvalue);
+		approveInfo.setApproveMemo(yjvalue);
+		UserInfo user=UserInfoServiceUtil.getCurrentLoginUser();
+		approveInfo.setApproverID(user.getId());
+		approveInfo.setApproverName(user.getName());
+		approveInfo.setApproveCode("符合性审查");
+		approveInfo.setObjectId(attId);
+		approveInfo.setObjectType("Attachment");
+<<<<<<< .mine
+		objectApproveService.save(approveInfo);
+		shLab.setValue("通过");
+		yjLab.setValue("同意");
+=======
+		System.out.println("approveInfo="+approveInfo);
+		fileApprovelist.add(approveInfo);
+	//	objectApproveService.save(approveInfo);
+		bar.setDisabled(true);
+	}
+
+	public void onSubmit() throws InterruptedException
+	{  
+		if(Messagebox.show("是否确认提交表单信息？","操作提示",Messagebox.OK|Messagebox.NO,Messagebox.QUESTION)==Messagebox.OK)
+		{
+			 List approveRows = appoveGrid.getRows().getChildren();
+			 Row row = (Row)approveRows.get(0);
+			 Listbox resultListbox = (Listbox)row.getFellow("resultListbox");
+		 
+			 Row row1 = (Row)approveRows.get(1);
+			 String approveMemo = ((Textbox)row1.getFellow("approveMemo")).getValue();
+			 String approveResult =""; 
+			 if (resultListbox.getSelectedItem() != null) {
+			      approveResult = resultListbox.getSelectedItem().getLabel(); 
+			 }
+			 
+			conformityReviewService.doSubmit(tasks, approveResult,approveMemo,user.getId(), fileApprovelist);
+			Messagebox.show("信息提交成功!","操作提示",Messagebox.OK,Messagebox.INFORMATION);
+			
+			Events.postEvent(ConfirmityListController.ON_REFRESH,cofirmWin.getParent(),null);
+		    cofirmWin.detach();
+		}
+	    
+>>>>>>> .r914
+		
+	}
+
+}

@@ -1,0 +1,221 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?init class="cccf.ma.web.zk.AppstatusRecordApproveWindowInit" arg0="sppstatusRecordApplyWindow"?>
+<window title="变更申请审批" border="normal"
+	use="cccf.ma.web.zk.AppstatusRecordApproveWindow"
+	xmlns:a="http://www.zkoss.org/2005/zk/annotation"
+	id="sppstatusRecordApplyWindow" width="850px" closable="true">
+	<separator height="5px" />
+	<hbox>
+		<label style="font-size:14px;color:#B70A0A;font-weight:bold;">
+			申请企业：
+		</label>
+		<label value="@{inspectionApplication.enterprise.name}"
+			style="font-size:14px;color:#B70A0A;font-weight:bold;">
+		</label>
+		<separator width="10px" />
+		<image src="../image/common/activate.png" />
+		<label height="26px" style="vertical-align: middle;">
+			当前状态：
+		</label>
+		<label id="statusName" style="vertical-align: middle;"
+			value="@{inspectionApplication.statusName}" />
+		<toolbarbutton id="btChangeStatusList" label="变更记录" style="color:blue" forward="onChangeStatusList"/>	
+		
+	</hbox>
+	<separator width="10px" />
+	<groupbox  mold="3d" width="99%" open="true">
+		<caption label="基本信息"
+			style="font-size:14px;color:RED;font-weight:bold;" />
+		<separator width="6px" />
+		<grid>
+			<columns>
+				<column width="180px" align="left" />
+				<column align="left" />
+			</columns>
+			<rows>
+				<row>
+					<hbox>
+						<label value="*" style="color:#FF0000" />
+						申请产品:
+					</hbox>
+					<a:bind
+						value="inspectionApplication.production.productName" />
+					<textbox id="production" width="350px"
+						readonly="true">
+					</textbox>
+				</row>
+				<row>
+					<hbox>
+						<label value="*" style="color:#FF0000" />
+						生产企业:
+					</hbox>
+					<a:bind
+						value="inspectionApplication.productionEnterprise.name" />
+					<textbox id="productionEnterprise" width="350px"
+						readonly="true" />
+				</row>
+				<row>
+					<hbox>
+						<label value="*" style="color:#FF0000" />
+						制造商:
+					</hbox>
+					<a:bind
+						value="inspectionApplication.manufacture.name" />
+					<textbox id="manufacture" width="350px"
+						readonly="true" />
+				</row>
+				<row visible="false">
+					<hbox>
+						<label value="*" style="color:#FF0000" />
+						通讯地址:
+					</hbox>
+					<a:bind value="inspectionApplication.address" />
+					<textbox id="address" width="550px" readonly="true" />
+
+				</row>
+			</rows>
+		</grid>
+	</groupbox>
+	<separator width="10px" />
+
+	<groupbox width="99%" open="false" closable="true">
+		<caption label="基本文件(点击打开)" style="font-size:9pt;color:BLUE;" image="/image/common/folder.png"/>
+		<separator width="6px" />
+		<grid>
+			<columns>
+				<column width="180px" align="left" />
+				<column align="left" />
+				<column width="180px" align="left" />
+				<column align="left" />
+			</columns>
+			<rows>
+				<row>
+					<hbox>
+						<label value="*" style="color:#FF0000" />
+						企业营业执照副本复印件:
+					</hbox>
+					<hbox>
+						<toolbarbutton id="label_businessLisence"/>
+					</hbox>
+					<hbox>
+						<label value="*" style="color:#FF0000" />
+						企业组织机构代码证复印件:
+					</hbox>
+					<hbox>
+						<toolbarbutton id="label_organizationCode"/>
+					</hbox>
+
+				</row>
+
+				<row>
+					<hbox>
+						<label value="*" style="color:#FF0000" />
+						产品检验设备清单:
+					</hbox>
+
+					<hbox>
+
+						<toolbarbutton id="label_inspectionDeviceList"/>
+					</hbox>
+
+					<hbox>
+						<label value="*" style="color:#FF0000" />
+						企业生产配置平面图:
+					</hbox>
+
+					<hbox>
+
+						<toolbarbutton id="label_layoutGraph"/>
+					</hbox>
+
+				</row>
+
+				<row>
+					产品商标注册证明:
+
+					<hbox>
+
+						<toolbarbutton id="label_brand"/>
+					</hbox>
+
+					原产品认证证书复印件:
+					<hbox>
+						<toolbarbutton id="label_originalCertificate" />
+					</hbox>
+
+
+				</row>
+
+				<row spans="1,3">
+					《质量手册》和《程序文件》:
+					<hbox>
+						<hbox id="box_qualityManual"></hbox>
+
+					</hbox>
+
+				</row>
+			</rows>
+		</grid>
+	</groupbox>
+	<separator width="10px" />
+	<groupbox mold="3d" width="99%" open="false" closable="true">
+		<caption label="其它文件(点击打开)" style="font-size:9pt;color:BLUE;" image="/image/common/folder.png"/>
+		<separator width="6px" />
+		<hbox>
+			<button id="button_model" label="具体型号及文件" width="130px"
+				disabled="true" forward="onOpenModelWindow">
+			</button>
+			<separator width="8px" />
+			<button visible="false"  id="button_pumper" label="消防车追加的文件" width="130px"
+				disabled="true" forward="onOpenPumperWindow">
+			</button>
+		</hbox>
+	</groupbox>
+	<separator width="10px" />
+	
+	<groupbox width="99%">
+	<caption label="当前任务" style="font-size:9pt;color:BLUE;" />
+	<div align="left">
+		<grid id="appoveGrid" width="99%">
+			<columns>
+				<column width="110px" align="center"></column>
+				<column width="150px" />
+				<column width="110px" align="center" />
+				<column />
+			</columns>
+			<rows>
+				<row>
+					变更类别:
+					<combobox id="changeType" readonly="true" 
+						buttonVisible="false" disabled="false">
+					</combobox>
+					变更理由:
+					<a:bind value="appStatusRecord.reason" />
+					<textbox id="desc" width="400px" multiline="true"
+						rows="3" readonly="true" />
+
+				</row>
+				<row align="left" spans="1,3">
+					<label value="执行结果:" />
+					<textbox id="resultTextbox" width="200px" readonly="true"/>
+					<listbox id="resultListbox" mold="select" rows="1"
+						width="200px" visible="false"/>
+				</row>
+				<row align="left" spans="1,3">
+					<label value="意见:" />
+					<textbox id="approveMemo" rows="3" cols="130" readonly="true"/>
+				</row>
+			</rows>
+		</grid>
+	</div>
+</groupbox>
+	<separator width="10px" />
+
+	<div align="left">
+		<hbox>
+			<button label="关闭" image="/image/common/close.png"
+				width="68px" height="26px" style="" forward="onCancel" />
+		</hbox>
+	</div>
+	<separator height="10px" />
+</window>

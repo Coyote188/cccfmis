@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping SYSTEM "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+<hibernate-mapping>
+  <class name="cccf.ma.model.ManufactureInfo" table="manufacture">  
+  
+    <id name="id" type="string" unsaved-value="null" >
+        <column name="mid"  not-null="true"/>
+        <generator class="uuid.hex"/>
+    </id>
+    
+    <property name="contactAddress" type="string">
+         <column name="contactaddress"  not-null="false"/>
+     </property>
+     
+    <property name="name" type="string">
+         <column name="name"  not-null="false"/>
+     </property>
+    <many-to-one name="enterprise" column="enterprise" lazy="false"/> 
+    <property name="status" type="java.lang.Integer">
+         <column name="status"  not-null="false"/>
+     </property>
+     
+     <property name="manuNameEn" type="string" length="100">
+         <column name="manuNameEn"  not-null="false" length="100"/>
+     </property>
+     <property name="manucode" type="string">
+         <column name="manucode" length="100"  not-null="false"/>
+     </property>
+     <property name="manuLegalPerson" type="string">
+         <column name="manuLegalPerson" length="100"  not-null="false"/>
+     </property>
+     <property name="manuType" type="string">
+         <column name="manuType" length="100"  not-null="false"/>
+     </property>
+     <property name="manuEcocalling" type="string">
+         <column name="manuEcocalling" length="100"  not-null="false"/>
+     </property>
+     <property name="manuEcocallingNew" type="string">
+         <column name="manuEcocallingNew" length="100"  not-null="false"/>
+     </property>
+     <property name="manuEcotype" type="string">
+         <column name="manuEcotype" length="100"  not-null="false"/>
+     </property>
+     <property name="manuEcoTypeNew" type="string">
+         <column name="manuEcoTypeNew"  length="100" not-null="false"/>
+     </property>
+     <property name="manuWorkRange" type="string">
+         <column name="manuWorkRange" length="250" not-null="false"/>
+     </property>
+     <property name="manuFlag" type="string">
+         <column name="manuFlag"  length="100" not-null="false"/>
+     </property>
+     <property name="manuCountry" type="string">
+         <column name="manuCountry"  length="50" not-null="false"/>
+     </property>
+     <property name="manuDistrict" type="string">
+         <column name="manuDistrict"  length="100" not-null="false"/>
+     </property>
+     <property name="manuAddressEn" type="string">
+         <column name="manuAddressEn"  length="200" not-null="false"/>
+     </property>
+     <property name="manuZip" type="string">
+         <column name="manuZip"  length="100" not-null="false"/>
+     </property>
+     <property name="manuEmail" type="string">
+         <column name="manuEmail"  length="100" not-null="false"/>
+     </property>
+     <property name="manuLinkMan" type="string">
+         <column name="manuLinkMan" length="100"  not-null="false"/>
+     </property>
+     <property name="manuTel" type="string">
+         <column name="manuTel"  length="100" not-null="false"/>
+     </property>
+     <property name="manuFax" type="string">
+         <column name="manuFax"  length="100" not-null="false"/>
+     </property>
+    
+    
+    <!-- 2011.5.16 -->
+    <property name="contactAddressEn" type="string">
+         <column name="contactAddressEn"  not-null="false" length="100"/>
+     </property>
+     <property name="manuMob" type="string">
+         <column name="manuMob"  not-null="false" length="100"/>
+     </property>
+     <property name="manuLinkManEn" type="string">
+         <column name="manuLinkManEn"  not-null="false" length="100"/>
+     </property>
+     <property name="organizationNature" type="string">
+         <column name="organizationNature"  not-null="false" length="100"/>
+     </property>
+     <property name="scale" type="java.lang.Integer">
+         <column name="scale"  not-null="false"/>
+     </property>
+     <property name="legalPersonEn" type="string">
+         <column name="legalPersonEn"  not-null="false" length="100"/>
+     </property>
+     <property name="contactAddForLegal" type="string">
+         <column name="contactAddForLegal"  not-null="false" length="100"/>
+     </property>
+      <property name="contactAddForLegalEn" type="string">
+         <column name="contactAddForLegalEn"  not-null="false" length="100"/>
+     </property>
+      <property name="telForLegal" type="string">
+         <column name="telForLegal"  not-null="false" length="100"/>
+     </property>
+      <property name="mobileForLegal" type="string">
+         <column name="mobileForLegal"  not-null="false" length="100"/>
+     </property>
+      <property name="registeredAddress" type="string">
+         <column name="registeredAddress"  not-null="false" length="100"/>
+     </property>
+      <property name="registeredAddressEn" type="string">
+         <column name="registeredAddressEn"  not-null="false" length="100"/>
+     </property>
+      <property name="registeredCapital" type="string">
+         <column name="registeredCapital"  not-null="false" length="100"/>
+     </property>
+      <property name="businessScope" type="string">
+         <column name="businessScope"  not-null="false" length="100"/>
+     </property>
+<!--      <property name="contactPersonEn" type="string">-->
+<!--         <column name="contactPersonEn"  not-null="false" length="100"/>-->
+<!--     </property>-->
+     <property name="webAddress" type="string">
+         <column name="webAddress"  not-null="false" length="100"/>
+     </property>
+    <property name="note" type="string">
+         <column name="note"  not-null="false" length="100"/>
+     </property>
+  </class>   
+</hibernate-mapping>

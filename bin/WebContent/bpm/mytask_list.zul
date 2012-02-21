@@ -1,0 +1,34 @@
+<?init class="com.aidi.bpm.zk.MyTaskListInit" arg0="./myTaskListWindow"?>
+
+<window
+	use="com.aidi.bpm.zk.MyTaskListWindow"
+	xmlns:a="http://www.zkoss.org/2005/zk/annotation" id="myTaskListWindow"
+	xmlns="http://www.zkoss.org/2005/zul"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.zkoss.org/2005/zul
+	http://www.zkoss.org/2005/zul/zul.xsd"
+	width="100%"  sizable="true">
+  <div align="left">
+		<listbox mold="paging" id="taskListbox" width="99%" pageSize="15">
+			<listhead sizable="true" >
+				<listheader sort="auto" label="任务名称"  width="180px" />
+				<listheader sort="auto" label="创建时间"  width="100px"/>
+				<listheader sort="auto" label="任务描述" />
+				<listheader sort="auto" label="任务类型"  width="100px"/>
+			</listhead>
+			
+		</listbox>
+
+		<separator width="50px" />
+	
+		<hbox>
+		     <separator width="150px" />
+		     <button label="处理任务" image="/image/common/post.png"  forward="onDoTask"/>
+		     <separator width="10px" />
+		    <button label="查看进度" image="/image/common/view_templates.png"  forward="onImportCol"/>
+		</hbox>
+	</div>
+
+		
+
+</window>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<zk>
+<window id="enteprodCataWin" apply="cccf.ma.web.zk.EnterpriseProductCatalogueController" 
+    xmlns:n="native" height="555px"
+    xmlns:w="client"
+    xmlns:a="http://www.zkoss.org/2005/zk/annotation" 
+	xmlns="http://www.zkoss.org/2005/zul"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation=" http://www.zkoss.org/2005/zul http://www.zkoss.org/2005/zul/zul.xsd">
+    <borderlayout>
+		<west id="procWst"  width="220px">
+		      <div id="treeDiv">   <!--Default:z-tree,Dot Tree:z-dottree,XP Explorer:z-filetree,Vista Explorer:z-vfiletree-->
+				  <tree  id="procTre" width="98%" height="540px"  style="overflow: auto;" zclass="z-dottree">
+		               <treecols>
+			              <treecol  label="产品目录"
+			              			style="font-size:25px;color:#FF0000;font-weight:bold;" 
+			              			image="/image/treelink/syjh.png"/>
+		               </treecols>
+		           </tree>
+		         
+	           </div>
+	    </west>
+	    <center id="procCtr" flex="true" autoscroll="true" >
+		  
+		</center>
+	
+	</borderlayout>
+</window>
+</zk>

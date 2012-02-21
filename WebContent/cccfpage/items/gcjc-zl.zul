@@ -1,0 +1,21 @@
+<window border="none" use="cccfmis.bpm.zk.FactoryData" width="100%"
+	height="100%">
+	<borderlayout height="100%">
+		<center style="border:0px;" flex="true" autoscroll="false"
+			border="normal">
+			<listbox checkmark="true" multiple="true"
+				id="factorydata">
+				<listhead>
+					<listheader label="文件类型" align="left" />
+					<listheader label="文件" align="left" />
+					<listheader label="查看文件" align="left" />
+				</listhead>
+				<listfoot>
+					<listfooter>
+						<button label="全部下载"></button>
+					</listfooter>
+				</listfoot>
+			</listbox>
+		</center>
+	</borderlayout>
+</window>

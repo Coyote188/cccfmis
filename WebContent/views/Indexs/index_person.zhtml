@@ -1,0 +1,255 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?init class="org.zkoss.zkplus.databind.AnnotateDataBinderInit" arg0="indexwin"?>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:z="http://www.zkoss.org/2005/zul"
+	xsi:schemaLocation="http://www.zkoss.org/2005/zul http://www.zkoss.org/2005/zul/zul.xsd">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<title>消防产品网上认证业务系统</title>
+		<style type="text/css">html,body{ margin: 0px; padding: 0px;width:100%; height:100%;overflow: hidden;}</style>
+		<style type="text/css">tr.z-row td.z-row-inner { background: white; border: 0;margin: 0px; padding: 1px; }</style>
+		<script type="text/javascript"></script>
+	</head>
+	<body>
+		<z:window id="indexwin" apply="cccf.mis.web.index.PersonIndexController" forward="onCreate=onInit" vflex="true"
+			hflex="true" border="none" sizable="false">
+			<z:timer id="bartimer" running="false" delay="3000" forward="onTimer=onBartimer" repeats="false"></z:timer>
+			<z:borderlayout>
+				<z:north flex="true" id="mainnorth" splittable="false" collapsible="true" maxsize="80" minsize="80">
+					<z:vbox spacing="0" style="border:0px solid #CCC;">
+						<z:div height="80px" hflex="true"
+							style="background:#074389 url(/cccfmis/image/files/top_bg.png) no-repeat left;">
+						</z:div>
+						<z:splitter id="topsplitter" collapse="before" forward="onOpen=onNorthOpen"></z:splitter>
+						<z:div hflex="true" id="menudiv">
+							<z:menubar id="mainmenubar" style="">
+								<z:menu image="/res/icons/computer_go.png" label="系统">
+									<z:menupopup>
+										<z:menuitem label="个人信息维护" value=""></z:menuitem>
+										<z:menuitem label="修改密码" value=""></z:menuitem>
+										<z:menuseparator></z:menuseparator>
+										<z:menuitem label="业务统计" value=""></z:menuitem>
+										<z:menuseparator></z:menuseparator>
+										<z:menuitem label="安全退出" forward="onLogout"></z:menuitem>
+										<z:menuitem label="切换用户" value=""></z:menuitem>
+									</z:menupopup>
+								</z:menu>
+								<z:menu label="企业管理">
+									<z:menupopup forward="onOpen=onFalstTree">
+										<z:menuitem label="企业激活" value="/views/EnterpriseAdmin/enterprise-active.zul"></z:menuitem>
+										<z:menuitem label="生产企业/制造商激活" value="/views/EnterpriseAdmin/manufacture-active.zul"></z:menuitem>
+										<z:menuitem label="产品激活" value="/views/EnterpriseAdmin/productactivateapprove.zul"></z:menuitem>
+									</z:menupopup>
+								</z:menu>
+								<z:menu label="业务受理">
+									<z:menupopup forward="onOpen=onFalstTree">
+										<z:menuitem label="受理分工" value="/views/AcceptDivision/AcceptDivisionTask.zul"></z:menuitem>
+										<z:menu label="受理办理">
+											<z:menupopup>
+												<z:menuitem label="申请受理" value="/views/ConformityReview/ReviewTask.zul"></z:menuitem>
+												<z:menuitem label="受理审核" value="/views/ConformityApproval/AuditTask.zul"></z:menuitem>
+												<z:menuitem disabled="true" label="退回审批"></z:menuitem>
+												<z:menuseparator></z:menuseparator>
+												<z:menuitem disabled="true"  label="申请列表"></z:menuitem>
+											</z:menupopup>
+										</z:menu>
+										<z:menu label="合同管理">
+											<z:menupopup>
+												<z:menuitem label="合同制定" value="/views/ContractReview/ContractTask.zul"></z:menuitem>
+												<z:menuitem label="合同审核" value="/views/ContractApproval/AuditTask.zul"></z:menuitem>
+												<z:menuitem label="合同审批" value="/views/ContractApproval/ApprovalTask.zul"></z:menuitem>														 
+											</z:menupopup>
+										</z:menu>
+									</z:menupopup>
+								</z:menu>
+								<z:menu label="财务管理">
+									<z:menupopup forward="onOpen=onFalstTree">
+										<z:menuitem value="/views/Finance/FinanceTask.zul" label="收费确认"></z:menuitem>
+									</z:menupopup>
+								</z:menu>
+								<z:menu label="派组管理">
+									<z:menupopup forward="onOpen=onFalstTree">
+										<z:menuitem value="/views/AssignDivision/AssignDivisionTask.zul" label="派组分工"></z:menuitem>
+										<z:menuitem value="/views/AssignPlan/AssignPlanTask.zul" label="派组计划"></z:menuitem>
+										<z:menu label="派组批次">
+											<z:menupopup>
+												<z:menuitem label="批次安排" value="/views/BatchPlan/BatchPlanTask.zul"></z:menuitem>
+												<z:menuitem label="批次审核" value="/views/BatchApproval/BatchAuditTask.zul"></z:menuitem>
+												<z:menuitem label="批次确认" value="/views/BatchSure/BatchSureTask.zul"></z:menuitem>
+												<z:menuitem label="批次审批" value="/views/BatchApproval/BatchApprovalTask.zul"></z:menuitem>
+											</z:menupopup>
+										</z:menu>
+									</z:menupopup>
+								</z:menu>
+								<z:menu label="现场检查">
+									<z:menupopup forward="onOpen=onFalstTree">
+										<z:menuitem label="文件审查" value="/views/FactoryFileReview/ReviewTsak.zul"></z:menuitem>
+										<z:menuitem label="工厂检查文件填写" value="/views/FactoryDataSend/DataSendTsak.zul"></z:menuitem>
+										<z:menuitem label="工厂检查文件审核" value="/views/FactoryDataCheck/DataCheckTsak.zul"></z:menuitem>
+									</z:menupopup>
+								</z:menu>
+								<z:menu label="产品检验">
+									<z:menupopup forward="onOpen=onFalstTree">
+										<z:menuitem disabled="true" label="检验任务"></z:menuitem>
+										<z:menuseparator></z:menuseparator>
+										<z:menuitem label="检验报告上传" value="/views/SurveyReport/SurveyReportList.zul"></z:menuitem>
+										<z:menuitem disabled="true" label="检验报告审核"></z:menuitem>
+									</z:menupopup>
+								</z:menu>
+								<z:menu label="检查人员理理">
+									<z:menupopup forward="onOpen=onFalstTree">
+										<z:menu label="人员管理" image="/res/icons/folder_user.png">
+											<z:menupopup>
+												<z:menuitem label="基本档案" value="/cccfpage/factory/factoryUserList.zul"></z:menuitem>
+												<z:menuitem disabled="true" label="资质管理"></z:menuitem>
+												<z:menuitem disabled="true" label="见证见习"></z:menuitem>
+												<z:menuitem disabled="true" label="资质提醒"></z:menuitem>
+												<z:menuitem disabled="true" label="人员派组"></z:menuitem>
+											</z:menupopup>
+										</z:menu>
+										<z:menuitem disabled="true" label="信息发布"></z:menuitem>
+										<z:menuitem disabled="true" label="标准发布"></z:menuitem>
+										<z:menuitem disabled="true" label="规则发布"></z:menuitem>
+										<z:menuitem disabled="true" label="查询统计"></z:menuitem>
+									</z:menupopup>
+								</z:menu>
+								<z:menu label="认证评定">
+									<z:menupopup forward="onOpen=onFalstTree">
+										<z:menuitem label="生成报告" value="/views/EvaluationReport/ReportTask.zul"></z:menuitem>
+										<z:menuitem label="评定安排" value="/views/EvaluationArrange/ArrangeTsak.zul"></z:menuitem>
+										<z:menuitem label="技术评定" value="/views/EvaluationTechnology/TechnologyTsak.zul"></z:menuitem>
+										<z:menuitem label="评定审核" value="/views/EvaluationCheck/CheckTsak.zul"></z:menuitem>
+										<z:menuitem disabled="true" label="上会讨论"></z:menuitem>
+										<z:menuitem label="领导签发" value="/views/LeaderIssue/LeaderIssueTsak.zul"></z:menuitem>
+										<z:menuitem disabled="true" label="评定修定"></z:menuitem>
+									</z:menupopup>
+								</z:menu>
+								<z:menu label="查询统计">
+									<z:menupopup forward="onOpen=onFalstTree">
+										<z:menuitem disabled="true" label="企业查询"></z:menuitem>
+										<z:menuitem disabled="true" label="证书查询"></z:menuitem>
+										<z:menuitem disabled="true" label="检验报告查询"></z:menuitem>
+									</z:menupopup>
+								</z:menu>
+								<z:menu label="资料打印">
+									<z:menupopup forward="onOpen=onFalstTree">
+										<z:menuitem label="业务数据打印" value="/views/DataPrint/DataPrintTsak.zul"></z:menuitem>
+										<z:menuseparator></z:menuseparator>
+										<z:menuitem disabled="true" label="证书打印"></z:menuitem>
+										<z:menuitem disabled="true" label="评定报告打印"></z:menuitem>
+									</z:menupopup>
+								</z:menu>
+								<z:menuitem label="证书管理" disabled="true"></z:menuitem>
+							</z:menubar>
+						</z:div>
+					</z:vbox>
+				</z:north>
+				<z:west flex="true" style="border:0px solid #CCC;" width="180px" collapsible="true" splittable="true"
+					maxsize="200" minsize="160">
+					<z:vlayout spacing="2">
+						<z:groupbox mold="3d" closable="false">
+							<z:caption label="欢迎:${sessionScope.name}"></z:caption>
+							<z:hbox>
+								<z:image src="/res/icons/user_gray.png"></z:image>
+								<z:label value="${sessionScope.name}"></z:label>
+								<z:separator spacing="3px"></z:separator>
+								<z:label value="系统消息"></z:label>
+								<z:image src="/res/icons/comments.png"></z:image>
+							</z:hbox>
+						</z:groupbox>
+						<z:groupbox closable="false" mold="3d" hflex="true" vflex="true">
+							<z:caption id="captionmenu" label="快捷功能"></z:caption>
+							<z:tree id="falstmenutree" hflex="true" vflex="true">
+								<z:treecols>
+									<z:treecol hflex="true"></z:treecol>
+									<z:treecol width="24px"></z:treecol>
+								</z:treecols>
+								<z:treechildren></z:treechildren>
+							</z:tree>
+						</z:groupbox>
+					</z:vlayout>
+				</z:west>
+				<z:center flex="true" style="border:0px solid #CCC;padding: 3px;">
+					<z:tabbox id="maintabbox">
+						<z:tabs>
+							<z:tab label="我的桌面"></z:tab>
+						</z:tabs>
+						<z:tabpanels>
+							<z:tabpanel>
+								<z:vlayout hflex="true" vflex="true" spacing="2">
+									<z:grid>
+										<z:auxhead>
+											<z:auxheader colspan="7" image="/res/icons/page.png" label="业务查询" />
+										</z:auxhead>
+										<z:columns></z:columns>
+										<z:rows>
+											<z:row height="26px" spans="1,1,2,1,1,1">
+												<z:cell>
+													<z:label value="申请企业"></z:label>
+												</z:cell>
+												<z:cell>
+													<z:label value="产品类型"></z:label>
+												</z:cell>
+												<z:cell>
+													<z:label value="日期"></z:label>
+												</z:cell>
+												<z:cell>
+													<z:label value="业务类型"></z:label>
+												</z:cell>
+												<z:cell>
+													<z:label value="申请类型"></z:label>
+												</z:cell>
+												<z:cell>
+													<z:label value="流程状态"></z:label>
+												</z:cell>
+											</z:row>
+											<z:row height="26px" spans="1,1,1,1,1,1,1">
+
+												<z:cell>
+													<z:bandbox hflex="true" style="color: #CCC;" value="申请企业"></z:bandbox>
+												</z:cell>
+												<z:cell>
+													<z:bandbox hflex="true" style="color: #CCC;" value="产品类型"></z:bandbox>
+												</z:cell>
+												<z:cell>
+													<z:bandbox hflex="true" style="color: #CCC;" value="起始日期">
+														<z:bandpopup>
+															<z:calendar></z:calendar>
+														</z:bandpopup>
+													</z:bandbox>
+												</z:cell>
+												<z:cell>
+													<z:bandbox hflex="true" style="color: #CCC;" value="结束日期">
+														<z:bandpopup>
+															<z:calendar></z:calendar>
+														</z:bandpopup>
+													</z:bandbox>
+												</z:cell>
+												<z:cell>
+													<z:bandbox hflex="true" width="100px" style="color: #CCC;" value="业务类型"></z:bandbox>
+												</z:cell>
+												<z:cell>
+													<z:bandbox hflex="true" width="100px" style="color: #CCC;" value="申请类型"></z:bandbox>
+												</z:cell>
+												<z:cell>
+													<z:combobox hflex="true" width="100px" style="color: #CCC;" readonly="true"
+														value="流程状态" id="status">
+														<z:comboitem label="待办" value="0"></z:comboitem>
+														<z:comboitem label="已办" value="1"></z:comboitem>
+													</z:combobox>
+												</z:cell>
+											</z:row>
+											<z:row spans="7">
+												<z:button mold="trendy" label="查询"></z:button>
+											</z:row>
+										</z:rows>
+									</z:grid>
+								</z:vlayout>
+							</z:tabpanel>
+						</z:tabpanels>
+					</z:tabbox>
+				</z:center>
+			</z:borderlayout>
+		</z:window>
+	</body>
+</html>

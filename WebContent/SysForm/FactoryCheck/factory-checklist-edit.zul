@@ -1,0 +1,71 @@
+<?page title="new page title" contentType="text/html;charset=UTF-8"?>
+<?init class="org.zkoss.zkplus.databind.AnnotateDataBinderInit" root="./frmFactoryCheckEdit"?>
+<zk>
+<window id="frmFactoryCheckEdit" title="工厂质保能力审查检查表" closable="true" apply="cccf.ma.web.zk.factorycheck.FactoryChecklistEditController" border="normal">
+	<grid style="border:0">
+		<columns>
+			<column width="100px" />
+			<column width="" />
+		</columns>
+		<rows>
+			<row style="border:0;background:#ffffff;">
+				<label value="企业名称:" style="font-size:20" />
+				<label value="@{frmFactoryCheckEdit$composer.inspection.application.enterprise.name }" />
+			</row>
+			<row style="border:0;background:#ffffff;">
+				<label value="编　　号:" style="font-size:20" />
+				<label value="100002" />
+			</row>
+		</rows>
+	</grid>
+
+	<listbox id="lbxChecklist" style="border:0" model="@{frmFactoryCheckEdit$composer.checklist }">
+	<listhead >
+		<listheader width="10%" label="序号"/>
+		<listheader width="10%" label="检查项目"/>
+		<listheader width="40%" label="检查要求"/>
+		<listheader width="10%" label="符合/不符合"/>
+		<listheader width="30%" label="问题描述"/>
+	</listhead>
+	<listitem self="@{each=item }" value="@{item }">
+		<listcell label="@{item.path }" />
+		<listcell label="@{item.checkItem }" />
+		<listcell label="@{item.checkContent }" />
+		<listcell style="text-align:center;">
+		<checkbox width="" checked="@{item.currentResult.result }" forward="onCheck=FactoryChecklistEditController.onResultCheck">
+			<custom-attributes checkitem="@{item }"/>
+			
+		</checkbox>
+		</listcell>
+		<listcell>
+			<textbox width="95%" value="@{item.currentResult.opinion }"/>
+		</listcell>
+	</listitem>
+</listbox>
+	<grid style="border:0">
+		<columns>
+			<column width="100px" />
+			<column width="40%" />
+			<column width="100px" />
+			<column width="" />
+		</columns>
+		<rows>
+			<row style="border:0;background:#ffffff;">
+				<label value="检查员:"/>
+				<label value="张三" />
+				<label value="检查组长:"/>
+				<label value="张三" />
+			</row>
+			<row style="border:0;background:#ffffff;">
+				<space />
+				<label value="2011年5月18日:"/>
+			</row>
+		</rows>
+	</grid>
+	<div width="100%" align="center" style="text-align:center;">
+		<button width="68px" height="26px" id="btnSubmit" label="提交"/>
+		<space width="30px"/>
+		<button width="68px" height="26px" id="btnCancel" label="关闭"/>
+	</div>
+</window>
+</zk>

@@ -1,0 +1,62 @@
+<?page title="派组分工" contentType="text/html;charset=UTF-8"?>
+<?init class="org.zkoss.zkplus.databind.AnnotateDataBinderInit" arg0="pineGrioupPzfg"?>
+<window id="pineGrioupPzfg" height="100%" forward="onCreate=onCreated" title="派组分工" border="normal"
+	apply="cccfmis.pinegroup.zk.PineGrioupPzfgApply" xmlns:n="native" xmlns:w="client" xmlns="http://www.zkoss.org/2005/zul"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.zkoss.org/2005/zul http://www.zkoss.org/2005/zul/zul.xsd">
+	<vlayout spacing="1" vflex="true" hflex="true">
+		<listbox vflex="true" hflex="true" checkmark="true" multiple="true" id="appslist">
+			<listhead sizable="true"> 
+				<listheader label="申请号"></listheader>
+				<listheader label="申请企业"></listheader>
+				<listheader label="地区"></listheader>
+				<listheader label="业务类型"></listheader>
+				<listheader label="产品大类"></listheader>
+				<listheader label="申请类型"></listheader>
+				<listheader label="申请时间"></listheader>
+			</listhead>
+			<listitem self="@{each=item}" height="26px" value="@{item}">
+				<listcell label="@{item.applyno}" style="white-space: nowrap;"></listcell>
+				<listcell label="@{item.applyEnterprise.name}" style="white-space: nowrap;"></listcell>
+				<listcell label="@{item.applyEnterprise.state}" style="white-space: nowrap;">
+					<vbox>
+						<label value="."></label>
+						<label value="@{item.applyEnterprise.location}"></label>
+					</vbox>
+				</listcell>
+				<listcell label="@{item.businessType}" style="white-space: nowrap;"></listcell>
+				<listcell label="@{item.productCatalog}" style="white-space: nowrap;"></listcell>
+				<listcell label="@{item.applyType}" style="white-space: nowrap;"></listcell>
+				<listcell label="@{item.applydate}" style="white-space: nowrap;"></listcell>
+			</listitem>
+		</listbox>
+		<groupbox mold="3d" closable="false">
+			<grid id="appoveGrid">
+				<columns>
+					<column width="100px" align="left"></column>
+					<column></column>
+				</columns>
+				<rows>
+					<row>
+						<label value="分工人员" />
+						<cell>
+							<combobox id="reveiwUser" model="@{reviewUserList}" autodrop="true" width="200px" readonly="true">
+								<comboitem self="@{each=person}" label="@{person.name}" value="@{person.id}" />
+							</combobox>
+							<button label="提交" image="/image/16/up.png" width="68px" id="btSubmit" height="26px" style=""
+								forward="onSubmit" />
+						</cell>
+					</row>
+					<row>
+						<label value="处理结论" />
+						<listbox id="resultListbox" mold="select" rows="1" width="200"></listbox>
+					</row>
+					<row>
+						<label value="备注" />
+						<textbox id="approveMemo" rows="3" cols="140" />
+					</row>
+				</rows>
+			</grid>
+		</groupbox>
+	</vlayout>
+</window>

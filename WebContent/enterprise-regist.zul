@@ -1,0 +1,402 @@
+<?page title="" contentType="text/html;charset=UTF-8"?>
+<zk>
+<div align="center" >
+<window>
+<image src="/image/files/top_bg_reg.png" />
+<style>
+	tr.z-row td.z-row-inner { background: white; border: 0; }
+</style>
+<tabbox mold="accordion" width="1024px">
+	<tabs>
+		<tab label="申请企业信息(必填项,点击打开)" />
+		<tab label="生产厂信息(必填项,点击打开)" />
+		<tab label="制造商信息(必填项,点击打开)" />
+	</tabs>
+	<tabpanels>
+		<tabpanel>
+			<grid id="grdERegist" width="600px" style=" border: 0">
+				<columns>
+					<column width="160px" align="center" />
+					<column width="" />
+				</columns>
+				<rows>
+					<row>
+						<hbox>
+							<label value="*" style="color:#FF0000" />
+							企业名称:
+						</hbox>
+						<div>
+							<textbox id="name" width="300px"
+								value="@{enterpriseCreateWindow$composer.enterprise.name }"
+								constraint="no empty:企业名称不能为空" popup="ppName" />
+							<popup id="ppName">
+								<label value="请添写企业名称" />
+							</popup>
+						</div>
+					</row>
+					<row>
+						<hbox>
+							<label value="*" style="color:#FF0000" />
+							选择产品:
+						</hbox>
+						<div>
+							<bandbox id="bdProduct" width="303px"
+								popup="ppProductList" readonly="true"
+								constraint="no empty:请选择要激活的产品">
+								<bandpopup>
+									<listbox id="lbxProductList"
+										width="295px" mold="paging" pageSize="10"
+										model="@{enterpriseCreateWindow$composer.productList}"
+										checkmark="true" multiple="true" height="340px">
+
+										<listitem self="@{each=pro }"
+											value="@{pro }">
+											<listcell
+												label="@{pro.productName }" />
+										</listitem>
+									</listbox>
+								</bandpopup>
+							</bandbox>
+							<popup id="ppProductList">
+								<label value="请选择至少一类要激活的产品" />
+							</popup>
+						</div>
+					</row>
+					<row>
+
+						<hbox>
+							<label value="*" style="color:#FF0000" />
+							所在地区:
+						</hbox>
+						<hbox>
+							<combobox id="cbxState" value="—选择国家—" readonly="true" width="80px"
+								model="@{enterpriseCreateWindow$composer.sList }">
+								<comboitem self="@{each=stateInfo}"
+									label="@{stateInfo.name}">
+									<custom-attributes
+										stateInfo="@{stateInfo }" />
+								</comboitem>
+							</combobox>
+
+							<div id="divLocation">
+								<div id="divCbxLocation"
+									visible="false">
+									<combobox id="cbxProvince"
+										value="—选择省—" readonly="true" width="80px">
+										<comboitem
+											self="@{each=province }" label="@{province.name }">
+											<custom-attributes
+												province="@{province }" />
+										</comboitem>
+									</combobox>
+									<combobox id="cbxCity" width="80px"
+										readonly="true" value="—选择市—">
+										<comboitem self="@{each=city }"
+											label="@{city.name }">
+										</comboitem>
+									</combobox>
+								</div>
+								<textbox id="tbxLocation" width="160px"
+									popup="ppLocation" constraint="no empty:地区不能为空" visible="true" />
+								<popup id="ppLocation">
+									<label value="请添写企业所在地区" />
+								</popup>
+							</div>
+						</hbox>
+					</row>
+					<row>
+						<hbox>
+							<label value="*" style="color:#FF0000" />
+							通讯地址:
+						</hbox>
+						<div>
+							<textbox id="contactAddress" width="300px"
+								popup="ppContactAds"
+								value="@{enterpriseCreateWindow$composer.enterprise.contactAddress }"
+								constraint="no empty:通信地址不能为空" />
+							<popup id="ppContactAds">
+								<label value="请添写企业通讯地址" />
+							</popup>
+						</div>
+					</row>
+					<row>
+						<hbox>
+							<label value="*" style="color:#FF0000" />
+							<label value="联系人:" />
+						</hbox>
+						<hbox>
+							<textbox id="contactPerson" width="100px"
+								popup="ppContactPerson"
+								value="@{enterpriseCreateWindow$composer.enterprise.contactPerson }"
+								constraint="no empty:联系人不能为空" />
+							<space />
+							<hbox>
+								<label value="*" style="color:#FF0000" />
+								<label value="邮政编码:" />
+							</hbox>
+							<space width="10px" />
+							<textbox id="postalcode" width="100px"
+								popup="ppPostalcode"
+								value="@{enterpriseCreateWindow$composer.enterprise.postalcode }"
+								constraint="no empty:请输入正确的邮政编码" />
+							<popup id="ppContactPerson">
+								<label value="请添写企业通讯地址" />
+							</popup>
+							<popup id="ppPostalcode">
+								<label value="请添写企业所在地邮编，例如：100000" />
+							</popup>
+						</hbox>
+					</row>
+					<row>
+						<hbox>
+							<label value="*" style="color:#FF0000" />
+							<label value="联系电话:" />
+						</hbox>
+						<div>
+							<textbox id="telephoneNum" width="300px"
+								popup="ppTelNum"
+								value="@{enterpriseCreateWindow$composer.enterprise.telephoneNum }"
+								constraint="no empty:请输入正确的联系电话，例如：021-12345678，多个号码用“，”隔开" />
+							<popup id="ppTelNum">
+								<label
+									value="请添写企业联系电话，例如：010-12345678，多个号码用“，”隔开" />
+							</popup>
+						</div>
+					</row>
+					<row>
+						<hbox>
+							<label value="*" style="color:#FF0000" />
+							<label value="传真:" />
+						</hbox>
+						<div>
+							<textbox id="faxNum" width="300px"
+								popup="ppFaxNum"
+								value="@{enterpriseCreateWindow$composer.enterprise.faxNum }"
+								constraint="no empty:传真号码不能为空，多个号码用“，”隔开" />
+							<popup id="ppFaxNum">
+								<label value="请添写企业传真，多个号码用“，”隔开" />
+							</popup>
+						</div>
+					</row>
+					<row>
+						<hbox>
+							<label value="*" style="color:#FF0000" />
+							电子邮箱:
+						</hbox>
+						<div>
+							<textbox id="emailAddress" width="300px"
+								popup="ppEmailAddress"
+								value="@{enterpriseCreateWindow$composer.enterprise.emailAddress }"
+								constraint="/(\w+@(\w+\.)+\w{2,3})?/,no empty:请输入正确的邮箱地址，例如:abc@gmail.com" />
+							<popup id="ppEmailAddress">
+								<label
+									value="请添写企业电子邮箱，例如：abc@gmail.com" />
+							</popup>
+						</div>
+					</row>
+					<row>
+						<hbox>
+							<label value="*" style="color:#FF0000" />
+							企业营业执照复印件:
+						</hbox>
+						<hbox>
+							<textbox id="txtFileName" width="150px"
+								popup="ppFile1"
+								constraint="no empty:企业营业执照复印件，格式为”.pdf，.jpg，.gif等“"
+								readonly="true" />
+							<fileupload id="btnUpload" maxsize="-1"
+								label="浏览..." />
+							<popup id="ppFile1">
+								<label
+									value="请上传企业营业执照副本复印件，格式为“.pdf，.jpg，.gif等”" />
+							</popup>
+						</hbox>
+					</row>
+					<row id="rOption" visible="false">
+						<hbox>
+							<label value="*" style="color:#FF0000" />
+							企业组织机构代码复印件:
+						</hbox>
+
+						<hbox>
+							<textbox id="txtFileName2" width="150px"
+								popup="ppFile2"
+								constraint="no empty:企业组织机构代码复印件，格式为”.pdf，.jpg，.gif等“"
+								readonly="true" />
+							<fileupload id="btnUpload2" maxsize="-1"
+								label="浏览..." />
+							<popup id="ppFile2">
+								<label
+									value="请上传企业营业执照副本复印件，格式为“.pdf，.jpg，.gif等”" />
+							</popup>
+						</hbox>
+					</row>
+				</rows>
+			</grid>
+		</tabpanel>
+		<tabpanel>
+		<vbox>
+		<listbox id="lbxAddedManu" model="@{enterpriseCreateWindow$composer.manuList }">
+			<listhead>
+				<listheader label="名称" sort="auto" />
+				<listheader label="地址" sort="auto" />
+				<listheader label="" />
+			</listhead>
+			<listitem self="@{each=manu }">
+				<listcell label="@{manu.name }" />
+				<listcell label="@{manu }" />
+				<listcell >
+					<toolbarbutton label="删除">
+						<custom-attributes manu="@{manu }"/>
+					</toolbarbutton>
+				</listcell>
+			</listitem>
+			<listitem>
+				<listcell label="sss" />
+				<listcell label="ffff" />
+			</listitem>
+		</listbox>
+
+		
+		<div>
+		<attribute name="onCreate">
+			Window	frmFac	= (Window) Executions.createComponents("/SysForm/e-register-fac.zul", null, null);
+			frmFac.setParent(self);
+			frmFac.doEmbedded();
+		</attribute>
+		</div>
+		</vbox>
+		</tabpanel>
+		<tabpanel>
+		<vbox>
+		
+		<listbox id="lbxAddedFac" model="@{enterpriseCreateWindow$composer.proList }">
+			<listhead>
+				<listheader label="名称" sort="auto" />
+				<listheader label="地址" sort="auto" />
+			</listhead>
+			<listitem self="@{each=pro }">
+				<listcell label="@{pro.name }" />
+				<listcell label="ddd" />
+			</listitem>
+			<listitem>
+				<listcell label="ffff" />
+				<listcell label="dd" />
+			</listitem>
+		</listbox>
+		
+		<div>
+		<attribute name="onCreate">
+			Window	frmManu	= (Window) Executions.createComponents("/SysForm/e-register-manu.zul", null, null);
+			frmManu.setParent(self);
+			frmManu.doEmbedded();
+		</attribute>
+		</div>
+		</vbox>
+		</tabpanel>
+	</tabpanels>
+</tabbox>
+
+
+<groupbox mold="3d" width="1024px">
+	<caption label="用户信息" 
+		style="font-size:14px;color:RED;font-weight:bold;" />
+	<separator width="6px" />
+	
+	<hbox>
+	<div>
+	<grid width="600px" style=" border: 0">
+		<columns>
+			<column width="160px" align="center" />
+			<column width="65%" />
+		</columns>
+		<rows>
+			<row>
+				<hbox>
+					<label value="*" style="color:#FF0000" />
+					用户名:
+				</hbox>
+
+				<textbox id="userNo" width="300px" popup="ppUserName"
+					value="@{enterpriseCreateWindow$composer.user.username }"
+					constraint="/^[a-zA-Z][a-zA-Z0-9_]{4,15}$/:用户名必须以字母开头，允许5-16字符，允许字母数字下划线" />
+				<popup id="ppUserName">
+					<label value="用户名必须以字母开头，允许5-16字符，允许字母数字下划线" />
+				</popup>
+			</row>
+			<row>
+				<hbox>
+					<label value="*" style="color:#FF0000" />
+					密码:
+				</hbox>
+				<textbox id="password" width="300px" popup="ppPassword"
+					type="password"
+					constraint="/^[a-zA-Z]\w{5,17}$/:密码必须以字母开头，长度在6-18之间， 只能包含字符、数字和下划线" />
+				<popup id="ppPassword">
+					<label value="密码必须以字母开头，长度在6-18之间， 只能包含字符、数字和下划线" />
+				</popup>
+			</row>
+			<row>
+				<hbox>
+					<label value="*" style="color:#FF0000" />
+					密码确认:
+				</hbox>
+
+				<textbox id="password2" width="300px"
+					popup="ppPassword2" type="password"
+					constraint="/^[a-zA-Z]\w{5,17}$/:密码必须以字母开头，长度在6-18之间， 只能包含字符、数字和下划线" />
+				<popup id="ppPassword2">
+					<label value="密码必须以字母开头，长度在6-18之间， 只能包含字符、数字和下划线" />
+				</popup>
+			</row>
+			<row>
+				<hbox>
+					<label value="*" style="color:#FF0000" />
+					姓名:
+				</hbox>
+				<textbox id="userName" width="300px" popup="ppRealName"
+					value="@{enterpriseCreateWindow$composer.user.name }"
+					constraint="no empty:姓名不能为空" />
+				<popup id="ppRealName">
+					<label value="请添写您的真实姓名" />
+				</popup>
+			</row>
+		</rows>
+	</grid>
+	<grid width="600px" style=" border: 0">
+		<columns>
+			<column width="160px" align="center" />
+			<column width="65%" />
+		</columns>
+		<rows>
+			<row align="left">
+				<hbox align="center">
+					<label value="*" style="color:#FF0000" />
+					验证码:
+				</hbox>
+				<hbox align="center">
+					<textbox id="capCode" constraint="no empty:请输入验证码" />
+					<hbox align="center">
+						<bw.captcha id="cap"
+							onClick="cap.randomValue();" />
+						<toolbarbutton label="换个图片?"
+							onClick="cap.randomValue();" />
+					</hbox>
+				</hbox>
+			</row>
+		</rows>
+	</grid>
+	</div>
+	<div>
+	<div align="right">
+			<button id="btnSubmit" label="提交申请" width="100px"
+				height="26px" image="/image/16/up.png" />
+		</div>
+	</div>
+	</hbox>
+	
+		
+</groupbox>
+</window>
+</div>
+</zk>

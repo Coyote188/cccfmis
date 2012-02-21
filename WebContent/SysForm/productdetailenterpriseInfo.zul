@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?init class="cccf.ma.web.zk.EnterpriseviewerWindowInit" arg0="frmEnterpriseInfo"?>
+<window title="申请企业" border="normal" id="frmEnterpriseInfo"
+	closable="true" use="cccf.ma.web.zk.ProductDetailEnterpriseWindow"
+	xmlns:a="http://www.zkoss.org/2005/zk/annotation"
+	xmlns="http://www.zkoss.org/2005/zul"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.zkoss.org/2005/zul
+	http://www.zkoss.org/2005/zul/zul.xsd"
+	width="675" sizable="true">
+
+	<hbox>
+		<style>
+			tr.z-row td.z-row-inner { background: white; border: 0; }
+		</style>
+		<groupbox height="200px">
+			<caption label="企业基本信息" />
+			<grid width="400px" style="border:0">
+				<columns>
+					<column width="20%" />
+					<column width="80%" />
+				</columns>
+				<rows>
+					<row>
+						企业名称:
+						<a:bind value="enterprise.name" />
+						<label />
+
+					</row>
+					<row>
+						国家:
+						<a:bind value="enterprise.state" />
+						<label />
+					</row>
+					<row>
+						地区:
+						<a:bind value="enterprise.location" />
+						<label />
+
+					</row>
+					<row>
+						通信地址:
+						<a:bind value="enterprise.contactAddress" />
+						<label />
+
+					</row>
+					<row>
+						联系人:
+						<a:bind value="enterprise.contactPerson" />
+						<label />
+
+					</row>
+					<row>
+						联系电话:
+						<a:bind value="enterprise.telephoneNum" />
+						<label />
+
+					</row>
+					<row>
+						传真:
+						<a:bind value="enterprise.faxNum" />
+						<label />
+
+					</row>
+					<row>
+						邮政编码:
+						<a:bind value="enterprise.postalcode" />
+						<label />
+
+					</row>
+				</rows>
+			</grid>
+
+		</groupbox>
+
+		<groupbox height="200px">
+			<caption label="企业文件列表" />
+				<grid id="grdFileList" style="border:0" width="240px">
+			</grid>
+		</groupbox>
+	</hbox>
+
+</window>

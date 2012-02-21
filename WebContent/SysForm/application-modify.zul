@@ -1,0 +1,388 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<zk>
+	<?init class="cccf.ma.web.zk.ApplicationModifyWindowInit" arg0="ApplicationEditWindow"?>
+	<window title="认证申请(补充资料)" border="normal" 
+		use="cccf.ma.web.zk.ApplicationModifyWindow"
+		xmlns:a="http://www.zkoss.org/2005/zk/annotation"
+		id="ApplicationEditWindow" width="850px" sizable="true"
+		closable="true">
+		<separator height="2px" />
+		<groupbox mold="3d" width="99%" open="true">
+			<caption label="基本信息"
+				style="font-size:14px;color:RED;font-weight:bold;" />
+			<separator width="6px" />
+			<grid>
+				<columns>
+					<column width="180px" align="left" />
+					<column align="left" />
+				</columns>
+				<rows>
+					<row>
+						<hbox>
+							<label value="*" style="color:#FF0000" />
+							申请产品:
+						</hbox>
+						<a:bind
+							value="inspectionApplication.production.productName" />
+						<combobox id="production"
+							model="@{productionList}" constraint="no empty:产品不能空"
+							onSelect="ApplicationEditWindow.onproductionSelect(event)"
+							autodrop="true" width="350px" readonly="true">
+							<comboitem self="@{each=production}"
+								label="@{production.productName}" value="@{production.id}" />
+						</combobox>
+					</row>
+					<row>
+						<hbox>
+							<label value="*" style="color:#FF0000" />
+							生产企业:
+						</hbox>
+						<a:bind
+							value="inspectionApplication.productionEnterprise.name" />
+						<combobox id="productionEnterprise"
+							model="@{productionEnterpriseList}" constraint="no empty:生产企业不能空"
+							onSelect="ApplicationEditWindow.onProductionEnterpriseSelect(event)"
+							autodrop="true" width="350px" readonly="true">
+							<comboitem
+								self="@{each=productionEnterprise}"
+								label="@{productionEnterprise.name}"
+								value="@{productionEnterprise.id}" />
+						</combobox>
+					</row>
+					<row>
+						<hbox>
+							<label value="*" style="color:#FF0000" />
+							制造商:
+						</hbox>
+						<a:bind
+							value="inspectionApplication.manufacture.name" />
+						<combobox id="manufacture"
+							model="@{manufactureList}" constraint="no empty:制造商不能空"
+							onSelect="ApplicationEditWindow.onManufactureSelect(event)"
+							autodrop="true" width="350px" readonly="true">
+							<comboitem self="@{each=manufacture}"
+								label="@{manufacture.name}" value="@{manufacture.id}" />
+						</combobox>
+					</row>
+					<row visible="false">
+						<hbox>
+							<label value="*" style="color:#FF0000" />
+							通讯地址:
+						</hbox>
+						<a:bind value="inspectionApplication.address" />
+						<textbox id="address"
+							constraint="no empty:通讯地址不能空" width="550px" />
+
+					</row>
+				</rows>
+			</grid>
+		</groupbox>
+		<separator height="2px" />
+	<groupbox width="99%" open="false" closable="true">
+		<caption label="基本文件(点击打开)" image="/image/common/folder.png"
+			style="font-size:9pt;color:BLUE;" />
+		<separator width="6px" />
+		<grid>
+			<columns>
+				<column width="180px" align="left" />
+				<column align="left" />
+			</columns>
+			<rows>
+				<row>
+					<hbox>
+						<label value="*" style="color:#FF0000" />
+						企业营业执照副本复印件:
+					</hbox>
+					<hbox>
+						<a:bind
+							value="inspectionApplication.production.businessLisence" />
+						<textbox id="businessLisence"
+							style="border:0px none #ffffff;background-color:#fff;color:#fff; "
+							width="0" readonly="true" />
+						<toolbarbutton id="label_businessLisence"
+							forward="onFiledown(businessLisence)" />
+						<toolbarbutton id="del_businessLisence"
+							image="../image/common/close.png"
+							forward="onDeleteAttachfile(businessLisence)" visible="false"
+							tooltiptext="删除文件" />
+<!--						<button id="up_businessLisence" label="上传"-->
+<!--							height="20px" forward="onFileUP(businessLisence)" />-->
+						<fileupload id="fpd_businessLisence" label="上传" height="20px" 
+							forward="onUpload=ApplicationapplyWindow.onFileUP(businessLisence)"/>
+					</hbox>
+
+				</row>
+				<row>
+					<hbox>
+						<label value="*" style="color:#FF0000" />
+						企业组织机构代码证复印件:
+					</hbox>
+					<hbox>
+						<a:bind
+							value="inspectionApplication.production.organizationCode" />
+						<textbox id="organizationCode"
+							style="border:0px none #ffffff;background-color:#fff;color:#fff; "
+							width="0" readonly="true" />
+						<toolbarbutton
+							forward="onFiledown(organizationCode)"
+							id="label_organizationCode" />
+						<toolbarbutton id="del_organizationCode"
+							image="../image/common/close.png"
+							forward="onDeleteAttachfile(organizationCode)" visible="false"
+							tooltiptext="删除文件" />
+<!--						<button id="up_organizationCode" label="上传"-->
+<!--							height="20px" forward="onFileUP(organizationCode)" />-->
+						<fileupload id="fpd_organizationCode" label="上传" height="20px" 
+							forward="onUpload=ApplicationapplyWindow.onFileUP(organizationCode)"/>
+					</hbox>
+
+				</row>
+				<row>
+					<hbox>
+						<label value="*" style="color:#FF0000" />
+						产品检验设备清单:
+					</hbox>
+
+					<hbox>
+						<a:bind
+							value="inspectionApplication.production.inspectionDeviceList" />
+						<textbox id="inspectionDeviceList"
+							style="border:0px none #ffffff;background-color:#fff;color:#fff; "
+							width="0" readonly="true" />
+						<toolbarbutton id="label_inspectionDeviceList"
+							forward="onFiledown(inspectionDeviceList)" />
+						<toolbarbutton id="del_inspectionDeviceList"
+							image="../image/common/close.png"
+							forward="onDeleteAttachfile(inspectionDeviceList)"
+							visible="false" tooltiptext="删除文件" />
+<!--						<button id="up_inspectionDeviceList" label="上传"-->
+<!--							height="20px" forward="onFileUP(inspectionDeviceList)" />-->
+						<fileupload id="fpd_inspectionDeviceList" label="上传" height="20px" 
+							forward="onUpload=ApplicationapplyWindow.onFileUP(inspectionDeviceList)"/>
+					</hbox>
+
+				</row>
+				<row>
+					<hbox>
+						<label value="*" style="color:#FF0000" />
+						企业生产配置平面图:
+					</hbox>
+
+					<hbox>
+						<a:bind
+							value="inspectionApplication.production.layoutGraph" />
+						<textbox id="layoutGraph"
+							style="border:0px none #ffffff;background-color:#fff;color:#fff; "
+							width="0" readonly="true" />
+						<toolbarbutton id="label_layoutGraph"
+							forward="onFiledown(layoutGraph)" />
+						<toolbarbutton id="del_layoutGraph"
+							image="../image/common/close.png"
+							forward="onDeleteAttachfile(layoutGraph)" visible="false"
+							tooltiptext="删除文件" />
+<!--						<button id="up_layoutGraph" label="上传"-->
+<!--							height="20px" forward="onFileUP(layoutGraph)" />-->
+						<fileupload id="fpd_layoutGraph" label="上传" height="20px" 
+							forward="onUpload=ApplicationapplyWindow.onFileUP(layoutGraph)"/>
+					</hbox>
+
+				</row>
+				<row>
+					产品商标注册证明:
+
+					<hbox>
+						<a:bind
+							value="inspectionApplication.production.brand" />
+						<textbox id="brand"
+							style="border:0px none #ffffff;background-color:#fff;color:#fff; "
+							width="0" readonly="true" />
+						<toolbarbutton id="label_brand"
+							forward="onFiledown(brand)" />
+						<toolbarbutton id="del_brand"
+							image="../image/common/close.png"
+							forward="onDeleteAttachfile(brand)" visible="false"
+							tooltiptext="删除文件" />
+<!--						<button id="up_brand" label="上传" height="20px"-->
+<!--							forward="onFileUP(brand)" />-->
+						<fileupload id="fpd_brand" label="上传" height="20px" 
+							forward="onUpload=ApplicationapplyWindow.onFileUP(brand)"/>
+					</hbox>
+
+				</row>
+				<row>
+					《质量手册》和《程序文件》:
+					<hbox>
+						<hbox id="box_qualityManual"></hbox>
+						<textbox width="0px"
+							style="border:0px none #ffffff;background-color:#fff;color:#fff; "
+							readonly="true" />
+						<label />
+<!--						<button id="up_qualityManual" label="上传"-->
+<!--							height="20px" forward="onFileListUP(qualityManual)" />-->
+						
+						<fileupload id="fpd_qualityManual" label="上传" height="20px" 
+							forward="onUpload=ApplicationapplyWindow.onFileListUP(qualityManual)"/>
+					</hbox>
+
+				</row>
+				<row>
+					原产品认证证书复印件:
+
+					<hbox>
+						<a:bind
+							value="inspectionApplication.production.originalCertificate" />
+						<textbox id="originalCertificate"
+							style="border:0px none #ffffff;background-color:#fff;color:#fff; "
+							width="0px" readonly="true" />
+						<toolbarbutton id="label_originalCertificate"
+							forward="onFiledown(originalCertificate)" />
+						<toolbarbutton id="del_originalCertificate"
+							image="../image/common/close.png"
+							forward="onDeleteAttachfile(originalCertificate)" visible="false"
+							tooltiptext="删除文件" />
+
+<!--						<button id="up_originalCertificate" label="上传"-->
+<!--							height="20px" forward="onFileUP(originalCertificate)" />-->
+						<fileupload id="fpd_originalCertificate" label="上传" height="20px" 
+							forward="onUpload=ApplicationapplyWindow.onFileUP(originalCertificate)"/>
+					</hbox>
+
+				</row>
+			</rows>
+		</grid>
+	</groupbox>
+	<separator height="2px" />
+	<groupbox mold="3d" width="99%" open="true">
+		<caption label="其它文件"
+			style="font-size:14px;color:RED;font-weight:bold;" />
+		<separator width="6px" />
+		<div id="modelwin">
+		</div>
+	</groupbox>
+	<groupbox width="99%" open="true">
+		<caption label="合同信息"
+			style="font-size:14px;color:RED;font-weight:bold;" image="/image/16/doc.png"/>
+		<separator width="6px" />
+		<vbox>
+		<hbox align="start"><label style="vertical-align: middle;" value="甲方是否同意由乙方按计划派遣审核组(乙方一般在收到甲方审核费后两周内发出审核计划)："/><radiogroup id="constractChoice1" ><radio label="同意" id="rb1"/><radio label="不同意" id="rb2"/></radiogroup></hbox>
+		<hbox align="start"><label style="vertical-align: middle;" value="不同意乙方计划时，甲方希望正式审核时间在"/><intbox width="30px" id="contractYear" constraint="no negative,no zero,no empty:不正确的输入" value="@{inspectionApplication.contractYear}"/> <label style="vertical-align: middle;" value="年" /><intbox width="30px" id="contractMonth" constraint="no negative,no zero,no empty:不正确的输入" value="@{inspectionApplication.contractMonth}"/><label style="vertical-align: middle;" value="月"/></hbox>
+		<hbox align="start"><label style="vertical-align: middle;" value="预审核（甲方决定）:"/><radiogroup id="constractChoice2"><radio label="需要" id="rb3"/><radio label="不需要" id="rb4"/></radiogroup></hbox>
+		</vbox>
+	</groupbox>
+	<separator height="2px" />
+	<groupbox width="99%">
+		<caption label="前一任务" style="font-size:9pt;color:BLUE;" image="/image/16/down.png"/>
+		<separator height="4px" />
+			<div align="center">
+		<listbox mold="paging" id="preTaskListbox" width="800px"
+			pageSize="5">
+			<listhead sizable="true">
+				<listheader label="任务名称" width="150px" />
+				<listheader label="执行人员" width="60px" />
+				<listheader label="完成日期" width="130px" />
+				<listheader label="执行结果" width="100px" />
+				<listheader label="意见" />
+			</listhead>
+			<listitem style="text-align:left;">
+				<a:bind label="preTaskInstanceInfo.taskName" />
+				<listcell />
+				<a:bind label="preTaskInstanceInfo.actorName" />
+				<listcell />
+				<listcell label="@{preTaskInstanceInfo.approveDate}" />
+				<a:bind label="preTaskInstanceInfo.approveResult" />
+				<listcell />
+				<listcell>
+					<label value="@{preTaskInstanceInfo.simpleMemo}"
+						tooltiptext="@{preTaskInstanceInfo.approveMemo}" />
+				</listcell>
+			</listitem>
+		</listbox>
+		</div>
+	</groupbox>
+	<separator height="2px" />
+	<groupbox width="99%" open="false" closable="true">
+		<caption label="已完成的所有任务(点击打开)" style="font-size:9pt;color:BLUE;" image="/image/16/down.png"/>
+		<separator width="6px" />
+		<div align="center">
+			<a:bind model="taskInstanceInfoList" />
+			<listbox mold="paging" id="taskListbox" width="800px"
+				pageSize="4">
+				<listhead sizable="true">
+					<listheader label="任务名称" width="150px" />
+					<listheader label="执行人员" width="60px" />
+					<listheader label="完成日期" width="130px" />
+					<listheader label="执行结果" width="100px" />
+					<listheader label="意见" />
+					<listheader label="详细意见" width="60px"/>
+				</listhead>
+				<a:bind _var="taskInstanceInfo" />
+				<listitem style="text-align:left;">
+					<a:bind label="taskInstanceInfo.taskName" />
+					<listcell />
+					<a:bind label="taskInstanceInfo.actorName" />
+					<listcell />
+					<listcell label="@{taskInstanceInfo.approveDate}" />
+					<a:bind label="taskInstanceInfo.approveResult" />
+					<listcell />
+					<listcell>
+						<label value="@{taskInstanceInfo.simpleMemo}"
+							tooltiptext="@{taskInstanceInfo.approveMemo}" />
+					</listcell>
+					<listcell>
+						<toolbarbutton label="详细" style="color:blue" 
+							forward="onAttachFileMemo()">
+							<custom-attributes
+								taskInstanceId="@{taskInstanceInfo.taskInstanceId}" />
+						</toolbarbutton>
+					</listcell>
+				</listitem>
+			</listbox>
+		</div>
+	</groupbox>
+	<separator height="2px" />
+		<div align="left">
+			<grid id="appoveGrid" width="99%">
+				<columns>
+					<column width="80px" align="center"></column>
+					<column width="220px"></column>
+					<column width="80px" align="center"></column>
+					<column></column>
+				</columns>
+				<rows>
+					<row align="left">
+						<label value="下一步:" />
+						<listbox id="resultListbox" mold="select"
+							rows="1" width="200" />
+					</row>
+					<row align="left" spans="1,3">
+						<label value="意见:" />
+						<textbox id="approveMemo" rows="3" cols="140" />
+					</row>
+				</rows>
+			</grid>
+		</div>
+
+		<separator height="2px" />
+		<div align="left">
+			<hbox height="26px" align="center">
+				<button label="提交" image="/image/16/up.png" width="68px"
+					id="btSubmit" height="26px" style="" forward="onSubmit"
+					disabled="false" />
+				<button label="关闭" image="/image/common/close.png"
+					width="68px" height="26px" style="" forward="onCancel" />
+				<separator width="20px" />
+				<image src="../image/common/activate.png" />
+				<label height="26px" style="vertical-align: middle;">
+					当前状态：
+				</label>
+				<label id="statusName" style="vertical-align: middle;"
+					value="@{inspectionApplication.statusName}" />
+				<toolbarbutton id="btChangeStatusList" label="变更记录" style="color:blue" forward="onChangeStatusList"/>	
+		
+			</hbox>
+		</div>
+		<separator height="2px" />
+		<iframe id="downframe" height="0" width="0"></iframe>
+	</window>
+</zk>
+

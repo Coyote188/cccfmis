@@ -1,0 +1,44 @@
+<vlayout>
+	<grid>
+		<columns>
+			<column label="证书" width="140px"></column>
+			<column></column>
+			<column label="通知类型" width="120px"></column>
+			<column></column>
+		</columns>
+		<rows>
+			<row>
+				<cell>[证书]</cell>
+				<cell>
+					<button label="证书预览"></button>
+				</cell>
+				<cell>[未知]</cell>
+				<cell>
+					<button label="通知预览"></button>
+				</cell>
+			</row>
+		</rows>
+	</grid>
+	<grid>
+		<columns>
+			<column label="型号" width="160px"></column>
+			<column label="非标准名称"></column>
+			<column label="证书" width="140px"></column>
+			<column label="通知" width="120px"></column>
+		</columns>
+		<rows>
+			<row>
+				<cell>[型号]</cell>
+				<cell>[非标准名称]</cell>
+				<cell>[证书]</cell>
+				<cell>[通知]</cell>
+			</row>
+			<row>
+				<cell>[型号]</cell>
+				<cell>[非标准名称]</cell>
+				<cell>[证书]</cell>
+				<cell>[通知]</cell>
+			</row>
+		</rows>
+	</grid>
+</vlayout>

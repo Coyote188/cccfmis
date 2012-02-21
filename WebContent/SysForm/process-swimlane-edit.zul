@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?init class="openjframework.bpm.zk.SwimlaneEditWindowInit" arg0="swimlaneEditWindow"?>
+<window title="泳道编辑" border="normal"
+	use="openjframework.bpm.zk.SwimlaneEditWindow"
+	xmlns:a="http://www.zkoss.org/2005/zk/annotation"
+	id="swimlaneEditWindow" 
+	width="500px" sizable="true">
+
+	<grid>
+		<columns>
+			<column width="80px" align="left" />
+			<column align="left" />
+		</columns>
+		<rows>
+			<row>
+				泳道名称:
+				<textbox id="name" constraint="no empty:不能为空"
+					width="200px" value="@{swimlane.name}"/>
+
+			</row>
+			<row>
+				Assignment:
+				<label/>
+
+			</row>
+			<row>
+				class:
+				<textbox id="className" width="380px" value="@{assignment.className}"/>
+
+			</row>
+			<row>
+				configriation(xml):
+				<textbox id="config" width="380px" value="@{assignment.configuration}" rows="5"/>
+
+			</row>
+		</rows>
+	</grid>
+	<separator width="10px" />
+	<div align="left">
+		<hbox>
+			<button label="保存" image="/image/common/save.png"
+				width="68px" height="26px" style="null" forward="onSave" />
+			<button label="关闭" image="/image/common/close.png"
+				width="68px" height="26px" style="null" forward="onCancel" />
+		</hbox>
+	</div>
+</window>

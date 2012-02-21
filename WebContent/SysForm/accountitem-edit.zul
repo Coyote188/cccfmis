@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?init class="cccf.ma.web.zk.AccountitemeditWindowInit" arg0="AccountItemEditWindow"?>
+<window title="账目编辑" border="normal"
+	use="cccf.ma.web.zk.AccountitemeditWindow"
+	xmlns:a="http://www.zkoss.org/2005/zk/annotation"
+	id="AccountItemEditWindow" xmlns="http://www.zkoss.org/2005/zul"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.zkoss.org/2005/zul
+	http://www.zkoss.org/2005/zul/zul.xsd"
+	width="600px" sizable="true">
+
+	<grid>
+		<columns>
+			<column width="100px" align="left" />
+			<column align="left" />
+		</columns>
+		<rows>
+			<row>
+				账目类别:
+				<a:bind value="accountItem.accountType.name" />
+				<combobox id="accountType" model="@{accountTypeList}"
+					onSelect="AccountItemEditWindow.onaccountTypeSelect(event)"
+					autodrop="true" width="200px" readonly="true">
+					<comboitem self="@{each=accountType}"
+						label="@{accountType.name}" value="@{accountType.atypeId}" />
+				</combobox>
+
+			</row>
+			<row>
+				名称:
+				<a:bind value="accountItem.name" />
+				<textbox id="name" constraint="no empty:不能为空"
+					width="200px" />
+
+			</row>
+			<row>
+				单位:
+				<a:bind value="accountItem.unit" />
+				<textbox id="unit" 	width="200px" />
+
+			</row>
+			<row>
+				单价:
+				<a:bind value="accountItem.price" />
+				<decimalbox id="price" width="200px" format="#,##0.##"/>
+
+			</row>
+			<row>
+				描述:
+				<a:bind value="accountItem.desc" />
+				<textbox id="desc" width="350px" />
+
+			</row>
+		</rows>
+	</grid>
+	<separator width="10px" />
+	<div align="left">
+		<hbox>
+			<button label="保存" image="/image/common/save.png"
+				width="68px" height="26px" style="" forward="onSave" />
+			<button label="关闭" image="/image/common/close.png"
+				width="68px" height="26px" style="" forward="onCancel" />
+		</hbox>
+	</div>
+</window>

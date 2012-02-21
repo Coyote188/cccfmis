@@ -1,0 +1,83 @@
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/dlyhc.cccfmis/!svn/ver/384/trunk/src/openjframework/service/impl
+END
+ProfileInfoServiceImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/dlyhc.cccfmis/!svn/ver/191/trunk/src/openjframework/service/impl/ProfileInfoServiceImpl.java
+END
+UserLogInfoServiceImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/dlyhc.cccfmis/!svn/ver/384/trunk/src/openjframework/service/impl/UserLogInfoServiceImpl.java
+END
+RoleInfoServiceImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/dlyhc.cccfmis/!svn/ver/2/trunk/src/openjframework/service/impl/RoleInfoServiceImpl.java
+END
+NoticeInfoServiceImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/dlyhc.cccfmis/!svn/ver/266/trunk/src/openjframework/service/impl/NoticeInfoServiceImpl.java
+END
+PoliticalStatusInfoServiceImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/dlyhc.cccfmis/!svn/ver/2/trunk/src/openjframework/service/impl/PoliticalStatusInfoServiceImpl.java
+END
+MessageInfoServiceImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/dlyhc.cccfmis/!svn/ver/2/trunk/src/openjframework/service/impl/MessageInfoServiceImpl.java
+END
+PositionInfoServiceImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/dlyhc.cccfmis/!svn/ver/2/trunk/src/openjframework/service/impl/PositionInfoServiceImpl.java
+END
+OrganizationInfoServiceImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/dlyhc.cccfmis/!svn/ver/2/trunk/src/openjframework/service/impl/OrganizationInfoServiceImpl.java
+END
+InstantMessageInfoServiceImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/dlyhc.cccfmis/!svn/ver/273/trunk/src/openjframework/service/impl/InstantMessageInfoServiceImpl.java
+END
+ResourceInfoServiceImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/dlyhc.cccfmis/!svn/ver/2/trunk/src/openjframework/service/impl/ResourceInfoServiceImpl.java
+END
+PermissionInfoServiceImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/dlyhc.cccfmis/!svn/ver/2/trunk/src/openjframework/service/impl/PermissionInfoServiceImpl.java
+END
+ResourceTypeInfoServiceImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/dlyhc.cccfmis/!svn/ver/2/trunk/src/openjframework/service/impl/ResourceTypeInfoServiceImpl.java
+END
+UserInfoServiceImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/dlyhc.cccfmis/!svn/ver/2/trunk/src/openjframework/service/impl/UserInfoServiceImpl.java
+END

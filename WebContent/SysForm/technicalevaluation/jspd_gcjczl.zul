@@ -1,0 +1,31 @@
+<zk>
+<window width="100%" height="100%">
+<listbox >
+	<listhead>
+		<listheader label="申请号" width="100px"/>
+		<listheader label="工厂检查号" width="100px"/>
+		<listheader label="开始时间" width="100px"/>
+		<listheader label="结束时间" width="100px"/>
+		<listheader label="检查天数" width="60px"/>
+		<listheader label="批次号" width="100px"/>
+		<listheader label="派组人员" width="60px"/>
+		<listheader label="检查结论"/>
+	</listhead>
+	<listitem>
+		<listcell label="" />
+		<listcell label="" />
+		<listcell label="" />
+		<listcell label="" />
+		<listcell label="" />
+		<listcell label="" />
+		<listcell label="" />
+		<listcell label="" />
+	</listitem>
+	<listfoot height="30px">
+		<listfooter label="工厂检查报告"/>
+		<listfooter label="GC20110522xx.pdf" span="7"/>
+	</listfoot>
+</listbox>
+
+</window>
+</zk>

@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<?init class="cccfmis.bpm.zk.ApplictionPDWindowInit" arg0="pdApproveWindow"?>
+<window title="技术评定" border="normal" id="pdApproveWindow" height="100%" width="100%" use="cccfmis.bpm.zk.ApplicationCPWindow">
+	<borderlayout height="100%">
+		<center flex="true">
+			<tabbox height="100%">
+				<tabs>
+					<tab label="评定管理"></tab>
+					<tab label="厂检资料"></tab>
+					<tab label="申请资料"></tab>
+				</tabs>
+				<tabpanels height="100%">
+					<tabpanel height="100%">
+						<borderlayout>
+							<center autoscroll="true">
+								<vbox style="padding:1px;">
+									<label value="签名信息:"></label>
+									<textbox id="disc" width="98%" rows="3" multiline="true" value="同意初评结论，[原证书取消][发证][暂停][恢复]证书XX张"></textbox>
+									<grid>
+										<columns>
+											<column label="证书" width="140px"></column>
+											<column></column>
+											<column label="通知类型" width="120px"></column>
+											<column></column>
+										</columns>
+										<rows>
+											<row>
+												<cell>[证书结论]发证两张</cell>
+												<cell>
+													<button label="证书预览"></button>
+												</cell>
+												<cell>[无]</cell>
+												<cell>
+													<button label="通知预览"></button>
+												</cell>
+											</row>
+										</rows>
+									</grid>
+									<splitter collapse="before"></splitter>
+									<grid id="opiniongrid">
+										<columns>
+											<column label="证书" width="160px"></column>
+											<column label="有效期"></column>
+											<column label="型号"></column>
+											<column label="产品标准和技术要求"></column>
+											<column label="执行标准"></column>
+											<column label="状态" width="140px"></column>
+											<column label="评定" width="120px"></column>
+										</columns>
+										<rows>
+										</rows>
+									</grid>
+								</vbox>
+							</center>
+						</borderlayout>
+					</tabpanel>
+					<tabpanel height="100%">
+						<include height="100%" src="/cccfpage/items/gcjc-zl.zul"></include>
+					</tabpanel>
+					<tabpanel height="100%">
+						<include height="100%" src="/cccfpage/items/sqzl.zul"></include>
+					</tabpanel>
+				</tabpanels>
+			</tabbox>
+		</center>
+		<south title="工作流操作" collapsible="true" splittable="false">
+			<grid id="appoveGrid">
+				<columns>
+					<column width="80px" align="center"></column>
+					<column></column>
+				</columns>
+				<rows>
+					<row align="left">
+						<label value="下一步:" />
+						<cell>
+							<listbox id="resultListbox" mold="select" rows="1" width="200" />
+							<button label="提交" image="/image/16/up.png" width="68px" id="btSubmit" height="26px" style=""
+								forward="onSubmit" />
+							<button label="关闭" image="/image/common/close.png" width="68px" height="26px" style=""
+								forward="onCancel" />
+							<button label="回退" disabled="true"></button>
+						</cell>
+					</row>
+					<row align="left">
+						<label value="意见:" />
+						<textbox id="approveMemo" rows="3" width="98%" />
+					</row>
+				</rows>
+			</grid>
+		</south>
+	</borderlayout>
+</window>

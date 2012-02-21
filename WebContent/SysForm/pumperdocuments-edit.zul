@@ -1,0 +1,359 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?init class="cccf.ma.web.zk.PumperdocumentseditWindowInit" arg0="PumperDocumentsEditWindow"?>
+<window title="消防车追加的基本文件" border="normal"
+	use="cccf.ma.web.zk.PumperdocumentseditWindow"
+	xmlns:a="http://www.zkoss.org/2005/zk/annotation"
+	id="PumperDocumentsEditWindow" xmlns="http://www.zkoss.org/2005/zul"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.zkoss.org/2005/zul
+	http://www.zkoss.org/2005/zul/zul.xsd"
+	width="800px" sizable="true" closable="true">
+
+	<grid>
+		<columns>
+			<column width="210px" align="left" />
+			<column align="left" />
+		</columns>
+		<rows>
+			<row>
+				<hbox>
+					<label value="*" style="color:#FF0000" />
+					商标注册证及核准注册续展证明:
+				</hbox>
+				<hbox>
+					<a:bind value="pumperDocuments.brandCertificate" />
+					<textbox id="brandCertificate"
+						style="border:0px none #ffffff;background-color:#fff;color:#fff; "
+						width="0" readonly="true" />
+					<toolbarbutton
+						forward="onFiledown(brandCertificate)"
+						id="label_brandCertificate" />
+					<toolbarbutton id="del_brandCertificate"
+						tooltiptext="删除文件" image="../image/common/close.png"
+						forward="onDeleteAttachfile(brandCertificate)" visible="false" />
+					<button id="up_brandCertificate" label="上传"
+						height="20px" forward="onFileUP(brandCertificate)" />
+				</hbox>
+
+			</row>
+			<row>
+				<hbox>
+					<label value="*" style="color:#FF0000" />
+					工厂情况调查表:
+				</hbox>
+				<hbox>
+					<a:bind value="pumperDocuments.factoryForm" />
+					<textbox id="factoryForm"
+						style="border:0px none #ffffff;background-color:#fff;color:#fff; "
+						width="0" readonly="true" />
+					<toolbarbutton forward="onFiledown(factoryForm)"
+						id="label_factoryForm" />
+					<toolbarbutton id="del_factoryForm"
+						tooltiptext="删除文件" image="../image/common/close.png"
+						forward="onDeleteAttachfile(factoryForm)" visible="false" />
+					<button id="up_factoryForm" label="上传" height="20px"
+						forward="onFileUP(factoryForm)" />
+				</hbox>
+
+			</row>
+			<row>
+				<hbox>
+					<label value="*" style="color:#FF0000" />
+					生产情况简介:
+				</hbox>
+				<hbox>
+					<a:bind value="pumperDocuments.produceIntro" />
+					<textbox id="produceIntro"
+						style="border:0px none #ffffff;background-color:#fff;color:#fff; "
+						width="0" readonly="true" />
+					<toolbarbutton forward="onFiledown(produceIntro)"
+						id="label_produceIntro" />
+					<toolbarbutton id="del_produceIntro"
+						tooltiptext="删除文件" image="../image/common/close.png"
+						forward="onDeleteAttachfile(produceIntro)" visible="false" />
+					<button id="up_produceIntro" label="上传"
+						height="20px" forward="onFileUP(produceIntro)" />
+				</hbox>
+
+			</row>
+			<row>
+				<hbox>
+					<label value="*" style="color:#FF0000" />
+					主要原材料、关键外购件登记表:
+				</hbox>
+				<hbox>
+					<a:bind value="pumperDocuments.materialsForm" />
+					<textbox id="materialsForm"
+						style="border:0px none #ffffff;background-color:#fff;color:#fff; "
+						width="0" readonly="true" />
+					<toolbarbutton forward="onFiledown(materialsForm)"
+						id="label_materialsForm" />
+					<toolbarbutton id="del_materialsForm"
+						tooltiptext="删除文件" image="../image/common/close.png"
+						forward="onDeleteAttachfile(materialsForm)" visible="false" />
+					<button id="up_materialsForm" label="上传"
+						height="20px" forward="onFileUP(materialsForm)" />
+				</hbox>
+
+			</row>
+			<row>
+				<hbox>
+					<label value="*" style="color:#FF0000" />
+					检测项目所执行的技术标准目录:
+				</hbox>
+				<hbox>
+					<a:bind value="pumperDocuments.inspectStandard" />
+					<textbox id="inspectStandard"
+						style="border:0px none #ffffff;background-color:#fff;color:#fff; "
+						width="0" readonly="true" />
+					<toolbarbutton forward="onFiledown(inspectStandard)"
+						id="label_inspectStandard" />
+					<toolbarbutton id="del_inspectStandard"
+						tooltiptext="删除文件" image="../image/common/close.png"
+						forward="onDeleteAttachfile(inspectStandard)" visible="false" />
+					<button id="up_inspectStandard" label="上传"
+						height="20px" forward="onFileUP(inspectStandard)" />
+				</hbox>
+
+			</row>
+			<row>
+				<hbox>
+					<label value="*" style="color:#FF0000" />
+					质量管理体系文件目录:
+				</hbox>
+				<hbox>
+					<a:bind value="pumperDocuments.qualityStandard" />
+					<textbox id="qualityStandard"
+						style="border:0px none #ffffff;background-color:#fff;color:#fff; "
+						width="0" readonly="true" />
+					<toolbarbutton forward="onFiledown(qualityStandard)"
+						id="label_qualityStandard" />
+					<toolbarbutton id="del_qualityStandard"
+						tooltiptext="删除文件" image="../image/common/close.png"
+						forward="onDeleteAttachfile(qualityStandard)" visible="false" />
+					<button id="up_qualityStandard" label="上传"
+						height="20px" forward="onFileUP(qualityStandard)" />
+				</hbox>
+
+			</row>
+			<row>
+				<hbox>
+					<label value="*" style="color:#FF0000" />
+					质量职责分配表:
+				</hbox>
+				<hbox>
+					<a:bind
+						value="pumperDocuments.qualityResponsibilityForm" />
+					<textbox id="qualityResponsibilityForm"
+						style="border:0px none #ffffff;background-color:#fff;color:#fff; "
+						width="0" readonly="true" />
+					<toolbarbutton
+						forward="onFiledown(qualityResponsibilityForm)"
+						id="label_qualityResponsibilityForm" />
+					<toolbarbutton id="del_qualityResponsibilityForm"
+						tooltiptext="删除文件" image="../image/common/close.png"
+						forward="onDeleteAttachfile(qualityResponsibilityForm)"
+						visible="false" />
+					<button id="up_qualityResponsibilityForm" label="上传"
+						height="20px" forward="onFileUP(qualityResponsibilityForm)" />
+				</hbox>
+
+			</row>
+			<row>
+				<hbox>
+					<label value="*" style="color:#FF0000" />
+					机构框图(或表):
+				</hbox>
+				<hbox>
+					<a:bind value="pumperDocuments.jigouGraphy" />
+					<textbox id="jigouGraphy"
+						style="border:0px none #ffffff;background-color:#fff;color:#fff; "
+						width="0" readonly="true" />
+					<toolbarbutton forward="onFiledown(jigouGraphy)"
+						id="label_jigouGraphy" />
+					<toolbarbutton id="del_jigouGraphy"
+						tooltiptext="删除文件" image="../image/common/close.png"
+						forward="onDeleteAttachfile(jigouGraphy)" visible="false" />
+					<button id="up_jigouGraphy" label="上传" height="20px"
+						forward="onFileUP(jigouGraphy)" />
+				</hbox>
+
+			</row>
+			<row>
+				<hbox>
+					<label value="*" style="color:#FF0000" />
+					底盘及附件产品认证证书复印件:
+				</hbox>
+				<hbox>
+					<a:bind value="pumperDocuments.chassisCertificate" />
+					<textbox id="chassisCertificate"
+						style="border:0px none #ffffff;background-color:#fff;color:#fff; "
+						width="0" readonly="true" />
+					<toolbarbutton
+						forward="onFiledown(chassisCertificate)"
+						id="label_chassisCertificate" />
+					<toolbarbutton id="del_chassisCertificate"
+						tooltiptext="删除文件" image="../image/common/close.png"
+						forward="onDeleteAttachfile(chassisCertificate)" visible="false" />
+					<button id="up_chassisCertificate" label="上传"
+						height="20px" forward="onFileUP(chassisCertificate)" />
+				</hbox>
+
+			</row>
+			<row>
+				单元产品描述:
+				<hbox>
+					<a:bind value="pumperDocuments.unitDesc" />
+					<textbox id="unitDesc"
+						style="border:0px none #ffffff;background-color:#fff;color:#fff; "
+						width="0" readonly="true" />
+					<toolbarbutton forward="onFiledown(unitDesc)"
+						id="label_unitDesc" />
+					<toolbarbutton id="del_unitDesc" tooltiptext="删除文件"
+						image="../image/common/close.png"
+						forward="onDeleteAttachfile(unitDesc)" visible="false" />
+					<button id="up_unitDesc" label="上传" height="20px"
+						forward="onFileUP(unitDesc)" />
+				</hbox>
+
+			</row>
+			<row>
+				产品单元划分分类表:
+				<hbox>
+					<a:bind value="pumperDocuments.unitTypeForm" />
+					<textbox id="unitTypeForm"
+						style="border:0px none #ffffff;background-color:#fff;color:#fff; "
+						width="0" readonly="true" />
+					<toolbarbutton forward="onFiledown(unitTypeForm)"
+						id="label_unitTypeForm" />
+					<toolbarbutton id="del_unitTypeForm"
+						tooltiptext="删除文件" image="../image/common/close.png"
+						forward="onDeleteAttachfile(unitTypeForm)" visible="false" />
+					<button id="up_unitTypeForm" label="上传"
+						height="20px" forward="onFileUP(unitTypeForm)" />
+				</hbox>
+
+			</row>
+			<row>
+				单元内产品差异描述表:
+				<hbox>
+					<a:bind value="pumperDocuments.unitDiffDesc" />
+					<textbox id="unitDiffDesc"
+						style="border:0px none #ffffff;background-color:#fff;color:#fff; "
+						width="0" readonly="true" />
+					<toolbarbutton forward="onFiledown(unitDiffDesc)"
+						id="label_unitDiffDesc" />
+					<toolbarbutton id="del_unitDiffDesc"
+						tooltiptext="删除文件" image="../image/common/close.png"
+						forward="onDeleteAttachfile(unitDiffDesc)" visible="false" />
+					<button id="up_unitDiffDesc" label="上传"
+						height="20px" forward="onFileUP(unitDiffDesc)" />
+				</hbox>
+
+			</row>
+			<row>
+				产品结构及技术参数说明:
+				<hbox>
+					<a:bind value="pumperDocuments.technologyDesc" />
+					<textbox id="technologyDesc"
+						style="border:0px none #ffffff;background-color:#fff;color:#fff; "
+						width="0" readonly="true" />
+					<toolbarbutton forward="onFiledown(technologyDesc)"
+						id="label_technologyDesc" />
+					<toolbarbutton id="del_technologyDesc"
+						tooltiptext="删除文件" image="../image/common/close.png"
+						forward="onDeleteAttachfile(technologyDesc)" visible="false" />
+					<button id="up_technologyDesc" label="上传"
+						height="20px" forward="onFileUP(technologyDesc)" />
+				</hbox>
+
+			</row>
+			<row>
+				产品型式检验报告:
+				<hbox>
+					<a:bind
+						value="pumperDocuments.productionFormReport" />
+					<textbox id="productionFormReport"
+						style="border:0px none #ffffff;background-color:#fff;color:#fff; "
+						width="0" readonly="true" />
+					<toolbarbutton
+						forward="onFiledown(productionFormReport)"
+						id="label_productionFormReport" />
+					<toolbarbutton id="del_productionFormReport"
+						tooltiptext="删除文件" image="../image/common/close.png"
+						forward="onDeleteAttachfile(productionFormReport)"
+						visible="false" />
+					<button id="up_productionFormReport" label="上传"
+						height="20px" forward="onFileUP(productionFormReport)" />
+				</hbox>
+			</row>
+			<row>
+				产品使用说明书及用户使用维修手册:
+				<hbox>
+					<hbox id="box_manual"></hbox>
+					<a:bind value="pumperDocuments.manual" />
+					<textbox width="0px"
+						style="border:0px none #ffffff;background-color:#fff;color:#fff; "
+						readonly="true" />
+					<label />
+					<button id="up_manual" label="上传" height="20px"
+						forward="onFileListUP(manual)" />
+				</hbox>
+
+
+			</row>
+			<row>
+				<hbox>
+					<label value="*" style="color:#FF0000" />
+					汽车消防车产品3C认证合同:
+				</hbox>
+				<hbox>
+					<a:bind value="pumperDocuments.ccc" />
+					<textbox id="ccc"
+						style="border:0px none #ffffff;background-color:#fff;color:#fff; "
+						width="0" readonly="true" />
+					<toolbarbutton forward="onFiledown(ccc)"
+						id="label_ccc" />
+					<toolbarbutton id="del_ccc" tooltiptext="删除文件"
+						image="../image/common/close.png"
+						forward="onDeleteAttachfile(ccc)" visible="false" />
+					<button id="up_ccc" label="上传" height="20px"
+						forward="onFileUP(ccc)" />
+				</hbox>
+			</row>
+			<row>
+				<hbox>
+					<label value="*" style="color:#FF0000" />
+					消防车产品强制性认证利用生产厂检测资源检测申请表:
+				</hbox>
+
+				<hbox>
+					<a:bind value="pumperDocuments.qzxApplicationForm" />
+					<textbox id="qzxApplicationForm"
+						style="border:0px none #ffffff;background-color:#fff;color:#fff; "
+						width="0" readonly="true" />
+					<toolbarbutton
+						forward="onFiledown(qzxApplicationForm)"
+						id="label_qzxApplicationForm" />
+					<toolbarbutton id="del_qzxApplicationForm"
+						tooltiptext="删除文件" image="../image/common/close.png"
+						forward="onDeleteAttachfile(qzxApplicationForm)" visible="false" />
+					<button id="up_qzxApplicationForm" label="上传"
+						height="20px" forward="onFileUP(qzxApplicationForm)" />
+				</hbox>
+
+			</row>
+		</rows>
+	</grid>
+	<separator width="10px" />
+	<div align="left">
+		<hbox>
+			<button label="确定" image="/image/16/apply.png" width="68px"
+				height="26px" style="null" forward="onSave" />
+			<button label="关闭" image="/image/common/close.png"
+				width="68px" height="26px" style="null" forward="onCancel" />
+		</hbox>
+	</div>
+	<separator width="10px" />
+	<iframe id="downframe" height="0" width="0"></iframe>
+</window>

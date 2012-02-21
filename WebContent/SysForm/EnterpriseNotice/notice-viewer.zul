@@ -1,0 +1,56 @@
+<?page title="new page title" contentType="text/html;charset=UTF-8"?>
+<?init class="org.zkoss.zkplus.databind.AnnotateDataBinderInit" root="./frmNoticeViewer"?>
+<zk>
+	<window id="frmNoticeViewer" border="normal"
+		apply="openjframework.web.zk.MsgEViewer">
+
+		<div width="100%">
+			<grid width="99%" style="border:0;">
+				<columns>
+					<column width="11%" />
+					<column width="89%" />
+				</columns>
+				<rows>
+					<row>
+						<hbox>
+							<label value="主题：" />
+						</hbox>
+						<hbox>
+							<label
+								value="@{frmNoticeViewer$composer.notice.subject }">
+							</label>
+						</hbox>
+					</row>
+					<row>
+						<hbox>
+							<label value="内容：" />
+						</hbox>
+						<label id="tbxMsgContent"
+							value="@{frmNoticeViewer$composer.notice.content }" />
+					</row>
+				</rows>
+			</grid>
+			<separator bar="true" />
+			<hbox>
+				<div>
+					<space />
+					<label value="附件列表：" />
+				</div>
+				<style>
+					tr.z-row td.z-row-inner { background: white; border:0; }
+				</style>
+				<grid id="grdFileList" style="border:0" width="240px">
+					<columns>
+						<column width="80%" />
+						<column width="20%" />
+					</columns>
+				</grid>
+			</hbox>
+			<separator bar="true" />
+			<div align="center">
+				<button id="goBack" label="返回" width="68px"
+					height="28px" />
+			</div>
+		</div>
+	</window>
+</zk>

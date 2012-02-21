@@ -1,0 +1,137 @@
+<?page title="new page title" contentType="text/html;charset=UTF-8"?>
+<window title="查看检验报告" mode="highlighted" border="normal" width="100%" height="100%" closable="true"
+	apply="cccf.mis.web.pub.SeeFileController">
+	<vlayout vflex="true" style="overflow:auto;">
+		<grid>
+			<columns>
+				<column width="100px" align="right"></column>
+				<column></column>
+				<column width="100px" align="right"></column>
+				<column></column>
+			</columns>
+			<rows>
+				<row height="26px">
+					<cell>企业名称 :</cell>
+					<cell>
+						<label value="${surveyReport.enterpriseInfo_name}" />
+					</cell>
+					<cell align="right">制造商 :</cell>
+					<cell>
+						<label value="${surveyReport.productionEnterpriseInfo_name}" />
+					</cell>
+				</row>
+				<row height="26px">
+					<cell align="right">产品名称 :</cell>
+					<cell>
+						<label value="${surveyReport.productCatalogueInfo_productName}" />
+					</cell>
+					<cell align="right">生产厂名称 :</cell>
+					<cell>
+						<label value="${surveyReport.manufactureInfo_name}" />
+					</cell>
+				</row>
+				<row height="26px">
+					<cell align="right">检验报告编号 :</cell>
+					<cell>
+						<label value="${surveyReport.surveyReportSN}" />
+					</cell>
+					<cell align="right">检验日期 :</cell>
+					<cell>
+						自
+						<label value="${surveyReport.surveyFromDate}" />
+						至
+						<label value="${surveyReport.surveyToDate}" />
+					</cell>
+				</row>
+				<row height="26px">
+					<cell align="right">委托单位 :</cell>
+					<cell>
+						<label value="${surveyReport.agentOrg}" />
+					</cell>
+					<cell align="right">抽样单位 :</cell>
+					<cell>
+						<label value="${surveyReport.samplingOrg}" />
+					</cell>
+				</row>
+				<row height="26px">
+					<cell align="right">检验类型 :</cell>
+					<cell>
+						<label value="${surveyReport.surverType}" />
+					</cell>
+					<cell align="right">检验依据 :</cell>
+					<cell>
+						<label value="${surveyReport.surverAccording}" />
+					</cell>
+				</row>
+				<row height="26px">
+					<cell align="right">检验结论 :</cell>
+					<cell>
+						<label value="${(surveyReport.surverVerdict eq 1)?'合格':'不合格'}" />
+						<label value="${surveyReport.surverVerdictContent}" />
+					</cell>
+					<cell align="right">签发日期 :</cell>
+					<cell>
+						<label value="${surveyReport.issuingDate}" />
+					</cell>
+				</row>
+
+				<row height="26px">
+					<cell align="right">检验单位 :</cell>
+					<cell>
+						<label value="${surveyReport.samplingOrg}" />
+					</cell>
+					<cell align="right">完整报告</cell>
+					<cell>
+						<toolbarbutton tooltiptext="下载文件">
+							<custom-attributes file_path="${surveyReport.file_path}" />
+						</toolbarbutton>
+					</cell>
+				</row>
+				<row spans="4">
+					<grid id="lb_productModelList" hflex="true">
+						<columns>
+							<column label="规格型号" sort="auto" width="100px" />
+							<column label="是否是主型" sort="auto" width="100px" />
+							<column label="特性描述" sort="auto" width="100px" />
+							<column label="附件" />
+						</columns>
+						<rows height="26px">
+							<row forEach="${surveyReport.productModelList}">
+								<cell>
+									<label value="${each.specification}"></label>
+								</cell>
+								<cell>
+									<label value="${each.isMainModel?'主型':'分型'}"></label>
+								</cell>
+								<cell>
+									<label value="${each.characterization}"></label>
+								</cell>
+								<cell>
+									<grid style="border:0;">
+										<columns>
+											<column width="100px" />
+											<column align="left" />
+										</columns>
+										<rows>
+											<row height="26px" forEach="${each.productModelAttachmentList}">
+												<cell>
+													<label value="${each.name}" />
+												</cell>
+												<cell>
+													<toolbarbutton image="/res/icons/page_attach.png" forward="onSeeFile"
+														label="${each.fileName }" style="color:blue;">
+														<custom-attributes file_path="${each.file_path}" />
+													</toolbarbutton>													 
+												</cell>
+											</row>
+										</rows>
+									</grid>
+								</cell>
+							</row>
+						</rows>
+					</grid>
+				</row>
+			</rows>
+		</grid>
+	</vlayout>
+</window>

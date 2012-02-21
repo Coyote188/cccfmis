@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mailconfig>
+	<mailinfo name="mailaddress">
+		<username name="username">cccfmis</username>
+		<password name="password">111111</password>
+		<address name="address">cccfmis@sina.cn</address>
+		<hostName name="hostName">smtp.sina.cn</hostName>
+		<subject name="subject">消防产品评定中心：密码找回</subject>
+		<content name="content">请将该地址复制到浏览器地址栏中，按照提示完成密码修改 ： </content>
+	</mailinfo>
+</mailconfig>

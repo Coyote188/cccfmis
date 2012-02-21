@@ -1,0 +1,47 @@
+K 25
+svn:wc:ra_dav:version-url
+V 56
+/dlyhc.cccfmis/!svn/ver/996/trunk/src/cccf/ma/bpm/action
+END
+NoticeCurrentActorAction.java
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/dlyhc.cccfmis/!svn/ver/996/trunk/src/cccf/ma/bpm/action/NoticeCurrentActorAction.java
+END
+AppStatusChangeAction.java
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/dlyhc.cccfmis/!svn/ver/103/trunk/src/cccf/ma/bpm/action/AppStatusChangeAction.java
+END
+ChangeDueDateAction.java
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/dlyhc.cccfmis/!svn/ver/260/trunk/src/cccf/ma/bpm/action/ChangeDueDateAction.java
+END
+ApplicationStatusAction.java
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/dlyhc.cccfmis/!svn/ver/996/trunk/src/cccf/ma/bpm/action/ApplicationStatusAction.java
+END
+CreateCounterSignActionPD.java
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/dlyhc.cccfmis/!svn/ver/594/trunk/src/cccf/ma/bpm/action/CreateCounterSignActionPD.java
+END
+MessageToApplicantAction.java
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/dlyhc.cccfmis/!svn/ver/212/trunk/src/cccf/ma/bpm/action/MessageToApplicantAction.java
+END
+CreateCounterSignAction.java
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/dlyhc.cccfmis/!svn/ver/198/trunk/src/cccf/ma/bpm/action/CreateCounterSignAction.java
+END

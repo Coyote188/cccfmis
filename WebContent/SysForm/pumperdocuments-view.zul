@@ -1,0 +1,275 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?init class="cccf.ma.web.zk.PumperdocumentsViewWindowInit" arg0="PumperDocumentsEditWindow"?>
+<window title="消防车追加的基本文件" border="normal"
+	use="cccf.ma.web.zk.PumperdocumentsViewWindow"
+	xmlns:a="http://www.zkoss.org/2005/zk/annotation"
+	id="PumperDocumentsEditWindow" xmlns="http://www.zkoss.org/2005/zul"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.zkoss.org/2005/zul
+	http://www.zkoss.org/2005/zul/zul.xsd"
+	width="800px" sizable="true" closable="true" >
+
+	<grid>
+		<columns>
+			<column width="210px" align="left" />
+			<column align="left" />
+		</columns>
+		<rows>
+			<row>
+				<hbox>
+					<label value="*" style="color:#FF0000" />
+					商标注册证及核准注册续展证明:
+				</hbox>
+				<hbox>
+					<a:bind value="pumperDocuments.brandCertificate" />
+					<textbox id="brandCertificate"
+						style="border:0px none #ffffff;background-color:#fff;color:#fff; "
+						width="0" readonly="true" />
+					<toolbarbutton
+						forward="onFiledown(brandCertificate)"
+						id="label_brandCertificate" />
+				</hbox>
+
+			</row>
+			<row>
+				<hbox>
+					<label value="*" style="color:#FF0000" />
+					工厂情况调查表:
+				</hbox>
+				<hbox>
+					<a:bind value="pumperDocuments.factoryForm" />
+					<textbox id="factoryForm"
+						style="border:0px none #ffffff;background-color:#fff;color:#fff; "
+						width="0" readonly="true" />
+					<toolbarbutton forward="onFiledown(factoryForm)"
+						id="label_factoryForm" />
+				</hbox>
+
+			</row>
+			<row>
+				<hbox>
+					<label value="*" style="color:#FF0000" />
+					生产情况简介:
+				</hbox>
+				<hbox>
+					<a:bind value="pumperDocuments.produceIntro" />
+					<textbox id="produceIntro"
+						style="border:0px none #ffffff;background-color:#fff;color:#fff; "
+						width="0" readonly="true" />
+					<toolbarbutton forward="onFiledown(produceIntro)"
+						id="label_produceIntro" />
+				</hbox>
+
+			</row>
+			<row>
+				<hbox>
+					<label value="*" style="color:#FF0000" />
+					主要原材料、关键外购件登记表:
+				</hbox>
+				<hbox>
+					<a:bind value="pumperDocuments.materialsForm" />
+					<textbox id="materialsForm"
+						style="border:0px none #ffffff;background-color:#fff;color:#fff; "
+						width="0" readonly="true" />
+					<toolbarbutton forward="onFiledown(materialsForm)"
+						id="label_materialsForm" />
+				</hbox>
+
+			</row>
+			<row>
+				<hbox>
+					<label value="*" style="color:#FF0000" />
+					检测项目所执行的技术标准目录:
+				</hbox>
+				<hbox>
+					<a:bind value="pumperDocuments.inspectStandard" />
+					<textbox id="inspectStandard"
+						style="border:0px none #ffffff;background-color:#fff;color:#fff; "
+						width="0" readonly="true" />
+					<toolbarbutton forward="onFiledown(inspectStandard)"
+						id="label_inspectStandard" />
+				</hbox>
+
+			</row>
+			<row>
+				<hbox>
+					<label value="*" style="color:#FF0000" />
+					质量管理体系文件目录:
+				</hbox>
+				<hbox>
+					<a:bind value="pumperDocuments.qualityStandard" />
+					<textbox id="qualityStandard"
+						style="border:0px none #ffffff;background-color:#fff;color:#fff; "
+						width="0" readonly="true" />
+					<toolbarbutton forward="onFiledown(qualityStandard)"
+						id="label_qualityStandard" />
+				</hbox>
+
+			</row>
+			<row>
+				<hbox>
+					<label value="*" style="color:#FF0000" />
+					质量职责分配表:
+				</hbox>
+				<hbox>
+					<a:bind
+						value="pumperDocuments.qualityResponsibilityForm" />
+					<textbox id="qualityResponsibilityForm"
+						style="border:0px none #ffffff;background-color:#fff;color:#fff; "
+						width="0" readonly="true" />
+					<toolbarbutton
+						forward="onFiledown(qualityResponsibilityForm)"
+						id="label_qualityResponsibilityForm" />
+				</hbox>
+
+			</row>
+			<row>
+				<hbox>
+					<label value="*" style="color:#FF0000" />
+					机构框图(或表):
+				</hbox>
+				<hbox>
+					<a:bind value="pumperDocuments.jigouGraphy" />
+					<textbox id="jigouGraphy"
+						style="border:0px none #ffffff;background-color:#fff;color:#fff; "
+						width="0" readonly="true" />
+					<toolbarbutton forward="onFiledown(jigouGraphy)"
+						id="label_jigouGraphy" />
+				</hbox>
+
+			</row>
+			<row>
+				<hbox>
+					<label value="*" style="color:#FF0000" />
+					底盘及附件产品认证证书复印件:
+				</hbox>
+				<hbox>
+					<a:bind value="pumperDocuments.chassisCertificate" />
+					<textbox id="chassisCertificate"
+						style="border:0px none #ffffff;background-color:#fff;color:#fff; "
+						width="0" readonly="true" />
+					<toolbarbutton
+						forward="onFiledown(chassisCertificate)"
+						id="label_chassisCertificate" />
+				</hbox>
+
+			</row>
+			<row>
+				单元产品描述:
+				<hbox>
+					<a:bind value="pumperDocuments.unitDesc" />
+					<textbox id="unitDesc"
+						style="border:0px none #ffffff;background-color:#fff;color:#fff; "
+						width="0" readonly="true" />
+					<toolbarbutton forward="onFiledown(unitDesc)"
+						id="label_unitDesc" />
+				</hbox>
+
+			</row>
+			<row>
+				产品单元划分分类表:
+				<hbox>
+					<a:bind value="pumperDocuments.unitTypeForm" />
+					<textbox id="unitTypeForm"
+						style="border:0px none #ffffff;background-color:#fff;color:#fff; "
+						width="0" readonly="true" />
+					<toolbarbutton forward="onFiledown(unitTypeForm)"
+						id="label_unitTypeForm" />
+				</hbox>
+
+			</row>
+			<row>
+				单元内产品差异描述表:
+				<hbox>
+					<a:bind value="pumperDocuments.unitDiffDesc" />
+					<textbox id="unitDiffDesc"
+						style="border:0px none #ffffff;background-color:#fff;color:#fff; "
+						width="0" readonly="true" />
+					<toolbarbutton forward="onFiledown(unitDiffDesc)"
+						id="label_unitDiffDesc" />
+				</hbox>
+
+			</row>
+			<row>
+				产品结构及技术参数说明:
+				<hbox>
+					<a:bind value="pumperDocuments.technologyDesc" />
+					<textbox id="technologyDesc"
+						style="border:0px none #ffffff;background-color:#fff;color:#fff; "
+						width="0" readonly="true" />
+					<toolbarbutton forward="onFiledown(technologyDesc)"
+						id="label_technologyDesc" />
+				</hbox>
+
+			</row>
+			<row>
+				产品型式检验报告:
+				<hbox>
+					<a:bind
+						value="pumperDocuments.productionFormReport" />
+					<textbox id="productionFormReport"
+						style="border:0px none #ffffff;background-color:#fff;color:#fff; "
+						width="0" readonly="true" />
+					<toolbarbutton
+						forward="onFiledown(productionFormReport)"
+						id="label_productionFormReport" />
+				</hbox>
+			</row>
+			<row>
+				产品使用说明书及用户使用维修手册:
+				<hbox>
+					<hbox id="box_manual"></hbox>
+					<a:bind value="pumperDocuments.manual" />
+					<textbox width="0px"
+						style="border:0px none #ffffff;background-color:#fff;color:#fff; "
+						readonly="true" />
+					<label />
+				</hbox>
+
+
+			</row>
+			<row>
+				<hbox>
+					<label value="*" style="color:#FF0000" />
+					汽车消防车产品3C认证合同:
+				</hbox>
+				<hbox>
+					<a:bind value="pumperDocuments.ccc" />
+					<textbox id="ccc"
+						style="border:0px none #ffffff;background-color:#fff;color:#fff; "
+						width="0" readonly="true" />
+					<toolbarbutton forward="onFiledown(ccc)"
+						id="label_ccc" />
+				</hbox>
+			</row>
+			<row>
+				<hbox>
+					<label value="*" style="color:#FF0000" />
+					消防车产品强制性认证利用生产厂检测资源检测申请表:
+				</hbox>
+
+				<hbox>
+					<a:bind value="pumperDocuments.qzxApplicationForm" />
+					<textbox id="qzxApplicationForm"
+						style="border:0px none #ffffff;background-color:#fff;color:#fff; "
+						width="0" readonly="true" />
+					<toolbarbutton
+						forward="onFiledown(qzxApplicationForm)"
+						id="label_qzxApplicationForm" />
+				</hbox>
+
+			</row>
+		</rows>
+	</grid>
+	<separator width="10px" />
+	<div align="left">
+		<hbox>
+			<button label="确定" image="/image/16/apply.png" width="68px"
+				height="26px" style="null" forward="onSave" />
+			<button label="关闭" image="/image/common/close.png"
+				width="68px" height="26px" style="null" forward="onCancel" />
+		</hbox>
+	</div>
+	<separator width="10px" />
+	<iframe id="downframe" height="0" width="0"></iframe>
+</window>

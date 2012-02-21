@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping SYSTEM "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+<hibernate-mapping>
+  <class name="openjframework.model.ProfileInfo" table="profile">  
+  
+    <id name="id" type="string" unsaved-value="null" >
+        <column name="pid"  not-null="true"/>
+        <generator class="uuid.hex"/>
+    </id>
+    
+    <property name="name" type="string">
+         <column name="name"  not-null="false"/>
+     </property>
+    <property name="userNo" type="string">
+         <column name="userno"  not-null="false"/>
+     </property>
+    <property name="gender" type="java.lang.Integer">
+         <column name="gender"  not-null="true"/>
+     </property>
+    <property name="nativePlace" type="string">
+         <column name="nativeplace"  not-null="false"/>
+     </property>
+     <property name="birthday">
+         <column name="birthday" sql-type="datetime" not-null="false"/>
+     </property>
+    <property name="idcardNo" type="string">
+         <column name="idcardno"  not-null="false"/>
+     </property>
+    <many-to-one name="politicalStatus" column="politicalstatus" lazy="false"/> 
+    <many-to-one name="position" column="position" lazy="false"/> 
+    <many-to-one name="organization" column="organizaiton" lazy="false"/> 
+    <set name="roleList" 
+    	 table="user_role_list"
+    	 lazy="false" 
+    	 inverse="false" 
+    	 cascade="none">
+        <key column="user_id" />
+        <many-to-many column="role_id" class="openjframework.model.RoleInfo" />
+    </set>
+    <property name="telephone" type="string">
+         <column name="telephone"  not-null="false"/>
+    </property>
+    <property name="email" type="string">
+         <column name="email"  not-null="false"/>
+     </property>
+     <many-to-one name="user" column="user" lazy="false"
+       class="openjframework.model.UserInfo" 
+      unique="true"/>    
+  </class>   
+</hibernate-mapping>

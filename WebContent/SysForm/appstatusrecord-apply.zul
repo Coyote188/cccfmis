@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?init class="cccf.ma.web.zk.AppstatusRecordApplyWindowInit" arg0="sppstatusRecordApplyWindow"?>
+<window title="变更申请" border="normal"
+	use="cccf.ma.web.zk.AppstatusRecordApplyWindow"
+	xmlns:a="http://www.zkoss.org/2005/zk/annotation"
+	id="sppstatusRecordApplyWindow" xmlns="http://www.zkoss.org/2005/zul"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.zkoss.org/2005/zul
+	http://www.zkoss.org/2005/zul/zul.xsd"
+	width="450px" sizable="true" closable="true">
+
+	<grid>
+		<columns>
+			<column width="120px" align="left" />
+			<column align="left" />
+		</columns>
+		<rows>
+			<row>
+				变更类别:
+				<combobox id="changeType" autodrop="true"
+					width="100px" readonly="true" constraint="no empty:变更类别不能为空">
+				</combobox>
+
+			</row>
+			<row>
+				变更理由:
+				<a:bind value="appStatusRecord.reason" />
+				<textbox id="desc" width="300px" multiline="true" height="50px"/>
+
+			</row>
+		</rows>
+	</grid>
+	<separator width="10px" />
+	<div align="left">
+		<hbox>
+			<button label="提交" image="/image/16/up.png" width="68px"
+				height="26px" style="" forward="onSubmit" />
+			<button label="关闭" image="/image/common/close.png"
+				width="68px" 				height="26px" style="" forward="onCancel" />
+		</hbox>
+	</div>
+</window>

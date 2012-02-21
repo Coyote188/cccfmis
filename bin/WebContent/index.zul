@@ -1,0 +1,654 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?page id="index" title="消防产品市场准入信息管理平台"  contentType="text/html;charset=UTF-8"?>
+<zk>
+<div align="center" height="100%" style="background:#79c0e0;">
+<!--首页大小已在1024×768下测试-->
+<window id="Indexwindow" xmlns:n="native" 
+    xmlns:w="client"
+	xmlns="http://www.zkoss.org/2005/zul"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation=" http://www.zkoss.org/2005/zul http://www.zkoss.org/2005/zul/zul.xsd"
+    width="100%" height="620px" use="openjframework.web.zk.IndexWindow" position="center,top">
+      <zscript>
+		<![CDATA[
+			
+		]]>
+	</zscript>
+      <borderlayout height="100%" style="background:#c5e6ef;">
+	   <north size="80px" border="0" style="background-image:url(image/files/banner.jpg)">
+		<div>
+           <toolbar  id="top" mold="panel" align="end" style="position:relative; padding-top:45px;padding-right: 50px;">
+			<label id="timeap" value="" style="font-size:14px;color:#99FF00;font-weight:bold;"/>
+			<label id="username" value=""   style="font-size:14px;color:#99FF00;font-weight:bold;"/>
+			<separator orient="vertical" bar="true"/>
+			<toolbarbutton id="worktask" label=""	forward="onWorktaskList" style="font-size:9pt;color:#ffffff;"
+								tooltiptext="我的待处理任务">				     
+			</toolbarbutton>
+			<toolbarbutton id="newsimg" image="/image/common/new.gif" visible="false" popup="taskmsgpop" tooltiptext="单击查看">
+				<attribute name="onClick">
+				    lb1.setValue(self.getTooltip());
+					self.setVisible(false);
+					</attribute>
+			</toolbarbutton>
+			
+			<popup id="taskmsgpop" width="240px">
+			    <label id="lb1" value=""/><space width="10px"/>
+			    <toolbarbutton label="处理"	forward="onWorktaskList" style="font-size:9pt;color:#0000cc;"/>		
+			</popup> 
+			
+			<separator orient="vertical" bar="true"/>
+			<toolbarbutton id="Pemail" label="邮件" style="font-size:9pt;color:#ffffff;"/>
+			<toolbarbutton id="msgimg2" image="/image/common/msg.gif" visible="false" popup="msgpop2" tooltiptext="单击查看">
+				<attribute name="onClick">
+				    msglb2.setValue(self.getTooltip());
+					self.setVisible(false);
+				</attribute>       
+			</toolbarbutton>
+			<popup id="msgpop2" width="240px">
+			    <label id="msglb2" value=""/><space width="10px"/>
+			    <toolbarbutton label="查看"	forward="onPEmail" style="font-size:9pt;color:#0000cc;"/>		
+			</popup> 	
+			<separator orient="vertical" bar="true"/>
+			<toolbarbutton id="Pmsg" label="消息" forward="onPeMssage" style="font-size:9pt;color:#ffffff;"/>
+			<toolbarbutton id="msgimg" image="/image/common/msg.gif" visible="false" popup="msgpop" >
+				<attribute name="onClick">
+				usermsg.setValue("来自["+msgInfo.sendUser.name+"]的消息");
+				subject.setValue(msgInfo.subject);
+				content.setValue(msgInfo.content);
+				self.setVisible(false);
+				</attribute>     
+			</toolbarbutton>
+			
+			<popup id="msgpop" width="240px" draggable="true" focus="true">
+				<hbox >
+					<label id="usermsg" value="" style="font-size:12px;color:#097EE4;font-weight:bold;"/>
+					<separator width="75px"/>
+					<image src="/image/files/close.gif" onClick="msgpop.close()"/>
+				</hbox>
+				<separator height="5px"/>
+			    <label id="subject" value=""/>
+			    <textbox id="content" value="" width="210px"  rows="5" readonly="true"/>
+			     	
+			</popup> 
+
+			
+			<separator orient="vertical" bar="true"/>
+			<toolbarbutton label="退出系统" style="font-size:9pt;color:#ffffff;"  forward="onLogout" id="logout"/>
+		   </toolbar>
+		  
+          </div>
+         
+	</north>
+	
+	<west width="190px" border="0" title="导航栏" style="border: 1px solid #9ECAD8;" flex="true"  splittable="true" collapsible="true" maxsize="250">
+	  
+		<div align="left">
+			<panel width="100%" height="800px" border="0" >
+		
+			<panelchildren >
+			
+			
+			<tabbox width="100%" mold="accordion-lite" >
+	<tabs>
+	    <tab label="首页"  image="/image/treelink/home.png" />
+		<tab label="行政办公" image="/image/treelink/xzbg.png"/>
+		<tab label="行政事务" id="sw" image="/image/treelink/xzsw.png"/>
+		<tab label="个人工作台"  image="/image/treelink/bench.png"/>
+		<tab label="人力资源" image="/image/treelink/qtrj.png"/>
+		<tab label="系统管理" image="/image/treelink/xtgl.png"/>
+		<tab label="网站系统" image="/image/treelink/bm1.png" selected="true"/>
+	</tabs>
+	<tabpanels id="treepanels">
+	    <tabpanel>
+	    <tree id="lefttree" width="100%" rows="1" use="openjframework.web.zk.TreeLink"> 
+	    
+	           <treechildren>
+	              <treeitem id="home" value="home.zul">
+	              <treerow>
+				    <treecell  label="首页" image="image/16/gohome.png" style="font-size:14px;"/>
+		          </treerow>
+		       </treeitem>
+		       </treechildren>
+		    </tree>
+	    </tabpanel>
+		<tabpanel>
+		<tree width="100%" rows="10" use="openjframework.web.zk.TreeLinkother" zclass="z-dottree" > 
+	      <treechildren>
+	      <treeitem open="false" >
+	       <treerow>
+				<treecell  label="通知公告" image="/image/treelink/tzgk.png" style="font-size:14px;"/>
+		   </treerow>
+		  
+		  <treechildren >
+				<treeitem value="notice-apply.zul">
+					<treerow>
+						<treecell id="publish"  label="通知公告发布" image="/image/treelink/ndjh.png"/>
+					</treerow>
+				</treeitem>				
+				<treeitem  value="notice-query.zul" >
+				    <treerow>
+						<treecell id="noticequery" label="通知公告查询" image="/image/treelink/so.png"/>
+					</treerow>
+				</treeitem>
+				<treeitem  value="notice-manage.zul" >
+				    <treerow>
+						<treecell id="noticeManage" label="通知公告管理" image="/image/files/setup.png" visible="false"/>
+					</treerow>
+				</treeitem>
+			</treechildren>
+		  </treeitem>
+		 <treeitem open="false" >
+	       <treerow>
+				<treecell label="会议管理" image="/image/treelink/hygl.png" style="font-size:14px;"/>
+		  </treerow>
+		  <treechildren>
+				<treeitem value="meeting-apply.zul">
+					<treerow>
+						<treecell label="会议申请" image="/image/treelink/qjgl.png" />
+					</treerow>
+				</treeitem>
+				
+				<treeitem value="meeting-query.zul">
+					<treerow>
+						<treecell label="会议查询" image="/image/treelink/so.png"/>
+					</treerow>
+				</treeitem>
+				<treeitem value="meeting-manage.zul">
+					<treerow>
+						<treecell id="meetingManage" label="会议管理" image="/image/files/setup.png" visible="false"/>
+					</treerow>
+				</treeitem>
+			</treechildren>
+		  </treeitem>
+		  <treeitem open="false" >
+	       <treerow>
+				<treecell label="信息采编" image="/image/treelink/grxx.png" style="font-size:14px;"/>
+		  </treerow>
+		  <treechildren>
+				<treeitem value="information-apply.zul">
+					<treerow>
+						<treecell label="信息录入" image="/image/treelink/tjbw.png" />
+					</treerow>
+				</treeitem>
+				<treeitem value="information-query.zul">
+					<treerow>
+						<treecell label="信息查询" image="/image/treelink/so.png"/>
+					</treerow>
+				</treeitem>
+				<treeitem value="information-manage.zul">
+					<treerow>
+						<treecell id="inforManage" label="信息管理" image="/image/files/setup.png" visible="false"/>
+					</treerow>
+				</treeitem>
+			</treechildren>
+		  </treeitem>
+		  <treeitem open="true" >
+	       <treerow>
+				<treecell label="工作布置" image="/image/treelink/gzrz.png" style="font-size:14px;"/>
+		  </treerow>
+		  <treechildren>
+				<treeitem  value="worktask-Jassign.zul">
+					<treerow>
+						<treecell id="leadertask" label="布置工作任务" image="/image/treelink/syrz.png" visible="false"/>
+					</treerow>
+				</treeitem>
+				<treeitem  value="worktask-Bassign.zul" >
+					<treerow>
+						<treecell id="depttask" label="布置工作任务" image="/image/treelink/syrz.png" visible="false"/>
+					</treerow>
+				</treeitem>
+				<treeitem value="worktask-list.zul">
+					<treerow>
+						<treecell id="worklist" label="我的工作任务" image="/image/treelink/tjrz.png" visible="false"/>
+					</treerow>
+				</treeitem>
+				<treeitem value="worktask-query.zul">
+					<treerow>
+						<treecell id="workquery" label="工作任务查询" image="/image/treelink/so.png" />
+					</treerow>
+				</treeitem>
+				<treeitem value="worktask-resultsofrating-query.zul">
+					<treerow>
+						<treecell id="workscorequery" label="评审成绩查询" image="/image/treelink/tjrz.png" />
+					</treerow>
+				</treeitem>
+				
+			</treechildren>
+		  </treeitem>
+		  
+		</treechildren>
+		</tree>
+		
+		</tabpanel>
+		<tabpanel>
+		<tree width="100%" rows="10" use="openjframework.web.zk.TreeLinkother" zclass="z-dottree"> 
+	      <treechildren>
+	      <treeitem open="false" >
+	       <treerow>
+				<treecell  label="接待管理" image="/image/treelink/jdgl.png" style="font-size:14px;"/>
+		   </treerow>
+		  
+		  <treechildren>
+				<treeitem value="reception-choose.zul">
+					<treerow>
+						<treecell label="接待申请" image="/image/treelink/grjh.png"/>
+					</treerow>
+				</treeitem>
+				
+				<treeitem value="reception-query.zul">
+				    <treerow>
+						<treecell label="接待单查询" image="/image/treelink/so.png"/>
+					</treerow>
+				</treeitem>
+			</treechildren>
+		  </treeitem>
+		  <treeitem open="false" >
+	       <treerow>
+				<treecell label="出差管理" image="/image/treelink/ccgl.png" style="font-size:14px;"/>
+		  </treerow>
+		  <treechildren>
+				<treeitem  value="travelService-apply.zul">
+					<treerow>
+						<treecell label="出差申请" image="/image/treelink/syrz.png"/>
+					</treerow>
+				</treeitem>
+				
+				<treeitem  value="travelService-query.zul">
+					<treerow>
+						<treecell label="出差单查询" image="/image/treelink/so.png" />
+					</treerow>
+				</treeitem>
+				
+			</treechildren>
+		  </treeitem>
+		   <treeitem open="false" >
+	       <treerow>
+				<treecell label="加班管理" image="/image/treelink/jbgl.png" style="font-size:14px;"/>
+		  </treerow>
+		  <treechildren>
+				<treeitem value="overtimework-apply.zul">
+					<treerow>
+						<treecell label="加班申请" image="/image/treelink/tjbw.png" />
+					</treerow>
+				</treeitem>
+				<treeitem value="overtimework-query.zul">
+					<treerow>
+						<treecell label="加班查询" image="/image/treelink/so.png"/>
+					</treerow>
+				</treeitem>
+				
+			</treechildren>
+		  </treeitem>
+		  <treeitem open="false" >
+	       <treerow>
+				<treecell label="请假管理" image="/image/treelink/qjgl.png" style="font-size:14px;"/>
+		  </treerow>
+		  <treechildren>
+				<treeitem value="leave-apply.zul">
+					<treerow>
+						<treecell label="请假申请" image="/image/treelink/gzrz.png" />
+					</treerow>
+				</treeitem>
+				
+				<treeitem value="leave-query.zul">
+					<treerow>
+						<treecell label="请假查询" image="/image/treelink/so.png"/>
+					</treerow>
+				</treeitem>
+			</treechildren>
+		  </treeitem>
+		  
+		  <treeitem open="false">
+	       <treerow>
+				<treecell  label="车辆管理" image="/image/treelink/clgl.png" style="font-size:14px;"/>
+		  	</treerow>
+		  	<treechildren>
+				<treeitem value="vehicle-edit.zul">
+					<treerow>
+						<treecell id="vehicleAdd" label="车辆信息录入" image="/image/treelink/xxcb.png" visible="false"/>
+					</treerow>
+				</treeitem>
+				
+				<treeitem value="vehicle-query.zul">
+					<treerow>
+						<treecell label="车辆信息查询" image="image/treelink/so.png"/>
+					</treerow>
+				</treeitem>
+				
+				<treeitem value="vehicle-manage.zul">
+					<treerow>
+						<treecell id="vehicleMan" label="车辆信息管理" image="/image/treelink/syrz.png" visible="false"/>
+					</treerow>
+				</treeitem>
+			</treechildren>
+		  </treeitem>
+		   <treeitem open="false" >
+	       <treerow>
+				<treecell label="办公用品及耗材" image="/image/treelink/bghc.png" style="font-size:14px;"/>
+		  </treerow>
+		  <treechildren>
+				<treeitem value="appliance-apply.zul">
+					<treerow>
+						<treecell label="领用申请" image="/image/treelink/tjbw.png"/>
+					</treerow>
+				</treeitem>
+				<treeitem value="appliance-query.zul">
+					<treerow>
+						<treecell label="领用查询" image="/image/treelink/so.png"/>
+					</treerow>
+				</treeitem>
+				<treeitem value="appliance-manage.zul">
+					<treerow>
+						<treecell id="appManage" label="领用管理 " image="/image/files/setup.png" visible="false"/>
+					</treerow>
+				</treeitem>
+				<treeitem value="purchases-apply.zul">
+					<treerow>
+						<treecell label="购买申请" image="/image/treelink/tjbw.png"/>
+					</treerow>
+				</treeitem>
+				<treeitem value="purchases-query.zul">
+					<treerow>
+						<treecell label="购买查询" image="/image/treelink/so.png"/>
+					</treerow>
+				</treeitem>
+				<treeitem value="purchases-manage.zul">
+					<treerow>
+						<treecell id="purMange" label="购买管理" image="/image/files/setup.png" visible="false"/>
+					</treerow>
+				</treeitem>
+				
+			</treechildren>
+		  </treeitem>
+		   <treeitem open="true" >
+	       <treerow>
+				<treecell label="财务报结管理" image="/image/treelink/cwbj.png" style="font-size:14px;"/>
+		  </treerow>
+		  <treechildren>
+				<treeitem value="expenseAccount-choose.zul">
+					<treerow>
+						<treecell label="财务报结申请" image="/image/treelink/xxcb.png" />
+					</treerow>
+				</treeitem>
+				
+				<treeitem value="expense-query-choose.zul">
+					<treerow>
+						<treecell label="本部门的报结单" image="/image/treelink/so.png"/>
+					</treerow>
+				</treeitem>
+				<treeitem value="expense-meeting-chart.zul">
+					<treerow>
+						<treecell label="报结统计" image="/image/treelink/so.png"/>
+					</treerow>
+				</treeitem>
+			</treechildren>
+		  </treeitem>
+		</treechildren>
+		</tree>
+		
+		</tabpanel>
+		<tabpanel>
+		<tree id="personalworkbench" width="100%" rows="10" apply="openjframework.web.zk.TreeLinkPersonalworkbench"  zclass="z-dottree"> 
+	      <treechildren>
+	      <treeitem open="false" >
+	       <treerow>
+				<treecell  label="工作计划" image="/image/treelink/gzjh.png" style="font-size:14px;"/>
+		   </treerow>
+		  
+		  <treechildren>
+				<treeitem value="workplan-manage.zul">
+					<treerow>
+						<treecell label="我的计划" image="/image/treelink/grjh.png"/>
+					</treerow>
+				</treeitem>
+				<treeitem value="workplan-edit.zul">
+				    <treerow>
+						<treecell label="添加计划" image="/image/treelink/ndjh.png"/>
+					</treerow>
+				</treeitem>
+			</treechildren>
+		  </treeitem>
+		  <treeitem open="false" >
+	       <treerow>
+				<treecell label="工作日志" image="/image/treelink/gzrz.png" style="font-size:14px;"/>
+		  </treerow>
+		  <treechildren>
+				<treeitem  value="worklog-manage.zul">
+					<treerow>
+						<treecell label="所有日志" image="/image/treelink/syrz.png"/>
+					</treerow>
+				</treeitem>
+				<treeitem value="worklog_my.zul">
+					<treerow>
+						<treecell label="我的日志" image="/image/treelink/grrz.png"/>
+					</treerow>
+				</treeitem>
+				<treeitem  value="worklog-edit.zul">
+					<treerow>
+						<treecell label="写日志" image="/image/treelink/tjrz.png"/>
+					</treerow>
+				</treeitem>
+				
+			</treechildren>
+		  </treeitem>
+		  <treeitem open="false" >
+	       <treerow>
+				<treecell label="备忘录" image="/image/treelink/fyj.png" style="font-size:14px;"/>
+		  </treerow>
+		  <treechildren>
+				<treeitem id="mymemo" value="workmemo-manage.zul">
+					<treerow>
+						<treecell label="我的备忘" image="/image/treelink/grbw.png" />
+					</treerow>
+				</treeitem>
+				<treeitem value="workmemo-edit.zul">
+					<treerow>
+						<treecell label="写备忘" image="/image/treelink/tjbw.png"/>
+					</treerow>
+				</treeitem>
+			</treechildren>
+		  </treeitem>
+		  <treeitem open="false">
+	       <treerow>
+				<treecell  label="邮件" image="/image/treelink/Email.png" style="font-size:14px;"/>
+		  	</treerow>
+		  	<treechildren>
+				<treeitem value="personalEmail-receive.zul">
+					<treerow >
+						<treecell label="收件箱" image="/image/treelink/inbox.png"/>
+					</treerow>
+				</treeitem>
+				<treeitem value="personalEmail-outbox.zul">
+					<treerow>
+						<treecell label="发件箱" image="image/treelink/outbox.png"/>
+					</treerow>
+				</treeitem>
+				<treeitem value="personalEmail-send.zul">
+					<treerow>
+						<treecell label="新邮件" image="image/treelink/fyj.png"/>
+					</treerow>
+				</treeitem>
+			</treechildren>
+		  </treeitem>
+		   <treeitem open="false">
+	       <treerow>
+				<treecell  label="消息" image="/image/treelink/grxx.png" style="font-size:14px;"/>
+		  	</treerow>
+		 <treechildren>
+				<treeitem value="personalMessage-send.zul">
+					<treerow>
+						<treecell label="发送消息" image="image/treelink/fyj.png"/>
+					</treerow>
+				</treeitem>
+				<treeitem value="personalMessage-receive.zul">
+					<treerow>
+						<treecell label="查看消息" image="image/treelink/so.png"/>
+					</treerow>
+				</treeitem>
+			
+			</treechildren>
+		  </treeitem>
+		   <treeitem value="InstantMessage/Messagepush-index.zul">
+	       <treerow>
+				<treecell  label="通讯平台" image="/image/treelink/jbsq.png" style="font-size:14px;"/>
+		  	</treerow>
+		  	</treeitem>
+		</treechildren>
+		</tree>
+		</tabpanel>
+		<tabpanel>
+		<tree width="100%" rows="6" use="openjframework.web.zk.TreeLinkother" zclass="z-dottree"> 
+	      <treechildren>
+	       <treeitem open="false" >
+	       <treerow>
+				<treecell label="用户日志查询" image="/image/treelink/kqgl.png" style="font-size:14px;"/>
+		  </treerow>
+		  <treechildren>
+				<treeitem value="attendance-manage.zul">
+					<treerow>
+						<treecell label="用户日志查询" image="/image/treelink/tjrz.png"/>
+					</treerow>
+				</treeitem>
+			</treechildren>
+		  </treeitem>
+		  <treeitem open="true">
+	       <treerow>
+				<treecell  label="档案管理" image="/image/treelink/FOLDER.png" style="font-size:14px;"/>
+		  	</treerow>
+		  	<treechildren>
+		  	     
+				<treeitem value="archive-edit.zul">
+					<treerow>
+						<treecell label="档案录入" image="/image/treelink/FOLDER.png"/>
+					</treerow>
+				</treeitem>
+				<treeitem value="archive-manage.zul">
+					<treerow>
+						<treecell label="档案查询" image="image/treelink/FOLDER.png"/>
+					</treerow>
+				</treeitem>
+			</treechildren>
+		  </treeitem>
+		  
+		 </treechildren>
+		</tree>
+		</tabpanel>
+		
+		<tabpanel>
+		<tree width="100%" rows="8" use="openjframework.web.zk.TreeLinkSystemSetup"> 
+	       <treechildren>
+	      <treeitem   id="userManage" value="org-manage.zul" label="用户管理" image="/image/treelink/sygj.png" style="font-size:14px;" visible="false"/>
+	       <treeitem  id="personalSetup" value="user-edit.zul" label="个人资料" image="/image/treelink/setup.png" style="font-size:14px;"/>
+	       <treeitem  id="orgManage" value="organization-manage.zul" label="机构管理" image="/image/treelink/ywjs.png" style="font-size:14px;" visible="false"/>
+		  <treeitem   id="flowSetup" value="bpm/process_manage.zul" label="流转设置管理" image="/image/treelink/qjgl.png" style="font-size:14px;" visible="false"/>
+		  <treeitem   id="dataManage" value="www.baidu.com" label="数据备份管理" image="/image/treelink/sjbf.png" style="font-size:14px;" visible="false"/>
+		  <treeitem   id="articleManage" value="article-manage.zul" label="文章管理" image="/image/16/desktop.png" style="font-size:14px;" visible="false"/>
+		 <treeitem   id="availableTool" value="availabelTool-manage.zul" label="实用工具管理" image="/image/16/kcontrol.png" style="font-size:14px;" visible="false"/>
+		 </treechildren>
+		</tree>
+		</tabpanel>
+		
+		<tabpanel height="250px">
+		<toolbarbutton label="云南省国家税务局电子政务网"/>
+		<toolbarbutton label="大理州国家税务局电子政务网"/>
+		<toolbarbutton label="综合征管系统" width="200px"/>
+		<toolbarbutton label="公文处理" width="200px"/>
+		<toolbarbutton label="云南省监控分析系统"/>
+		<toolbarbutton label="税收执法管理系统" width="200px"/>
+		<toolbarbutton label="防伪税控系统"/>
+		</tabpanel>
+	</tabpanels>
+</tabbox>
+
+</panelchildren>
+
+
+
+</panel>
+
+</div>
+		
+	</west>
+	<east width="200px" id="e_news" border="nomal" flex="true" margins="0,0,0,0" collapsible="true" splittable="true">
+	  
+	  <tabbox width="150px">
+		<tabs>
+			<tab label="小工具" closable="false"  width="80"/>
+		    <tab label="信息栏" closable="false"  width="70"/>
+			<tab label="读书" closable="false"  width="70"/>
+			<tab label="软件" closable="false" width="60"/>
+			<tab label="友情链接" closable="false"/>
+			
+		</tabs>
+		<tabpanels id="rightpart">
+			<tabpanel >
+				<div id="viewerDiv" style="overflow:auto;" height="100%">
+					<panel height="220px" title="时钟" border="normal" collapsible="true">
+						<panelchildren>
+							<flash src="/image/clock/clock7.swf" width="100%" height="100%"/>
+						</panelchildren>
+					</panel>
+					<panel height="250px" title="日历" border="normal" collapsible="true">
+						<panelchildren>
+							<include src="clendar.html" width="100%" height="100%"/>
+							</panelchildren>
+					</panel>
+				</div>
+			</tabpanel>
+			<tabpanel id="infor">
+				<attribute name="onCreate">
+					Window objWindow = (Window) Executions.createComponents("information-list.zul",null,null);
+					objWindow.setParent(infor);
+					objWindow.doEmbedded();
+				</attribute>
+			</tabpanel>
+			<tabpanel id="goodbook"></tabpanel>
+			<tabpanel id="availableToolQ"></tabpanel>
+
+			<tabpanel>
+					<toolbarbutton label="云南省国家税务局电子政务网"/>
+				    <toolbarbutton label="大理州国家税务局电子政务网"/>
+				    <toolbarbutton label="综合征管系统" width="200px"/>
+				    <toolbarbutton label="公文处理" width="200px"/>
+				    <toolbarbutton label="云南省监控分析系统"/>
+				    <toolbarbutton label="税收执法管理系统" width="200px"/>
+				    <toolbarbutton label="防伪税控系统"/>
+			</tabpanel>
+		</tabpanels>
+	</tabbox>
+	
+	</east>
+	<center  flex="true" autoscroll="true">
+	<div align="left">
+	     <window id="w" width="100%" height="100%">
+		    <tabbox id="xtabbox" width="100%" height="100%" >
+			    <tabs>
+			    	<tab id="tabhome" label="首页" width="80px">
+			    		<attribute name="onClick">
+								e_news.setVisible(true);
+			    		</attribute>
+			    	</tab>
+			    </tabs>
+  
+				<tabpanels>
+					<tabpanel id="home">
+					   	<attribute name="onCreate">
+					       Window objWindow = (Window) Executions.createComponents("home.zul",null,null);
+					       objWindow.setParent(home);
+					       objWindow.doEmbedded();
+						</attribute>
+					</tabpanel>
+				</tabpanels>	
+			</tabbox>
+		 </window>
+		 </div>
+	</center>
+	<south size="25px" border="0" style="background:#79c0e0;">
+		<toolbar mold="panel" align="center">
+			大理州国家税务局		
+		</toolbar>
+	  </south>
+     </borderlayout>
+</window>
+</div>
+</zk>

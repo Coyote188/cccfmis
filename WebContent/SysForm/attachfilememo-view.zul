@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<window title="详细意见" border="normal" id="attachFileMemoWindow"
+	use="cccf.ma.web.zk.AttachFileMemoWindow"
+	width="600px" sizable="true" closable="true">
+
+	<grid id="memoGrid">
+		<columns>
+			<column width="180px" align="left" />
+			<column align="left" />
+		</columns>
+		<rows>
+			<row>
+				企业营业执照副本复印件:
+				<textbox id="memo_businessLisence" width="99%" readonly="true"/>
+			</row>
+			<row>
+				企业组织机构代码证复印件:
+				<textbox id="memo_organizationCode" width="99%" readonly="true"/>
+
+			</row>
+			<row>
+				产品检验设备清单:
+				<textbox id="memo_inspectionDeviceList" width="99%" readonly="true"/>
+			</row>
+			<row>
+				企业生产配置平面图:
+				<textbox id="memo_layoutGraph" width="99%" readonly="true"/>
+			</row>
+			<row>
+				产品商标注册证明:
+				<textbox id="memo_brand" width="99%" readonly="true"/>
+
+			</row>
+			<row>
+				原产品认证证书复印件:
+				<textbox id="memo_originalCertificate" width="99%" readonly="true"/>
+			</row>
+			
+			<row>
+			 《质量手册》和《程序文件》:
+			 <textbox id="memo_qualityManual" width="99%" readonly="true"/>
+			</row>
+		</rows>
+	</grid>
+	<separator width="10px" />
+	<div align="left">
+		<hbox>
+			<button label="取消" image="/image/common/close.png"
+				width="70px" height="28px" style="null" forward="onCancel" />
+		</hbox>
+	</div>
+</window>

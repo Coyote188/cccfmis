@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping SYSTEM "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+<hibernate-mapping>
+  <class name="cccf.ma.model.EnterpriseProfileInfo" table="CompanyProfile">  
+  
+    <id name="id" type="string" unsaved-value="null" >
+        <column name="eId"  not-null="true"/>
+        <generator class="uuid.hex"/>
+    </id>
+    
+    <property name="companyName" type="string">
+         <column name="COMPANYNAME"  not-null="false"/>
+     </property>
+    <set name="state" lazy="false" inverse="false" 
+            cascade="none">
+        <key column="" />
+        <one-to-many class="cccf.ma.model.StateInfo" />
+    </set>
+    <set name="location" lazy="false" inverse="false" 
+            cascade="none">
+        <key column="" />
+        <one-to-many class="cccf.ma.model.ProvinceInfo" />
+    </set>
+    <property name="contactAddress" type="string">
+         <column name="CONTACTADDRESS"  not-null="false"/>
+     </property>
+    <property name="contactPerson" type="string">
+         <column name="CONTACTPERSON"  not-null="false"/>
+     </property>
+    <property name="telephoneNum" type="string">
+         <column name="TELEPHONENUM"  not-null="false"/>
+     </property>
+    <property name="faxNum" type="string">
+         <column name="FAXNUM"  not-null="false"/>
+     </property>
+    <property name="postalcode" type="string">
+         <column name="POSTALCODE"  not-null="false"/>
+     </property>
+    <property name="emailAddress" type="string">
+         <column name="EMAIL"  not-null="false"/>
+     </property>
+  </class>   
+</hibernate-mapping>

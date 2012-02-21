@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping SYSTEM "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+<hibernate-mapping>
+	<class name="cccf.ma.model.ApplicationPublicInfoAttachment" table="ApplicationPublicInfo_Attachment">
+		<id name="id" type="string" unsaved-value="null" length="36" >
+				<column name="id" not-null="true" />
+				<generator class="uuid.hex" />
+			</id>
+	    <many-to-one name="applicationPublicInfo" column="applicationPublicInfo_id"/> 
+	    <many-to-one name="attachment" column="attachment_id"/> 
+	    <property name="name" length="40"/>
+	    <property name="sn" />
+	     <property name="status" length="10"/>
+	</class>
+</hibernate-mapping>

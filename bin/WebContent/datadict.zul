@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?init class="com.aidi.framework.web.zk.DatadictmanageWindowInit" arg0="datadictmanageWindow"?>
+<hbox>
+	<window border="none"
+		use="com.aidi.framework.web.zk.DatadictmanageWindow"
+		xmlns:a="http://www.zkoss.org/2005/zk/annotation"
+		id="datadictmanageWindow" xmlns="http://www.zkoss.org/2005/zul"
+		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		xsi:schemaLocation="http://www.zkoss.org/2005/zul
+	http://www.zkoss.org/2005/zul/zul.xsd"
+		width="202px" sizable="true">
+		<separator width="10px" />
+		<div align="left">
+			<hbox>
+				<button label="增加" width="50px" height="20px"
+					style="null" forward="onAdd" />
+				<button label="修改" width="50px" height="20px"
+					style="null" forward="onEdit" />
+				<button label="删除" width="50px" height="20px"
+					style="null" forward="onDelete" />
+			</hbox>
+		</div>
+		<separator width="10px" />
+
+		<a:bind model="dataDictInfoList"
+			selectedItem="datadictmanageWindow.dataDictInfo" />
+		<listbox mold="paging" id="dataDictInfoListbox" width="200px"
+			pageSize="5" multiple="true"
+			onSelect="datadictmanageWindow.onSelect()">
+			<listhead sizable="true">
+				<listheader sort="auto" label="字典库名称" width="100px" />
+			</listhead>
+			<a:bind _var="dataDictInfo" />
+			<listitem value="@{dataDictInfo.id}">
+				<a:bind label="dataDictInfo.dictName" />
+				<listcell />
+			</listitem>
+		</listbox>
+	</window>
+	<splitter id="s2" collapse="before" />
+	
+		<include id="xcontents" src="${requestScope.contentSrc}"
+			style="padding:7px;" />
+	
+</hbox>
+
+ 

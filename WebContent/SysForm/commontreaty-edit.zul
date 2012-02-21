@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?init class="cccf.ma.web.zk.CommontreatyeditWindowInit" arg0="CommonTreatyEditWindow"?>
+<window title="协议编辑" border="normal" 
+	use="cccf.ma.web.zk.CommontreatyeditWindow"
+	xmlns:a="http://www.zkoss.org/2005/zk/annotation" id="CommonTreatyEditWindow"
+	xmlns="http://www.zkoss.org/2005/zul"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.zkoss.org/2005/zul
+	http://www.zkoss.org/2005/zul/zul.xsd"
+	width="720px"  sizable="true" closable="true">
+	
+	<grid>
+		<columns>
+			<column width="100px" align="center"></column>
+			<column></column>
+		</columns>
+	  <rows>
+	     <row>         
+	       协议标题: 
+	       <a:bind value="commonTreaty.title"/>
+	       <textbox id="title" width="200px" constraint="no empty:请输入协议标题" maxlength="10" tooltiptext="最大长度10个字"/>
+			 	
+	     </row>	
+	     <row>         
+	       协议正文: 
+	       <a:bind value="commonTreaty.treaty"/>
+	       <textbox id="treaty" rows="20" width="99%" constraint="no empty:请输入协议正文" />
+			 	
+	     </row>	
+	     <row>         
+	       协议类别: 
+	       <hbox>
+		       <combobox id="type"  width="100px" readonly="true" autodrop="true" 
+		        		 onSelect="CommonTreatyEditWindow.onTreatyTypeSelect(event)" 
+		       			 constraint="no empty:请为该协议选择一个分类"
+		       			 tooltiptext="协议分类">
+	        	</combobox>
+	        	<a:bind value="commonTreaty.typeName"/>
+	        	<label/>
+			</hbox> 	
+	     </row>	
+	  </rows>
+	 </grid>
+	<separator width="10px" />
+	 <div align="center">
+	   <hbox>
+	       <button label="保存" image="/image/common/save.png"  width="70px" height="28px" style="null" forward="onSave"/>
+	       <button label="关闭" image="/image/common/close.png"  width="70px" height="28px" style="null" forward="onCancel"/>  
+	   </hbox>
+	 </div>
+</window>			   

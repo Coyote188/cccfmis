@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<w:tbl>
+	<w:tblPr>
+		<w:tblStyle w:val="a3" />
+		<w:tblW w:w="0" w:type="auto" />
+		<w:tblLook w:val="04A0" w:firstRow="1" w:lastRow="0" w:firstColumn="1" w:lastColumn="0" w:noHBand="0" w:noVBand="1" />
+	</w:tblPr>
+	<w:tblGrid>
+		<w:gridCol w:w="1704" />
+		<w:gridCol w:w="1704" />
+		<w:gridCol w:w="1704" />
+		<w:gridCol w:w="1705" />
+		<w:gridCol w:w="1705" />
+	</w:tblGrid>
+	<w:tr w:rsidR="006800D5" w:rsidTr="006800D5">
+		<w:tc>
+			<w:tcPr>
+				<w:tcW w:w="1704" w:type="dxa" />
+			</w:tcPr>
+			<w:p w:rsidR="006800D5" w:rsidRDefault="006800D5">
+				<w:pPr>
+					<w:rPr>
+						<w:rFonts w:hint="eastAsia" />
+					</w:rPr>
+				</w:pPr>
+				<w:r>
+					<w:rPr>
+						<w:rFonts w:hint="eastAsia" />
+					</w:rPr>
+					<w:t>1</w:t>
+				</w:r>
+			</w:p>
+		</w:tc>
+		<w:tc>
+			<w:tcPr>
+				<w:tcW w:w="1704" w:type="dxa" />
+			</w:tcPr>
+			<w:p w:rsidR="006800D5" w:rsidRDefault="006800D5">
+				<w:pPr>
+					<w:rPr>
+						<w:rFonts w:hint="eastAsia" />
+					</w:rPr>
+				</w:pPr>
+			</w:p>
+		</w:tc>
+		<w:tc>
+			<w:tcPr>
+				<w:tcW w:w="1704" w:type="dxa" />
+			</w:tcPr>
+			<w:p w:rsidR="006800D5" w:rsidRDefault="006800D5">
+				<w:pPr>
+					<w:rPr>
+						<w:rFonts w:hint="eastAsia" />
+					</w:rPr>
+				</w:pPr>
+			</w:p>
+		</w:tc>
+		<w:tc>
+			<w:tcPr>
+				<w:tcW w:w="1705" w:type="dxa" />
+			</w:tcPr>
+			<w:p w:rsidR="006800D5" w:rsidRDefault="006800D5">
+				<w:pPr>
+					<w:rPr>
+						<w:rFonts w:hint="eastAsia" />
+					</w:rPr>
+				</w:pPr>
+			</w:p>
+		</w:tc>
+		<w:tc>
+			<w:tcPr>
+				<w:tcW w:w="1705" w:type="dxa" />
+			</w:tcPr>
+			<w:p w:rsidR="006800D5" w:rsidRDefault="006800D5">
+				<w:pPr>
+					<w:rPr>
+						<w:rFonts w:hint="eastAsia" />
+					</w:rPr>
+				</w:pPr>
+				<w:r>
+					<w:rPr>
+						<w:rFonts w:hint="eastAsia" />
+					</w:rPr>
+					<w:t>11</w:t>
+				</w:r>
+			</w:p>
+		</w:tc>
+	</w:tr>
+	<w:tr w:rsidR="006800D5" w:rsidTr="006800D5">
+		<w:tc>
+			<w:tcPr>
+				<w:tcW w:w="1704" w:type="dxa" />
+			</w:tcPr>
+			<w:p w:rsidR="006800D5" w:rsidRDefault="006800D5">
+				<w:pPr>
+					<w:rPr>
+						<w:rFonts w:hint="eastAsia" />
+					</w:rPr>
+				</w:pPr>
+				<w:r>
+					<w:rPr>
+						<w:rFonts w:hint="eastAsia" />
+					</w:rPr>
+					<w:t>2</w:t>
+				</w:r>
+			</w:p>
+		</w:tc>
+		<w:tc>
+			<w:tcPr>
+				<w:tcW w:w="1704" w:type="dxa" />
+			</w:tcPr>
+			<w:p w:rsidR="006800D5" w:rsidRDefault="006800D5">
+				<w:pPr>
+					<w:rPr>
+						<w:rFonts w:hint="eastAsia" />
+					</w:rPr>
+				</w:pPr>
+				<w:r>
+					<w:rPr>
+						<w:rFonts w:hint="eastAsia" />
+					</w:rPr>
+					<w:t>3</w:t>
+				</w:r>
+			</w:p>
+		</w:tc>
+		<w:tc>
+			<w:tcPr>
+				<w:tcW w:w="1704" w:type="dxa" />
+			</w:tcPr>
+			<w:p w:rsidR="006800D5" w:rsidRDefault="006800D5">
+				<w:pPr>
+					<w:rPr>
+						<w:rFonts w:hint="eastAsia" />
+					</w:rPr>
+				</w:pPr>
+			</w:p>
+		</w:tc>
+		<w:tc>
+			<w:tcPr>
+				<w:tcW w:w="1705" w:type="dxa" />
+			</w:tcPr>
+			<w:p w:rsidR="006800D5" w:rsidRDefault="006800D5">
+				<w:pPr>
+					<w:rPr>
+						<w:rFonts w:hint="eastAsia" />
+					</w:rPr>
+				</w:pPr>
+			</w:p>
+		</w:tc>
+		<w:tc>
+			<w:tcPr>
+				<w:tcW w:w="1705" w:type="dxa" />
+			</w:tcPr>
+			<w:p w:rsidR="006800D5" w:rsidRDefault="006800D5">
+				<w:pPr>
+					<w:rPr>
+						<w:rFonts w:hint="eastAsia" />
+					</w:rPr>
+				</w:pPr>
+				<w:r>
+					<w:rPr>
+						<w:rFonts w:hint="eastAsia" />
+					</w:rPr>
+					<w:t>22</w:t>
+				</w:r>
+			</w:p>
+		</w:tc>
+	</w:tr>
+</w:tbl>

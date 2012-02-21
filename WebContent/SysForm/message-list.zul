@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?init class="dltax.oa.web.zk.MessagemanageWindowInit" arg0="messagemanageWindow"?>
+<window title="系统消息" border="normal"
+	use="dltax.oa.web.zk.MessagemanageWindow"
+	xmlns:a="http://www.zkoss.org/2005/zk/annotation"
+	id="messagemanageWindow" width="500px" sizable="true">
+	
+	<separator width="10px" />
+	<tabbox id="mainTab" tabscroll="false" height="100%">
+		<tabs>
+			<tab label="未读消息" />
+			<tab label="已读消息" />
+			<tab label="所有消息" />
+		</tabs>
+		<tabpanels>
+			<tabpanel id="firstTab">
+				<a:bind model="messageInfoList"
+					selectedItem="messagemanageWindow.messageInfo" />
+				<listbox mold="paging" id="messageInfoListbox"
+					width="100%" pageSize="15" >
+					<listhead sizable="true">
+
+						<listheader  label="消息类型"
+							width="60px" />
+
+						<listheader  label="发送人"
+							width="60px"/>
+
+						<listheader  label="发送日期"
+							width="80px" />
+
+						<listheader  label="消息主题"
+							width="210px" />
+
+						<listheader  label="阅读状态"
+							width="60px" />
+
+					</listhead>
+					<a:bind _var="messageInfo" />
+					<listitem value="@{messageInfo.id}">
+
+						<a:bind label="messageInfo.type" />
+						<listcell />
+
+						<a:bind label="messageInfo.sendUser.name" />
+						<listcell />
+
+						<a:bind label="messageInfo.receiveUser.name" />
+						<listcell />
+
+						<listcell
+							label="@{messageInfo.sendDate,converter='com.aidi.core.zk.DateConverter'}" />
+
+						<a:bind label="messageInfo.content" />
+						<listcell />
+
+						<a:bind label="messageInfo.readStatus" />
+						<listcell />
+
+					</listitem>
+				</listbox>
+
+			</tabpanel>
+		</tabpanels>
+	</tabbox>
+
+	<separator width="10px" />
+
+</window>

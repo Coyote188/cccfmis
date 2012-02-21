@@ -1,0 +1,71 @@
+<?init class="cccfmis.bpm.zk.FactoryUserEditInit" arg0="./ewin"?>
+<window id="ewin" title="工厂检查人员" border="normal" width="600px" closable="true" use="cccfmis.bpm.zk.FactoryCheckUserEdit">
+	<grid>
+		<columns>
+			<column width="150px" />
+			<column />
+		</columns>
+		<rows>
+			<row>
+				<label value="姓名" style="font-size:16px;" />
+				<textbox id="name" width="300px" value="${map.name}" height="20px" style="font-size:16px;" constraint="no empty:不能为空" />
+			</row>
+			<row>
+				<label value="单位" style="font-size:16px;" />
+				<textbox id="organization" value="${map.organization}" width="300px" height="20px" style="font-size:16px;" constraint="no empty:不能为空" />
+			</row>
+			<row>
+				<label value="性别" style="font-size:16px;" />
+				<radiogroup id="sex">
+					<radio id="man" label="男" style="font-size:16px;" checked='${map.sex=="男" || map.sex==null ?true:false}' />
+					<radio label="女" style="font-size:16px;" checked='${map.sex=="女"?true:false}' />
+				</radiogroup>
+			</row>
+			<row>
+				<label value="资质" style="font-size:16px;" />
+				<bandbox id="qualification" width="303px" value="${map.qualification}" height="20px" readonly="true" autodrop="true">
+					<bandpopup popup="auto">
+						<listbox width="300px" id="qlist" checkmark="true" multiple="true" mold="paging" pageSize="8" onSelect="ewin.onSelected(event)">
+							<listhead>
+								<listheader label="资质代码" sort="auto" width="90px" />
+								<listheader label="资质名称" sort="auto" width="210px" />
+							</listhead>
+							<listitem forEach="${qualificationInit}" value="${each}">
+								<listcell label="${each.qcode}" />
+								<listcell label="${each.qname}" />
+							</listitem>
+						</listbox>
+					</bandpopup>
+				</bandbox>
+			</row>
+			<row>
+				<label value="联系电话" style="font-size:16px;" />
+				<textbox id="telephone" value="${map.telephone}" width="300px" height="20px" style="font-size:16px;" />
+			</row>
+			<row>
+				<label value="联系地址" style="font-size:16px;" />
+				<textbox id="adress" value="${map.adress}" width="300px" height="20px" style="font-size:16px;" />
+			</row>
+			<row>
+				<label value="状态" style="font-size:16px;" />
+				<radiogroup id="station">
+					<radio label="正常" style="font-size:16px;" checked='${map.station=="正常" || map.station==null ?true:false}' />
+					<radio label="锁定" style="font-size:16px;" checked='${map.station=="锁定"?true:false}' />
+				</radiogroup>
+			</row>
+			<row>
+				<label value="性质" style="font-size:16px;" />
+				<radiogroup id="nature">
+					<radio label="正常" style="font-size:16px;" checked='${map.nature=="正常" || map.nature==null ?true:false}' />
+					<radio label="见习" style="font-size:16px;" checked='${map.nature=="见习"?true:false}' />
+				</radiogroup>
+			</row>
+		</rows>
+		<foot>
+			<footer span="2">
+				<button label="保存" style="font-size:16px;margin:0px 50px;" forward="onSave" image="/image/common/save.png"/>
+				<button label="取消" style="font-size:16px;" onClick="ewin.detach()" image="/image/16/stop.png"/>
+			</footer>
+		</foot>
+	</grid>
+</window>

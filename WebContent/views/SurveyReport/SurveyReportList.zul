@@ -1,0 +1,104 @@
+<?page title="检验报告" contentType="text/html;charset=UTF-8"?>
+<?init class="org.zkoss.zkplus.databind.AnnotateDataBinderInit" arg0="./winSurveyReportList"?>
+<window id="winSurveyReportList" title="检验报告" border="normal" vflex="true" hflex="true"
+	apply="cccf.mis.web.survey.SurveyReportController" forward="onCreate=onCreated">
+	<vlayout vflex="true" hflex="true">
+		<toolbar>
+			<button image="/res/icons/page_find.png" mold="trendy" label="查询" forward="onClick=onQueryReport"  />
+			<button image="/res/icons/page_add.png" mold="trendy" label="新增" forward="onNewReport" />
+			<button image="/res/icons/page_key.png" mold="trendy" label="审核" forward="onAudit" />
+			<button image="/res/icons/page_delete.png" mold="trendy" label="册除"   />
+			<button image="/res/icons/page_edit.png" mold="trendy" label="编辑"   />
+		</toolbar>
+		<grid>
+			<columns>
+				<column width="80px"></column>
+				<column width="160px"></column>
+				<column width="80px"></column>
+				<column></column>
+				<column width="80px"></column>
+				<column width="100px"></column>
+			</columns>
+			<rows>
+				<row>
+					<label value="报告编号"></label>
+					<textbox id="survey_no" hflex="true" />
+					<label value="企业名称"></label>
+					<textbox id="enterprise" hflex="true" />
+					<label value="报告状态"></label>
+					<combobox id="status" hflex="true">
+						<comboitem label="全部" value="-1" />
+						<comboitem label="未审核" value="0" />
+						<comboitem label="审核通过" value="1" />
+						<comboitem label="审核未通过" value="2" />
+						<comboitem label="未审核(重提交)" value="3" />
+					</combobox>
+				</row>
+			</rows>
+		</grid>
+		<listbox vflex="true" hflex="true" id="reportbox" checkmark="true">
+			<listhead>
+				<listheader label="报告编号" />
+				<listheader label="企业名称" />
+				<listheader label="产品名称" />
+				<listheader label="生产商" />
+				<listheader label="制造商" />
+				<listheader label="检验类型" />
+				<listheader label="检验结论" />
+				<listheader label="编制人" />
+				<listheader label="编制时间" />
+				<listheader label="审核人" />
+				<listheader label="审核时间" />
+				<listheader label="状态" />
+				<listheader label="操作" width="100px" />
+			</listhead>
+			<listitem self="@{each=item}" value="@{item }">
+				<listcell label="@{item.surveyReportSN}" />
+				<listcell label="@{item.enterpriseInfo_name}" />
+				<listcell label="@{item.productCatalogueInfo_productName}" />
+				<listcell label="@{item.manufactureInfo_name}" />
+				<listcell label="@{item.productionEnterpriseInfo_name}" />
+				<listcell label="@{item.surverType}" />
+				<listcell label="@{item.surverVerdict}">
+					<attribute name="onCreate">
+						if (self.getLabel().equals("1"))
+						{
+							self.setLabel("合格");
+						} else
+						{
+							self.setLabel("不合格");
+						}</attribute>
+					</listcell>
+				<listcell label="@{item.organizer}" />
+				<listcell label="@{item.organizeTime}" />
+				<listcell label="@{item.auditor}" />
+				<listcell label="@{item.auditTime}" />
+				<listcell label="@{item.status}">
+					<attribute name="onCreate">
+						if (self.getLabel().equals("0"))
+						{
+							self.setLabel("未审核");
+						} else if (self.getLabel().equals("1"))
+						{
+							self.setLabel("审核通过");
+						} else if (self.getLabel().equals("2"))
+						{
+							self.setLabel("审核不通过");
+						} else if (self.getLabel().equals("3"))
+						{
+							self.setLabel("未审核(重提交)"); 
+						}
+					</attribute>
+				</listcell>
+				<listcell>
+					<toolbarbutton image="/res/icons/page.png" label="查看" forward="onRead" />
+				</listcell>
+			</listitem>
+			<listfoot>
+				<listfooter span="13">
+					<paging id="listPaging" pageSize="10"/>
+				</listfooter>
+			</listfoot>			 
+		</listbox>
+	</vlayout>
+</window>

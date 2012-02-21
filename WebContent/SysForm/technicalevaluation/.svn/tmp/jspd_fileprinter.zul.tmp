@@ -1,0 +1,54 @@
+<?page title="new page title" contentType="text/html;charset=UTF-8"?>
+<?init class="org.zkoss.zkplus.databind.AnnotateDataBinderInit" root="./frmCertificate"?>
+<zk>
+<window id="frmCertificate" apply="cccf.ma.web.zk.TechnicalFilePrinterController" border="none">
+<listbox id="lbxCertificateList" model="@{frmCertificate$composer.certificates }">
+	<listhead>
+		<listheader label="证书编号" />
+		<listheader label="申请人名称" />
+		<listheader label="制造商" />
+		<listheader label="生产企业名称" />
+		<listheader label="产品名称和规格型号" />
+		<listheader label="产品标准和技术要求" />
+		<listheader width="70px" label="操作" />
+	</listhead>
+	<listitem self="@{each=cert }">
+		<listcell label="@{cert.number }" />
+		<listcell label="@{cert.appname }" />
+		<listcell label="@{cert.manufacture }" />
+		<listcell label="@{cert.productionenterprise }" />
+		<listcell label="@{cert.productcatalogueen, cert.productcatalogue}" />
+		<listcell label="@{cert.technicalRequirement }" />
+		<listcell>
+			<toolbarbutton forward="onFileGeneration" label="查看文件" style="text-Decoration:underline;color:#3300cc">
+				<custom-attributes cert="@{cert }"/>
+			</toolbarbutton>
+		</listcell>
+	</listitem>
+</listbox>
+<listbox id="lbxReportList" model="@{frmCertificate$composer.reports }">
+	<listhead>
+		<listheader label="编号" />
+		<listheader label="检查组长" />
+		<listheader label="检查代码" />
+		<listheader label="技评意见" />
+		<listheader label="审请人名称" />
+		<listheader label="审请人名称" />
+		<listheader width="70px" label="操作" />
+	</listhead>
+	<listitem self="@{each=cert }">
+		<listcell label="@{cert.编号 }" />
+		<listcell label="@{cert.检查组长 }" />
+		<listcell label="@{cert.检查代码 }" />
+		<listcell label="@{cert.技评意见 }" />
+		<listcell label="@{cert.审请人名称 }" />
+		<listcell label="@{cert.认证规则 }" />
+		<listcell>
+			<toolbarbutton forward="onFileGeneration2" label="查看文件" style="text-Decoration:underline;color:#3300cc">
+				<custom-attributes repo="@{cert }"/>
+			</toolbarbutton>
+		</listcell>
+	</listitem>
+</listbox>
+</window>
+</zk>

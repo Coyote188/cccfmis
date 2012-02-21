@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping SYSTEM "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+<hibernate-mapping>
+  <class name="cccf.ma.model.EnterpriseInfo" table="enterprise">  
+  
+    <id name="id" type="string" unsaved-value="null" >
+        <column name="eid"  not-null="true"/>
+        <generator class="uuid.hex"/>
+    </id>
+    
+    <property name="name" type="string">
+         <column name="name"  not-null="false"/>
+     </property>
+    <property name="state" type="string">
+         <column name="state"  not-null="false"/>
+     </property>
+    <property name="location" type="string">
+         <column name="location"  not-null="false"/>
+     </property>
+    <property name="contactAddress" type="string">
+         <column name="contactaddress"  not-null="false"/>
+     </property>
+    <property name="contactPerson" type="string">
+         <column name="contactperson"  not-null="false"/>
+     </property>
+    <property name="telephoneNum" type="string">
+         <column name="telephonenum"  not-null="false"/>
+     </property>
+    <property name="faxNum" type="string">
+         <column name="faxnum"  not-null="false"/>
+     </property>
+    <property name="postalcode" type="string">
+         <column name="postalcode"  not-null="false"/>
+     </property>
+    <property name="emailAddress" type="string">
+         <column name="emailaddress"  not-null="false"/>
+     </property>
+    <property name="copyOfBusinessLicense" type="string">
+         <column name="businesslicense"  not-null="false"/>
+     </property>
+    <bag name="manufacture" lazy="false" inverse="false"  access="field" cascade="none">
+        <key column="eId" />
+        <one-to-many class="cccf.ma.model.ManufactureInfo" />
+    </bag>
+    <bag name="pEnterprise" lazy="false" inverse="false" access="field" cascade="none">
+        <key column="eId" />
+        <one-to-many class="cccf.ma.model.ProductionEnterpriseInfo" />
+    </bag>
+     <many-to-one name="account" column="account" lazy="false"
+       class="openjframework.model.UserInfo" 
+      unique="true"/>    
+    <property name="status" type="java.lang.Integer">
+         <column name="accountstatus"  not-null="true"/>
+     </property>
+     
+     <!-- new edit -->
+     <property name="nameEn" type="string">
+         <column name="nameEn"  not-null="false"/>
+     </property>
+     <property name="organizationCode" type="string">
+         <column name="organizationCode"  not-null="false"/>
+     </property>
+     <property name="organizationNature" type="string">
+         <column name="organizationNature"  not-null="false"/>
+     </property>
+     <property name="scale" type="int">
+         <column name="scale"  not-null="false"/>
+     </property>
+     <property name="legalPerson" type="string">
+         <column name="legalPerson"  not-null="false"/>
+     </property>
+     <property name="legalPersonEn" type="string">
+         <column name="legalPersonEn"  not-null="false"/>
+     </property>
+     <property name="contactAddForLegal" type="string">
+         <column name="contactAddForLegal"  not-null="false"/>
+     </property>
+     <property name="contactAddForLegalEn" type="string">
+         <column name="contactAddForLegalEn"  not-null="false"/>
+     </property>
+     <property name="telForLegal" type="string">
+         <column name="telForLegal"  not-null="false"/>
+     </property>
+     <property name="mobileForLegal" type="string">
+         <column name="mobileForLegal"  not-null="false"/>
+     </property>
+     <property name="registeredAddress" type="string">
+         <column name="registeredAddress"  not-null="false"/>
+     </property>
+     <property name="registeredAddressEn" type="string">
+         <column name="registeredAddressEn"  not-null="false"/>
+     </property>
+     <property name="registeredCapital" type="string">
+         <column name="registeredCapital"  not-null="false"/>
+     </property>
+     <property name="businessScope" type="string">
+         <column name="businessScope"  not-null="false"/>
+     </property>
+     <property name="contactAddressEn" type="string">
+         <column name="contactAddressEn"  not-null="false"/>
+     </property>
+     <property name="contactPersonEn" type="string">
+         <column name="contactPersonEn"  not-null="false"/>
+     </property>
+     <property name="mobileNum" type="string">
+         <column name="mobileNum"  not-null="false"/>
+     </property>
+     <property name="webAddress" type="string">
+         <column name="webAddress"  not-null="false"/>
+     </property>
+     <property name="note" type="string">
+         <column name="note"  not-null="false"/>
+     </property>
+     <property name="atts" type="string">
+         <column name="atts"  not-null="false"/>
+     </property>
+     <!-- attachments of enterprise 
+     <bag name="attachments" lazy="false" inverse="false" access="field" cascade="none">
+        <key column="attachment_id" not-null="false"/>
+        <one-to-many class="cccf.ma.model.Attachment" />
+    </bag>
+    -->
+  </class>   
+</hibernate-mapping>

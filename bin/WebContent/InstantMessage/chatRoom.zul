@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<zk>
+
+	<borderlayout apply="openjframework.InstantMessage.ChatRoomComposer">
+		<center>
+			<panel title="" height="100%">
+				<panelchildren >
+					<div id="viewerDiv" style="overflow:scroll;" height="100%"/>
+				</panelchildren>
+			</panel>
+		</center>
+		<south splittable="true" size="17%" flex="true">
+			<panel title="" height="100%">
+				<panelchildren>
+					<borderlayout >
+						<center>
+						  <div >
+							<textbox id="contentTbx" multiline="true"
+								width="100%" height="71px" style="margin:0px"
+								value="大家好！我是 ${login_name} !" />
+							</div>
+						</center>
+						<east Style="Width:100px">
+							<div>
+								<image src="/image/InstantMessage/sendbutt.png"
+									id="sendBtn" />
+							</div>
+						</east>
+					</borderlayout>
+				</panelchildren>
+			</panel>
+		</south>
+	</borderlayout>
+</zk>

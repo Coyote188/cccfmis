@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?init class="openjframework.web.zk.ResourcemanageWindowInit" arg0="resourcemanageWindow"?>
+<window title="资源管理" border="normal" 
+	use="openjframework.web.zk.ResourcemanageWindow"
+	xmlns:a="http://www.zkoss.org/2005/zk/annotation" id="resourcemanageWindow"
+	xmlns="http://www.zkoss.org/2005/zul"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.zkoss.org/2005/zul
+	http://www.zkoss.org/2005/zul/zul.xsd"
+	width="720px"  sizable="true">
+	
+	<a:bind model="resourceInfoList" selectedItem="resourcemanageWindow.resourceInfo"/>
+    <listbox mold="paging" id="resourceInfoListbox" width="700px" pageSize="15" checkmark="true" >
+		<listhead sizable="true" >
+					
+			<listheader  label="资源编码" width="100px"/>
+					
+			<listheader  label="名称" width="100px"/>
+					
+			<listheader  label="资源描述" width="100px"/>
+					
+			<listheader  label="资源类别" width="100px"/>
+					
+			<listheader  label="资源URL" />
+				
+		</listhead>
+			<a:bind _var="resourceInfo"/>
+			<listitem value="@{resourceInfo.id}">
+			
+			    <a:bind label="resourceInfo.no"/>
+				<listcell/>
+				
+			    <a:bind label="resourceInfo.name"/>
+				<listcell/>
+				
+			    <a:bind label="resourceInfo.resDesc"/>
+				<listcell/>
+				
+			    <a:bind label="resourceInfo.type.name"/>
+				<listcell/>
+				
+			    <a:bind label="resourceInfo.resourceUrl"/>
+				<listcell/>
+				
+			</listitem>
+	</listbox>
+	 
+	<separator width="10px" />
+	<div align="left">
+   <hbox>
+       <button label="增加" image="/image/common/add.png" width="68px" height="26px" style="null" forward="onAdd"/>
+       <button label="修改" image="/image/common/edit.png" width="68px" height="26px" style="null" forward="onEdit"/>
+       <button label="删除" image="/image/common/delete.png" width="68px" height="26px" style="null" forward="onDelete"/>
+       <button label="权限" image="/image/common/permissions.png" width="68px" height="26px" style="null" forward="onPermission"/>
+    </hbox>
+   </div>
+</window>

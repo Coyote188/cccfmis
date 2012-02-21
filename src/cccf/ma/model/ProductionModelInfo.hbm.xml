@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping SYSTEM "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+<hibernate-mapping>
+  <class name="cccf.ma.model.ProductionModelInfo" table="productionmodel">  
+  
+    <id name="id" type="string" unsaved-value="null" >
+        <column name="pmid"  not-null="true"/>
+        <generator class="uuid.hex"/>
+    </id>
+    
+    <property name="model" type="string">
+         <column name="modelname"  not-null="true"/>
+     </property>
+     <property name="isMain" type="boolean">
+         <column name="ismain"  not-null="true"/>
+     </property>
+    <property name="name" type="string">
+         <column name="name"  not-null="false"/>
+     </property>
+    <property name="fullReport" type="string">
+         <column name="fullreport"  not-null="false"/>
+     </property>
+    <property name="report" type="string">
+         <column name="report"  not-null="false"/>
+     </property>
+    <property name="flowChart" type="string">
+         <column name="flowchart"  not-null="true"/>
+     </property>
+    <property name="characterForm" type="string">
+         <column name="characterform"  not-null="true"/>
+     </property>
+     <property name="pumperCcc" type="string">
+         <column name="pumperccc"  not-null="false"/>
+     </property>
+     <property name="productImg" type="string">
+         <column name="productimg"  not-null="false"/>
+     </property>
+  </class>   
+</hibernate-mapping>

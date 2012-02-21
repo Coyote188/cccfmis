@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?init class="dltax.oa.web.zk.MessagemanageWindowInit" arg0="messagemanageWindow"?>
+<window title="" border="normal" 
+	use="dltax.oa.web.zk.MessagemanageWindow"
+	xmlns:a="http://www.zkoss.org/2005/zk/annotation" id="messagemanageWindow"
+	xmlns="http://www.zkoss.org/2005/zul"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.zkoss.org/2005/zul
+	http://www.zkoss.org/2005/zul/zul.xsd"
+	width="100%"  sizable="true">
+	<groupbox id="gb"  mold="3d" width="400px">
+	  <caption label="查询   消息"/>
+	<hbox id="querybox">
+			
+ 		发件人:<combobox id="sendUser" model="@{sendUserList}"  width="100px">
+         <comboitem self="@{each=sendUser}"  label="@{sendUser.name}"  value="@{sendUser.id}"/>
+       </combobox><separator width="10px" /> 
+		
+ 		发送日期:<datebox id="sendDate" width="100px" format="yyyy-MM-dd"/><separator width="10px" /> 
+		
+		<button label="查询" image="/image/16/find.png"  forward="onSearch"/>
+	</hbox></groupbox>
+	<separator width="10px" />
+	
+	<a:bind model="messageInfoList" selectedItem="messagemanageWindow.messageInfo"/>
+    <listbox mold="paging" id="messageInfoListbox" width="100%" pageSize="15" checkmark="true" multiple="true" >
+		<listhead sizable="true" >
+					
+			<listheader sort="auto" label="消息类型" width="100px"/>
+					
+			<listheader sort="auto" label="发件人" width="100px"/>
+					
+			<listheader sort="auto" label="收件人" width="100px"/>
+					
+			<listheader sort="auto" label="发送日期" width="100px"/>
+					
+			<listheader sort="auto" label="消息内容" width="100px"/>
+					
+			<listheader sort="auto" label="阅读状态" width="100px"/>
+				
+		</listhead>
+			<a:bind _var="messageInfo"/>
+			<listitem value="@{messageInfo.id}">
+			
+			    <a:bind label="messageInfo.type"/>
+				<listcell/>
+				
+			    <a:bind label="messageInfo.sendUser.name"/>
+				<listcell/>
+				
+			    <a:bind label="messageInfo.receiveUser.name"/>
+				<listcell/>
+				
+			    <listcell label="@{messageInfo.sendDate,converter='com.aidi.core.zk.DateConverter'}"/>
+			    
+			    <a:bind label="messageInfo.content"/>
+				<listcell/>
+				
+			    <a:bind label="messageInfo.readStatus"/>
+				<listcell/>
+				
+			</listitem>
+	</listbox>
+	 
+	<separator width="10px" />
+	
+</window>

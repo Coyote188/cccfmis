@@ -1,0 +1,302 @@
+package cccf.ma.web.zk;
+
+import java.util.*;
+import java.util.regex.Pattern;
+import java.io.IOException;
+import java.io.InputStream;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
+import openjframework.service.*;
+import openjframework.util.ZkFileUtil;
+import openjframework.util.ZkUtils;
+import openjframework.web.zk.Encrypter;
+import openjframework.model.*;
+
+import org.zkforge.bwcaptcha.Captcha;
+import org.zkoss.util.media.Media;
+import org.zkoss.zk.ui.*;
+import org.zkoss.zul.*;
+import org.zkoss.zul.api.Fileupload;
+import org.zkoss.zk.ui.event.Event;
+import org.zkoss.zk.ui.event.EventListener;
+import org.zkoss.zk.ui.event.Events;
+import org.zkoss.zk.ui.event.ForwardEvent;
+import org.zkoss.zk.ui.event.InputEvent;
+import org.zkoss.zk.ui.event.SelectEvent;
+import org.zkoss.zk.ui.event.UploadEvent;
+import org.zkoss.zk.ui.util.GenericForwardComposer;
+
+import sun.reflect.generics.scope.ClassScope;
+
+import com.aidi.bpm.service.*;
+import com.aidi.core.spring.*;
+import com.aidi.core.zk.*;
+
+import cccf.ma.service.*;
+import cccf.ma.model.*;
+
+@SuppressWarnings( { "serial", "unused", "unchecked" })
+public class EnterpriseinfoWindow extends GenericForwardComposer {
+
+	public EnterpriseInfo enterprise;
+	public UserInfo user;
+	public List<LocationInfo> pList;
+	public List<LocationInfo> cList;
+	public List<StateInfo> sList;
+	public List<ProductCatalogueInfo> productList, selectProList;
+	String attachfilePath = "";
+
+	private Window enterpriseCreateWindow;
+	private Media media, media2;
+	private Captcha cap;
+	private Radiogroup rdgScale;
+	private Textbox capCode, password, password2, userNo, name, contactAddress,
+			contactPerson, telephoneNum, faxNum, emailAddress, txtFileName,
+			txtFileName2, tbxLocation, postalcode, userName;
+	private Button btnSubmit;
+	private Combobox cbxProvince, cbxCity, cbxState;
+	private Div divCbxLocation;
+	private Row rOption;
+	private Listbox lbxProductList;
+	private Bandbox bdProduct;
+
+	public void onClick$btnSubmit() throws InterruptedException {
+
+		validateData();
+		dataBinding();
+		if (EnterpriseInfoServiceUtil.isEnterpriseExist(enterprise.getName()))
+			throw new WrongValueException(name, "该企业信息已经存在!");
+		if (UserInfoServiceUtil.isExistByUsername(user.getUsername()))
+			throw new WrongValueException(userNo, "用户名已经存在，请重新输入!");
+		int reply = Messagebox.show("是否确认注册？", "提示", Messagebox.YES
+				| Messagebox.NO, Messagebox.QUESTION);
+		if (reply == Messagebox.YES) {
+			save();
+			onSelect();
+			enterpriseCreateWindow.detach();
+			Messagebox.show("注册成功，请等待激活！");
+		}
+	}
+
+	public void onSelect() {
+		Set<Listitem> list = lbxProductList.getSelectedItems();
+		for (Listitem item : list) {
+			ProductCatalogueInfo pro = (ProductCatalogueInfo) item.getValue();
+			EnterpriseOwnActivatedProductListInfo eOAP = new EnterpriseOwnActivatedProductListInfo();
+			eOAP.setEnterprise(enterprise);
+			eOAP.setProduct(pro);
+			eOAP.setActivateStatus(0);
+			eOAP.setApplydate(new Date());
+			EnterpriseOwnActivatedProductListInfoServiceUtil.create(eOAP);
+		}
+	}
+
+	private void save() {
+		UserInfoServiceUtil.create(user);
+		enterprise.setAccount(user);
+		attachfilePath = "/attachments/" + "enterprise" + "/"
+				+ enterprise.getName();
+		try {
+			if (ZkFileUtil.uploadFileWithoutMsg(media, attachfilePath, "营业执照_",
+					"upload")) {
+				if (media2 != null) {
+					ZkFileUtil.uploadFileWithoutMsg(media2, attachfilePath,
+							"组织机构代码证_", "upload");
+				}
+				enterprise.setCopyOfBusinessLicense(attachfilePath);
+				EnterpriseInfoServiceUtil.create(enterprise);
+			}
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+
+	private void dataBinding() {
+		String location = "";
+		String password = Encrypter.encrypt(this.password.getValue());
+		user.setPassword(password);
+		user.setType(1);
+
+		if (divCbxLocation.isVisible()) {
+			location = cbxProvince.getSelectedItem().getLabel().toString()
+					+ cbxCity.getSelectedItem().getLabel().toString();
+		} else {
+			location = tbxLocation.getText();
+		}
+		enterprise.setLocation(location);
+		enterprise.setState(cbxState.getSelectedItem().getLabel().toString());
+	}
+
+	public void onSelect$lbxProductList() {
+		Set<Listitem> list = lbxProductList.getSelectedItems();
+		String pName = "";
+		for (Listitem item : list) {
+			ProductCatalogueInfo pro = (ProductCatalogueInfo) item.getValue();
+			pName = pro.getProductName() + "," + pName;
+
+		}
+		bdProduct.setText(pName);
+	}
+
+	/**
+	 * Cancel this screen
+	 * 
+	 */
+	public void onClick$btnCancel() {
+		enterpriseCreateWindow.detach();
+	}
+
+	public void onSelect$cbxState() {
+		StateInfo state = (StateInfo) cbxState.getSelectedItem().getAttribute(
+				"stateInfo");
+		if (!state.getName().equals("中国")) {
+			tbxLocation.setVisible(true);
+			divCbxLocation.setVisible(false);
+			rOption.setVisible(false);
+		} else {
+			tbxLocation.setVisible(false);
+			divCbxLocation.setVisible(true);
+			pList = LocationInfoServiceUtil.getProvinceList();
+			ListModelList pListModel = new ListModelList(pList);
+			cbxProvince.setModel(pListModel);
+			rOption.setVisible(true);
+		}
+	}
+
+	public void onSelect$cbxProvince() {
+		LocationInfo province = (LocationInfo) cbxProvince.getSelectedItem()
+				.getAttribute("province");
+		List<LocationInfo> cList = LocationInfoServiceUtil
+				.getCityList(province);
+		ListModelList cityListModel = new ListModelList(cList);
+		cbxCity.setModel(cityListModel);
+	}
+
+	public void onUpload$btnUpload(UploadEvent event)
+			throws InterruptedException {
+		media = event.getMedia();
+		if ((media instanceof org.zkoss.image.Image)
+				|| (media.getFormat().toLowerCase().equals("pdf"))) {
+			txtFileName.setValue(media.getName());
+		} else {
+			Messagebox.show("文件有误: " + media, "Error", Messagebox.OK,
+					Messagebox.ERROR);
+		}
+	}
+
+	public void onUpload$btnUpload2(UploadEvent event)
+			throws InterruptedException {
+		media2 = event.getMedia();
+		if ((media2 instanceof org.zkoss.image.Image)
+				|| (media2.getFormat().toLowerCase().equals("pdf"))) {
+			txtFileName2.setValue(media2.getName());
+		} else {
+			Messagebox.show("文件有误: " + media, "Error", Messagebox.OK,
+					Messagebox.ERROR);
+		}
+	}
+
+	boolean verifyCaptcha() {
+		boolean is = false;
+		if (!cap.getValue().equalsIgnoreCase(capCode.getValue())) {
+			throw new WrongValueException(capCode, "验证码输入错误!");
+		} else {
+			is = true;
+		}
+		return is;
+	}
+
+	private boolean confirmPassword() {
+		return password.getValue().equals(password2.getValue());
+	}
+
+	void validateData() {
+		name.getValue();
+		bdProduct.getValue();
+		if (cbxState.getValue().contains("——")) {
+			throw new WrongValueException(cbxState, "请选择国家！");
+		}
+		if (divCbxLocation.isVisible()) {
+			if (cbxProvince.getValue().contains("——")
+					|| cbxCity.getValue().contains("——")) {
+				throw new WrongValueException(cbxCity, "请选择省和市！");
+			}
+		} else {
+			tbxLocation.getValue();
+		}
+		contactAddress.getValue();
+		contactPerson.getValue();
+		telephoneNum.getValue();
+		faxNum.getValue();
+		postalcode.getValue();
+		emailAddress.getValue();
+		txtFileName.getValue();
+		if (rOption.isVisible()) {
+			txtFileName2.getValue();
+		}
+		userNo.getValue();
+		password.getValue();
+		password2.getValue();
+		if (!confirmPassword()) {
+			throw new WrongValueException(password2, "两次输入密码不一致!");
+		}
+		userName.getValue();
+		verifyCaptcha();
+
+	}
+
+	private void changeCap() {
+		char[] capChars = { '0', '1', '2', '3', '4', '5', '6', '7', '8', '9',
+				'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l',
+				'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x',
+				'y', 'z' };
+		cap.setBgColor(0xffffff);
+		cap.setCaptchars(capChars);
+		cap.setLineColor(0xccffcc);
+	}
+
+	@Override
+	public void doAfterCompose(Component comp) throws Exception {
+		super.doAfterCompose(comp);
+		changeCap();
+		user = new UserInfo();
+		enterprise = new EnterpriseInfo();
+		sList = StateInfoServiceUtil.getAll();
+		pList = LocationInfoServiceUtil.getProvinceList();
+		productList = ProductCatalogueInfoServiceUtil.getLeafData();
+	}
+
+	public EnterpriseInfo getEnterprise() {
+		return enterprise;
+	}
+
+	public void setEnterprise(EnterpriseInfo enterprise) {
+		this.enterprise = enterprise;
+	}
+
+	public UserInfo getUser() {
+		return user;
+	}
+
+	public void setUser(UserInfo user) {
+		this.user = user;
+	}
+
+	public List<StateInfo> getSList() {
+		return sList;
+	}
+
+	public void setSList(List<StateInfo> list) {
+		sList = list;
+	}
+
+	public List<ProductCatalogueInfo> getProductList() {
+		return productList;
+	}
+
+	public void setProductList(List<ProductCatalogueInfo> productList) {
+		this.productList = productList;
+	}
+}

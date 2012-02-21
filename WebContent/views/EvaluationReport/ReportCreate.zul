@@ -1,0 +1,324 @@
+<?page title="评定报告编制" contentType="text/html;charset=UTF-8"?>
+<?init class="org.zkoss.zkplus.databind.AnnotateDataBinderInit" arg0="./ReportWin"?>
+<window closable="true" height="100%" width="100%" title="评定报告编制" border="normal" id="ReportWin"
+	apply="cccf.mis.web.tsak.evaluation.ReportController">
+	<vlayout hflex="true" vflex="true" style="overflow:auto;">
+		<groupbox mold="3d" closable="false">
+			<caption image="/res/icons/page.png" label="申请企业信息"></caption>
+			<grid>
+				<columns>
+					<column></column>
+					<column></column>
+					<column></column>
+					<column></column>
+				</columns>
+				<rows>
+					<row>
+						<label value="申请企业"></label>
+						<label value="${applyEnt.name}"></label>
+						<label value="专真"></label>
+						<label value="${applyEnt.faxNum}"></label>
+					</row>
+					<row>
+						<label value="联系人"></label>
+						<label value="${applyEnt.contactPerson}"></label>
+						<label value="联系电话"></label>
+						<label value="${applyEnt.telephoneNum}"></label>
+					</row>
+					<row>
+						<label value="通讯地址"></label>
+						<label value="${applyEnt.contactAddress}"></label>
+						<label value="邮政编码"></label>
+						<label value="${applyEnt.postalcode}"></label>
+					</row>
+					<row>
+						<label value="企业英文名"></label>
+						<label value="${applyEnt.nameEn}"></label>
+						<label value="企业英文地址"></label>
+						<label value="${applyEnt.contactAddressEn}"></label>
+					</row>
+				</rows>
+			</grid>
+		</groupbox>
+		<listbox id="lb_products"  checkmark="true" multiple="true">
+			<auxhead>
+				<auxheader colspan="9" image="/res/icons/page.png" label="申请认证产品"></auxheader>
+			</auxhead>
+			<listhead>
+				<listheader label="序号" width="60px"></listheader>
+				<listheader label="产品名称"></listheader>
+				<listheader label="主/分型" width="60px"></listheader>
+				<listheader label="规格型号"></listheader>
+				<listheader label="产品描述"></listheader>
+				<listheader label="生产厂-制造商"></listheader>				 
+				<listheader label="执行示准"></listheader>
+				<listheader label="认证规则"></listheader>
+				<listheader label="相关链接"></listheader>
+			</listhead>
+			<listitem height="26px" forEach="${products}" value="${each.id}">
+				<custom-attributes isMainModel="${each.isMainModel}" />
+				<listcell>
+					<label value="${each.sn}"></label>
+				</listcell>
+				<listcell>
+					<label value="${each.productName}"></label>
+				</listcell>
+				<listcell>
+					<label value="${each.isMainModel_label}"></label>
+				</listcell>
+				<listcell>
+					<label value="${each.specification}"></label>
+				</listcell>
+				<listcell>
+					<label value="${each.characterization}"></label>
+				</listcell>
+				<listcell>
+					<label value="${each.manufactureInfo_name}"></label>
+					<label value="-"></label>
+					<label value="${each.productionEnterpriseName}"></label>
+					<label value="地止:"></label>
+					<label value="${each.registeredAddress}"></label>					
+				</listcell>
+				<listcell>
+					<label value="${each.observedStandard}"></label>
+				</listcell>
+				<listcell>
+					<label value="${each.caRule}"></label>
+				</listcell>
+				<listcell>
+					<groupbox mold="3d" open="false">
+						<caption image="/res/icons/folder_link.png" label="打开"></caption>
+						<vbox>
+							<toolbarbutton forward="onOpenApply" image="/res/icons/attach.png" style="color:blue;"
+								label="申请信息[${each.applyno}]">
+								<custom-attributes applyno="${each.applyno}"/>
+							</toolbarbutton>
+							<toolbarbutton forward="onOpenSurvey" image="/res/icons/attach.png" style="color:blue;" label="检验报告[${each.surveyReportSN}]">
+								<custom-attributes survey="${each.surveyReportSN}"/>
+							</toolbarbutton>
+							<toolbarbutton  forward="onOpenContract" image="/res/icons/attach.png" style="color:blue;" label="合同[${applyEnt.contractNo}]">
+								<custom-attributes contract="${applyEnt.contractNo}" />
+							</toolbarbutton>
+							<toolbarbutton image="/res/icons/attach.png" label="[工厂检查]"></toolbarbutton>
+							<toolbarbutton image="/res/icons/attach.png" label="[证书编号]"></toolbarbutton>
+						</vbox>
+					</groupbox>
+				</listcell>
+			</listitem>
+
+		</listbox>
+		<grid>
+			<auxhead>
+				<auxheader colspan="4" image="/res/icons/page.png" label="审核意见"></auxheader>
+			</auxhead>
+			<columns>
+				<column label="证书有效期"></column>
+				<column label="企业人数代码s"></column>
+				<column label="建议操作"></column>
+				<column label="备注"></column>
+			</columns>
+			<rows>
+				<row height="26px">
+					<cell>
+						<label value="-"></label>
+					</cell>
+					<cell>
+						<label value="-"></label>
+					</cell>
+					<cell>
+						<label value="-"></label>
+					</cell>
+					<cell>
+						<label value="-"></label>
+					</cell>
+				</row>
+			</rows>
+		</grid>
+		<grid>
+			<auxhead>
+				<auxheader colspan="6" image="/res/icons/page.png" label="评定信息"></auxheader>
+			</auxhead>
+			<columns>
+				<column label="评定阶段"></column>
+				<column label="评定人员"></column>
+				<column label="结论"></column>
+				<column label="评定日期"></column>
+				<column label="意见"></column>
+				<column label="备注"></column>
+			</columns>
+			<rows>
+				<row height="26px">
+					<cell>
+						<label value="生成"></label>
+					</cell>
+					<cell>
+						<label value="-"></label>
+					</cell>
+					<cell>
+						<label value="-"></label>
+					</cell>
+					<cell>
+						<label value="-"></label>
+					</cell>
+					<cell>
+						<label value="-"></label>
+					</cell>
+					<cell>
+						<label value="-"></label>
+					</cell>
+				</row>
+				<row height="26px">
+					<cell>
+						<label value="初评"></label>
+					</cell>
+					<cell>
+						<label value="-"></label>
+					</cell>
+					<cell>
+						<label value="-"></label>
+					</cell>
+					<cell>
+						<label value="-"></label>
+					</cell>
+					<cell>
+						<label value="-"></label>
+					</cell>
+					<cell>
+						<label value="-"></label>
+					</cell>
+				</row>
+				<row height="26px">
+					<cell>
+						<label value="复评"></label>
+					</cell>
+					<cell>
+						<label value="-"></label>
+					</cell>
+					<cell>
+						<label value="-"></label>
+					</cell>
+					<cell>
+						<label value="-"></label>
+					</cell>
+					<cell>
+						<label value="-"></label>
+					</cell>
+					<cell>
+						<label value="-"></label>
+					</cell>
+				</row>
+				<row height="26px">
+					<cell>
+						<label value="评定"></label>
+					</cell>
+					<cell>
+						<label value="-"></label>
+					</cell>
+					<cell>
+						<label value="-"></label>
+					</cell>
+					<cell>
+						<label value="-"></label>
+					</cell>
+					<cell>
+						<label value="-"></label>
+					</cell>
+					<cell>
+						<label value="-"></label>
+					</cell>
+				</row>
+			</rows>
+		</grid>
+		<groupbox mold="3d" closable="false">
+			<caption image="/res/icons/page.png" label="操作信息"></caption>
+			<grid>
+				<columns>
+					<column></column>
+					<column></column>
+					<column></column>
+					<column></column>
+				</columns>
+				<rows>
+					<row>
+						<cell>
+							<label value="证书有效期"></label>
+						</cell>
+						<cell>
+							<listbox id="limitLbx" mold="select">
+								<listitem label="无" />
+								<listitem label="三年" selected="true" />
+								<listitem label="五年" />
+								<listitem label="原证书数截止日期" />
+							</listbox>
+						</cell>
+						<cell>
+							<label value="企业人数代码"></label>
+						</cell>
+						<cell>
+							<listbox id="noLbx" mold="select">
+								<listitem label="L" selected="true" />
+								<listitem label="S" />
+								<listitem label="M" />
+							</listbox>
+						</cell>
+					</row>
+					<row>
+						<cell>
+							<label value="操作类型"></label>
+						</cell>
+						<cell colspan="3">
+							<radiogroup id="optypeRgp" forward="onCheck=onCheckOperateType">
+								<radio label="发证" />
+								<radio label="发通知" selected="true" />
+							</radiogroup>
+						</cell>
+					</row>
+					<row>
+						<cell>
+							<label value="生成人意见"></label>
+						</cell>
+						<cell colspan="3">
+							<textbox id="opinionTbx" rows="2" hflex="true"></textbox>
+						</cell>
+					</row>
+					<row>
+						<cell>
+							<label value="备注"></label>
+						</cell>
+						<cell colspan="3">
+							<textbox id="tb_memo" hflex="true" rows="3" multiline="true"></textbox>
+						</cell>
+					</row>
+				</rows>
+			</grid>
+		</groupbox>
+		<include src="/views/public/processlog.zul?sioid=${arg.apply.applyno}"></include>
+		<grid id="appoveGrid">
+			<columns>
+				<column width="100px" align="left"></column>
+				<column></column>
+			</columns>
+			<rows>
+				<row>
+					<label value="下一步:"></label>
+					<cell>
+
+						<button image="/res/icons/accept.png" mold="trendy" label="提交" width="68px" id="btSubmit" height="26px"
+							forward="onSubmit" />
+					</cell>
+				</row>
+				<row visible="false">
+					<label value="下一步:" />
+					<listbox id="resultListbox" mold="select" rows="1" width="200">
+
+					</listbox>
+				</row>
+				<row visible="false">
+					<label value="备注:" />
+					<textbox id="approveMemo" rows="4" hflex="true" />
+				</row>
+			</rows>
+		</grid>
+		
+	</vlayout>
+</window>

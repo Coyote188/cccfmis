@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping SYSTEM "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+<hibernate-mapping>
+  <class name="cccf.ma.model.CommentItemInfo" table="commentitem">  
+  
+    <id name="id" type="string" unsaved-value="null" >
+        <column name="cid"  not-null="true"/>
+        <generator class="uuid.hex"/>
+    </id>
+    <property name="title" type="string">
+         <column name="title"  not-null="true"/>
+     </property>
+    <property name="content" type="string">
+         <column name="content"  not-null="true"/>
+     </property>
+    <property name="createdTime" type="java.util.Date">
+         <column name="createdTime"  not-null="true"/>
+     </property>
+    <many-to-one name="user" column="uid" lazy="false"/> 
+  </class>   
+</hibernate-mapping>

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping SYSTEM "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+<hibernate-mapping>
+  <class name="cccf.ma.model.EnterpriseUserInfo" table="EUSER">  
+  
+    <id name="id" type="string" unsaved-value="null" >
+        <column name="uId"  not-null="true"/>
+        <generator class="uuid.hex"/>
+    </id>
+    
+    <property name="username" type="string">
+         <column name="USERNAME"  not-null="false"/>
+     </property>
+    <property name="password" type="string">
+         <column name="PASSWORD"  not-null="false"/>
+     </property>
+    <property generated="never" lazy="false" name="accountStatus">
+	   <column name="ACCOUNTSTATUS"/>
+	   <type name="org.hibernate.type.EnumType">
+	    <param name="type">12</param>
+	    <param name="enumClass">cccf.myenum.AccountStatus</param>
+	   </type>
+	 </property>
+     <many-to-one name="enterpriseProfile" column="EPROFILE" lazy="false"
+       class="cccf.ma.model.EnterpriseProfileInfo" 
+      unique="true"/>    
+  </class>   
+</hibernate-mapping>

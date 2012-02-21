@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?init class="cccf.ma.web.zk.EnterprisemanageWindowInit" arg0="enterpriseEditWindow"?>
+<window use="cccf.ma.web.zk.EnterprisemanageWindow"
+	xmlns:a="http://www.zkoss.org/2005/zk/annotation"
+	id="enterpriseEditWindow" xmlns="http://www.zkoss.org/2005/zul"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.zkoss.org/2005/zul
+	http://www.zkoss.org/2005/zul/zul.xsd"
+	width="100%">
+	<vbox>
+		<groupbox mold="3d">
+			<caption label="企业信息维护" onClick="" />
+			<grid id="grdEditEnterpriseInfo" style="border:0">
+				<columns>
+					<column width="15%" />
+					<column width="35%" />
+					<column width="15%" />
+					<column width="35%" />
+				</columns>
+				<rows>
+					<row id="rEName">
+						企业名称:
+						<a:bind value="enterprise.name" />
+						<label id="name" />
+						企业名称(英文)
+						<a:bind value="enterprise.name" />
+						<label id="nameEn" />
+					</row>
+					<row id="rEState">
+						国家:
+						<a:bind value="enterprise.state" />
+						<label id="state" />
+						地区:
+						<a:bind value="enterprise.location" />
+						<label id="location" />
+					</row>
+					<row id="rELocation">
+						组织机构代码:
+						<a:bind value="enterprise.organizationCode" />
+						<label id="organizationCode" />
+						组织性质代码:
+						<a:bind value="enterprise.organizationNature" />
+						<label id="organizationNature" />
+					</row>
+
+					<row id="rLegal">
+						法人:
+						<a:bind value="enterprise.legalPerson" />
+						<label id="legalPerson" />
+						法人(英文):
+						<a:bind value="enterprise.legalPersonEn" />
+						<label id="legalPersonEn" />
+					</row>
+					<row id="rLegalAdd">
+						法人:
+						<a:bind value="enterprise.contactAddForLegal" />
+						<label id="contactAddForLegal" />
+						法人(英文):
+						<a:bind value="enterprise.contactAddForLegalEn" />
+						<label id="contactAddForLegalEn" />
+					</row>
+					<row id="rtelForLegal">
+						法人电话:
+						<a:bind value="enterprise.telForLegal" />
+						<label id="telForLegal" />
+						法人手机:
+						<a:bind value="enterprise.mobileForLegal" />
+						<label id="mobileForLegal" />
+					</row>
+					<row id="rregisteredAddress">
+						注册地址:
+						<a:bind value="enterprise.registeredAddress" />
+						<label id="registeredAddress" />
+						注册地址(英文):
+						<a:bind value="enterprise.registeredAddressEn" />
+						<label id="registeredAddressEn" />
+					</row>
+					<row>
+						注册资金:
+						<a:bind value="enterprise.registeredCapital" />
+						<label id="registeredCapital" />
+						企业规模:
+						<a:bind value="enterprise.scaleName" />
+						<label id="scale" />
+					</row>
+
+					<row id="rECAdd">
+						通信地址:
+						<a:bind value="enterprise.contactAddress" />
+						<label id="contactAddress" />
+						通信地址:
+						<a:bind value="enterprise.contactAddressEn" />
+						<label id="contactAddressEn" />
+					</row>
+					<row id="rECPerson">
+						联系人:
+						<a:bind value="enterprise.contactPerson" />
+						<label id="contactPerson" />
+						联系人(英文):
+						<a:bind value="enterprise.contactPersonEn" />
+						<label id="contactPersonEn" />
+					</row>
+					<row id="rETel">
+						联系电话:
+						<a:bind value="enterprise.telephoneNum" />
+						<label id="telephoneNum" />
+						手机:
+						<a:bind value="enterprise.mobileNum" />
+						<label id="mobileNum" />
+					</row>
+					<row id="rEFax">
+						传真:
+						<a:bind value="enterprise.faxNum" />
+						<label id="faxNum" />
+						邮政编码:
+						<a:bind value="enterprise.postalcode" />
+						<label id="postalcode" />
+					</row>
+					<row>
+
+					</row>
+					<row>
+						邮件地址:
+						<a:bind value="enterprise.emailAddress" />
+						<label id="emailAddress" />
+						企业网站:
+						<a:bind value="enterprise.webAddress" />
+						<label id="webAddress" multiline="true" />
+					</row>
+
+				</rows>
+			</grid>
+			<grid style="border:0">
+				<columns>
+					<column width="15%" />
+					<column width="85%" />
+				</columns>
+				<rows>
+					<row id="rEnterpriseScale">
+						经营范围:
+						<a:bind value="enterprise.businessScope" />
+						<label id="businessScope" multiline="true" />
+					</row>
+					<row visible="false">
+						企业简介:
+						<a:bind value="enterprise.note" />
+						<label id="note" />
+					</row>
+					<row>
+						<space />
+						<div align="center">
+						<hbox align="center">
+							<button id="btnModify" label="修改" width="70px"
+								height="28px" style="null" forward="onModify" visible="true" />
+<!--								onClick="btnCancel.setVisible(true);" />-->
+							<button id="btnSubmit" label="保存" width="70px"
+								height="28px" style="null" forward="onSave" disabled="true"
+								visible="false" />
+							<button id="btnCancel" label="取消" width="70px"
+								height="28px" style="null" forward="onCancel" visible="false"
+								onClick="btnSubmit.setVisible(false);btnModify.setVisible(true);self.setVisible(false);" />
+						</hbox>
+						</div>
+					</row>
+					<row>
+						<label value="附件" />
+							<grid id="grdFileList" style="border:0" height="auto"
+								width="100%">
+								<auxhead height="6px">
+									<auxheader colspan="8" label="企业文件列表"
+										style="font-size:10" />
+									<auxheader colspan="2">
+										<fileupload
+											forward="onUpload=EnterprisemanageWindow.onAttachUpload"
+											label="上传" height="26px" />
+									</auxheader>
+								</auxhead>
+								<columns />
+							</grid>
+					</row>
+				</rows>
+			</grid>
+		</groupbox>
+	</vbox>
+</window>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping SYSTEM "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+<hibernate-mapping>
+	<class name="cccf.ma.model.AssignBatch" table="tb_assignbatch"> 
+		<id name="id" type="string" unsaved-value="null" length="36">
+			<column name="id" not-null="true" />
+			<generator class="uuid.hex" />
+		</id> 
+		<property name="batchNo" length="40" /> 
+		<property name="batchName" />
+		<property name="createrId" length="40" />
+		<property name="createDate" />
+		<property name="productCount" />  
+		<property name="status" /> 
+		<property name="memo" /> 
+	</class>
+</hibernate-mapping>

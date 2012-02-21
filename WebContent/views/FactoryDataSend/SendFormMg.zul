@@ -1,0 +1,63 @@
+<?page title="质保能力表维护" contentType="text/html;charset=UTF-8"?>
+<window height="100%" width="100%" title="质保能力表维护" border="normal"
+	apply="cccf.mis.web.tsak.factory.datasend.DataSendMgController">
+	<vlayout style="overflow:auto;" vflex="true" hflex="true">
+		<grid>
+			<auxhead>
+				<auxheader colspan="8" label="工厂质保能力审查检查表"></auxheader>
+			</auxhead>
+			<columns>
+				<column label="序号" width="80px"></column>
+				<column label="检查项目" width="100px"></column>
+				<column label="检查要求"></column>
+				<column label="符合" width="60px"></column>
+				<column label="不符合" width="60px"></column>
+				<column label="问题描述"></column>
+				<column label="发生地点"></column>
+				<column label="严重程度"></column>
+			</columns>
+			<rows>
+				<row spans="1,1,6">
+					<cell>
+						<label value="1.1"></label>
+					</cell>
+					<cell>
+						<label value="职  责"></label>
+					</cell>
+					<cell>
+						<grid style="border:0px">
+							<columns>
+								<column></column>
+								<column width="60px"></column>
+								<column width="60px"></column>
+								<column></column>
+								<column></column>
+								<column></column>
+							</columns>
+							<rows>
+								<row>
+									<cell>1</cell>
+									<cell>2</cell>
+									<cell>3</cell>
+									<cell>4</cell>
+									<cell>5</cell>
+									<cell>6</cell>
+								</row>
+							</rows>
+							<foot>
+								<footer>
+									<button forward="onAddNode" mold="trendy" label="新增"></button>
+								</footer>
+							</foot>
+						</grid>
+					</cell>
+				</row>
+			</rows>
+			<foot>
+				<footer>
+					<button forward="onAddType" mold="trendy" label="新增"></button>
+				</footer>
+			</foot>
+		</grid>
+	</vlayout>
+</window>

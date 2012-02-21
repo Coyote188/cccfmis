@@ -1,0 +1,379 @@
+package openjframework.web.zk;
+
+import java.text.SimpleDateFormat;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import openjframework.InstantMessage.UserListData;
+import openjframework.model.MessageInfo;
+import openjframework.model.UserInfo;
+import openjframework.model.UserLogInfo;
+import openjframework.service.MessageInfoServiceUtil;
+import openjframework.service.UserInfoServiceUtil;
+import openjframework.service.UserLogInfoServiceUtil;
+
+import org.zkoss.zk.ui.Component;
+import org.zkoss.zk.ui.Executions;
+import org.zkoss.zk.ui.Sessions;
+import org.zkoss.zk.ui.SuspendNotAllowedException;
+import org.zkoss.zk.ui.WrongValueException;
+import org.zkoss.zk.ui.event.Event;
+import org.zkoss.zk.ui.event.EventListener;
+import org.zkoss.zk.ui.event.EventQueues;
+import org.zkoss.zk.ui.event.ForwardEvent;
+import org.zkoss.zk.ui.sys.SessionCtrl;
+import org.zkoss.zk.ui.util.GenericForwardComposer;
+import org.zkoss.zul.Div;
+import org.zkoss.zul.Label;
+import org.zkoss.zul.Messagebox;
+import org.zkoss.zul.Panel;
+import org.zkoss.zul.Popup;
+import org.zkoss.zul.Tab;
+import org.zkoss.zul.Tabbox;
+import org.zkoss.zul.Tabpanel;
+import org.zkoss.zul.Tabpanels;
+import org.zkoss.zul.Tabs;
+import org.zkoss.zul.Textbox;
+import org.zkoss.zul.Toolbarbutton;
+import org.zkoss.zul.Window;
+
+import cccf.ma.model.CommonTreatyInfo;
+import cccf.ma.model.EnterpriseInfo;
+import cccf.ma.service.CommonTreatyInfoServiceUtil;
+import cccf.ma.service.EnterpriseInfoServiceUtil;
+import cccf.ma.service.EnterpriseNoticeInfoServiceUtil;
+
+public class IndexEnterpriseController extends GenericForwardComposer {
+	private static final long serialVersionUID = -3801962286418473844L;
+	private Toolbarbutton actiTob;
+	private EnterpriseInfo enterprise;
+	private Toolbarbutton msgimg,btnMailBox;
+	private Window Indexwindow,frmManufature;
+	private Tabbox epCTbx;
+	private Div mytaskPanel;
+	private Popup msgpop;
+	private Label usermsg;
+	private Label subject;
+	private Textbox content;
+	private Panel jhPanel;
+	private Label lastlogtime;
+	private Label lastlogip;
+	
+	Map param = new HashMap();
+
+	@Override
+	public void doAfterCompose(Component comp) throws Exception {
+		super.doAfterCompose(comp);
+
+		enterprise = EnterpriseInfoServiceUtil.getCurrentEnterprise();
+
+		UserInfo user = UserInfoServiceUtil.getCurrentLoginUser();
+		// 有新Message消息监听
+		if(!MessageInfoServiceUtil.findMessage(0, user).isEmpty())
+			msgimg.setVisible(true);
+		// Listener for incoming messages ( scope=APPLICATION )
+		EventQueues.lookup(user.getId() + "msgEventQueue",
+				EventQueues.APPLICATION, true).subscribe(new EventListener() {
+			@Override
+			public void onEvent(Event event) throws Exception {
+				MessageInfo msg = (MessageInfo) event.getData();
+				msgimg.setVisible(true);
+				page.setVariable("msgInfo", msg);
+
+				// 弹出显示消息的Popup窗口
+				usermsg.setValue("来自[" + msg.getSendUser().getName() + "]的消息");
+				subject.setValue(msg.getSubject());
+				content.setValue(msg.getContent());
+				msgpop.open(msgimg, "after_end");
+
+				msg.setReadStatus(1);
+				MessageInfoServiceUtil.update(msg);
+
+				if (msg.getType() == 1) {
+					// 刷新mytask_list
+					Window win = (Window) mytaskPanel.getFirstChild();
+					mytaskPanel.removeChild(win);
+					Window objWindow = (Window) Executions.createComponents(
+							"mytask_list_enterprise.zul", null, null);
+					objWindow.setParent(mytaskPanel);
+					objWindow.doEmbedded();
+				}
+			}
+		});
+		//listener of notice
+		EventQueues.lookup(user.getId() + "noticeEventQueue",
+				EventQueues.APPLICATION, true).subscribe(new EventListener() {
+			@Override
+			public void onEvent(Event event) throws Exception {
+				btnMailBox.setImage("/image/common/new.gif");
+			}
+		});
+		if (!EnterpriseNoticeInfoServiceUtil.isEnterpriseHasUnreadNotice(enterprise)) {
+			btnMailBox.setImage("/image/common/new.gif");
+		}
+
+		// 上次登录信息
+		UserLogInfo lastLog = UserLogInfoServiceUtil.getUserLastLoginLog(user
+				.getId());
+		if (lastLog != null) {
+			SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm");
+			String str1 = sdf.format(lastLog.getLogDate());
+			lastlogtime.setValue(str1);
+			lastlogip.setValue(lastLog.getIpAddr());
+		}
+
+	}
+
+	/**
+	 * 产品激活
+	 * 
+	 * @param event
+	 * @throws InterruptedException
+	 * @throws SuspendNotAllowedException
+	 */
+	@SuppressWarnings("unchecked")
+	public void onClick$actiTob(ForwardEvent event) throws SuspendNotAllowedException,
+			InterruptedException {
+
+		if (!getActivedStatus()) {
+			return;
+		}
+
+		// 得到最新一条产品激活协议
+		CommonTreatyInfo productTreaty = CommonTreatyInfoServiceUtil
+				.getNewestofProtocol(1);
+		if (productTreaty == null) {
+			throw new WrongValueException("未找到有效地协议,请联系评定中心人员!");
+			// 可以扩展增加发送消息到评定中心
+
+		} else {
+			param.put("cott", productTreaty);
+//			Window objWindow = (Window) Executions.createComponents(
+//					"treaty_frame.zul", null, param);
+//			objWindow.setPosition("center");
+//			objWindow.doModal();
+			String tabname=((Toolbarbutton)event.getOrigin().getTarget()).getLabel();
+			openEmbedWindow(tabname,"/SysForm/commontreaty.zul",param);
+//			Window obj = (Window) Executions.createComponents("/SysForm/commontreaty.zul", null, param);
+//			try {
+//				obj.doModal();
+//			} catch (Exception e) {
+//				// TODO: handle exception
+//			}
+		}
+
+	}
+
+	/**
+	 * 已激活产品
+	 * 
+	 * @throws SuspendNotAllowedException
+	 * @throws InterruptedException
+	 */
+	public void onClick$actdTob(ForwardEvent event) throws SuspendNotAllowedException,
+			InterruptedException {
+
+		if (!getActivedStatus()) {
+			return;
+		}
+
+//		Window objWindow = (Window) Executions.createComponents(
+//				"enterpriseofproductcatalogue.zul", null, null);
+//		objWindow.setPosition("center");
+//		objWindow.doModal();
+		String tabname=((Toolbarbutton)event.getOrigin().getTarget()).getLabel();
+		openEmbedWindow(tabname,"enterpriseofproductcatalogue.zul",null);
+	}
+
+	public void onClick$madeTob(ForwardEvent event) throws SuspendNotAllowedException,
+			InterruptedException {
+
+		if (!getActivedStatus()) {
+			return;
+		}
+		
+		String tabname=((Toolbarbutton)event.getOrigin().getTarget()).getLabel();
+		openEmbedWindow(tabname,"enterpriseprofile-outerform.zul",null);
+	}
+	/****************************打开嵌入的窗口begin**************************************/
+	public void openEmbedWindow(String title,String url,Map param)
+	{
+		if(findTab(title)==-1)
+			createTabWithTabpanel(title,url,param);
+		else
+		{
+			epCTbx.setSelectedIndex(findTab(title));
+			Tabpanel tp = epCTbx.getSelectedPanel();
+			if (tp != null)
+				tp.removeChild(tp.getFirstChild());
+			Window objWindow = (Window) Executions
+					.createComponents(url,
+							null, param);
+			objWindow.setParent(tp);
+			objWindow.setContentStyle("overflow:auto;");
+			objWindow.doEmbedded();
+			}
+	}
+	public int findTab(String tabname)
+	{
+		int i=-1;
+		Tabs tbs=epCTbx.getTabs();
+		List<Tab> tabs = tbs.getChildren();
+		for (Tab t : tabs) {
+			if (tabname.equals(t.getLabel())) {
+				i = t.getIndex();
+				break;
+			}
+		}
+		return i;
+	}
+	public void createTabWithTabpanel(String tabname,String url,Map param)
+	{
+		Tab t = new Tab();
+		t.setLabel(tabname);
+		t.setClosable(true);
+		epCTbx.getTabs().appendChild(t);
+		Tabpanels tps = epCTbx.getTabpanels();
+		Tabpanel tp = new Tabpanel();
+		tp.setStyle("overflow:auto");
+		tps.appendChild(tp);
+		Window objWindow = (Window) Executions
+				.createComponents(url,null, param);
+		objWindow.setContentStyle("overflow:auto;");
+		objWindow.setParent(tp);
+		objWindow.doEmbedded();
+		epCTbx.setSelectedTab(t);
+	}
+	/***************************打开嵌入的窗口End*******************************/
+	public void onClick$btnMailBox(){
+		if (!getActivedStatus()) {
+			return;
+		}
+		try {
+			btnMailBox.setImage("/image/files/message.png");
+			Window objWindow = (Window) Executions.createComponents(
+					"/SysForm/EnterpriseNotice/notice-form.zul", null, null);
+			objWindow.doModal();
+		} catch (SuspendNotAllowedException e) {
+			e.printStackTrace();
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public void onClick$Pmsg(){
+		try {
+			Window objWindow = (Window) Executions.createComponents(
+					"/SysForm/message-form.zul", null, null);
+			objWindow.doModal();
+		} catch (SuspendNotAllowedException e) {
+			e.printStackTrace();
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+	}
+
+	public void onClick$infoTob(ForwardEvent event) throws SuspendNotAllowedException,
+			InterruptedException {
+
+		if (!getActivedStatus()) {
+			return;
+		}
+
+//		Window enterpriseEditWindow = (Window) Executions.createComponents(
+//				"enterprise-manage.zul", null, null);
+//		enterpriseEditWindow.doModal();
+		
+		String tabname=((Toolbarbutton)event.getOrigin().getTarget()).getLabel();
+		openEmbedWindow(tabname,"enterprise-manage.zul",null);
+	}
+
+	public void onClick$prodTob(ForwardEvent event) throws SuspendNotAllowedException,
+			InterruptedException {
+
+		if (!getActivedStatus()) {
+			return;
+		}
+
+//		Window frmProductionEnterprise = (Window) Executions.createComponents(
+//				"productionEnterprise-manage.zul", null, null);
+//		frmProductionEnterprise.doModal();
+		
+		String tabname=((Toolbarbutton)event.getOrigin().getTarget()).getLabel();
+		openEmbedWindow(tabname,"enterpriseprofile-outerform2.zul",null);
+
+	}
+
+	/**
+	 * 修改密码
+	 * 
+	 * @throws SuspendNotAllowedException
+	 * @throws InterruptedException
+	 */
+	public void onClick$modifyBtn(Event event)
+			throws SuspendNotAllowedException, InterruptedException {
+		Window objWindow = (Window) Executions.createComponents(
+				"modifypassword.zul", null, null);
+		objWindow.doModal();
+	}
+
+	/**
+	 * 退出系统
+	 * 
+	 * @param event
+	 */
+	public void onClick$logoutBtn(Event event) {
+		UserInfo user = UserInfoServiceUtil.getCurrentLoginUser();
+		if (sessionScope.containsKey("login_name")) {
+			String name = (String) sessionScope.get("login_name");
+			// 设置当前用户为离线
+			UserListData.getInstance().updateUser(user,0);
+			sessionScope.remove("login_name");
+			EventQueues.lookup("userList", EventQueues.APPLICATION, false)
+					.publish(new Event("loginOut"));
+			EventQueues.lookup("chatRoomChannel", EventQueues.APPLICATION,
+					false).publish(new Event("loginOut"));
+		}
+
+		((SessionCtrl) Sessions.getCurrent()).invalidateNow();
+		Sessions.getCurrent(true);// 必须重建session
+
+		Executions.sendRedirect("/login.zul");
+	}
+
+	public boolean getActivedStatus() {
+		boolean isActied = false;
+		if (enterprise.getStatus() == 0) {
+			try {
+				Messagebox.show("企业账号还未激活,不能使用该项功能!", "操作提示", Messagebox.OK,
+						Messagebox.ERROR);
+				isActied = false;
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		} else {
+			isActied = true;
+		}
+
+		return isActied;
+	}
+
+	
+	//
+	public void onClick$execTob(ForwardEvent event) throws SuspendNotAllowedException,
+			InterruptedException {
+
+		if (!getActivedStatus()) {
+			return;
+		}
+
+//		Window applicationWindow = (Window) Executions.createComponents(
+//				"application-apply.zul", null, null);
+//		applicationWindow.doModal();
+		String tabname=((Toolbarbutton)event.getOrigin().getTarget()).getLabel();
+		openEmbedWindow(tabname,"application-apply.zul",null);
+	}
+
+}

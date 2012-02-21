@@ -1,0 +1,77 @@
+<?page title="new page title" contentType="text/html;charset=UTF-8"?>
+<zk>
+	<window title="上传文档..." border="normal" id="frmUploader"
+		width="400px" closable="true">
+		<style>
+			tr.z-row td.z-row-inner { background: white; border: 0; }
+		</style>
+		<vbox align="start">
+			<grid id="grdUploader" style="border:0">
+				<columns>
+					<column width="70%" />
+					<column width="30%" />
+				</columns>
+				<rows>
+					<row>
+						<hbox>
+							<label value="*" style="color:#FF0000" />
+							<label value="企业营业执照副本复印件" />
+						</hbox>
+						<fileupload label="上传..." height="20px" />
+					</row>
+					<row>
+						<hbox>
+							<label value="*" style="color:#FF0000" />
+							<label value="企业组织机构代码证复印件" />
+						</hbox>
+
+						<fileupload label="上传..." height="20px" />
+					</row>
+					<row>
+						<hbox>
+							<label value="*" style="color:#FF0000" />
+							<label value="产品检验设备清单" />
+						</hbox>
+
+						<fileupload label="上传..." height="20px" />
+					</row>
+					<row>
+						<hbox>
+							<label value="*" style="color:#FF0000" />
+							<label value="企业生产配置平面图" />
+						</hbox>
+
+						<fileupload label="上传..." height="20px" />
+					</row>
+					<row>
+						<hbox>
+							<label value="*" style="color:#FF0000" />
+							<label value="产品商标注册证明" />
+						</hbox>
+
+						<fileupload label="上传..." height="20px" />
+					</row>
+					<row>
+						<hbox>
+							<label value="*" style="color:#FF0000" />
+							<label value="《质量手册》和《程序文件》" />
+						</hbox>
+
+						<fileupload label="上传..." height="20px" />
+					</row>
+					<row>
+						<hbox>
+							<label value="*" style="color:#FF0000" />
+							<label value="原产品认证证书复印件" />
+						</hbox>
+
+						<fileupload label="上传..." height="20px" />
+					</row>
+				</rows>
+			</grid>
+			<div align="center">
+				<button id="btnSubmit" label="提交" width="68px" height="28px" />
+			</div>
+		</vbox>
+	</window>
+</zk>

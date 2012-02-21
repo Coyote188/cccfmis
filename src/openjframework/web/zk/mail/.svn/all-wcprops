@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/dlyhc.cccfmis/!svn/ver/344/trunk/src/openjframework/web/zk/mail
+END
+MailUtil.java
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/dlyhc.cccfmis/!svn/ver/328/trunk/src/openjframework/web/zk/mail/MailUtil.java
+END
+mail-config.xml
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/dlyhc.cccfmis/!svn/ver/344/trunk/src/openjframework/web/zk/mail/mail-config.xml
+END
+EncryptDecryptData.java
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/dlyhc.cccfmis/!svn/ver/332/trunk/src/openjframework/web/zk/mail/EncryptDecryptData.java
+END

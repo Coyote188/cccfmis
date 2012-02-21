@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping SYSTEM "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+<hibernate-mapping>
+  <class name="cccf.ma.model.PumperDocumentsInfo" table="pumperdocuments">  
+  
+    <id name="id" type="string" unsaved-value="null" >
+        <column name="pid"  not-null="true"/>
+        <generator class="uuid.hex"/>
+    </id>
+    
+     <many-to-one name="application" column="applicationid" lazy="false"
+       class="cccf.ma.model.ApplicationInfo" 
+      unique="true"/>    
+    <property name="brandCertificate" type="string">
+         <column name="brandcertificate"  not-null="true"/>
+     </property>
+    <property name="factoryForm" type="string">
+         <column name="factoryform"  not-null="true"/>
+     </property>
+    <property name="produceIntro" type="string">
+         <column name="produceintro"  not-null="true"/>
+     </property>
+    <property name="materialsForm" type="string">
+         <column name="materialsform"  not-null="true"/>
+     </property>
+    <property name="inspectStandard" type="string">
+         <column name="indpectstandard"  not-null="true"/>
+     </property>
+    <property name="qualityStandard" type="string">
+         <column name="qualitystandard"  not-null="true"/>
+     </property>
+    <property name="qualityResponsibilityForm" type="string">
+         <column name="qualityresponsibilityform"  not-null="true"/>
+     </property>
+    <property name="jigouGraphy" type="string">
+         <column name="Jigougraphy"  not-null="true"/>
+     </property>
+    <property name="chassisCertificate" type="string">
+         <column name="chassiscertificate"  not-null="true"/>
+     </property>
+    <property name="unitDesc" type="string">
+         <column name="unitdesc"  not-null="false"/>
+     </property>
+    <property name="unitTypeForm" type="string">
+         <column name="unittypeform"  not-null="false"/>
+     </property>
+    <property name="unitDiffDesc" type="string">
+         <column name="unitdiffdesc"  not-null="false"/>
+     </property>
+    <property name="technologyDesc" type="string">
+         <column name="technologydesc"  not-null="false"/>
+     </property>
+    <property name="productionFormReport" type="string">
+         <column name="productionformreport"  not-null="false"/>
+     </property>
+    <property name="manual" type="string">
+         <column name="manual"  not-null="false"/>
+     </property>
+    <property name="ccc" type="string">
+         <column name="ccc"  not-null="true"/>
+     </property>
+    <property name="qzxApplicationForm" type="string">
+         <column name="qzxapplicationform"  not-null="true"/>
+     </property>
+  </class>   
+</hibernate-mapping>

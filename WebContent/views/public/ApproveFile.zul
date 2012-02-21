@@ -1,0 +1,28 @@
+<?page title="" contentType="text/html;charset=UTF-8"?>
+<window title="" width="95%" height="95%" closable="true" border="normal" apply="cccf.mis.web.pub.OnlinFileController">
+	<caption label="2"></caption>
+	<vlayout vflex="true" hflex="true">
+		<iframe src="/${arg.filepath}" hflex="true" vflex="true" style="overflow:auto;"></iframe>
+		<grid>
+			<columns>
+				<column width="80px"></column>
+				<column></column>
+			</columns>
+			<rows>
+				<row>
+					<label value="审核结论"></label>
+					<radiogroup id="radiog">
+						<radio label="通过" value="通过" checked="true"></radio>
+						<radio label="未通过" value="不通过" ></radio>
+					</radiogroup>
+				</row>
+				<row>
+					<label value="批注:"></label>
+					<textbox id="text"  hflex="true" multiline="true" height="100px"></textbox>
+				</row>
+			</rows>
+		</grid>
+		<button label="确定" forward="onOk"></button>
+		<separator></separator>
+	</vlayout>
+</window>

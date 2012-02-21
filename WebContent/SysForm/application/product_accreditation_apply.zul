@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?init class="org.zkoss.zkplus.databind.AnnotateDataBinderInit" root="./pAAWin"?>
+<window width="800px" apply="cccf.ma.web.zk.ProductAccreditationApplyController" border="none" sizable="false"
+	id="pAAWin">
+	<vlayout>
+		<separator height="2px" />
+		<groupbox mold="3d" open="true" closable="false">
+			<caption label="基本信息" style="font-size:14px;color:RED;font-weight:bold;" image="/image/16/doc.png"
+				tooltiptext="点击打开/收缩" />
+			<separator width="6px" />
+			<grid>
+				<columns>
+					<column width="120px"></column>
+					<column></column>
+				</columns>
+				<rows>
+					<row>
+						<label value="申请类型"></label>
+						<combobox id="apptype" readonly="true" width="350px"
+							value="@{pAAWin$composer.applicationPublic.applyType}" constraint="no empty:请选择一种申请类型">
+							<comboitem id="first" label="首次申请" />
+							<comboitem id="alter" label="变更申请" />
+						</combobox>
+					</row>
+					<row>
+						<label value="业务类型"></label>
+						<combobox id="bustype" readonly="true" width="350px"
+							value="@{pAAWin$composer.applicationPublic.businessType}" constraint="no empty:请选择业务一种类型">
+							<comboitem label="强制性认证" />
+							<comboitem label="型式认可" />
+						</combobox>
+					</row>
+					<row>
+						<label value="申请产品大类"></label>
+						<combobox id="production" model="@{pAAWin$composer.productionList}"
+							forward="onSelect=onSelectProductCatalog" value="@{pAAWin$composer.applicationPublic.productCatalog}"
+							constraint="no empty:请选择一种产品类别" autodrop="true" width="350px" readonly="true">
+							<comboitem self="@{each=production}" label="@{production.productName}" value="@{production}" />
+						</combobox>
+					</row>
+				</rows>
+			</grid>
+		</groupbox>
+		<div>
+			<button mold="trendy" id="addproductBtn" label="添加产品" width="95px" height="26px"
+				image="/image/files/add-comment.gif" forward="onAddProducts" />
+		</div>
+		<groupbox mold="3d" open="true" closable="false">
+			<caption label="申请产品列表" image="/image/16/doc.png" />
+			<listbox id="productmodelLbx" checkmark="true">
+				<listhead>
+					<listheader label="产品名称" />
+					<listheader label="规格型号" />
+					<listheader label="特性描述" />
+					<listheader label="检验报告" />
+					<listheader label="生产厂" />
+					<listheader label="制造商" />
+					<listheader label="操作" width="80px" />
+				</listhead>
+				<listitem self="@{each=productmodel}">
+					<listcell label="@{productmodel.productName}" />
+					<listcell label="@{productmodel.specification}" />
+					<listcell label="@{productmodel.characterization}" />
+					<listcell>
+						<toolbarbutton label="@{productmodel.surveyReportSN}" forward="onReadSurveyReport">
+							<custom-attributes productmodel="@{productmodel}" />
+						</toolbarbutton>
+					</listcell>
+					<listcell label="@{productmodel.produtionName}" />
+					<listcell label="@{productmodel.manufactureName}" />
+					<listcell>
+						<toolbarbutton label="刪除" style="color:#888888" image="/image/16/stop.png"
+							forward="onDeleteProductModel">
+							<custom-attributes productmodel="@{productmodel}" />
+						</toolbarbutton>
+					</listcell>
+				</listitem>
+			</listbox>
+		</groupbox>
+		<groupbox mold="3d" open="true" closable="false">
+			<caption label="基本文件" image="/image/common/folder.png" />
+			<separator width="6px" />
+			<grid>
+				<columns>
+					<column width="180px" align="left" />
+					<column align="left" />
+				</columns>
+				<rows>
+					<row top="">
+						<label value="企业营业执照副本复印件:"></label>
+						<hbox align="center">
+							<toolbarbutton id="del_businessLisence" image="/image/common/close.png"
+								forward="onDeleteAttachfile(businessLisence)" visible="false" tooltiptext="删除文件" dir="reverse" />
+							<fileupload id="upload_bl_Btn" forward="onUpload=onAttachmentUpload(businessLisence)" label="上传..." />
+						</hbox>
+					</row>
+					<row>
+						<label value="企业组织机构代码证复印件:"></label>
+						<hbox align="center">
+							<toolbarbutton id="del_code" image="/image/common/close.png" forward="onDeleteAttachfile(code)"
+								visible="false" tooltiptext="删除文件" dir="reverse" />
+							<fileupload id="upload_cl_Btn" forward="onUpload=onAttachmentUpload(code)" label="上传..." />
+						</hbox>
+					</row>
+					<row>
+						<label value="产品检验设备清单"></label>
+						<hbox align="center">
+							<toolbarbutton id="del_inspection" image="/image/common/close.png"
+								forward="onDeleteAttachfile(inspection)" visible="false" tooltiptext="删除文件" dir="reverse" />
+							<fileupload id="upload_il_Btn" forward="onUpload=onAttachmentUpload(inspection)" label="上传..." />
+						</hbox>
+					</row>
+					<row>
+						<label value="企业生产配置平面图"></label>
+						<hbox align="center">
+							<toolbarbutton id="del_plan" image="/image/common/close.png" forward="onDeleteAttachfile(plan)"
+								visible="false" tooltiptext="删除文件" dir="reverse" />
+							<fileupload id="upload_pl_Btn" forward="onUpload=onAttachmentUpload(plan)" label="上传..." />
+						</hbox>
+					</row>
+					<row>
+						<label value="《质量手册》和《程序文件》"></label>
+						<hbox align="center">
+							<toolbarbutton id="del_programFiles" image="/image/common/close.png"
+								forward="onDeleteAttachfile(programFiles)" visible="false" tooltiptext="删除文件" dir="reverse" />
+							<fileupload id="upload_qp_Btn" forward="onUpload=onAttachmentUpload(programFiles)" label="上传..." />
+						</hbox>
+					</row>
+					<row>
+						<label value="原产品认证证书复印件"></label>
+						<hbox align="center">
+							<toolbarbutton id="del_certification" image="/image/common/close.png"
+								forward="onDeleteAttachfile(certification)" visible="false" tooltiptext="删除文件" dir="reverse" />
+							<fileupload id="upload_ac_Btn" forward="onUpload=onAttachmentUpload(certification)" label="上传..." />
+						</hbox>
+					</row>
+				</rows>
+			</grid>
+		</groupbox>
+		<groupbox mold="3d" open="true" closable="false">
+			<caption label="合同信息" image="/image/16/doc.png" />
+			<vlayout>
+				<hbox align="start">
+					<label style="vertical-align: middle;" value="甲方是否同意由乙方按计划派遣审核组(乙方一般在收到甲方审核费后两周内发出审核计划)：" />
+					<radiogroup id="constractChoice_AgreeRgp">
+						<radio label="同意" id="rb1" selected="true" />
+						<radio label="不同意" id="rb2" />
+					</radiogroup>
+				</hbox>
+				<hbox align="start">
+					<label style="vertical-align: middle;" value="不同意乙方计划时，甲方希望正式审核时间在" />
+					<intbox width="30px" id="contractYear" value="@{pAAWin$composer.applicationPublic.contractYear}"
+						constraint="no negative,no zero,no empty:不正确的输入">
+					</intbox>
+					<label style="vertical-align: middle;color:RED;" value="年" />
+					<intbox width="30px" id="contractMonth" value="@{pAAWin$composer.applicationPublic.contractMonth}"
+						constraint="no negative,no zero,no empty:不正确的输入">
+					</intbox>
+					<label style="vertical-align: middle;color:RED;" value="月" />
+				</hbox>
+				<hbox align="start">
+					<label style="vertical-align: middle;" value="预审核（甲方决定）:" />
+					<radiogroup id="constractChoice_ApproveRgp">
+						<radio label="需要" id="rb3" />
+						<radio label="不需要" id="rb4" selected="true" />
+					</radiogroup>
+				</hbox>
+			</vlayout>
+		</groupbox>
+		<hlayout>
+			<button mold="trendy" label="暂存" image="/image/common/save.png" disabled="true" id="saveBtn" forward="onSave" />
+			<button mold="trendy" label="提交" image="/image/16/up.png" id="submitBtn" forward="onSubmit" />
+			<separator width="20px" />
+			<image src="/image/common/activate.png" />
+			<label height="26px" style="vertical-align: middle;" value="当前状态："></label>
+			<label id="statusName" style="vertical-align: middle;" />
+			<toolbarbutton id="btChangeStatus" image="/image/common/configuration.png" style="color:blue" label="变更申请" />
+			<toolbarbutton id="btChangeStatusList" label="变更记录" style="color:blue" />
+		</hlayout>
+	</vlayout>
+</window>
+

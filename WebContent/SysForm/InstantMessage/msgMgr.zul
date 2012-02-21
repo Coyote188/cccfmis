@@ -1,0 +1,15 @@
+<zk>
+<window title="消息管理器" border="normal" 
+		width="720px" height="450px" closable="true">
+		<borderlayout>
+			<west size="150">
+			</west>
+			<center>
+			
+			</center>
+			<south size="30px">
+			
+			</south>
+		</borderlayout>
+</window>
+</zk>

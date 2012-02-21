@@ -1,0 +1,28 @@
+<EnityModel>
+  <Name>Role</Name>
+  <Alias>角色</Alias>
+  <PackageName>openjframework</PackageName>
+  <DbTableName>role</DbTableName>
+  <PrimaryKey>id</PrimaryKey>
+  <PrimaryKeyType>uuid.hex</PrimaryKeyType>
+  <FieldList>
+    <Field>
+      <Name>id</Name>
+      <Alias>ID</Alias>
+      <DbFieldName>id</DbFieldName>
+      <DataType>STRING</DataType>
+      <AllowNull>false</AllowNull>
+      <Length>0</Length>
+      <IsLinkProperty>false</IsLinkProperty>
+    </Field>
+    <Field>
+      <Name>name</Name>
+      <Alias>名称</Alias>
+      <DbFieldName>name</DbFieldName>
+      <DataType>STRING</DataType>
+      <AllowNull>false</AllowNull>
+      <Length>0</Length>
+      <IsLinkProperty>false</IsLinkProperty>
+    </Field>
+  </FieldList>
+</EnityModel>

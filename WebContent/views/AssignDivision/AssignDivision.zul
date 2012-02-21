@@ -1,0 +1,71 @@
+<?init class="org.zkoss.zkplus.databind.AnnotateDataBinderInit" root="./AssignDivisionWin"?>
+<window closable="true" id="AssignDivisionWin" title="派组分工" height="100%" width="100%" border="normal"
+	apply="cccf.mis.web.tsak.assign.AssignDivisionController" forward="onCreate=onInited">
+	<vlayout vflex="true" hflex="true">
+		<listbox checkmark="true" multiple="true" vflex="true" hflex="true" id="task_list">
+			<listhead sizable="true">
+				<listheader label="申请号" width="180px"></listheader>
+				<listheader label="企业名称" width="240px"></listheader>
+				<listheader label="所在地区" width="80px"></listheader>
+				<listheader label="业务类型" width="80px"></listheader>
+				<listheader label="产品大类" width="160px"></listheader>
+				<listheader label="质检中心" width="100px"></listheader>
+				<listheader label="申请类型" width="80px"></listheader>
+				<listheader label="申请时间" width="78px"></listheader>
+				<listheader></listheader>
+			</listhead>
+			<listitem self="@{each=item}" value="@{item}">
+				<!-- 申请号 -->
+				<listcell label="@{item.no}"></listcell>
+				<!-- 企业名称 -->
+				<listcell label="@{item.enterprise}"></listcell>
+				<!-- 国家 -->
+				<listcell label="@{item.state}">
+					<label value="-"></label>
+					<!-- 地区 -->
+					<label value="@{item.region}"></label>
+				</listcell>
+				<!-- 业务类型-->
+				<listcell label="@{item.business_type}"></listcell>
+				<!-- 产品大类 -->
+				<listcell label="@{item.product_catalog}"></listcell>
+				<!-- 质检中心 -->
+				<listcell label="@{item.surver_orgname}"></listcell>
+				<!-- 申请类型-->
+				<listcell label="@{item.apply_type}"></listcell>
+				<!-- 申请时间-->
+				<listcell label="@{item.apply_date}"></listcell>
+				<listcell></listcell>
+			</listitem>
+		</listbox>
+		<grid id="appoveGrid">
+			<columns>
+				<column width="100px" align="left"></column>
+				<column></column>
+			</columns>
+			<rows>
+				<row>
+					<label value="派组人员:"></label>
+					<cell>
+						<combobox id="reveiwUser" model="@{reviewUserList}" constraint="no empty:派组人员" autodrop="true"
+							width="200px" readonly="true">
+							<comboitem self="@{each=person}" label="@{person.name}" value="@{person.id}" />
+						</combobox>
+						<button image="/res/icons/accept.png" mold="trendy" label="提交" width="68px" id="btSubmit" height="26px"
+							forward="onSubmit" />
+					</cell>
+				</row>
+				<row visible="false">
+					<label value="处理结论:" />
+					<listbox id="resultListbox" mold="select" rows="1" width="200">
+						<listitem label="" selected="true" />
+					</listbox>
+				</row>
+				<row>
+					<label value="备注:" />
+					<textbox id="approveMemo" rows="4" hflex="true" />
+				</row>
+			</rows>
+		</grid>
+	</vlayout>
+</window>

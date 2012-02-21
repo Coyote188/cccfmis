@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<window border="normal" title="具体型号及文件"
+	use="cccf.ma.web.zk.ProductionmodelListViewWindow"
+	xmlns:a="http://www.zkoss.org/2005/zk/annotation"
+	id="productionmodelmanageWindow" width="800px" sizable="true"
+	closable="true">
+	<div align="center">
+		<label value="具体型号及文件"
+			style="font-size:12px;color:#00;font-weight:bold" />
+	</div>
+	<div align="center">
+		<listbox mold="paging" id="productionModelInfoListbox"
+			width="99%" pageSize="10">
+			<listhead sizable="true">
+
+				<listheader label="型号" id="model" />
+
+				<listheader label="非标准名称" id="name" />
+
+				<listheader visible="false" label="全性能委托检验报告" />
+
+				<listheader label="检验报告" />
+
+				<listheader label="产品工艺流程图" />
+
+				<listheader label="产品特性描述填报表" />
+
+				<listheader label="产品图片" />
+
+				<listheader label="汽车消防车产品3C认证申请书" visible="false"
+					id="pccc" />
+
+			</listhead>
+
+		</listbox>
+	</div>
+	<iframe id="downframe" height="0" width="0"></iframe>
+</window>

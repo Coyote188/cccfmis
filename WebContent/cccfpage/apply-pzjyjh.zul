@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<?init class="org.zkoss.zkplus.databind.AnnotateDataBinderInit" arg0="./pzjyjhApproveWindow"?>
+<window title="派组检验计划" border="normal" id="pzjyjhApproveWindow" forward="onCreate=onCreated" vflex="true" hflex="true">
+	<vlayout spacing="1" vflex="true" hflex="true">
+		<listbox height="60px">
+			<listhead sizable="true">
+				<listheader label="申请号"></listheader>
+				<listheader label="申请企业"></listheader>
+				<listheader label="地区"></listheader>
+				<listheader label="业务类型"></listheader>
+				<listheader label="产品大类"></listheader>
+				<listheader label="申请类型"></listheader>
+				<listheader label="申请时间"></listheader>
+			</listhead>
+			<listitem self="@{each=item}" height="26px" value="@{item}">
+				<listcell label="@{item.applyno}" style="white-space: nowrap;"></listcell>
+				<listcell label="@{item.applyEnterprise.name}" style="white-space: nowrap;"></listcell>
+				<listcell label="@{item.applyEnterprise.state}" style="white-space: nowrap;">
+					<vbox>
+						<label value="."></label>
+						<label value="@{item.applyEnterprise.location}"></label>
+					</vbox>
+				</listcell>
+				<listcell label="@{item.businessType}" style="white-space: nowrap;"></listcell>
+				<listcell label="@{item.productCatalog}" style="white-space: nowrap;"></listcell>
+				<listcell label="@{item.applyType}" style="white-space: nowrap;"></listcell>
+				<listcell label="@{item.applydate}" style="white-space: nowrap;"></listcell>
+			</listitem>
+		</listbox>
+		<listbox vflex="true" hflex="true">
+			<listhead sizable="true">
+				<listheader label="产品名称"></listheader>
+				<listheader label="主/分型"></listheader>
+				<listheader label="规格型号"></listheader>
+				<listheader label="申请类型"></listheader>
+				<listheader label="质检中心"></listheader>
+				<listheader label="制造商"></listheader>
+				<listheader label="生产厂"></listheader>
+			</listhead>
+			<listitem>
+				
+			</listitem>
+		</listbox>
+
+		<grid id="appoveGrid">
+			<columns>
+				<column width="100px" align="left"></column>
+				<column></column>
+			</columns>
+			<rows>
+				<row>
+					<label value="检查天数" />
+					<cell>
+						<decimalbox></decimalbox>
+						<toolbarbutton label="查看合周"></toolbarbutton>
+					</cell>
+				</row>
+
+				<row>
+					<label value="处理结论" />
+					<listbox id="resultListbox" mold="select" rows="1" width="200"></listbox>
+				</row>
+				<row>
+					<label value="备注:" />
+					<textbox id="approveMemo" rows="3" cols="140" />
+				</row>
+			</rows>
+		</grid>
+
+	</vlayout>
+</window>

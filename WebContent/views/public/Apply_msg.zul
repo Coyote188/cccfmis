@@ -1,0 +1,96 @@
+<?page title="new page title" contentType="text/html;charset=UTF-8"?>
+<zk>
+	<grid>
+		<columns>
+			<column image="/res/icons/application.png" label="申请号"></column>
+			<column label="申请单位"></column>
+			<column label="所在地区"></column>
+			<column label="业务类型"></column>
+			<column label="产品类型"></column>
+			<column label="申请类型"></column>
+			<column label="提交日期"></column>
+		</columns>
+		<rows>
+			<row height="26px">
+				<cell>
+					<label value="@{applyInfo.no}"></label>
+				</cell>
+				<cell>
+					<label value="@{applyInfo.enterprise}"></label>
+				</cell>
+				<cell>
+					<hbox>
+						<label value="@{applyInfo.state}"></label>
+						<label value="-"></label>
+						<label value="@{applyInfo.region}"></label>
+					</hbox>
+				</cell>
+				<cell>
+					<label value="@{applyInfo.business_type}"></label>
+				</cell>
+				<cell>
+					<label value="@{applyInfo.product_catalog}"></label>
+				</cell>
+				<cell>
+					<label value="@{applyInfo.apply_type}"></label>
+				</cell>
+				<cell>
+					<label value="@{applyInfo.apply_date}"></label>
+				</cell>
+			</row>
+		</rows>
+	</grid>
+	<grid model="@{products}">
+		<auxhead>
+			<auxheader colspan="10" image="/res/icons/page.png" label="申请认证产品"></auxheader>
+		</auxhead>
+		<columns>
+			<column label="序号" width="40px"></column>
+			<column label="产品名称"></column>
+			<column label="主/分型" width="60px"></column>
+			<column label="规格型号"></column>
+			<column label="产品描述"></column>
+			<column label="申请类型"></column>
+			<column label="检验中心"></column>
+			<column label="检验报告" width="80px"></column>
+			<column label="生产厂-制造商"></column>
+			<column label="证书编号" width="60px"></column>
+		</columns>
+		<rows>
+			<row height="26px" forEach="" self="@{each=item}">
+				<cell>
+					<label value="@{item.sn}"></label>
+				</cell>
+				<cell>
+					<label value="@{item.productName}"></label>
+				</cell>
+				<cell>
+					<label value="@{item.isMainModel_label}"></label>
+				</cell>
+				<cell>
+					<label value="@{item.specification}"></label>
+				</cell>
+				<cell>
+					<label value="@{item.characterization}"></label>
+				</cell>
+				<cell>
+					<label value="@{item.applyType}"></label>
+				</cell>
+				<cell>
+					<label value="@{item.surverOrgName}"></label>
+				</cell>
+				<cell>
+					<toolbarbutton label="@{item.surveyReportSN}"></toolbarbutton>
+				</cell>
+				<cell>
+					<label value="@{item.manufactureInfo_name}"></label>
+					<label value="-"></label>
+					<label value="@{item.productionEnterpriseName}"></label>
+				</cell>
+				<cell>
+					<label value=""></label>
+				</cell>
+			</row>
+		</rows>
+	</grid>
+</zk>

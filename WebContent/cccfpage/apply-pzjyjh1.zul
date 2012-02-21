@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<?init class="cccfmis.bpm.zk.ApplictionPDWindowInit" arg0="pzjyjhApproveWindow"?>
+<window title="[临时]" border="normal" id="pzjyjhApproveWindow" height="768px" width="1024px" use="cccfmis.bpm.zk.ApplictionPzjyjhWindow">
+	<borderlayout height="100%">
+		<center flex="true">
+			<tabbox height="100%">
+				<tabs>					
+					<tab label="申请资料"></tab>
+				</tabs>
+				<tabpanels height="100%">					
+					<tabpanel height="100%">
+						<include height="100%" src="/cccfpage/items/sqzl.zul"></include>
+					</tabpanel>
+				</tabpanels>
+			</tabbox>
+		</center>
+		<south title="工作流操作" collapsible="true" splittable="false">
+			<grid id="appoveGrid">
+				<columns>
+					<column width="80px" align="center"></column>
+					<column></column>
+				</columns>
+				<rows>
+					<row align="left">
+						<label value="下一步:" />
+						<cell>
+							<listbox id="resultListbox" mold="select" rows="1" width="200" />
+							<button label="提交" image="/image/16/up.png" width="68px" id="btSubmit" height="26px" style=""
+								forward="onSubmit" />
+							<button label="关闭" image="/image/common/close.png" width="68px" height="26px" style=""
+								forward="onCancel" />
+							<button label="回退" disabled="true"></button>
+						</cell>
+					</row>
+					<row align="left">
+						<label value="意见:" />
+						<textbox id="approveMemo" rows="3" width="98%" />
+					</row>
+				</rows>
+			</grid>
+		</south>
+	</borderlayout>
+</window>

@@ -1,0 +1,236 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<window apply="cccf.mis.web.tsak.pub.BillsController">
+<grid id="billGrid">
+	<auxhead>
+		<auxheader image="/res/icons/page.png" colspan="8" label="收费单"></auxheader>
+	</auxhead>
+	<columns>
+		<column label="分类" align="center" width="80px"></column>
+		<column label="项目" align="center" width="80px"></column>
+		<column label="单位" align="center" width="55px"></column>
+		<column label="单价" align="left" width="80px"></column>
+		<column label="数量" align="left" width="250px"></column>
+		<column label="金额(元)" align="center" width="100px"></column>
+		<column label="备注" align="center"></column>
+	</columns>
+	<rows>
+		<row style="background:#FFF;">
+			<cell rowspan="3">
+				<label value="获证费"></label>
+			</cell>
+			<cell>
+				<label value="申请费"></label>
+			</cell>
+			<cell>
+				<label value="单元"></label>
+			</cell>
+			<cell>
+				<decimalbox id="r1_c1" hflex="true" style="border-bottom: 1px solid #CCC;" inplace="true" forward="onChange=onChanged"></decimalbox>
+			</cell>
+			<cell>
+				<decimalbox id="r1_c2" style="border-bottom: 1px solid #CCC;" inplace="true" forward="onChange=onChanged"></decimalbox>
+			</cell>
+			<cell>
+				<decimalbox id="r1_c3" readonly="true" style="border-bottom: 1px solid #CCC;" hflex="true" inplace="true"></decimalbox>
+			</cell>
+			<cell>
+				<textbox id="r1_c4" hflex="true" style="border-bottom: 1px solid #CCC;" inplace="true"></textbox>
+			</cell>
+		</row>
+		<row style="background:#FFF;">
+			<cell>
+				<label value="工厂检厂费"></label>
+			</cell>
+			<cell>
+				<label value="人日"></label>
+			</cell>
+			<cell>
+				<decimalbox id="r2_c1" hflex="true" style="border-bottom: 1px solid #CCC;" inplace="true" forward="onChange=onChanged"></decimalbox>
+			</cell>
+			<cell>
+				<hbox>
+					<label value="规定:"></label>
+					<decimalbox id="r2_c2" style="border-bottom: 1px solid #CCC;" inplace="true" forward="onChange=onChanged"></decimalbox>
+					<label value="异地:"></label>
+					<decimalbox id="r2_c3" style="border-bottom: 1px solid #CCC;" inplace="true" forward="onChange=onChanged"></decimalbox>
+				</hbox>
+			</cell>
+			<cell>
+				<decimalbox id="r2_c4" readonly="true" hflex="true" style="border-bottom: 1px solid #CCC;" inplace="true"></decimalbox>
+			</cell>
+			<cell>
+				<textbox id="r2_c5" style="border-bottom: 1px solid #CCC;" hflex="true" inplace="true"></textbox>
+			</cell>
+		</row>
+		<row style="background:#FFF;">
+			<cell>
+				<label value="批准与注册费"></label>
+			</cell>
+			<cell>
+				<label value="单元"></label>
+			</cell>
+			<cell>
+				<decimalbox id="r3_c1" hflex="true" style="border-bottom: 1px solid #CCC;" inplace="true" forward="onChange=onChanged"></decimalbox>
+			</cell>
+			<cell>
+				<decimalbox id="r3_c2" style="border-bottom: 1px solid #CCC;" inplace="true" forward="onChange=onChanged"></decimalbox>
+			</cell>
+			<cell>
+				<decimalbox id="r3_c3" readonly="true" hflex="true" style="border-bottom: 1px solid #CCC;" inplace="true"></decimalbox>
+			</cell>
+			<cell>
+				<textbox id="r3_c4" hflex="true" style="border-bottom: 1px solid #CCC;" inplace="true"></textbox>
+			</cell>
+		</row>
+		<row style="background:#FFF;">
+			<cell rowspan="2">
+				<label value="变更费"></label>
+			</cell>
+			<cell>
+				<label value="申请费"></label>
+			</cell>
+			<cell>
+				<label value="单元"></label>
+			</cell>
+			<cell>
+				<decimalbox id="r4_c1" hflex="true" style="border-bottom: 1px solid #CCC;" inplace="true" forward="onChange=onChanged"></decimalbox>
+			</cell>
+			<cell>
+				<decimalbox id="r4_c2" style="border-bottom: 1px solid #CCC;" inplace="true" forward="onChange=onChanged"></decimalbox>
+			</cell>
+			<cell>
+				<decimalbox id="r4_c3" readonly="true" hflex="true" style="border-bottom: 1px solid #CCC;" inplace="true"></decimalbox>
+			</cell>
+			<cell>
+				<textbox id="r4_c4" hflex="true" style="border-bottom: 1px solid #CCC;" inplace="true"></textbox>
+			</cell>
+		</row>
+		<row style="background:#FFF;">
+			<cell>
+				<label value="工厂检厂费"></label>
+			</cell>
+			<cell>
+				<label value="人日"></label>
+			</cell>
+			<cell>
+				<decimalbox id="r5_c1" hflex="true" style="border-bottom: 1px solid #CCC;" inplace="true" forward="onChange=onChanged"></decimalbox>
+			</cell>
+			<cell>
+				<hbox>
+					<label value="规定:"></label>
+					<decimalbox id="r5_c2" style="border-bottom: 1px solid #CCC;" inplace="true" forward="onChange=onChanged"></decimalbox>
+					<label value="异地:"></label>
+					<decimalbox id="r5_c3" style="border-bottom: 1px solid #CCC;" inplace="true" forward="onChange=onChanged"></decimalbox>
+				</hbox>
+			</cell>
+			<cell>
+				<decimalbox id="r5_c4" readonly="true" hflex="true" style="border-bottom: 1px solid #CCC;" inplace="true"></decimalbox>
+			</cell>
+			<cell>
+				<textbox id="r5_c5" hflex="true" style="border-bottom: 1px solid #CCC;" inplace="true"></textbox>
+			</cell>
+		</row>
+		<row style="background:#FFF;">
+			<cell rowspan="2">
+				<label value="保持费"></label>
+			</cell>
+			<cell>
+				<label value="监督费"></label>
+			</cell>
+			<cell>
+				<label value="人日"></label>
+			</cell>
+			<cell>
+				<decimalbox id="r6_c1" hflex="true" style="border-bottom: 1px solid #CCC;" inplace="true" forward="onChange=onChanged"></decimalbox>
+			</cell>
+			<cell>
+				<hbox>
+					<label value="规定:"></label>
+					<decimalbox id="r6_c2" style="border-bottom: 1px solid #CCC;" inplace="true" forward="onChange=onChanged"></decimalbox>
+					<label value="异地:"></label>
+					<decimalbox id="r6_c3" style="border-bottom: 1px solid #CCC;" inplace="true" forward="onChange=onChanged"></decimalbox>
+				</hbox>
+			</cell>
+			<cell>
+				<decimalbox id="r6_c4" readonly="true" hflex="true" style="border-bottom: 1px solid #CCC;" inplace="true"></decimalbox>
+			</cell>
+			<cell>
+				<textbox id="r6_c5" hflex="true" style="border-bottom: 1px solid #CCC;" inplace="true"></textbox>
+			</cell>
+		</row>
+		<row style="background:#FFF;">
+			<cell>
+				<label value="年金"></label>
+			</cell>
+			<cell>
+				<label value="张"></label>
+			</cell>
+			<cell>
+				<decimalbox id="r7_c1" hflex="true" style="border-bottom: 1px solid #CCC;" inplace="true" forward="onChange=onChanged"></decimalbox>
+			</cell>
+			<cell>
+				<decimalbox id="r7_c2" style="border-bottom: 1px solid #CCC;" inplace="true" forward="onChange=onChanged"></decimalbox>
+			</cell>
+			<cell>
+				<decimalbox id="r7_c3" readonly="true" hflex="true" style="border-bottom: 1px solid #CCC;" inplace="true"></decimalbox>
+			</cell>
+			<cell>
+				<textbox id="r7_c4" hflex="true" style="border-bottom: 1px solid #CCC;" inplace="true"></textbox>
+			</cell>
+		</row>
+		<row style="background:#FFF;">
+			<cell rowspan="2">
+				<label value="其它"></label>
+			</cell>
+			<cell>
+				<label value="标志费"></label>
+			</cell>
+			<cell>
+				<label value="枚"></label>
+			</cell>
+			<cell>
+				<decimalbox id="r8_c1" hflex="true" style="border-bottom: 1px solid #CCC;" inplace="true" forward="onChange=onChanged"></decimalbox>
+			</cell>
+			<cell>
+				<decimalbox id="r8_c2" style="border-bottom: 1px solid #CCC;" inplace="true" forward="onChange=onChanged"></decimalbox>
+			</cell>
+			<cell>
+				<decimalbox id="r8_c3" readonly="true" hflex="true" style="border-bottom: 1px solid #CCC;" inplace="true"></decimalbox>
+			</cell>
+			<cell>
+				<textbox id="r8_c4" hflex="true" style="border-bottom: 1px solid #CCC;" inplace="true"></textbox>
+			</cell>
+		</row>
+		<row style="background:#FFF;">
+			<cell>
+				<label value="其它"></label>
+			</cell>
+			<cell>
+				<textbox id="r9_c1" style="border-bottom: 1px solid #CCC;" hflex="true" inplace="true"></textbox>
+			</cell>
+			<cell>
+				<decimalbox id="r9_c2" hflex="true" style="border-bottom: 1px solid #CCC;" inplace="true" forward="onChange=onChanged"></decimalbox>
+			</cell>
+			<cell>
+				<decimalbox id="r9_c3" style="border-bottom: 1px solid #CCC;" inplace="true" forward="onChange=onChanged"></decimalbox>
+			</cell>
+			<cell>
+				<decimalbox id="r9_c4" style="border-bottom: 1px solid #CCC;" inplace="true" readonly="true" hflex="true"></decimalbox>
+			</cell>
+			<cell>
+				<textbox id="r9_c5" style="border-bottom: 1px solid #CCC;" inplace="true" hflex="true"></textbox>
+			</cell>
+		</row>
+		<row style="background:#FFF;">
+			<cell></cell>
+			<cell colspan="4">
+				<label value="合计"></label>  
+			</cell>
+			<cell>
+				<decimalbox id="r10_c1" readonly="true" hflex="true" style="border-bottom: 1px solid #CCC;" inplace="true"></decimalbox>
+			</cell>
+			<cell></cell>
+		</row>
+	</rows>
+</grid>
+</window>

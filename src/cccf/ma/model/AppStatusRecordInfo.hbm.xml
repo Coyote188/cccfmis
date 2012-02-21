@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping SYSTEM "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+<hibernate-mapping>
+  <class name="cccf.ma.model.AppStatusRecordInfo" table="applicationstatusrecord">  
+  
+    <id name="asid" type="string" unsaved-value="null" >
+        <column name="asid"  not-null="true"/>
+        <generator class="uuid.hex"/>
+    </id>
+    
+    <property name="changeType" type="java.lang.Integer">
+         <column name="changetype"  not-null="false"/>
+     </property>
+    <many-to-one name="enterprise" column="enterpriseid" lazy="false"/> 
+    <many-to-one name="application" column="applicationid" lazy="false"/>
+     <property name="applyDate">
+         <column name="applydate" sql-type="datetime" not-null="false"/>
+     </property>
+    <property name="reason" type="string">
+         <column name="reason"  not-null="false"/>
+     </property>
+    <property name="status" type="java.lang.Integer">
+         <column name="status"  not-null="true"/>
+     </property>
+    <many-to-one name="approveUser" column="uid" lazy="false"/> 
+     <property name="approveDate">
+         <column name="approvedate" sql-type="datetime" not-null="false"/>
+     </property>
+  </class>   
+</hibernate-mapping>

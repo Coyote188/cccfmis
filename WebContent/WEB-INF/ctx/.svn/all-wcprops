@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 57
+/dlyhc.cccfmis/!svn/ver/1457/trunk/WebContent/WEB-INF/ctx
+END
+applicationContext-hibernate.xml
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/dlyhc.cccfmis/!svn/ver/1457/trunk/WebContent/WEB-INF/ctx/applicationContext-hibernate.xml
+END
+beans-OpenJStudio.xml
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/dlyhc.cccfmis/!svn/ver/210/trunk/WebContent/WEB-INF/ctx/beans-OpenJStudio.xml
+END
+baseDAOService.xml
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/dlyhc.cccfmis/!svn/ver/822/trunk/WebContent/WEB-INF/ctx/baseDAOService.xml
+END

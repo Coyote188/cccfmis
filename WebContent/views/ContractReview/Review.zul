@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?init class="cccf.ma.web.zk.ApplicationAcceptWindowInit" arg0="./creatContractWindow"?>
+<window title="合同制定" border="normal" apply="cccf.mis.web.tsak.contract.ContractController"
+	xmlns:a="http://www.zkoss.org/2005/zk/annotation" id="creatContractWindow" width="100%" sizable="false" height="100%"
+	closable="true">
+	<style>tr.z-row td.z-row-inner { background: white; border: 0;margin: 0px; padding: 1px; }</style>
+	<vlayout spacing="3" vflex="true" hflex="true" style="overflow: auto;">
+		<include src="/views/public/Apply_msg.zul"></include>
+		<grid>
+			<columns>
+				<column label="合同信息" image="/res/icons/page.png"></column>
+			</columns>
+			<rows>
+				<row height="26px">
+					<hbox>
+						<label value="甲方是否同意由乙方按计划派遣审核组(乙方一般在收到甲方审核费后两周内发出审核计划):"></label>
+						<label value="@{applyInfo.contractAgree}"></label>
+					</hbox>
+				</row>
+				<row   height="26px">
+					<hbox>
+						<label value="不同意乙方计划时，甲方希望正式审核时间在:"></label>
+						<label value="@{applyInfo.contractYear}" />
+						<label style="vertical-align: middle;" value="年" />
+						<label value="@{applyInfo.contractMonth}" />
+						<label style="vertical-align: middle;" value="月" />
+					</hbox>
+				</row>
+				<row height="26px">
+					<hbox>
+						<label value="预审核(甲方决定):"></label>
+						<label value="@{applyInfo.contractApprove}"></label>
+					</hbox>
+				</row>
+				<row  height="26px">
+					<hbox>
+						<label style="vertical-align: middle;" value="预审时间(通常应比正式审核时间提前一个月以上):" />
+						<intbox value="@{applyInfo.preverifyYear}" width="30px" />
+						<label style="vertical-align: middle;" value="年" />
+						<intbox value="@{applyInfo.preverifyMonth}" width="30px" />
+						<label style="vertical-align: middle;" value="月" />
+					</hbox>
+				</row>
+			</rows>
+		</grid>
+		<include  id="bills" src="/views/public/Bills.zul"></include>
+		<separator></separator>
+		<include src="/views/public/processlog.zul?sioid=${applyInfo.applyno}"></include>
+		<grid id="appoveGrid">
+			<columns>
+				<column width="80px" align="left"></column>
+				<column align="left"></column>
+			</columns>
+			<rows>
+				<row align="left">
+					<label />
+					<button mold="trendy" label="提交" image="/image/16/up.png" id="btSubmit" forward="onSubmit" />
+				</row>
+				<row align="left">
+					<label value="备注:" />
+					<textbox id="approveMemo" rows="4" cols="140" hflex="true" />
+				</row>
+			</rows>
+		</grid>		
+	</vlayout>
+</window>

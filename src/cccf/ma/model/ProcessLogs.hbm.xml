@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping SYSTEM "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+<hibernate-mapping>
+	<class name="cccf.ma.model.ProcessLog" table="tb_processlog">
+
+		<id name="id" type="string" unsaved-value="null" length="36" >
+			<column name="id" not-null="true" />
+			<generator class="uuid.hex" />
+		</id>
+          
+		<property name="boType" length="40" unique-key="boType_boId_taskInstanceId_actorId"/>
+		<property name="boId"  length="40" unique-key="boType_boId_taskInstanceId_actorId"/>
+		<property name="boStatus" length="10" />
+		<property name="processInstanceId" />
+		<property name="taskInstanceId"  unique-key="boType_boId_taskInstanceId_actorId"/>
+		<property name="previousTaskInstanceId"  />
+		<property name="taskInstanceName" length="40" /> 
+		<property name="create" column="create_"/>
+		<property name="createrId" length="40"/> 
+		<property name="end"  column="end_"/> 
+		<property name="actorId" length="40"  unique-key="boType_boId_taskInstanceId_actorId"/> 
+		<property name="approveResult" length="40"/> 
+		<property name="approveMemo" length="4000" /> 
+		 
+	</class>
+</hibernate-mapping>

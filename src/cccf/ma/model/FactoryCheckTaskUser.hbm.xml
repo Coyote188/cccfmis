@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping SYSTEM "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+<hibernate-mapping>
+	<class name="cccf.ma.model.FactoryCheckTaskUser" table="tb_factorychecktaskuser"> 
+		<id name="id" type="string" unsaved-value="null" length="36">
+			<column name="id" not-null="true" />
+			<generator class="uuid.hex" />
+		</id> 
+		<many-to-one name="assignBatchTask" column="assignBatchTask_id"/>  
+		<many-to-one name="factoryCheckUser" column="factoryCheckUse_id"/>  
+		<property name="headmanSign" />  
+	</class>
+</hibernate-mapping>

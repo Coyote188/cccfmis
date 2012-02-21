@@ -1,0 +1,265 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?init class="org.zkoss.zkplus.databind.AnnotateDataBinderInit" arg0="index_ent_win"?>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:z="http://www.zkoss.org/2005/zul"
+	xsi:schemaLocation="http://www.zkoss.org/2005/zul http://www.zkoss.org/2005/zul/zul.xsd">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<title>消防产品网上认证业务系统</title>
+		<style type="text/css">html,body{ margin: 0px; padding: 0px;width:100%; height:100%;overflow: hidden;}</style>
+		<style type="text/css">tr.z-row td.z-row-inner { background: white; border: 0;margin: 0px; padding: 1px; }</style>
+		<script type="text/javascript"></script>
+	</head>
+	<body>
+		<z:window apply="cccf.mis.web.index.EnterpriseIndexController" id="index_ent_win" vflex="true" hflex="true"
+			border="none" sizable="false">
+			<z:borderlayout>
+				<z:north style="border:0px;" flex="true" splittable="true" collapsible="true" maxsize="80" minsize="80">
+					<z:hlayout hflex="true" height="80px"
+						style="background:#074389 url(/cccfmis/image/files/top_bg.png) no-repeat left;">
+						<z:div hflex="true"
+							style="float: right;color: white;clear: left;position: absolute;top:45px;right:10px">
+							<z:toolbar mold="panel" style="float: right;">
+								<z:toolbarbutton forward="onAction(/views/Index_enterprise/item/Acc_apply.zul)" label="认证申请"></z:toolbarbutton>
+								<z:toolbarbutton forward="onAction(/SysForm/chooseproductactive.zul)" label="新产品激活"></z:toolbarbutton>
+								<z:toolbarbutton forward="onAction(/SysForm/enterpriseofproductcatalogue.zul)" label="已激活产品"></z:toolbarbutton>
+								<z:toolbarbutton forward="onAction(/SysForm/enterprise-manage.zul)" label="申请企业"></z:toolbarbutton>
+								<z:toolbarbutton forward="onAction(/SysForm/productionEnterprise-manage.zul)" label="生产厂"></z:toolbarbutton>
+								<z:toolbarbutton forward="onAction(/SysForm/manufacture-manage.zul)" label="制造商"></z:toolbarbutton>								
+							</z:toolbar>
+						</z:div>
+					</z:hlayout>
+				</z:north>
+				<z:center flex="true" style="border:0px;">
+					<z:hlayout spacing="0">
+						<z:vlayout vflex="true" width="180px" spacing="0">
+							<z:groupbox mold="3d" closable="false">
+								<z:caption style="border-top:0px;" label="欢迎"></z:caption>
+								<z:label value="${sessionScope.EnterpriseName}"></z:label>
+								<z:separator height="3px"></z:separator>
+								<z:hbox>
+									<z:image src="/res/icons/user_gray.png"></z:image>
+									<z:label value="${sessionScope.name}"></z:label>
+									<z:separator spacing="3px"></z:separator>
+									<z:toolbarbutton label="安全退出" forward="onLogout"></z:toolbarbutton>
+								</z:hbox>
+							</z:groupbox>
+							<z:vlayout vflex="true" spacing="0">
+								<z:groupbox mold="3d" closable="false" vflex="true" hflex="true">
+									<z:caption label="业务导航"></z:caption>
+									<z:tree vflex="true" style="border:0px;">
+										<z:treecols>
+											<z:treecol></z:treecol>
+										</z:treecols>
+										<z:treechildren>
+											<z:treeitem >
+												<z:treerow forward="onAction(/views/Index_enterprise/item/Acc_apply.zul)">
+													<z:treecell label="认证申请"></z:treecell>
+												</z:treerow>
+											</z:treeitem>
+											<z:treeitem>
+												<z:treerow>
+													<z:treecell label="产品管理"></z:treecell>
+												</z:treerow>
+												<z:treechildren>
+													<z:treeitem>
+														<z:treerow forward="onAction(/SysForm/chooseproductactive.zul)">
+															<z:treecell label="新产品激活"></z:treecell>
+														</z:treerow>
+													</z:treeitem>
+													<z:treeitem>
+														<z:treerow forward="onAction(/SysForm/enterpriseofproductcatalogue.zul)">
+															<z:treecell label="已激活产品"></z:treecell>
+														</z:treerow>
+													</z:treeitem>
+												</z:treechildren>
+											</z:treeitem>
+											<z:treeitem>
+												<z:treerow>
+													<z:treecell label="企业信息管理"></z:treecell>
+												</z:treerow>
+												<z:treechildren>
+													<z:treeitem>
+														<z:treerow forward="onAction(/SysForm/enterprise-manage.zul)">
+															<z:treecell label="申请企业"></z:treecell>
+														</z:treerow>
+													</z:treeitem>
+													<z:treeitem>
+														<z:treerow forward="onAction(/SysForm/productionEnterprise-manage.zul)">
+															<z:treecell label="生产厂"></z:treecell>
+														</z:treerow>
+													</z:treeitem>
+													<z:treeitem>
+														<z:treerow forward="onAction(/SysForm/manufacture-manage.zul)">
+															<z:treecell label="制造商"></z:treecell>
+														</z:treerow>
+													</z:treeitem>
+												</z:treechildren>
+											</z:treeitem>
+											<z:treeitem disabled="true">
+												<z:treerow>
+													<z:treecell label="缴费情况"></z:treecell>
+												</z:treerow>
+												<z:treechildren>
+													<z:treeitem disabled="true">
+														<z:treerow>
+															<z:treecell label="交款信息"></z:treecell>
+														</z:treerow>
+													</z:treeitem>
+													<z:treeitem disabled="true">
+														<z:treerow>
+															<z:treecell label="扣款信息"></z:treecell>
+														</z:treerow>
+													</z:treeitem>
+												</z:treechildren>
+											</z:treeitem>
+											<z:treeitem disabled="true">
+												<z:treerow>
+													<z:treecell label="信息查询"></z:treecell>
+												</z:treerow>
+												<z:treechildren>
+													<z:treeitem disabled="true">
+														<z:treerow>
+															<z:treecell label="申请列表"></z:treecell>
+														</z:treerow>
+													</z:treeitem>
+													<z:treeitem disabled="true">
+														<z:treerow>
+															<z:treecell label="合同列表"></z:treecell>
+														</z:treerow>
+													</z:treeitem>
+													<z:treeitem disabled="true">
+														<z:treerow>
+															<z:treecell label="收费单列表"></z:treecell>
+														</z:treerow>
+													</z:treeitem>
+													<z:treeitem disabled="true">
+														<z:treerow>
+															<z:treecell label="检验报告列表"></z:treecell>
+														</z:treerow>
+													</z:treeitem>
+													<z:treeitem disabled="true">
+														<z:treerow>
+															<z:treecell label="工厂检查整改列表"></z:treecell>
+														</z:treerow>
+													</z:treeitem>
+													<z:treeitem disabled="true">
+														<z:treerow>
+															<z:treecell label="工厂检查文件列表"></z:treecell>
+														</z:treerow>
+													</z:treeitem>
+													<z:treeitem disabled="true">
+														<z:treerow>
+															<z:treecell label="技术评定报告列表"></z:treecell>
+														</z:treerow>
+													</z:treeitem>
+												</z:treechildren>
+											</z:treeitem>
+
+											<z:treeitem disabled="true">
+												<z:treerow>
+													<z:treecell label="证书信息"></z:treecell>
+												</z:treerow>
+											</z:treeitem>
+											<z:treeitem disabled="true">
+												<z:treerow>
+													<z:treecell label="通知信息"></z:treecell>
+												</z:treerow>
+											</z:treeitem>
+											<z:treeitem disabled="true">
+												<z:treerow>
+													<z:treecell label="申请资料下载"></z:treecell>
+												</z:treerow>
+											</z:treeitem>
+											<z:treeitem disabled="true">
+												<z:treerow>
+													<z:treecell label="帮助信息"></z:treecell>
+												</z:treerow>
+											</z:treeitem>
+										</z:treechildren>
+									</z:tree>
+								</z:groupbox>
+							</z:vlayout>
+							<z:vlayout spacing="0">
+								<z:groupbox mold="3d" closable="false" vflex="true" hflex="true">
+									<z:caption label="即时消息"></z:caption>
+									<z:div height="100px"></z:div>
+								</z:groupbox>
+							</z:vlayout>
+						</z:vlayout>
+						<z:separator width="3px"></z:separator>
+						<z:tabbox vflex="true" hflex="true" id="maintabbox">
+							<z:tabs height="24px">
+								<z:tab label="我的桌面"></z:tab>
+							</z:tabs>
+							<z:tabpanels vflex="true" hflex="true">
+								<z:tabpanel vflex="true" hflex="true" style="padding: 0px;">
+									<z:vlayout vflex="true" hflex="true" spacing="0">
+										<z:separator height="3px"></z:separator>
+										<z:toolbar style="border-top:1px solid #ECECEC;">
+											<z:toolbarbutton image="/res/icons/page_refresh.png" label="刷新"></z:toolbarbutton>
+										</z:toolbar>
+										<z:vlayout id="mianbox" vflex="true" spacing="0" style="overflow: auto;">
+											<z:vbox id="homebox" style="padding: 3px;" spacing="0">
+												<z:hbox spacing="0" width="840px">
+													<z:include src="/views/Index_enterprise/item/TaskList.zul"></z:include>
+												</z:hbox>
+												<z:separator spacing="3px"></z:separator>
+												<z:hbox spacing="0" width="840px">
+													<z:include src="/views/Index_enterprise/item/ApplyList.zul"></z:include>
+												</z:hbox>
+												<z:separator spacing="3px"></z:separator>
+												<z:hbox spacing="0" width="840px">
+												<z:grid>
+													<z:auxhead>
+														<z:auxheader colspan="7" label="我的证书"></z:auxheader>
+													</z:auxhead>
+													<z:columns>
+														<z:column label="证书编号" width="100px"></z:column>
+														<z:column label="产品名称"></z:column>
+														<z:column label="规格型号"></z:column>
+														<z:column label="证书状态" width="60px"></z:column>
+														<z:column label="有效期" width="60px"></z:column>
+														<z:column label="起始日期" width="80px"></z:column>
+														<z:column label="失效日期" width="80px"></z:column>
+													</z:columns>
+													<z:rows>
+														<z:row>
+															<z:cell>-</z:cell>
+															<z:cell>-</z:cell>
+															<z:cell>-</z:cell>
+															<z:cell>-</z:cell>
+															<z:cell>-</z:cell>
+															<z:cell>-</z:cell>
+															<z:cell>-</z:cell>
+														</z:row>
+													</z:rows>
+												</z:grid>
+												</z:hbox>
+												<z:separator spacing="3px"></z:separator>
+												<z:groupbox width="840px" vflex="true" mold="3d" closable="false">
+													<z:caption label="留言"></z:caption>
+													<z:grid style="border:0px solid #CCC;">
+														<z:rows>
+															<z:row>
+																<z:label value="无"></z:label>
+															</z:row>
+														</z:rows>
+													</z:grid>
+												</z:groupbox>
+											</z:vbox>
+											<z:vbox id="editbox" visible="false" style="padding: 3px;"></z:vbox>
+										</z:vlayout>
+									</z:vlayout>
+								</z:tabpanel>
+							</z:tabpanels>
+						</z:tabbox>
+					</z:hlayout>
+				</z:center>
+				<z:south splittable="false" collapsible="false">
+					<z:div style="padding: 2px;" align="center">版权所有 - 公安部消防产品合格评定中心.</z:div>
+				</z:south>
+			</z:borderlayout>
+		</z:window>
+	</body>
+</html>

@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?init class="cccf.ma.web.zk.ProductionmodelmanageWindowInit" arg0="productionmodelmanageWindow"?>
+<window use="cccf.ma.web.zk.ProductionmodelmanageWindow"
+	xmlns:a="http://www.zkoss.org/2005/zk/annotation"
+	id="productionmodelmanageWindow" width="100%" sizable="true"
+	closable="true">
+	<separator width="5px" />
+	<div align="center">
+		<a:bind model="productionModelInfoList"
+			selectedItem="productionmodelmanageWindow.productionModelInfo" />
+		<listbox mold="paging" id="productionModelInfoListbox"
+			width="98%" pageSize="10">
+			<listhead sizable="true">
+
+				<listheader label="型号" id="model" />
+
+				<listheader label="非标准名称" id="name" />
+
+				<listheader  visible="false" label="全性能委托检验报告"/>
+
+				<listheader label="检验报告" />
+
+				<listheader label="产品工艺流程图"/>
+
+				<listheader label="产品特性描述填报表"/>
+				<listheader label="产品图片"/>
+
+				<listheader  label="汽车消防车产品3C认证申请书"
+					visible="false" id="pccc" />
+
+			</listhead>
+			<a:bind _var="productionModelInfo" />
+			<listitem value="@{productionModelInfo.id}">
+
+				<a:bind label="productionModelInfo.model" />
+				<listcell />
+
+				<a:bind label="productionModelInfo.name" />
+				<listcell />
+
+				<a:bind label="productionModelInfo.fullReportStatus" />
+				<listcell forward="onClick=onFileDownload" style="color:blue;" visible="false">
+					<custom-attributes
+								fileUrl="@{productionModelInfo.fullReport}" />
+				</listcell>
+
+				<a:bind label="productionModelInfo.reportStatus" />
+				<listcell forward="onClick=onFileDownload" style="color:blue;">
+					<custom-attributes
+								fileUrl="@{productionModelInfo.report}" />
+				</listcell>
+
+				<a:bind label="productionModelInfo.flowChartStatus" />
+				<listcell forward="onClick=onFileDownload" style="color:blue;">
+					<custom-attributes
+								fileUrl="@{productionModelInfo.flowChart}" />
+				</listcell>
+
+				<a:bind label="productionModelInfo.characterFormStatus" />
+				<listcell forward="onClick=onFileDownload" style="color:blue;">
+					<custom-attributes
+								fileUrl="@{productionModelInfo.characterForm}" />
+				</listcell>
+
+				<a:bind label="productionModelInfo.productImgsStatus" />
+				<listcell style="color:blue;" popup="">
+					
+				</listcell>
+				
+				<a:bind label="productionModelInfo.pumperCccFormStatus" />
+				<listcell forward="onClick=onFileDownload" style="color:blue;">
+					<custom-attributes
+								fileUrl="@{productionModelInfo.pumperCcc}" />
+				</listcell>
+
+			</listitem>
+		</listbox>
+	</div>
+	<separator height="6px" />
+	<div align="left">
+		<hbox>
+			<toolbarbutton label="增加" image="/image/common/add.png"
+				style="color:blue" forward="onAdd" id="btAdd"/>
+			<toolbarbutton id="btModify" label="修改" image="/image/common/edit.png"
+				style="color:blue" forward="onEdit" />
+			<toolbarbutton id="btDel" label="删除" image="/image/common/delete.png"
+				style="color:blue" forward="onDelete" />
+			<toolbarbutton id="btClose" label="关闭" image="/image/common/close.png"
+				style="color:blue" forward="onCancel" />
+		</hbox>
+	</div>
+
+</window>

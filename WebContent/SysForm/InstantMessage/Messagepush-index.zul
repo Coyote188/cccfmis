@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<zk>
+	<window id="MessageIndex" width="100%" sizable="false">
+		<borderlayout id="main" height="500px"
+			style="background:#c5e6ef;"
+			apply="openjframework.InstantMessage.IndexComposer">
+			<!-- list -->
+			<east width="160px" title="全部用户"
+				margins="0,0,0,2" splittable="false" flex="false" collapsible="false">
+				<include src="/SysForm/InstantMessage/userList.zul" />
+			</east>
+			<!-- Content -->
+			<center flex="true">
+				<tabbox>
+					<tabs>
+						<tab label="公共信息" selected="true" />
+					</tabs>
+					<tabpanels>
+						<tabpanel>
+							<include
+								src="/SysForm/InstantMessage/chatRoom.zul" />
+						</tabpanel>
+					</tabpanels>
+				</tabbox>
+			</center>
+		</borderlayout>
+	</window>
+</zk>

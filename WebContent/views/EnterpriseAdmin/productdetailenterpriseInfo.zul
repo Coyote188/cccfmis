@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?init class="cccf.ma.web.zk.EnterpriseviewerWindowInit" arg0="frmEnterpriseInfo"?>
+<window title="申请企业" border="normal" id="frmEnterpriseInfo" closable="true" use="cccf.ma.web.zk.ProductDetailEnterpriseWindow"
+	xmlns:a="http://www.zkoss.org/2005/zk/annotation" xmlns="http://www.zkoss.org/2005/zul"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.zkoss.org/2005/zul
+	http://www.zkoss.org/2005/zul/zul.xsd" width="675" sizable="true">
+	<style>tr.z-row td.z-row-inner { background: white; border: 0; }</style>
+	<vlayout spacing="1">
+		<groupbox height="300px" mold="3d">
+			<caption label="企业基本信息" />
+			<grid width="400px" style="border:0">
+				<columns>
+					<column width="20%" />
+					<column width="80%" />
+				</columns>
+				<rows>
+					<row>
+						<label value="企业名称:"></label>
+						<a:bind value="enterprise.name" />
+						<label />
+					</row>
+					<row>
+						<label value="国家:"></label>
+						<a:bind value="enterprise.state" />
+						<label />
+					</row>
+					<row>
+						<label value="地区:"></label>
+						<a:bind value="enterprise.location" />
+						<label />
+					</row>
+					<row>
+						<label value="通信地址:"></label>
+						<a:bind value="enterprise.contactAddress" />
+						<label />
+					</row>
+					<row>
+						<label value="联系人:"></label>
+						<a:bind value="enterprise.contactPerson" />
+						<label />
+					</row>
+					<row>
+						<label value="联系电话:"></label>
+						<a:bind value="enterprise.telephoneNum" />
+						<label />
+					</row>
+					<row>
+						<label value="传真:"></label>
+						<a:bind value="enterprise.faxNum" />
+						<label />
+					</row>
+					<row>
+						<label value="邮政编码:"></label>
+						<a:bind value="enterprise.postalcode" />
+						<label />
+					</row>
+				</rows>
+			</grid>
+		</groupbox>
+		<groupbox height="200px" mold="3d">
+			<caption label="企业文件列表" />
+			<grid id="grdFileList" style="border:0" width="240px"></grid>
+		</groupbox>
+	</vlayout>
+</window>

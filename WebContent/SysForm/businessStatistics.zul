@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<zk>
+<window title="业务统计" border="normal" 
+ 		apply="cccf.ma.web.zk.BusinessStatisticsComposer">
+	<groupbox>
+		<caption label="查询条件" style="font-size:14px;"/> 
+		
+		<hbox align="center">
+			<label value="*" style="color:RED" /><label value="业务类型"/>
+			<combobox id="bstypeCbx" value="—请选择业务类型—" buttonVisible="true" readonly="true">
+				<comboitem label="产品激活" value="#1"/>
+				<comboitem label="企业激活" value="#2"/>
+				<comboitem label="生产企业/制造商激活" value="#3"/>
+				<comboitem label="受理申请" value="#4"/>
+			</combobox>
+			<label value="从"/>
+			<datebox id="startDbx" format="yyyy-MM-dd"/>
+			至
+			<datebox id="endDbx" format="yyyy-MM-dd"/>
+			<button id="queryBtn" label="查询" image="/image/16/find.png" disabled="true"/>
+		</hbox>
+		<separator/>
+		<radiogroup id="attRad" style="margin:5px;" visible="false" width="100%">
+				<radio label="待办" checked="true"/>
+				<radio label="已结" />
+				<radio label="回退" disabled="true"/>
+				<radio label="追回" disabled="true"/>
+		</radiogroup>
+	</groupbox>
+	<groupbox >
+	<caption label="查询结果" style="font-size:14px;"/>
+		<div id="resultDiv" width="100%" style="overflow:auto;">
+		</div>
+	</groupbox>
+	<groupbox height="40px">
+	<caption label="统计信息" style="font-size:14px;"/>
+	<hbox align="center">
+		<div id="pDiv" visible="false">
+			<label value="产品激活:【共"/>
+			<label id="countP" value="8" style="font-size:16px;font-weight:bold;color:RED;"/>
+			<label value="条】&#160;&#160;&#160;&#160;"/>
+		</div>
+		<div id="eDiv" visible="false">
+			<label value="企业激活:【共"/>
+			<label id="countE" value="8" style="font-size:16px;font-weight:bold;color:RED;"/>
+			<label value="条】&#160;&#160;&#160;&#160;"/>
+		</div>
+		<div id="mDiv" visible="false">
+			<label value="生产企业/制造商激活:【共"/>
+			<label id="countM" value="8" style="font-size:16px;font-weight:bold;color:RED;"/>
+			<label value="条】&#160;&#160;&#160;&#160;"/>
+		</div>
+		<div id="aDiv" visible="false">
+			<hlayout>
+				<label value="受理申请:"/>
+				<div id="awDiv" visible="false">
+					<label value="待办:"/>
+					<label id="countAw" value="8" style="font-size:16px;font-weight:bold;color:RED;"/>
+					<label value="条"/>
+				</div>
+				<div id="aeDiv" visible="false">
+					<label value="已办:"/>
+					<label id="countAe" value="8" style="font-size:16px;font-weight:bold;color:RED;"/>
+					<label value="条"/>
+				</div>
+			</hlayout>
+		</div>
+	</hbox>
+	</groupbox>
+ </window>
+</zk>

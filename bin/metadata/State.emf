@@ -1,0 +1,28 @@
+<EnityModel>
+  <Name>State</Name>
+  <Alias>国家</Alias>
+  <PackageName>cccf.ma</PackageName>
+  <DbTableName>STATE</DbTableName>
+  <PrimaryKey>id</PrimaryKey>
+  <PrimaryKeyType>uuid.hex</PrimaryKeyType>
+  <FieldList>
+    <Field>
+      <Name>id</Name>
+      <Alias>国家编码</Alias>
+      <DbFieldName>SID</DbFieldName>
+      <DataType>STRING</DataType>
+      <AllowNull>false</AllowNull>
+      <Length>0</Length>
+      <IsLinkProperty>false</IsLinkProperty>
+    </Field>
+    <Field>
+      <Name>name</Name>
+      <Alias>国家名称</Alias>
+      <DbFieldName>NAME</DbFieldName>
+      <DataType>STRING</DataType>
+      <AllowNull>true</AllowNull>
+      <Length>0</Length>
+      <IsLinkProperty>false</IsLinkProperty>
+    </Field>
+  </FieldList>
+</EnityModel>

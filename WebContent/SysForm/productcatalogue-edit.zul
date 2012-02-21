@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?init class="cccf.ma.web.zk.ProductcatalogueeditWindowInit" arg0="ProductCatalogueEditWindow"?>
+<window title="产品目录编辑" border="normal" 
+	use="cccf.ma.web.zk.ProductcatalogueeditWindow"
+	xmlns:a="http://www.zkoss.org/2005/zk/annotation" id="ProductCatalogueEditWindow"
+	xmlns="http://www.zkoss.org/2005/zul"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.zkoss.org/2005/zul
+	http://www.zkoss.org/2005/zul/zul.xsd"
+	width="600px"  sizable="true">
+	
+<grid>
+  <rows>
+     <row>         
+       产品编号: 
+       <a:bind value="productCatalogue.productNo"/>
+       <textbox id="productNo" width="100px"/>
+		 	
+     </row>	
+     <row>         
+       产品名称: 
+       <a:bind value="productCatalogue.productName"/>
+       <textbox id="productName" width="100px"/>
+		 	
+     </row>	
+     <row>         
+       产品父: 
+       <a:bind value="productCatalogue.productParent.productName"/>
+       <combobox id="productParent" model="@{productParentList}"  onSelect="ProductCatalogueEditWindow.onproductParentSelect(event)" autodrop="true" width="100px">
+         <comboitem self="@{each=productParent}"  label="@{productParent.productName}"  value="@{productParent.id}"/>
+       </combobox>
+		 	
+     </row>	
+     <row>         
+       产品子: 
+       <a:bind value="productCatalogue.productChildren.productName"/>
+       <textbox id="productChildren" width="100px"/>
+		 	
+     </row>	
+     <row>         
+       产品级别: 
+       <a:bind value="productCatalogue.productLevel"/>
+       <textbox id="productLevel" width="100px"/>
+		 	
+     </row>	
+     <row>         
+       激活状态: 
+       <a:bind value="productCatalogue.activateStatus"/>
+       <textbox id="activateStatus" width="100px"/>
+		 	
+     </row>	
+     <row>         
+       执行标准: 
+       <a:bind value="productCatalogue.observedStandard"/>
+       <textbox id="observedStandard" width="100px"/>
+		 	
+     </row>	
+     <row>         
+       技术要求: 
+       <a:bind value="productCatalogue.technicalRequirement"/>
+       <textbox id="technicalRequirement" width="100px"/>
+		 	
+     </row>	
+     <row>         
+       证书编码: 
+       <a:bind value="productCatalogue.certificatesNo"/>
+       <textbox id="certificatesNo" width="100px"/>
+		 	
+     </row>	
+     <row>         
+       产品描述: 
+       <a:bind value="productCatalogue.productDescribe"/>
+       <textbox id="productDescribe" width="100px"/>
+		 	
+     </row>	
+  </rows>
+ </grid>
+<separator width="10px" />
+ <div align="left">
+   <hbox>
+       <button label="保存" image="/image/common/save.png"  width="70px" height="28px" style="null" forward="onSave"/>
+       <button label="关闭" image="/image/common/close.png"  width="70px" height="28px" style="null" forward="onCancel"/>  
+   </hbox>
+ </div>
+</window>			   

@@ -1,0 +1,21 @@
+<window use="cccf.ma.bpm.MyTaskListWindow" id="myTaskListWindow" border="none" width="100%" height="100%" mode="embedded"
+	sizable="false">
+	<borderlayout height="100%" width="100%">
+		<north  title=" " collapsible="true" splittable="true" autoscroll="true">
+			<div style="padding-top:3px;padding-bottom:3px;">
+				<listbox mold="paging" id="taskListbox" width="99%"  forward="onSelect=onDoTask()" pageSize="6">
+					<listhead sizable="true">
+						<listheader label="企业名称" width="30%" />
+						<listheader label="产品名称" width="30%" />
+						<listheader label="任务名称" width="20%" />
+						<listheader label="发起人员" width="10%" />
+						<listheader label="发起时间" width="10%" />
+					</listhead>
+				</listbox>
+			</div>
+		</north>
+		<center title=" " autoscroll="true">
+			<div id="divDetail" align="center"></div>
+		</center>
+	</borderlayout>
+</window>

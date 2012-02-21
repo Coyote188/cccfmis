@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<root-container name="受理流程" width="1152" height="921">
+  <node name="start-state" x="47" y="-5" width="132" height="36">
+    <edge>
+      <label x="5" y="-10"/>
+    </edge>
+  </node>
+  <node name="受理分工" x="46" y="68" width="132" height="36">
+    <edge>
+      <label x="5" y="-10"/>
+    </edge>
+  </node>
+  <node name="申请者修改" x="261" y="156" width="132" height="36">
+    <edge>
+      <label x="-3" y="-16"/>
+    </edge>
+  </node>
+  <node name="符合性审查" x="47" y="156" width="132" height="36">
+    <edge>
+      <label x="5" y="-10"/>
+    </edge>
+    <edge>
+      <label x="5" y="-10"/>
+      <bendpoint w1="-96" h1="-43" w2="-95" h2="45"/>
+    </edge>
+    <edge>
+      <label x="5" y="-10"/>
+      <bendpoint w1="149" h1="-50" w2="-65" h2="-50"/>
+    </edge>
+    <edge>
+      <label x="5" y="-10"/>
+    </edge>
+    <edge>
+      <label x="5" y="-10"/>
+    </edge>
+  </node>
+  <node name="会审" x="-139" y="157" width="132" height="36">
+    <edge>
+      <label x="-7" y="-8"/>
+      <bendpoint w1="43" h1="32" w2="-143" h2="33"/>
+    </edge>
+  </node>
+  <node name="审核" x="49" y="245" width="132" height="36">
+    <edge>
+      <label x="5" y="-10"/>
+    </edge>
+    <edge>
+      <label x="5" y="-10"/>
+      <bendpoint w1="-57" h1="-49" w2="-56" h2="49"/>
+    </edge>
+  </node>
+  <node name="审批" x="49" y="322" width="132" height="36">
+    <edge>
+      <label x="5" y="-10"/>
+    </edge>
+    <edge>
+      <label x="5" y="-10"/>
+      <bendpoint w1="104" h1="-4" w2="106" h2="162"/>
+      <bendpoint w1="103" h1="-147" w2="105" h2="19"/>
+    </edge>
+  </node>
+  <node name="受理返还" x="49" y="383" width="132" height="36">
+    <edge>
+      <label x="-32" y="-17"/>
+      <bendpoint w1="271" h1="1" w2="-3" h2="-493"/>
+    </edge>
+  </node>
+  <node name="合同制定" x="50" y="455" width="132" height="36">
+    <edge>
+      <label x="5" y="-10"/>
+    </edge>
+  </node>
+  <node name="合同审核" x="48" y="532" width="132" height="36">
+    <edge>
+      <label x="5" y="-10"/>
+    </edge>
+    <edge>
+      <label x="5" y="-10"/>
+      <bendpoint w1="-65" h1="-42" w2="-67" h2="35"/>
+    </edge>
+  </node>
+  <node name="财务收费" x="380" y="280" width="132" height="36">
+    <edge>
+      <label x="-17" y="-16"/>
+    </edge>
+  </node>
+  <node name="派组检验计划" x="593" y="279" width="132" height="36">
+    <edge>
+      <label x="5" y="-10"/>
+      <bendpoint w1="48" h1="72" w2="-156" h2="-99"/>
+    </edge>
+    <edge>
+      <label x="5" y="-10"/>
+    </edge>
+    <edge>
+      <label x="5" y="-10"/>
+    </edge>
+    <edge>
+      <label x="5" y="-10"/>
+    </edge>
+    <edge>
+      <label x="5" y="-10"/>
+      <bendpoint w1="40" h1="-82" w2="-186" h2="35"/>
+    </edge>
+  </node>
+  <node name="检验资料填写" x="794" y="279" width="138" height="36">
+    <edge>
+      <label x="5" y="-10"/>
+    </edge>
+  </node>
+  <node name="工厂检查资料填写" x="797" y="450" width="132" height="36">
+    <edge>
+      <label x="5" y="-10"/>
+    </edge>
+  </node>
+  <node name="检验资料审查" x="797" y="367" width="132" height="36">
+    <edge>
+      <label x="5" y="-10"/>
+    </edge>
+    <edge>
+      <label x="5" y="-10"/>
+      <bendpoint w1="96" h1="-1" w2="96" h2="87"/>
+      <bendpoint w1="97" h1="-87" w2="97" h2="1"/>
+    </edge>
+  </node>
+  <node name="技术评定初审" x="593" y="536" width="132" height="36">
+    <edge>
+      <label x="5" y="-10"/>
+    </edge>
+  </node>
+  <node name="评定安排" x="593" y="616" width="132" height="36">
+    <edge>
+      <label x="5" y="-10"/>
+    </edge>
+  </node>
+  <node name="结论上报" x="800" y="615" width="132" height="36">
+    <edge>
+      <label x="5" y="-10"/>
+    </edge>
+  </node>
+  <node name="评定审批" x="593" y="788" width="132" height="36">
+    <edge>
+      <label x="5" y="-10"/>
+    </edge>
+    <edge>
+      <label x="5" y="-10"/>
+    </edge>
+  </node>
+  <node name="评定结论修定" x="800" y="790" width="132" height="36">
+    <edge>
+      <label x="-9" y="-15"/>
+      <bendpoint w1="-33" h1="-38" w2="-33" h2="48"/>
+    </edge>
+  </node>
+  <node name="工厂资料审核" x="797" y="533" width="132" height="36">
+    <edge>
+      <label x="5" y="-10"/>
+    </edge>
+    <edge>
+      <label x="5" y="-10"/>
+      <bendpoint w1="50" h1="-42" w2="50" h2="41"/>
+    </edge>
+  </node>
+  <node name="评定审核" x="800" y="704" width="132" height="36">
+    <edge>
+      <label x="5" y="-10"/>
+    </edge>
+    <edge>
+      <label x="5" y="-10"/>
+    </edge>
+    <edge>
+      <label x="5" y="-10"/>
+    </edge>
+    <edge>
+      <label x="5" y="-10"/>
+      <bendpoint w1="-60" h1="-44" w2="-60" h2="45"/>
+    </edge>
+  </node>
+  <node name="资料打印" x="594" y="878" width="132" height="36">
+    <edge>
+      <label x="5" y="-10"/>
+    </edge>
+  </node>
+  <node name="待添加" x="819" y="162" width="132" height="36"/>
+  <node name="合同审批" x="48" y="604" width="132" height="36">
+    <edge>
+      <label x="5" y="-10"/>
+      <bendpoint w1="330" h1="1" w2="-2" h2="325"/>
+    </edge>
+  </node>
+  <node name="符合性审核" x="-106" y="325" width="132" height="36">
+    <edge>
+      <label x="5" y="-10"/>
+      <bendpoint w1="2" h1="133" w2="-154" h2="3"/>
+    </edge>
+  </node>
+  <node name="end-state" x="323" y="877" width="132" height="36"/>
+</root-container>

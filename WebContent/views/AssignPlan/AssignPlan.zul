@@ -1,0 +1,136 @@
+<?page title="派组检验计划" contentType="text/html;charset=UTF-8"?>
+<?init class="org.zkoss.zkplus.databind.AnnotateDataBinderInit" arg0="./AssignPlanWin"?>
+<window id="AssignPlanWin" title="派组检验计划" closable="true" border="normal" width="100%" height="100%"
+	apply="cccf.mis.web.tsak.assign.AssignPlanController" forward="onCreate=onInited">
+	<vlayout height="100%" width="100%" style="overflow:auto;">
+		<groupbox mold="3d" closable="false">
+			<caption image="/res/icons/page.png" label="申请企业信息"></caption>
+			<grid>
+				<columns>
+					<column></column>
+					<column></column>
+					<column></column>
+					<column></column>
+				</columns>
+				<rows>
+					<row>
+						<label value="申请企业"></label>
+						<label value="@{applyEnt.name}"></label>
+						<label value="专真"></label>
+						<label value="@{applyEnt.faxNum}"></label>
+					</row>
+					<row>
+						<label value="联系人"></label>
+						<label value="@{applyEnt.contactPerson}"></label>
+						<label value="联系电话"></label>
+						<label value="@{applyEnt.telephoneNum}"></label>
+					</row>
+					<row>
+						<label value="通讯地址"></label>
+						<label value="@{applyEnt.contactAddress}"></label>
+						<label value="邮政编码"></label>
+						<label value="@{applyEnt.postalcode}"></label>
+					</row>
+					<row>
+						<label value="企业英文名"></label>
+						<label value="@{applyEnt.nameEn}"></label>
+						<label value="企业英文地址"></label>
+						<label value="@{applyEnt.contactAddressEn}"></label>
+					</row>
+				</rows>
+			</grid>
+		</groupbox>
+		<include src="/views/public/Apply_msg.zul"></include>
+		<groupbox mold="3d" closable="false">
+			<caption image="/res/icons/calendar.png" label="派组计划信息"></caption>
+			<grid>
+				<columns>
+					<column width="160px"></column>
+					<column></column>
+				</columns>
+				<rows>
+					<row>
+						<cell>
+							<label value="是否进行工厂检查"></label>
+						</cell>
+						<cell>
+							<hbox>
+								<radiogroup id="isFCK">
+									<radio forward="onIsFckChange" label="是" value="需要工厂检查" checked="true"></radio>
+									<radio label="否" forward="onIsFckChange" value="无工厂检查"></radio>
+								</radiogroup>
+								<separator></separator>
+
+							</hbox>
+						</cell>
+					</row>
+					<row id="fcktype">
+						<cell>
+							<label value="检查场所"></label>
+						</cell>
+						<cell>
+							<vbox>
+								<radiogroup id="rg_inspectPlace">
+									<radio label="(1)生产现场检查" selected="true"></radio>
+									<separator></separator>
+									<radio label="(2)使用领域抽查"></radio>
+									<separator></separator>
+									<radio label="(3)流通领域检查"></radio>
+								</radiogroup>
+							</vbox>
+						</cell>
+					</row>
+					<row>
+						<cell>
+							<label value="是否进行产品检验"></label>
+						</cell>
+						<cell>
+							<hbox>
+								<radiogroup id="isDoProductTest">
+									<radio disabled="true" label="是"></radio>
+									<radio disabled="true" label="否" selected="true"></radio>
+								</radiogroup>
+							</hbox>
+						</cell>
+					</row>
+					<row>
+						<cell>
+							<hbox>
+								<label id="fckDaysLabel" value="检查天数:"></label>
+								<doublebox id="fckDays"></doublebox>
+							</hbox>
+						</cell>
+						<cell>
+							<toolbarbutton disabled="true" label="合同[X]"></toolbarbutton>							 
+						</cell>
+					</row>
+				</rows>
+			</grid>
+		</groupbox>
+		<include src="/views/public/processlog.zul?sioid=${applyInfo.applyno}" ></include>
+		<grid id="appoveGrid">
+			<columns>
+				<column width="100px" align="left"></column>
+				<column></column>
+			</columns>
+			<rows>
+				<row>
+					<label value=""></label>
+					<button image="/res/icons/accept.png" mold="trendy" label="提交" width="68px" id="btSubmit" height="26px"
+						forward="onSubmit" />
+				</row>
+				<row visible="false">
+					<label value="处理结论:" />
+					<listbox id="resultListbox" mold="select" rows="1" width="200">
+						<listitem label="符合性审查" selected="true" />
+					</listbox>
+				</row>
+				<row>
+					<label value="备注:" />
+					<textbox id="approveMemo" rows="4" hflex="true" />
+				</row>
+			</rows>
+		</grid>
+		
+	</vlayout>
+</window>

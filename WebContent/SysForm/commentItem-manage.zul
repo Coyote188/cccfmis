@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?init class="cccf.ma.web.zk.CommentItemmanageWindowInit" arg0="commentItemmanageWindow"?>
+<hbox>
+	<window title="常用批语管理" border="normal"
+		use="cccf.ma.web.zk.CommentItemmanageWindow"
+		xmlns:a="http://www.zkoss.org/2005/zk/annotation"
+		id="commentItemmanageWindow" xmlns="http://www.zkoss.org/2005/zul"
+		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		xsi:schemaLocation="http://www.zkoss.org/2005/zul
+	http://www.zkoss.org/2005/zul/zul.xsd"
+		width="100%" sizable="true">
+
+		<a:bind model="commentItemInfoList"
+			selectedItem="commentItemmanageWindow.commentItemInfo" />
+
+		<listbox mold="paging" id="commentItemInfoListbox" width="100%"
+			pageSize="10" checkmark="true" multiple="true"
+			pagingPosition="bottom">
+			<listhead sizable="true">
+				<listheader label="ID" width="10%" />
+				<listheader label="用户" width="20%" />
+				<listheader label="批语标题" width="25%" />
+				<listheader label="创建日期" width="25%" />
+				<listheader label="操作" width="20%" />
+			</listhead>
+			<a:bind _var="commentItemInfo" />
+			<listitem value="@{commentItemInfo.id}">
+				<listcell />
+				<a:bind label="commentItemInfo.user.username" />
+				<listcell />
+				<a:bind label="commentItemInfo.title" />
+				<listcell forward="onDoubleClick=onBrowse"
+					tooltiptext="双击这里或单击图标查看内容" />
+				<a:bind label="commentItemInfo.createdTime" />
+				<listcell />
+				<listcell label="編輯"
+					image="/image/files/edit-comment.gif"
+					hoverImage="/image/files/edit-comment.gif" forward="onEdit" />
+
+			</listitem>
+		</listbox>
+		<separator width="10px" />
+		<div align="left">
+			<hbox>
+				<button label="浏览" image="/image/files/FLAT.png"
+					width="68px" height="26px" style="null" forward="onBrowse" />
+				<button label="增加" image="/image/common/add.png"
+					width="68px" height="26px" style="null" forward="onAdd" />
+				<button label="修改" image="/image/common/edit.png"
+					width="68px" height="26px" style="null" forward="onEdit" />
+				<button label="删除" image="/image/common/delete.png"
+					width="68px" height="26px" style="null" forward="onDelete" />
+				<button label="word" image="/image/common/delete.png"
+					width="68px" height="26px" style="null" forward="onWord" />
+
+
+			</hbox>
+		</div>
+
+	</window>
+	<splitter id="s2" collapse="before" />
+
+	<include id="xcontents" src="${requestScope.contentSrc}"
+		style="padding:7px;" />
+</hbox>

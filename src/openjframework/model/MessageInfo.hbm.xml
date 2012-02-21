@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping SYSTEM "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+<hibernate-mapping>
+  <class name="openjframework.model.MessageInfo" table="message">  
+  
+    <id name="id" type="string" unsaved-value="null" >
+        <column name="di"  not-null="true"/>
+        <generator class="uuid.hex"/>
+    </id>
+    
+    <property name="subject" type="string">
+         <column name="subject"  not-null="true"/>
+     </property>
+    <property name="type" type="java.lang.Integer">
+         <column name="type"  not-null="false"/>
+     </property>
+    <many-to-one name="sendUser" column="sendUser" lazy="false"/> 
+    <many-to-one name="receiveUser" column="receiveUser" lazy="false"/> 
+     <property name="sendDate">
+         <column name="sendDate" sql-type="datetime" not-null="true"/>
+     </property>
+    <property name="content" type="string" length="2000">
+         <column name="content"  not-null="false"/>
+     </property>
+    <property name="readStatus" type="java.lang.Integer">
+         <column name="readStatus"  not-null="true"/>
+     </property>
+  </class>   
+</hibernate-mapping>

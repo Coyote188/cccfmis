@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?init class="org.zkoss.zkplus.databind.AnnotateDataBinderInit" root="./uPMWin" ?>
+<zk>
+<window id="uPMWin" apply="openjframework.web.zk.UserPermissionManageComposer"
+	xmlns:n="native"  
+    xmlns:w="client"
+	xmlns="http://www.zkoss.org/2005/zul"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation=" http://www.zkoss.org/2005/zul http://www.zkoss.org/2005/zul/zul.xsd">
+	<tabbox tabscroll="false"  width="100%" >
+		<tabs>
+			<tab label="评定中心人员列表" image="/image/files/right.png"/>
+		</tabs>
+		<tabpanels>
+			<tabpanel >
+				<div>
+					<separator height="10px"/>
+					<groupbox width="99%"> 
+						<hbox id="querybox">
+							用户姓名:<textbox id="nameTbx" /><separator width="10px" /> 
+							工作单位:<textbox id="depTbx"/><separator width="10px" /> 
+							<button id="queryBtn" label="查询" image="/image/16/find.png" />
+						</hbox>
+					</groupbox>
+					<separator height="10px"/>
+					<listbox id="userLbx" model="@{uPMWin$composer.userlist }" mold="paging" width="99%" pageSize="15" checkmark="true"  pagingPosition="bottom">
+						<listhead height="20px">
+							<listheader label="序号" width="60px"/>
+							<listheader label="用户编号" width="100px"/>
+							<listheader label="用户姓名" width="100px"/>
+							<listheader label="性别" width="60px"/>
+							<listheader label="工作单位"/>
+							<listheader label="职务" width="100px"/>
+							<listheader label="相关操作" width="100px"/>
+						</listhead>
+						<listitem self="@{each=user}">
+							<listcell label="${self.parent.index+1}" />
+							<listcell label="@{user.userNo }" />
+							<listcell label="@{user.name }" />
+							<listcell label="@{user.sexname}" />
+							<listcell label="@{user.organization.organizationName }" />
+							<listcell label="@{user.position.name }" />
+							<listcell>
+							  <toolbarbutton id="assignTlb" label="分配" style="color:Blue;">
+							  	<custom-attributes user="@{user}"/>
+							  </toolbarbutton>
+							</listcell>
+						</listitem>
+					</listbox>
+
+				</div>
+			</tabpanel>
+			
+		</tabpanels>
+	</tabbox>
+</window>
+</zk>

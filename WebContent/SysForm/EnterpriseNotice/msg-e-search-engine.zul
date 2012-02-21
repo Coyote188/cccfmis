@@ -1,0 +1,118 @@
+<?page title="new page title" contentType="text/html;charset=UTF-8"?>
+<?init class="org.zkoss.zkplus.databind.AnnotateDataBinderInit" root="./frmMsgSearchEngine"?>
+<zk>
+	<window title="查找企业" id="frmMsgSearchEngine" border="normal"
+		width="600px" closable="true"
+		apply="openjframework.web.zk.MsgESearchEngine"
+		position="center,center">
+		<grid id="grdSearchEngine">
+			<auxhead>
+				<auxheader align="center">
+					<hbox>
+						<label value="选择查找类型：" />
+						<combobox id="cbxSearchType" readonly="true"
+							value="——选择查找分类——" width="140px"
+							model="@{frmMsgSearchEngine$composer.searchType }">
+							<comboitem self="@{each=type }"
+								label="@{type }" value="@{type }">
+							</comboitem>
+						</combobox>
+						<space width="10px" />
+						<bandbox id="bdState" value="——选择国家——"
+							width="120px" readonly="true" visible="false">
+							<bandpopup>
+								<listbox id="lbxState" width="120px"
+									multiple="true" checkmark="true"
+									model="@{frmLocationSelect$composer.sList }">
+
+									<listhead />
+									<listitem self="@{each=state }"
+										value="@{state }">
+										<listcell
+											label="@{state.name }" />
+									</listitem>
+								</listbox>
+							</bandpopup>
+						</bandbox>
+						<bandbox id="bdProvince" value="——选择省——"
+							readonly="true" width="100px" visible="false">
+							<bandpopup>
+								<listbox id="lbxPro" width="120px"
+									multiple="true" checkmark="true"
+									model="@{frmLocationSelect$composer.pList }">
+
+									<listitem self="@{each=pro }"
+										value="@{pro }">
+										<listcell label="@{pro.name }" />
+									</listitem>
+								</listbox>
+							</bandpopup>
+						</bandbox>
+						<bandbox id="bdCity" value="——选择市——"
+							width="100px" readonly="true" visible="false">
+							<bandpopup>
+								<listbox id="lbxCity" width="120px"
+									multiple="true" checkmark="true"
+									model="@{frmLocationSelect$composer.cList }">
+									<listitem self="@{each=city }"
+										selected="true" value="@{city }">
+										<listcell label="@{city.name }" />
+									</listitem>
+								</listbox>
+							</bandpopup>
+						</bandbox>
+						<bandbox id="bdProduct" value="——选择产品——"
+							readonly="true" width="150px" visible="false">
+							<bandpopup>
+								<listbox id="lbxProduct" width="220px"
+									multiple="true" checkmark="true"
+									model="@{frmLocationSelect$composer.productList }">
+									<listitem self="@{each=product}"
+										value="@{product }">
+										<listcell
+											tooltiptext="@{product.productNo }">
+											<attribute name="onCreate">
+												{
+													if (self.getTooltiptext() != null) {
+														if (self.getTooltiptext().length() > 10)
+															self.setLabel(self.getTooltiptext().substring(0, 10) + "..");
+														else
+															self.setLabel(self.getTooltiptext());
+													}
+												}
+											</attribute>
+										</listcell>
+										<listcell
+											tooltiptext="@{product.productName }">
+											<attribute name="onCreate">
+												{
+													if (self.getTooltiptext() != null) {
+														if (self.getTooltiptext().length() > 7)
+															self.setLabel(self.getTooltiptext().substring(0, 7) + "..");
+														else
+															self.setLabel(self.getTooltiptext());
+													}
+												}
+											</attribute>
+										</listcell>
+									</listitem>
+								</listbox>
+							</bandpopup>
+						</bandbox>
+						<textbox id="tbxSearchStr" width="250px" />
+						<space width="15px" />
+						<toolbarbutton id="btnSearch" label="查找"
+							style="text-Decoration:underline;color:#3300cc" />
+
+					</hbox>
+				</auxheader>
+			</auxhead>
+			<columns />
+			<rows>
+				<row id="rwContent">
+
+				</row>
+			</rows>
+		</grid>
+	</window>
+</zk>

@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?init class="cccf.ma.web.zk.ProductcatalogueeditWindowInit" arg0="ProductCatalogueEditWindow"?>
+<zk>
+	<window style="width:100%;"  
+		contentStyle="overflow:auto;"
+		id="ProductCatalogueEditWindow"
+		use="cccf.ma.web.zk.ProductcatalogueeditWindow" xmlns:n="native"
+		xmlns:w="client" xmlns:a="http://www.zkoss.org/2005/zk/annotation"
+		xmlns="http://www.zkoss.org/2005/zul"
+		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		xsi:schemaLocation=" http://www.zkoss.org/2005/zul http://www.zkoss.org/2005/zul/zul.xsd">
+		<grid>
+			<columns height="28px">
+				<column width="100px" align="center" label=" "></column>
+				<column label="产品基本信息"></column>
+			</columns>
+			<rows>
+				<row>
+					<hbox>
+						<label value="*"
+							style="color:red;font-size:14;font-weight:bold;" />
+						产品编号
+					</hbox>
+					<a:bind value="productCatalogue.productNo" />
+					<textbox id="productNo" value="" width="250px"
+						style="color:RED" />
+
+				</row> 
+                <row>
+					<hbox>
+						<label value="*"
+							style="color:red;font-size:14;font-weight:bold;" />
+						产品名称
+					</hbox>
+					<hbox>
+						<a:bind value="productCatalogue.productName" />
+						<textbox id="productName" width="220px"
+							constraint="no empty:产品名称不能为空" maxlength="20"
+							tooltiptext="最多输入20个字" />
+							
+							<checkbox id="modelCbx" label="是否允许分型号" value=""/>
+							
+							<checkbox visible="false" id="fireCbx" label="是否消防车"/>
+					</hbox>
+				</row>
+				<row>
+					<hbox>
+						<label value="*"
+							style="color:red;font-size:14;font-weight:bold;" />
+						产品名称(英文)
+					</hbox>
+					<hbox>
+						<a:bind value="productCatalogue.productNameEn" />
+						<textbox id="productNameEn" width="220px" maxlength="40"
+							tooltiptext="最多输入40个字" /> 
+					</hbox>
+				</row>
+				<row>
+					<hbox>
+						<label value="*"
+							style="color:red;font-size:14;font-weight:bold;" />
+						对应证书分类编号
+					</hbox>
+					<hbox>
+						<a:bind value="productCatalogue.certificationTypeNo" />
+						<textbox id="certificationTypeNo" width="220px" maxlength="2"
+							tooltiptext="最多输入2个字" /> 
+					</hbox>
+				</row>
+				<row>
+					<hbox>
+						<label value="*"
+							style="color:red;font-size:14;font-weight:bold;" />
+						 业务类型
+					</hbox>
+					<hbox> 
+						<combobox id="businessType" forward="onSelect=onSelectBusinessType">
+						   <attribute name="onCreate">
+						       if("1".equals(self.getValue()))
+						       {
+						          self.setSelectedIndex(0);
+						       }
+						       else if("0".equals(self.getValue()))
+						       {
+						          self.setSelectedIndex(1);
+						       }if("2".equals(self.getValue()))
+						       {
+						          self.setSelectedIndex(2);
+						       }else{
+						          self.setSelectedIndex(-1);
+						       }
+						        
+						   </attribute> 
+						   <comboitem label="强制性认证" value="1"/>
+						   <comboitem label="型式认可" value="0"/>
+						   <comboitem label="自愿性认证" value="2"/>
+						</combobox>
+					</hbox>
+				</row>
+				<row>
+					<hbox>
+						<label value="*"
+							style="color:red;font-size:14;font-weight:bold;" />
+						执行标准
+					</hbox>
+					<a:bind value="productCatalogue.observedStandard" />
+					<textbox id="observedStandard" width="99%"  
+						constraint="no empty:执行标准不能为空" maxlength="100"
+						tooltiptext="最多输入10000个字" />
+
+				</row>
+				<row>
+					<hbox>
+						<label value="*"
+							style="color:red;font-size:14;font-weight:bold;" />
+						体系标准
+					</hbox>
+					<a:bind value="productCatalogue.systemStandards" />
+					<textbox id="systemStandards" width="99%"  
+						constraint="no empty:执行标准不能为空" maxlength="100"
+						tooltiptext="最多输入10000个字" />
+
+				</row>
+				<row>
+					<hbox>
+						<label value="*"
+							style="color:red;font-size:14;font-weight:bold;" />
+						认证规则
+					</hbox>
+					<a:bind value="productCatalogue.caRule" />
+					<textbox id="caRule" width="99%"  
+						constraint="no empty:执行标准不能为空" maxlength="100"
+						tooltiptext="最多输入10000个字" />
+
+				</row>
+				<row>
+					<hbox>
+						<label value="*"
+							style="color:red;font-size:14;font-weight:bold;" />
+						技术要求
+					</hbox>
+					<a:bind
+						value="productCatalogue.technicalRequirement" />
+					<textbox id="technicalRequirement" width="99%"
+						rows="5" constraint="no empty:技术要求不能为空" maxlength="10000"
+						tooltiptext="最多输入10000个字" />
+
+				</row>
+				<row>
+					<hbox>
+						<label value="*"
+							style="color:red;font-size:14;font-weight:bold;" />
+						产品描述
+					</hbox>
+					<a:bind value="productCatalogue.productDescribe" />
+					<textbox id="productDescribe" width="99%" rows="3"
+						constraint="no empty:请对该产品进行描述" maxlength="10000"
+						tooltiptext="最多输入10000个字" />
+
+				</row>
+				<row>
+					<hbox>
+						<label value="*"
+							style="color:red;font-size:14;font-weight:bold;" />
+						是否启用:
+					</hbox>
+					<vbox>
+						<combobox id="productActivate"
+							model="@{productEnabledStatusList}"
+							onSelect="ProductCatalogueEditWindow.onproductActivateSelect(event)"
+							autodrop="true" buttonVisible="true" value="——单击选择——"
+							readonly="true">
+							<comboitem self="@{each=productActivate}"
+								label="@{productActivate.value}" value="@{productActivate.id}" />
+						</combobox>
+						<label value="[不启用]企业不能看到该产品及它的子产品"
+							style="color:red;font-size:10;font-weight:bold;" />
+
+						<label id="cas" value="@{Current_EnabledStatus}"
+							style="color:RED;" />
+						<label id="uas" value="" style="color:GREEN;" />
+					</vbox>
+				</row>
+			</rows>
+		</grid>
+		<separator height="20px" />
+		<div align="center">
+			<hbox>
+				<button label="保存" image="/image/common/save.png"
+					width="68px" height="26px" style="null" forward="onSave" />
+				<button label="取消" image="/image/common/close.png"
+					width="68px" height="26px" style="null" forward="onCancel" />
+			</hbox>
+		</div>
+
+	</window>
+</zk>

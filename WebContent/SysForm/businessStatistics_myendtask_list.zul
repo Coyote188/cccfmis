@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?init class="org.zkoss.zkplus.databind.AnnotateDataBinderInit" root="./myEndTaskListWnd" ?>
+<window apply="cccf.ma.bpm.MyEndTaskListStatisticsController" 
+	id="myEndTaskListWnd" sizable="false" border="normal">
+	<listbox  id="taskListbox" mold="paging" model="@{myEndTaskListWnd$composer.taskInstanceInfoList}" pageSize="14">
+				<listhead sizable="true">
+					<listheader label="企业名称" width="30%" />
+					<listheader label="产品名称" width="30%" />
+					<listheader label="发起人员" width="10%" />
+					<listheader label="任务名称" width="20%" />
+					<listheader label="办理时间" width="10%" />
+				</listhead>
+				<listitem style="text-align:left;" self="@{each=taskIns}">
+					<listcell tooltiptext="@{taskIns.applicationInfo.enterprise.name}">
+					<attribute name="onCreate">
+						{
+							if(self.getTooltiptext()!=null){
+								if (self.getTooltiptext().length() > 15)
+									self.setLabel(self.getTooltiptext().substring(0, 15)+"..");
+								else
+									self.setLabel(self.getTooltiptext());
+							}
+						}
+						</attribute>
+					</listcell>
+					<listcell tooltiptext="@{taskIns.applicationInfo.production.productName}">
+					<attribute name="onCreate">
+						{
+							if(self.getTooltiptext()!=null){
+								if (self.getTooltiptext().length() > 15)
+									self.setLabel(self.getTooltiptext().substring(0, 15)+"..");
+								else
+									self.setLabel(self.getTooltiptext());
+							}
+						}
+						</attribute>
+					</listcell>
+					<listcell label="@{taskIns.preTask.actorName}"/>
+					<listcell tooltiptext="@{taskIns.taskName}">
+					<attribute name="onCreate">
+						{
+							if(self.getTooltiptext()!=null){
+								if (self.getTooltiptext().length() > 10)
+									self.setLabel(self.getTooltiptext().substring(0, 10)+"..");
+								else
+									self.setLabel(self.getTooltiptext());
+							}
+						}
+						</attribute>
+					</listcell>
+					<listcell label="@{taskIns.approveDate,converter='com.aidi.core.zk.DateConverter'}" />
+				</listitem>
+		</listbox>
+</window>

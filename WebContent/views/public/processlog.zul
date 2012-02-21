@@ -1,0 +1,75 @@
+<?page title="流程记录" contentType="text/html;charset=UTF-8"?>
+<window border="none" apply="cccf.mis.web.tsak.ProcesslogController">
+	<groupbox mold="3d" open="true">
+		<caption label="前一任务"></caption>
+		<grid>
+			<columns>
+				<column label="任务名称" width="100px"></column>
+				<column label="起始时间" width="160px"></column>
+				<column label="办理时间" width="160px"></column>
+				<column label="办理人员" width="80px"></column>
+				<column label="办理结果" width="120px"></column>
+				<column label="意见"></column>
+			</columns>
+			<rows>
+				<row height="26px">
+					<cell>
+						<label value="${lastlog.taskInstanceName}"></label>
+					</cell>
+					<cell>
+						<label value="${lastlog.create_}"></label>
+					</cell>
+					<cell>
+						<label value="${lastlog.end_ }"></label>
+					</cell>
+					<cell>
+						<label value="${lastlog.username }"></label>
+					</cell>
+					<cell>
+						<label value="${lastlog.approveResult}"></label>
+					</cell>
+					<cell>
+						<label value="${lastlog.approveMemo }"></label>
+					</cell>
+				</row>
+			</rows>
+		</grid>
+	</groupbox>
+	<groupbox mold="3d" open="false">
+		<caption label="流程记录">
+			<label value="打开/关闭"></label>
+		</caption>
+		<grid>
+			<columns>
+				<column label="任务名称" width="100px"></column>
+				<column label="起始时间" width="160px"></column>
+				<column label="办理时间" width="160px"></column>
+				<column label="办理人员" width="80px"></column>
+				<column label="办理结果" width="120px"></column>
+				<column label="意见"></column>
+			</columns>
+			<rows>
+				<row height="26px" forEach="${logs}">
+					<cell>
+						<label value="${each.taskInstanceName}"></label>
+					</cell>
+					<cell>
+						<label value="${each.create_}"></label>
+					</cell>
+					<cell>
+						<label value="${each.end_ }"></label>
+					</cell>
+					<cell>
+						<label value="${each.username }"></label>
+					</cell>
+					<cell>
+						<label value="${each.approveResult}"></label>
+					</cell>
+					<cell>
+						<label value="${each.approveMemo }"></label>
+					</cell>
+				</row>
+			</rows>
+		</grid>
+	</groupbox>
+</window>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<root-container name="申请变更流程" width="645" height="377">
+  <node name="start-state1" x="160" y="46" width="132" height="36">
+    <edge>
+      <label x="5" y="-10"/>
+    </edge>
+  </node>
+  <node name="申请变更审批" x="164" y="145" width="132" height="36">
+    <edge>
+      <label x="5" y="-10"/>
+    </edge>
+    <edge>
+      <label x="5" y="-10"/>
+      <bendpoint w1="98" h1="36" w2="97" h2="-41"/>
+    </edge>
+  </node>
+  <node name="end-state1" x="165" y="222" width="132" height="36"/>
+</root-container>

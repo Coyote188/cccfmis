@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?init class="openjframework.web.zk.PositionmanageWindowInit" arg0="positionmanageWindow"?>
+<window 
+	use="openjframework.web.zk.PositionmanageWindow"
+	xmlns:a="http://www.zkoss.org/2005/zk/annotation" id="positionmanageWindow"
+	xmlns="http://www.zkoss.org/2005/zul"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.zkoss.org/2005/zul
+	http://www.zkoss.org/2005/zul/zul.xsd"
+	width="99%"  sizable="true">
+	
+	<hbox id="querybox" style="margin-top:10px;">
+			
+ 		代码:<textbox id="no" width="100px"/><separator width="10px" /> 
+		
+ 		名称:<textbox id="name" width="100px"/><separator width="10px" /> 
+		
+		<button label="查询" image="/image/16/find.png"  forward="onSearch"/>
+	</hbox>
+	<separator width="10px" />
+	
+	<a:bind model="positionInfoList" selectedItem="positionmanageWindow.positionInfo"/>
+    <listbox mold="paging" id="positionInfoListbox" width="98%" pageSize="8" checkmark="true" multiple="true" >
+		<listhead sizable="true" >
+					
+			<listheader label="代码" width="50%"/>
+					
+			<listheader label="名称" width="50%"/>
+				
+		</listhead>
+			<a:bind _var="positionInfo"/>
+			<listitem value="@{positionInfo.no}">
+			
+			    <a:bind label="positionInfo.no"/>
+				<listcell/>
+				
+			    <a:bind label="positionInfo.name"/>
+				<listcell/>
+				
+			</listitem>
+	</listbox>
+	 
+	<separator width="10px" />
+	<div align="left">
+   <hbox>
+       <button label="增加" image="/image/common/add.png" width="70px" height="28px" style="null" forward="onAdd"/>
+       <button label="修改" image="/image/common/edit.png" width="70px" height="28px" style="null" forward="onEdit"/>
+       <button label="删除" image="/image/common/delete.png" width="70px" height="28px" style="null" forward="onDelete"/>
+    </hbox>
+   </div>
+</window>

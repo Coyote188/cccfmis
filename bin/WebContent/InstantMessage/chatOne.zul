@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<zk>
+	<window id="win" width="500px" height="350px"
+		title="与${talkObject}的对话" maximizable="true" border="normal" 
+		closable="true" apply="openjframework.InstantMessage.ChatOneComposer"
+		style="background:#c5e6ef;" forward="onClose=win.onCloseWin">
+		<textbox id="talkObjectTbx" value="${talkObject}"
+			visible="false" />
+		<borderlayout style="background:#c5e6ef;">
+			<center>
+				<panel height="100%" width="100%">
+					<panelchildren>
+						<borderlayout>
+							<center>
+								<panel height="100%">
+									<panelchildren>
+										<div id="chatOne_viewer"
+											style="overflow:scroll;" height="100%" />
+									</panelchildren>
+								</panel>
+							</center>
+							<south splittable="true" size="25%"
+								flex="true">
+								<textbox id="chatOne_text"
+									multiline="true" width="98%" style="margin:0px"
+									value="您好！" />
+							</south>
+						</borderlayout>
+					</panelchildren>
+				</panel>
+			</center>
+			<east size="25%" style="background:#c5e6ef;">
+				<panel height="260px" width="100%"
+					style="background:#c5e6ef;">
+					<panelchildren>
+						<borderlayout width="100%"
+							style="background:transparent;background:#c5e6ef;">
+							<north size="120px" border="none"
+								style="background:transparent">
+								<image src="/image/InstantMessage/msn1.gif" />
+							</north>
+							<south size="120px" border="none"
+								style="background:transparent">
+								<image src="/image/InstantMessage/msn2.gif" />
+							</south>
+						</borderlayout>
+					</panelchildren>
+				</panel>
+			</east>
+			<south style="background:#c5e6ef;">
+				<toolbar mold="panel" align="center">
+					<button id="sendBtn" label="发送" width="65px"
+						forward="onClick=win.onSend" />
+					<button label="取消" width="65px"
+						onClick='chatOne_text.value = ""' />
+				</toolbar>
+			</south>
+		</borderlayout>
+
+	</window>
+	<style dynamic="true">
+		.cells td, .search .item td { border-bottom: 1px solid #BFDBF5;
+		} .search .cell-inner { color: #2C559C; font: italic Tahoma,
+		Arial, Helvetica, sans-serif; } .z-menubar-hor, .z-menubar-ver{
+		border-bottom:0 none; background: transparent none; }
+	</style>
+</zk>

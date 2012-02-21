@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping SYSTEM "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+<hibernate-mapping>
+  <class name="cccf.ma.model.EnterpriseProductModel" table="enterpriseproductmodel">  
+  
+    <id name="id" type="string" unsaved-value="null" >
+        <column name="epmid"  not-null="true"/>
+        <generator class="uuid.hex"/>
+    </id>
+    
+    <many-to-one name="enterprise" column="enterprise" lazy="false"/> 
+    <many-to-one name="product" column="product" lazy="false"/> 
+    <property name="model" type="java.lang.String">
+         <column name="model"  not-null="false"/>
+     </property>
+    <property name="name" type="java.lang.String">
+         <column name="name"  not-null="false"/>
+     </property>
+    <property name="checkno" type="java.lang.String">
+         <column name="checkno"  not-null="false"/>
+     </property>
+    <property name="orgname" type="java.lang.String">
+         <column name="orgname"  not-null="false"/>
+     </property>
+    <property name="checkby" type="java.lang.String">
+         <column name="checkby"  not-null="false"/>
+     </property>
+    <property name="report" type="java.lang.String">
+         <column name="report"  not-null="false"/>
+     </property>
+    <property name="setdate" type="java.util.Date">
+         <column name="setdate"  not-null="false"/>
+     </property>
+    <property name="checktype" type="java.lang.String">
+         <column name="checktype"  not-null="false"/>
+     </property>
+    <property name="checkfile" type="java.lang.String">
+         <column name="checkfile"  not-null="false"/>
+     </property>
+    <property name="tempname" type="java.lang.String">
+         <column name="tempname"  not-null="false"/>
+     </property>
+    <property name="productimage" type="java.lang.String">
+         <column name="productimage"  not-null="false"/>
+     </property>
+    <property name="designfile" type="java.lang.String">
+         <column name="designfile"  not-null="false"/>
+     </property>
+    <property name="otherfile" type="java.lang.String">
+         <column name="otherfile"  not-null="false"/>
+     </property>
+    <property name="productname" type="java.lang.String">
+         <column name="productname"  not-null="false"/>
+     </property>
+    <property name="menuname" type="java.lang.String">
+         <column name="menuname"  not-null="false"/>
+     </property>
+  </class>   
+</hibernate-mapping>

@@ -1,0 +1,69 @@
+<?xml  version="1.0" encoding="utf-8"?>
+<zk>
+	<window id="ldjfWin" title="领导签发" border="normal" contentStyle="true" apply="cccf.ma.web.zk.JspdLDQFMainController" width="900px">
+		<tabbox tabscroll="false" vflex="true">
+			<tabs>
+				<tab label="技术评定初审"></tab>
+				<tab label="工厂检查资料"></tab>
+				<tab label="申请资料"></tab>
+			</tabs>
+			<tabpanels>
+				<tabpanel id="cpTbp" vflex="true">
+					<div id="divApplyInfo" width="99%" />
+					<div id="divProductInfo" width="99%" />
+				</tabpanel>
+				<tabpanel id="gcjcTbp" vflex="true"></tabpanel>
+				<tabpanel id="sjzlTbp" vflex="true"></tabpanel>
+			</tabpanels>
+		</tabbox>
+		<div style="margin-top:10px">
+			<grid style="border-bottom:0px">
+				<columns />
+				<auxhead>
+					<auxheader label="审核意见" style="font-weight:bold" />
+				</auxhead>
+				<rows>
+					<row align="center" spans="1,1,1,2">
+						<label value="证书有效期" />
+						<label value="企业人数代码" />
+						<label value="建议操作" />
+						<label value="备注" />
+					</row>
+					<row align="center" spans="1,1,1,2">
+						<label value="三年" />
+						<label value="M" />
+						<label value="发证" />
+						<label value="" />
+					</row>
+
+				</rows>
+			</grid>
+			<grid style="border-top:0;border-bottom:0">
+				<columns />
+				<auxhead>
+					<auxheader label="流程操作" style="font-size:13;font-weight:bold;" />
+				</auxhead>
+			</grid>
+			<grid id="appoveGrid" style="border-top:0px">
+				<columns>
+					<column width="80px" align="center"></column>
+					<column></column>
+				</columns>
+				<rows>
+					<row align="left">
+						<label value="处理结论" />
+						<listbox id="resultListbox" mold="select" rows="1" width="200" />
+					</row>
+					<row align="left">
+						<label value="意  见" />
+						<textbox id="approveMemo" rows="3" width="98%" />
+					</row>
+				</rows>
+			</grid>
+			<div style="margin:10px;margin-left:80px">
+				<button label="提交" image="/image/16/up.png" width="68px" id="submitBtn" height="26px" style="" forward="onSubmit" />
+				<button label="关闭" image="/image/common/close.png" width="68px" height="26px" style="" forward="onCancel" />
+			</div>
+		</div>
+	</window>
+</zk>

@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<?init class="cccfmis.bpm.zk.ApplictionPDWindowInit" arg0="cpApproveWindow"?>
+<window title="技术评定初评" border="normal" id="cpApproveWindow" height="100%" width="100%"
+	use="cccfmis.bpm.zk.ApplictionJspdcpWindow">
+	<borderlayout height="100%">
+		<center flex="true">
+			<tabbox height="100%">
+				<tabs>
+					<tab label="初评管理"></tab>
+					<tab label="厂检资料"></tab>
+					<tab label="申请资料"></tab>
+				</tabs>
+				<tabpanels height="100%">
+					<tabpanel height="100%">
+						<borderlayout>
+							<center>
+								<vlayout style="text-align:left;">
+									<groupbox mold="3d" open="false">
+										<caption label="产品信息">[点击打开/关闭]</caption>
+										<listbox>
+											<listitem>
+												<listcell label="产品名称:">
+													<label value="@{inspectionApplication.production.productName}"></label>
+												</listcell>
+											</listitem>
+										</listbox>
+										<listbox model="@{inspectionApplication.productionModel}">
+											<listhead>
+												<listheader label="规格型号"></listheader>
+												<listheader label="名称"></listheader>
+												<listheader label="状态"></listheader>
+												<listheader label="注释"></listheader>
+											</listhead>
+											<listitem self="@{each=dataList}">
+												<listcell label="@{dataList.model}"></listcell>
+												<listcell label="@{dataList.name}"></listcell>
+												<listcell>
+													<checkbox label="加入到证书" checked="true"></checkbox>
+												</listcell>
+												<listcell>
+													<textbox hflex="true"></textbox>
+												</listcell>
+											</listitem>
+										</listbox>
+									</groupbox>
+									<groupbox mold="3d" open="true">
+										<caption label="产品信息">[点击打开/关闭]</caption>
+										<listbox id="certificatList">
+											<auxhead>
+												<auxheader></auxheader>
+												<auxheader colspan="2" label="证书有效期"></auxheader>
+												<auxheader></auxheader>
+												<auxheader label="产品标准和技术要求"></auxheader>
+												<auxheader></auxheader>
+												<auxheader></auxheader>
+												<auxheader></auxheader>
+											</auxhead>
+											<listhead>
+												<listheader label="证书编号" width="200px"></listheader>
+												<listheader width="120px" label="起始日期"></listheader>
+												<listheader width="120px" label="截止日期"></listheader>
+												<listheader label="证书规格型号"></listheader>
+												<listheader label="产品标准和技术要求"></listheader>
+												<listheader label="执行标准"></listheader>
+												<listheader label="证书状态" width="140px"></listheader>
+												<listheader></listheader>
+											</listhead>
+											<listfoot>
+												<listfooter>
+													<toolbarbutton label="新增证书" forward="onAddCertificate"></toolbarbutton>
+													<toolbarbutton label="暂         存" forward="onSave"></toolbarbutton>
+													<toolbarbutton label="证书预览" forward="onSeeReport"></toolbarbutton>
+												</listfooter>
+											</listfoot>
+										</listbox>
+									</groupbox>
+								</vlayout>
+							</center>
+						</borderlayout>
+					</tabpanel>
+					<tabpanel height="100%">
+						<include height="100%" src="/cccfpage/items/gcjc-zl.zul"></include>
+					</tabpanel>
+					<tabpanel height="100%">
+						<include height="100%" src="/cccfpage/items/sqzl.zul"></include>
+					</tabpanel>
+				</tabpanels>
+			</tabbox>
+		</center>
+		<south title="工作流操作" collapsible="true" splittable="false">
+			<grid id="appoveGrid">
+				<columns>
+					<column width="80px" align="center"></column>
+					<column></column>
+				</columns>
+				<rows>
+					<row align="left">
+						<label value="下一步:" />
+						<cell>
+							<listbox id="resultListbox" mold="select" rows="1" width="200" />
+							<button label="提交" image="/image/16/up.png" width="68px" id="btSubmit" height="26px" style=""
+								forward="onSubmit" />
+							<button label="关闭" image="/image/common/close.png" width="68px" height="26px" style=""
+								forward="onCancel" />
+							<button label="回退" disabled="true"></button>
+						</cell>
+					</row>
+					<row align="left">
+						<label value="意见:" />
+						<textbox id="approveMemo" rows="3" width="98%" />
+					</row>
+				</rows>
+			</grid>
+		</south>
+	</borderlayout>
+</window>

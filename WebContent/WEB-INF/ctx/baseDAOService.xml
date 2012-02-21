@@ -1,0 +1,38 @@
+<?xml version="1.0"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+<beans>
+	<!--<beans default-lazy-init="true">
+	-->
+	<description>article</description>
+
+<!-- dynaservice-->
+
+	<!-- DAO object: Hibernate implementation -->
+	<bean id="baseDAO" class="com.aidi.core.dao.impl.hibernate.BasisDAOImpl">
+		<property name="sessionFactory"><ref bean="mySessionFactory"/></property>
+	</bean>
+	
+	<!-- ***** baseDAOService SERVICE *****-->
+	<bean id="baseDAOService" class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">	
+		<property name="transactionManager"><ref bean="myTransactionManager"/></property>
+		<property name="target"><ref bean="baseDAOTarget"/></property>
+		<property name="transactionAttributes">
+			<props>
+				<prop key="find*">PROPAGATION_REQUIRED,readOnly,-InfoObjectException</prop>
+				<prop key="save*">PROPAGATION_REQUIRED,-InfoObjectException</prop>
+			</props>
+		</property>
+	</bean>
+
+	<!-- InfoObjectTarget primary business object implementation -->
+	<bean id="baseDAOTarget" class="com.aidi.core.service.impl.BaseDAOServiceImpl">
+		<property name="dao"><ref bean="baseDAO"/></property>
+	</bean>	
+
+    <bean id="hibernateTemplate" class="org.springframework.orm.hibernate3.HibernateTemplate">
+		<property name="sessionFactory">
+			<ref bean="mySessionFactory" />
+		</property> 
+	</bean> 
+	
+</beans>

@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<window border="normal" id="chooseproWin" apply="cccf.ma.web.zk.ChooseProductActiveController" xmlns:n="native" xmlns:w="client"
+	xmlns="http://www.zkoss.org/2005/zul" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation=" http://www.zkoss.org/2005/zul http://www.zkoss.org/2005/zul/zul.xsd">
+	<borderlayout>
+		<west id="procWst" width="250px">
+			<div id="treeDiv">
+				<!--Default:z-tree,Dot Tree:z-dottree,
+					XP Explorer:z-filetree,Vista Explorer:z-vfiletree-->
+				<tree id="chooseprocTre" height="455px" style="overflow: auto;" zclass="z-dottree" checkmark="true"
+					fixedLayout="true" multiple="true">
+					<treecols>
+						<treecol label="产品目录(已过滤激活的)" style="font-size:25px;color:Red;font-weight:bold;"
+							image="/image/16/blockdevice.png" />
+					</treecols>
+					<treechildren>
+						<treeitem value="${each}" forEach="${pgroup}" open="false" forward="onOpen=onTreeitemOpen"
+							checkable="false">
+							<treerow>
+								<treecell label="${each.productName}" />
+							</treerow>
+							<treechildren />
+						</treeitem>
+					</treechildren>
+				</tree>
+
+			</div>
+		</west>
+		<center id="procCtr" autoscroll="true">
+			<div>
+				<div style="margin-top:20px;margin-left:10px;">
+					1.在左边的产品目录中勾选/取消勾选来进行产品选择;
+					<n:br />
+					<n:br />
+					2.待激活产品列表同样可以进行勾选/取消勾选,最后以待激活产品类别中的勾选
+					<n:br />
+					项为待激活产品
+					<n:br />
+					<n:br />
+				</div>
+				<groupbox height="240px">
+					<caption label="待激活产品列表" style="margin-top:10px;font-size:14px;color:GREEN;font-weight:bold;" />
+					<div id="actiListDiv">
+
+					</div>
+
+				</groupbox>
+				<separator />
+				<checkbox id="selectCbx" label="全选/取消全选" checked="true" />
+				<checkbox id="InverseCbx" label="反选/取消反选" />
+				<separator height="40px" />
+				<div align="center">
+					<button id="submitBtn" label="提交" style="width:68px;height:26px" image="/image/16/up.png"
+						tooltiptext="提交申请产品列表" />
+					<!--					  	<space />-->
+					<!--					  	<button id="cancelBtn" label="取消" -->
+					<!--					  	 	  image="/image/common/close.png" -->
+					<!--					  		  style="width:68px;height:26px" tooltiptext="关闭窗口"/>-->
+				</div>
+			</div>
+		</center>
+
+	</borderlayout>
+</window>

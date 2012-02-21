@@ -1,0 +1,47 @@
+K 25
+svn:wc:ra_dav:version-url
+V 59
+/dlyhc.cccfmis/!svn/ver/411/trunk/src/openjframework/myenum
+END
+NoticeType.java
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/dlyhc.cccfmis/!svn/ver/266/trunk/src/openjframework/myenum/NoticeType.java
+END
+SexEnum.java
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/dlyhc.cccfmis/!svn/ver/207/trunk/src/openjframework/myenum/SexEnum.java
+END
+UserTypeEnum.java
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/dlyhc.cccfmis/!svn/ver/207/trunk/src/openjframework/myenum/UserTypeEnum.java
+END
+NoticeRating.java
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/dlyhc.cccfmis/!svn/ver/266/trunk/src/openjframework/myenum/NoticeRating.java
+END
+UserStatusEnum.java
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/dlyhc.cccfmis/!svn/ver/207/trunk/src/openjframework/myenum/UserStatusEnum.java
+END
+MessageEnum.java
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/dlyhc.cccfmis/!svn/ver/411/trunk/src/openjframework/myenum/MessageEnum.java
+END
+InstantMessageTypeEnum.java
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/dlyhc.cccfmis/!svn/ver/273/trunk/src/openjframework/myenum/InstantMessageTypeEnum.java
+END

@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="utf-8"?>
+<window id="homewindow" width="100%" height="100%" apply="openjframework.web.zk.HomeWindow">
+<borderlayout>
+	<north title="通知公告" maxsize="175" flex="true" splittable="true" collapsible="true">
+	<attribute name="onCreate">
+	 Window objWindow = (Window) Executions.createComponents("notice-show.zul",null,null);
+	       objWindow.setParent(self);
+	       objWindow.doEmbedded();
+	</attribute>
+		
+	</north>
+	<center border="0">
+		<borderlayout>
+			<west title="今日讯息 / 快捷菜单" size="60%" collapsible="true" splittable="true" autoscroll="true">
+				<grid>
+		<columns>
+			<column label=""/>
+			<column label=""/>
+		</columns>
+		<rows>
+		    <row>
+		     	<grid>
+					<columns>
+						<column label="" style="width:80px;height:70px"/>
+						<column label=""/>
+					</columns>
+					<rows>	
+						<row>
+						  	<image src="/image/files/wdyj.png" forward="onLookEmail"  tooltiptext="点击进入收件箱"/>
+						  	<div>
+							  	<div align="center" style="height:20px;background:#EDEDED;">
+								  	 <image src="/image/files/emai1.png"/>
+								  	 <label value="未读邮件" style="color:#008BB6;font-weight:bold;"/>
+							  	</div>
+							    <div style="height:50px;" align="center">
+							      <separator height="10px" />
+							     	您有
+							      <label id="wdyj" value="0" style="font-size:16px;color:RED;font-weight:bold;"/>
+							    	封未读邮件!
+							  	</div>
+						  	</div>
+						  	
+						</row>
+					</rows>
+				</grid>
+				<grid>
+					<columns>
+						<column label="" style="width:80px;height:70px"/>
+						<column label=""/>
+					</columns>
+					<rows>	
+						<row>
+						  	<image src="/image/files/clrw.png" forward="onWaitingTask"  tooltiptext="点击进入待处理的任务"/>
+						  	<div>
+							  	<div align="center" style="height:20px;background:#EDEDED;">
+								  	 <image src="/image/files/dclrw.png"/>
+								  	 <label value="待处理任务" style="color:#008BB6;font-weight:bold;"/>
+							  	</div>
+							    <div style="height:50px;" align="center">
+							      <separator height="10px" />
+							      	您有
+							      <label id="dclrw" value="0" style="font-size:16px;color:RED;font-weight:bold;"/>
+							  		个需要处理的任务!
+							  	</div>
+						  	</div>
+						  	
+						</row>
+					</rows>
+				</grid>
+		    </row>
+		     <row>
+		     	<grid>
+					<columns>
+						<column label="" style="width:80px;height:70px"/>
+						<column label=""/>
+					</columns>
+					<rows>	
+						<row>
+						  	<image src="/image/files/wdxx.png" forward="onLookMsg"  tooltiptext="点击进入阅读消息"/>
+						  	<div>
+							  	<div align="center" style="height:20px;background:#EDEDED;">
+								  	 <image src="/image/files/jdxt_001.png"/>
+								  	 <label value="未读消息" style="color:#008BB6;font-weight:bold;"/>
+							  	</div>
+							    <div style="height:50px;" align="center">
+							      <separator height="10px" />
+							      	您有
+							      <label id="wdxx" value="0" style="font-size:16px;color:RED;font-weight:bold;"/>
+							      	条未读消息!
+							  	</div>
+						  	</div>
+						  	
+						</row>
+					</rows>
+				</grid>
+				<grid>
+					<columns>
+						<column label="" style="width:80px;height:70px"/>
+						<column label=""/>
+					</columns>
+					<rows>	
+						<row>
+						  	<image src="/image/files/grxx.png" forward="onExpense"  tooltiptext="点击进入财务报销"/>
+						  	<div>
+							  	<div align="center" style="height:20px;background:#EDEDED;">
+								  	 <image src="/image/files/jdxt_050.png"/>
+								  	 <label value="财务报销" style="color:#008BB6;font-weight:bold;"/>
+							  	</div>
+							    <div style="height:50px;" align="center">
+							      <separator height="10px" />
+							      	您有
+							      <label id="cwbx" value="0" style="font-size:16px;color:RED;font-weight:bold;"/>
+							        	个项目可以报销!
+							  	</div>
+						  	</div>
+						  	
+						</row>
+					</rows>
+				</grid>
+		    </row>
+		     <row>
+		     	<grid>
+					<columns>
+						<column label="" style="width:80px;height:70px"/>
+						<column label=""/>
+					</columns>
+					<rows>	
+						<row>
+						  	<image src="/image/files/jstx.png" forward="onInstant"  tooltiptext="进入即时通讯平台"/>
+						  	<div>
+							  	<div align="center" style="height:20px;background:#EDEDED;">
+								  	 <image src="/image/files/jdxt_132.png"/>
+								  	 <label value="通讯平台" style="color:#008BB6;font-weight:bold;"/>
+							  	</div>
+							    <div style="height:50px;" align="center">
+							      <separator height="10px" />
+							      	即时聊天
+							  	</div>
+						  	</div>
+						  	
+						</row>
+					</rows>
+				</grid>
+				<grid>
+					<columns>
+						<column label="" style="width:80px;height:70px"/>
+						<column label=""/>
+					</columns>
+					<rows>	
+						<row>
+						  	<image src="/image/files/grzl.png" forward="onPersonalpro"  tooltiptext="点击查看我的资料"/>
+						  	<div>
+							  	<div align="center" style="height:20px;background:#EDEDED;">
+								  	 <image src="/image/files/jdxt_138.png"/>
+								  	 <label value="个人资料" style="color:#008BB6;font-weight:bold;"/>
+							  	</div>
+							    <div style="height:50px;" align="center">
+							      <separator height="10px" />
+							      	查看我的资料
+							  	</div>
+						  	</div>
+						  	
+						</row>
+					</rows>
+				</grid>
+		    </row>
+		</rows>
+	</grid>
+			</west>
+			<center title="业务学习"  flex="true"  >
+			   <attribute name="onCreate">
+	              Window objWindow = (Window) Executions.createComponents("Article-BusinessTechnology-query.zul",null,null);
+	              objWindow.setParent(self);
+	              objWindow.doEmbedded();
+	           </attribute>			  
+			</center>
+
+		</borderlayout>
+	</center>
+</borderlayout>
+</window>
+			

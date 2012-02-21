@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping SYSTEM "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+<hibernate-mapping>
+	<class name="cccf.ma.model.TechnicalEvaluationReportOpinion" table="tb_technicalevaluationreportopinion">
+
+		<id name="id" type="string" unsaved-value="null" length="36" >
+			<column name="id" not-null="true" />
+			<generator class="uuid.hex" />
+		</id> 
+	 
+	    <property name="phase" length="20" /> 
+	    <property name="approveResult" length="20" />
+	    <property name="opinionContent" length="1000" />
+	    <property name="memo" length="1000" />
+	    <property name="evaluationPersonId" length="40" />
+	    <property name="evaluationTime" />
+	    <property name="sn" />
+	    <property name="status" />
+		
+		<many-to-one name="technicalEvaluationReport" column="technicalEvaluationReport_id"/> 
+	</class>
+</hibernate-mapping>

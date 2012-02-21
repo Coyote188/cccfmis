@@ -1,0 +1,28 @@
+<EnityModel>
+  <Name>Title</Name>
+  <Alias>职称</Alias>
+  <PackageName>openjframework</PackageName>
+  <DbTableName>title</DbTableName>
+  <PrimaryKey>no</PrimaryKey>
+  <PrimaryKeyType>assigned</PrimaryKeyType>
+  <FieldList>
+    <Field>
+      <Name>no</Name>
+      <Alias>代码</Alias>
+      <DbFieldName>no</DbFieldName>
+      <DataType>STRING</DataType>
+      <AllowNull>false</AllowNull>
+      <Length>0</Length>
+      <IsLinkProperty>false</IsLinkProperty>
+    </Field>
+    <Field>
+      <Name>name</Name>
+      <Alias>名称</Alias>
+      <DbFieldName>name</DbFieldName>
+      <DataType>STRING</DataType>
+      <AllowNull>false</AllowNull>
+      <Length>0</Length>
+      <IsLinkProperty>false</IsLinkProperty>
+    </Field>
+  </FieldList>
+</EnityModel>

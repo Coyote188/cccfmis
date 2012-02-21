@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?init class="openjframework.web.zk.OrganizationeditWindowInit" arg0="OrganizationEditWindow"?>
+<window use="openjframework.web.zk.OrganizationeditWindow"
+	xmlns:a="http://www.zkoss.org/2005/zk/annotation"
+	id="OrganizationEditWindow" xmlns="http://www.zkoss.org/2005/zul"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.zkoss.org/2005/zul
+	http://www.zkoss.org/2005/zul/zul.xsd"
+	sizable="true">
+	<div align="center" style="margin-top:40px;">
+	<grid width="500px">
+		<columns>
+			<column width="100px" align="center" ></column >
+			<column align="left"></column>
+		</columns>
+		<rows>
+			<row>
+				<hbox>
+					<label value="*"
+						style="color:red;font-size:14;font-weight:bold;" />
+					部门编号
+				</hbox>
+				<a:bind value="organization.organizationNo" />
+				<label id="organizationNo" style="color:RED" />
+
+			</row>
+			<row>
+				<hbox>
+					<label value="*"
+						style="color:red;font-size:14;font-weight:bold;" />
+					部门名称
+				</hbox>
+				<a:bind value="organization.organizationName" />
+				<textbox id="organizationName" width="300px"
+					constraint="no empty" maxlength="50" />
+
+			</row>
+			<row>
+				部门简称
+				<a:bind value="organization.organizationSimp" />
+				<textbox id="organizationSimp" width="150px"
+					maxlength="50" />
+
+			</row>
+			<row>
+				<hbox>
+					<label value="*"
+						style="color:red;font-size:14;font-weight:bold;" />
+					部门地址
+				</hbox>
+				<a:bind value="organization.organizationAddr" />
+				<textbox id="organizationAddr" width="300px"
+					constraint="no empty" maxlength="100" />
+
+			</row>
+			<row>
+				<hbox>
+					<label value="*"
+						style="color:red;font-size:14;font-weight:bold;" />
+					是否为检验中心
+				</hbox>
+				<radiogroup id="checkCenter">
+					<radio id="yes" label="是" />
+					<radio id="no" label="否" style="margin-left:20px;" />
+				</radiogroup>
+
+			</row>
+			<row>
+				<hbox>
+					<label value="*"
+						style="color:red;font-size:14;font-weight:bold;" />
+					联系人
+				</hbox>
+				<a:bind value="organization.contacts" />
+				<textbox id="contacts" width="100px"
+					constraint="no empty" maxlength="50" />
+
+			</row>
+			<row>
+				联系电话:
+				<hbox align="center">
+					<a:bind value="organization.telephone" />
+					<textbox id="telephone" width="200px" maxlength="50" />
+					<label value="#多个电话间用逗号或空格隔开" style="margin-left:5px;color:RED"/>
+				</hbox>
+			</row>
+			<row>
+				传真:
+				<hbox align="center">
+					<a:bind value="organization.fax" />
+					<textbox id="fax" width="200px" maxlength="50" />
+					<label value="#多个传真间用逗号或空格隔开" style="margin-left:5px;color:RED"/>
+				</hbox>
+			</row>
+			<row>
+				邮件:
+				<a:bind value="organization.email" />
+				<textbox id="email" width="200px" maxlength="50"
+					constraint="/(\w+@(\w+\.)+\w{2,3})?/,no empty:请输入正确的邮箱地址，例如:abc@gmail.com" />
+			</row>
+			<row>
+				开户银行:
+				<a:bind value="organization.bank" />
+				<textbox id="bank" width="200px" maxlength="50" />
+
+			</row>
+			<row>
+				账户名:
+				<a:bind value="organization.accountName" />
+				<textbox id="accountName" width="100px" maxlength="20" />
+
+			</row>
+			<row>
+				银行账号:
+				<a:bind value="organization.bankAccount" />
+				<textbox id="bankAccount" width="200px" maxlength="50" />
+
+			</row>
+			
+		</rows>
+	</grid>
+	</div>
+	<separator width="10px" />
+	<div align="center">
+		<hbox>
+			<button label="保存" image="/image/common/save.png"
+				width="70px" height="28px" style="null" forward="onSave" />
+			<button label="关闭" image="/image/common/close.png"
+				width="70px" height="28px" style="null" forward="onCancel" />
+		</hbox>
+	</div>
+</window>

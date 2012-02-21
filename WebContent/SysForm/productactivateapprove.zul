@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?init class="cccf.ma.web.zk.ProductactivateapproveWindowInit" arg0="productactivateapproveWindow"?>
+<window use="cccf.ma.web.zk.ProductactivateapproveWindow"
+	xmlns:a="http://www.zkoss.org/2005/zk/annotation"
+	id="productactivateapproveWindow" xmlns="http://www.zkoss.org/2005/zul"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.zkoss.org/2005/zul
+	http://www.zkoss.org/2005/zul/zul.xsd"
+	width="99%" sizable="true">
+	<groupbox>
+		<caption label="输入产品激活说明" />
+		<textbox id="description" width="50%" rows="3"
+			constraint="no empty:请输入产品激活说明" />
+	</groupbox>
+	<listbox mold="paging"
+		model="@{enterpriseOwnActivatedProductListInfoList }"
+		id="enterpriseOwnActivatedProductListInfoListbox" width="99%"
+		pageSize="12" checkmark="true" multiple="true">
+		<listhead sizable="true">
+			<listheader label="" width="30px" />
+			<listheader label="企业名称" width="35%" />
+			<listheader label="产品名" width="30%" />
+			<listheader label="产品分级" width="10%" />
+			<listheader label="申请时间" width="15%" />
+			<listheader label="" width="10%" />
+		</listhead>
+		<listitem self="@{each=eoap }" value="@{eoap}">
+		    <listcell/>
+			<listcell>
+				<toolbarbutton label="@{eoap.enterprise.name }"  style="color:BLUE;"
+							   forward="onEnterpriseInfoDetail" tooltiptext="点击查看企业信息" >
+					<custom-attributes eoap="@{eoap}"/>
+				</toolbarbutton>
+			</listcell>
+			<listcell label="@{eoap.product.productName }"/>
+			<listcell label="@{eoap.product.productLevel }"/>
+			<listcell label="@{eoap.applydate,converter='com.aidi.core.zk.DateConverter'}" />
+			
+			<listcell forward="onSingleActivate"
+				image="/image/files/activate.png" tooltiptext="激活产品申请" >
+				<custom-attributes eoap="@{eoap}"/>
+				</listcell>
+		</listitem>
+	</listbox>
+
+	<separator width="10px" />
+	<div align="left">
+		<hbox>
+			<button label="激活" image="/image/common/add.png"
+				width="70px" height="28px" style="null" forward="onActivate" />
+		</hbox>
+	</div>
+</window>

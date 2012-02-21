@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2011-5-18 12:38:54 by Hibernate Tools 3.3.0.GA -->
+<hibernate-mapping>
+    <class name="cccf.ma.model.FactoryCheckResult" table="FACTORYCHECKRESULT">
+        <id name="id" type="java.lang.String">
+            <column name="ID" />
+            <generator class="uuid.hex" />
+        </id>
+        <property name="result" type="boolean" not-null="false">
+            <column name="RESULT" />
+        </property>
+        <property name="opinion" type="java.lang.String" not-null="false">
+            <column name="OPINION" />
+        </property>
+        <many-to-one name="checklist" class="cccf.ma.model.FactoryChecklist" fetch="join">
+            <column name="CHECKLIST"  not-null="false"/>
+        </many-to-one>
+        <many-to-one name="factoryInspection" class="cccf.ma.model.FactoryInspection" fetch="join">
+            <column name="FACTORYINSPECTION" not-null="false"/>
+        </many-to-one>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?init class="cccf.ma.web.zk.EnterpriseactiveWindowInit" arg0="enterpriseactiveWindow"?>
+<window title="" border="none" use="cccf.ma.web.zk.EnterpriseactiveWindow" xmlns:a="http://www.zkoss.org/2005/zk/annotation"
+	id="enterpriseactiveWindow" xmlns="http://www.zkoss.org/2005/zul" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.zkoss.org/2005/zul
+	http://www.zkoss.org/2005/zul/zul.xsd" width="100%" sizable="true">
+	<vlayout hflex="true" vflex="true" style="border:1px solid #CCC;" spacing="0">
+		<toolbar>
+			<button mold="trendy" id="btnAutoActive" label="自动/手动" forward="onAutoActiveSwitch" />
+		</toolbar>
+		<grid hflex="true" style="border:0px solid #CCC;" vflex="true" id="grdEnterpriseActive" mold="paging" pageSize="15">
+			<auxhead>
+				<auxheader label="企业名称" />
+				<auxheader label="所在地区" />
+				<auxheader label="企业法人" />
+				<auxheader label="联系电话" />
+				<auxheader></auxheader>
+			</auxhead>
+			<columns>
+			</columns>
+		</grid>
+	</vlayout>
+</window>

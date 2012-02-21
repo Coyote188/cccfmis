@@ -1,0 +1,12 @@
+<?page title="new page title" contentType="text/html;charset=UTF-8"?>
+<zk>
+<window id="frmEnterpriseOuter2" contentStyle="overflow:auto;">
+	<attribute name="onCreate">
+		Window objWindow = (Window) Executions.createComponents(
+				"productionEnterprise-manage.zul", null, null);
+		objWindow.setParent(self);
+		objWindow.setContentStyle("overflow:auto");
+		objWindow.doEmbedded();
+	</attribute>
+</window>
+</zk>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<zk>
+<window width="98%"  sizable="true">
+	<div id="userListDiv"
+		apply="openjframework.InstantMessage.UserListComposer">
+		<listbox id="userListbox" forEach="@{userListDiv$UserListComposer.userList}"
+			model="@{userListDiv$UserListComposer.userList}" height="600px">
+			<listitem self="@{each=user}">
+				<listcell label="@{user}" />
+				<custom-attributes userInfo="@{user}"/>
+			</listitem>
+		</listbox>
+	</div>
+	</window>
+</zk>

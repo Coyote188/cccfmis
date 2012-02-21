@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?init class="org.zkoss.zkplus.databind.AnnotateDataBinderInit" root="./uPWin" ?>
+<zk>
+<window id="uPWin" apply="openjframework.web.zk.UserPermissionComposer"
+	xmlns:n="native"  
+    xmlns:w="client"
+	xmlns="http://www.zkoss.org/2005/zul"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation=" http://www.zkoss.org/2005/zul http://www.zkoss.org/2005/zul/zul.xsd">
+	<grid style="margin-bottom:10px" >
+		<auxhead>
+			<auxheader label="用户信息" colspan="8" height="22px" style="font-size:14px;color:#0F3B82;font-weight:bold;" image="/image/common/impersonate_user.png"/> 
+		</auxhead>
+		<columns>
+		</columns>
+		<rows>
+			<row spans="1,3,1,3">	
+			用户账号
+			<label value="@{uPWin$composer.profile.user.username }"/>
+			用户姓名
+			<label value="@{uPWin$composer.profile.name }"/>
+			</row>
+				<row spans="1,3,1,3">	
+			<label value="单&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;位"/>
+			<label value="@{uPWin$composer.profile.organization.organizationName }"/>
+			<label value="职&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;务"/>
+			<label value="@{uPWin$composer.profile.position.name }"/>
+			</row>
+		</rows>
+	</grid>
+	<grid id="roleGrd">
+		<auxhead>
+			<auxheader label="用户拥有的角色如下:" colspan="6" height="22px" style="font-size:14px;color:#0F3B82;font-weight:bold;" image="/image/common/assign_user_roles.png"/> 
+		</auxhead>
+		<columns>
+		</columns>
+	</grid>
+	<div align="center">
+		<hbox align="center">
+			<button id="role_select_Btn" label="全选" width="68px" height="26px"/>
+			<button id="role_notselect_Btn" label="全不选" width="68px" height="26px"/>
+			<button id="role_update_Btn" style="margin-left:20px;" label="更新" width="68px" height="26px" image="/image/16/reload.png"/>
+		 	<separator/>
+		 	<label id="msgLab" value="" style="color:Red;"/>
+		</hbox>
+	</div>
+	<grid id="permissionGrd">
+		<auxhead>
+			<auxheader label="用户拥有的权限如下:" colspan="6" height="22px" style="font-size:14px;color:#0F3B82;font-weight:bold;" image="/image/common/assign.png"/> 
+		</auxhead>
+		<columns>
+		</columns>
+	</grid>
+	<div align="center" style="margin-top:10px">
+		<hbox>
+			<button id="back_Btn" label="返回用户列表"  height="26px" image="/image/common/undo.png"/>
+		</hbox>
+	</div>
+</window>
+</zk>

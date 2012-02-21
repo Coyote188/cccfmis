@@ -1,0 +1,80 @@
+<?page title="new page title" contentType="text/html;charset=UTF-8"?>
+<?init class="org.zkoss.zkplus.databind.AnnotateDataBinderInit" root="./frmProductionEnterprise"?>
+<zk>
+<<<<<<< .mine
+	<window id="frmProductionEnterprise" title="生产企业维护" position="center"
+		border="normal" closable="true" width="720px"
+=======
+	<window id="frmProductionEnterprise" title="生产企业维护" border="normal"
+		closable="true" width="650px"
+>>>>>>> .r136
+		apply="cccf.ma.web.zk.ProductionEnterpriseController">
+		<separator height="10px" />
+		<grid id="grdAddItem" >
+			<columns>
+<<<<<<< .mine
+				<column width="" label="生产企业"/>
+				<column width="" label="地址"/>
+				<column label="状态"/>
+				<column label="操作"/>
+=======
+				<column width="80px" />
+				<column />
+>>>>>>> .r136
+			</columns>
+			<rows>
+				<row>
+<<<<<<< .mine
+					<textbox width="99%" id="tbxName"
+						value="@{frmProductionEnterprise$composer.pro.name }" />
+					<hbox width="99%">
+
+						<combobox id="cbxState"
+							model="@{frmProductionEnterprise$composer.sList }" width="40%">
+							<comboitem self="@{each=state }"
+								label="@{state.name }">
+								<custom-attributes state="@{state }" />
+							</comboitem>
+						</combobox>
+						<combobox id="cbxProvince"
+							model="@{frmProductionEnterprise$composer.pList }" width="40%">
+							<comboitem self="@{each=province }"
+								label="@{province.name }">
+								<custom-attributes
+									province="@{province }" />
+							</comboitem>
+						</combobox>
+						<combobox id="cbxCity" width="40%">
+							<comboitem self="@{each=city }"
+								label="@{city.name }">
+
+							</comboitem>
+						</combobox>
+						<textbox id="tbxLocation" />
+					</hbox>
+					<toolbarbutton id="btnOnSave" label="保存"/>
+=======
+				名称:<textbox id="tbxName" width="200px"/>				
+>>>>>>> .r136
+				</row>
+				<row>
+				通讯地址:<textbox id="tbxLocation" width="400px"/>				
+				</row>
+			</rows>
+		</grid>
+		<separator height="2px" />
+		<button id="btnOnSave"
+						image="/image/common/save.png" width="68px" height="26px" label="添加"/>
+		<separator height="10px" />
+		<grid id="grdPro"  mold="paging" pageSize="8">
+			<columns>
+				<column width="200px" label="名称" />
+				<column label="通讯地址" />
+				<column label="状态" width="60px" />
+				<column label="操作" width="80px" />
+			</columns>
+		</grid>
+
+		<separator height="10px" />
+	</window>
+</zk>

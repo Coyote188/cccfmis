@@ -1,0 +1,133 @@
+<?page title="评定审核" contentType="text/html;charset=UTF-8"?>
+<?init class="org.zkoss.zkplus.databind.AnnotateDataBinderInit" arg0="./EvaluationCheckWin"?>
+<window closable="true" height="100%" width="100%" title="评定审核" border="normal" id="EvaluationCheckWin"
+	apply="cccf.mis.web.tsak.evaluation.check.CheckController">
+	<vlayout hflex="true" vflex="true" style="overflow:auto;">
+		<include src="/views/public/Evaluation_msg.zul"></include>
+		<grid>
+			<auxhead>
+				<auxheader colspan="5" image="/res/icons/page.png" label="操作信息"></auxheader>
+			</auxhead>
+			<columns>
+				<column width="160px"></column>
+				<column width="78px"></column>
+				<column width="120px"></column>
+				<column width="80px"></column>
+				<column></column>
+			</columns>
+			<rows>
+				<row>
+					<cell rowspan="3">
+						<hbox>
+							<label value="结论:"></label>
+							<radiogroup id="rg_approveResult">
+								<radio label="上会" value="上会讨论"></radio>
+								<separator></separator>
+								<radio label="审核通过" checked="true" value="通过" />
+								<separator></separator>
+								<radio label="重新选择评定人员" value="重新选人"></radio>
+							</radiogroup>
+						</hbox>
+					</cell>
+					<label value="上会日期:"></label>
+					<datebox id="db_symposiumDate"></datebox>
+					<label value="参与人:"></label>
+					<bandbox id="bb_participant" hflex="true"></bandbox>
+				</row>
+				<row>
+					<label value="评定报告"></label>
+					<cell colspan="4">
+						<toolbarbutton label="预览"></toolbarbutton>
+					</cell>
+				</row>
+
+				<row>
+					<cell colspan="4">
+						<grid>
+							<columns>
+								<column label="重新选择"></column>
+								<column label="评定人员"></column>
+								<column label="操作"></column>
+							</columns>
+							<rows>
+								<row>
+									<cell>
+										<label value="初评"></label>
+									</cell>
+									<cell>
+										<combobox id="cb_cp" model="@{reviewUserList}" constraint="no empty:评定人员"
+											autodrop="true" width="200px" readonly="true">
+											<comboitem self="@{each=person}" label="@{person.name}" value="@{person.id}" />
+										</combobox>
+									</cell>
+
+									<cell>
+										<button label="重新选择"></button>
+									</cell>
+								</row>
+								<row>
+									<cell>
+										<label value="复评"></label>
+									</cell>
+									<cell>
+										<combobox id="cb_fp" model="@{reviewUserList}" constraint="no empty:评定人员"
+											autodrop="true" width="200px" readonly="true">
+											<comboitem self="@{each=person}" label="@{person.name}" value="@{person.id}" />
+										</combobox>
+									</cell>
+
+									<cell>
+										<button label="重新选择"></button>
+									</cell>
+								</row>
+								<row>
+									<cell>
+										<label value="评定"></label>
+									</cell>
+									<cell>
+										<combobox id="cb_pd" model="@{reviewUserList}" constraint="no empty:评定人员"
+											autodrop="true" width="200px" readonly="true">
+											<comboitem self="@{each=person}" label="@{person.name}" value="@{person.id}" />
+										</combobox>
+									</cell>
+
+									<cell>
+										<button label="重新选择"></button>
+									</cell>
+								</row>
+							</rows>
+						</grid>
+					</cell>
+				</row>
+			</rows>
+		</grid>
+		<include src="/views/public/processlog.zul?sioid=${arg.apply.applyno}"></include>
+		<grid id="appoveGrid">
+			<columns>
+				<column width="100px" align="left"></column>
+				<column></column>
+			</columns>
+			<rows>
+				<row>
+					<label value="下一步:"></label>
+					<cell>
+						<combobox visible="false" id="reveiwUser" model="@{reviewUserList}" constraint="no empty:派组人员"
+							autodrop="true" width="200px" readonly="true">
+							<comboitem self="@{each=person}" label="@{person.name}" value="@{person.id}" />
+						</combobox>
+						<button image="/res/icons/accept.png" mold="trendy" label="提交" width="68px" id="btSubmit" height="26px"
+							forward="onSubmit" />
+					</cell>
+				</row>
+				<row visible="false">
+					<label value="下一步:" />
+					<listbox id="resultListbox" mold="select" rows="1" width="200"></listbox>
+				</row>
+				<row>
+					<label value="备注:" />
+					<textbox id="approveMemo" rows="4" hflex="true" />
+				</row>
+			</rows>
+		</grid>
+	</vlayout>
+</window>

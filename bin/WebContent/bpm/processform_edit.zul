@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?init class="com.aidi.bpm.zk.ProcessFormEditInit" arg0="./processFormWindow"?>
+
+<window title="工作流表单定义" border="normal"
+	use="com.aidi.bpm.zk.ProcessFormEditWindow"
+	xmlns:a="http://www.zkoss.org/2005/zk/annotation" id="processFormWindow"
+	xmlns="http://www.zkoss.org/2005/zul"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.zkoss.org/2005/zul
+	http://www.zkoss.org/2005/zul/zul.xsd"
+	width="600px" closable="true" sizable="true">
+			<grid>
+			<columns>
+				<column width="100px" align="center"/>
+				<column width="480px" align="left" />
+			</columns>
+				<rows>
+					<row>
+					    工作流名称:
+					    <a:bind value="processDefinition.name" />
+					    <label id="name"/>
+					</row>
+					<row>
+					    工作流版本:
+					    <a:bind value="processDefinition.version" />
+					    <label id="version"/>
+					</row>
+					<row>
+					    Form类型:
+					    <a:bind selectedItem="processForm.formType" />
+					     <combobox id="comboFormType">
+					       <comboitem label="自定义表单" value="1"/>
+					       <comboitem label="外接表单" value="2"/>
+					    </combobox>
+					</row>
+					<row>
+					    外接表单URL:
+					    <a:bind value="processForm.formURL" />
+					    <textbox id="formurl" width="98%"/>
+					</row>
+					
+					
+				</rows>
+			</grid>
+
+			<separator width="30px" />
+		
+			<div align="center">
+				<hbox>					
+					<button label="保存" image="/image/16/filesave.png"  forward="onSave"/>
+					<separator width="10px" />
+					<button label="取消" image="/image/common/undo.png" forward="onCancel"/>
+				</hbox>
+			</div>
+
+		
+
+</window>

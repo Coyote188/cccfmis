@@ -1,0 +1,81 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+	<!-- Generated 2011-5-7 16:07:42 by Hibernate Tools 3.3.0.GA -->
+<hibernate-mapping>
+	<class name="cccf.ma.model.FactoryInspection" table="FACTORYINSPECTION">
+		<id name="id" type="java.lang.String">
+			<column name="ID" not-null="true" />
+			<generator class="uuid.hex" />
+		</id>
+		<property name="facInspectionNo" type="java.lang.String">
+			<column name="FACINSPECTIONNO" not-null="false" />
+		</property>
+		<property name="startTime" type="java.util.Date">
+			<column name="STARTTIME" not-null="false" />
+		</property>
+		<property name="endTime" type="java.util.Date">
+			<column name="ENDTIME" not-null="false" />
+		</property>
+		<property name="inspectionCenter" type="java.lang.String">
+			<column name="INSPCTIONCENTER" not-null="false" />
+		</property>
+		<property name="businessType" type="int">
+			<column name="BUSINESSTYPE" not-null="false" />
+		</property>
+		<property name="typeOfInspection" type="int">
+			<column name="TYPEOFINSPECTION" not-null="false" />
+		</property>
+		<property name="checkGroup" type="java.lang.String">
+			<column name="CHECKGROUP" not-null="false" />
+		</property>
+		<property name="factoryConditions" type="int">
+			<column name="FACTORYCONDITIONS" not-null="false" />
+		</property>
+		<property name="equipmentConditions" type="int">
+			<column name="EQUIPMENTCONDITIONS" not-null="false" />
+		</property>
+		<property name="certificateUsage" type="int">
+			<column name="CERTIFICATEUSAGE" not-null="false" />
+		</property>
+		<property name="flagUsage" type="int">
+			<column name="FLAGUSAGE" not-null="false" />
+		</property>
+		<property name="facConditionChange" type="boolean">
+			<column name="FACCONDITIONCHANGE" not-null="false" />
+		</property>
+		<property name="fullyMeet" type="int">
+			<column name="FULLYMEET" not-null="false" />
+		</property>
+		<property name="baseMeet" type="int">
+			<column name="BASEMEET" not-null="false" />
+		</property>
+		<property name="unMeet" type="int">
+			<column name="UNMEET" not-null="false" />
+		</property>
+
+		<property name="unMeetDescription" type="java.lang.String">
+			<column name="UNMEETDESCRIPTION" not-null="false" />
+		</property>
+		<property name="inspectionResult" type="java.lang.String">
+			<column name="INSPECTIONRESULT" not-null="false" />
+		</property>
+		<property name="inspectionResultDescription" type="java.lang.String">
+			<column name="INSPECTIONRESULTDESCRIPTION" not-null="false" />
+		</property>
+
+		<many-to-one name="application" column="applicationid"
+			lazy="false" />
+		<set name="productionModelIspection" lazy="false" inverse="true"
+			cascade="all-delete-orphan">
+			<key column="PMIID" />
+			<one-to-many class="cccf.ma.model.ProductionModelInspection" />
+		</set>
+
+<!--		<bag name="enterpriseCheckList" lazy="false" inverse="false" access="field"-->
+<!--			cascade="none">-->
+<!--			<key column="CHECKITEM" />-->
+<!--			<one-to-many class="cccf.ma.model.FactoryCheckResult" />-->
+<!--		</bag>-->
+	</class>
+</hibernate-mapping>

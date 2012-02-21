@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2011-5-15 20:58:40 by Hibernate Tools 3.3.0.GA -->
+<hibernate-mapping>
+    <class name="cccf.ma.model.Attachment" table="ATTACHMENT">
+        <id name="id" type="java.lang.String">
+            <column name="ID" />
+            <generator class="uuid.hex" />
+        </id>
+        <property name="path" type="java.lang.String">
+            <column name="PATH"  not-null="false"/>
+        </property>
+        <property name="name" type="java.lang.String">
+            <column name="NAME"  not-null="false"/>
+        </property>
+        <bag name="attachments" lazy="false" inverse="false" access="field" cascade="none">
+            <key column="attachments"  not-null="false"/>
+            <one-to-many class="cccf.ma.model.Attachment" />
+        </bag>
+    </class>
+</hibernate-mapping>

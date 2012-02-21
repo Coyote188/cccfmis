@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?init class="cccf.ma.web.zk.ProductionmodeleditWindowInit" arg0="ProductionModelEditWindow"?>
+<window title="具体型号编辑" border="normal" use="cccf.ma.web.zk.ProductionmodeleditWindow"
+	xmlns:a="http://www.zkoss.org/2005/zk/annotation" id="ProductionModelEditWindow" xmlns="http://www.zkoss.org/2005/zul"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.zkoss.org/2005/zul
+	http://www.zkoss.org/2005/zul/zul.xsd" width="600px" sizable="true"
+	closable="true">
+
+	<grid id="modelgrid">
+		<columns>
+			<column width="180px" align="left" />
+			<column align="left" />
+		</columns>
+		<rows>
+			<row>
+				产品名称
+				<hbox align="center"></hbox>
+			</row>
+			
+			
+			<row>
+				<hbox>
+					<label value="*" style="color:#FF0000" />
+					型号:
+				</hbox>
+				<hbox align="center">
+					<a:bind value="productModel.model" />
+					<combobox id="cbxModelList" width="300px" model="@{epmList }" readonly="true"
+						forward="onSelect=ProductionmodeleditWindow.onSelectCbxModelList()">
+						<comboitem self="@{each=model }" label="@{model.model }">
+							<custom-attributes model="@{model }" />
+						</comboitem>
+					</combobox>
+					<label value="主型" />
+					<checkbox id="cbxIsMain" forward="onCheck=ProductionmodeleditWindow.onCbxIsMainCheck()" />
+				</hbox>
+			</row>
+			<row visible="false">
+				非标准名称:
+				<a:bind value="productionModel.name" />
+				<textbox id="name" width="300px" />
+			</row>
+			<row>
+				产品描述
+				<hbox align="center"></hbox>
+			</row>
+			<row>
+				检验机构名称
+				<hbox align="center"></hbox>
+			</row>
+			<row visible="false">
+				 检验报告:
+				<hbox>
+					<a:bind value="productionModel.fullReport" />
+					<textbox id="fullReport" style="border:0px none #ffffff;background-color:#fff;color:#fff; " width="0"
+						readonly="true" />
+					<toolbarbutton forward="onFiledown(fullReport)" id="label_fullReport" />
+					<toolbarbutton id="del_fullReport" tooltiptext="删除文件" image="../image/common/close.png"
+						forward="onDeleteAttachfile(fullReport)" visible="false" />
+					<!--					<button id="up_fullReport" label="上传" height="20px"-->
+					<!--						forward="onFileUP(fullReport)" />-->
+					<fileupload id="up_fullReport" label="上传" height="20px"
+						forward="onUpload=ProductionmodeleditWindow.onFileUP(fullReport)" />
+				</hbox>
+
+			</row>
+			<row>
+				原证书:
+				<hbox>
+					<textbox style="border:0px none #ffffff;background-color:#fff;color:#fff; " width="0" readonly="true" />
+					<toolbarbutton forward="onFiledown(report)" id="" />
+					<toolbarbutton tooltiptext="删除文件" image="../image/common/close.png" forward="onDeleteAttachfile(report)"
+						visible="false" />
+					<!--					<button id="up_report" label="上传" height="20px"-->
+					<!--						forward="onFileUP(report)" />-->
+					<fileupload label="上传" height="20px" />
+				</hbox>
+			</row>
+			<row visible="false">
+				委托检验报告:
+				<hbox>
+					<a:bind value="productionModel.Report" />
+					<textbox id="report" style="border:0px none #ffffff;background-color:#fff;color:#fff; " width="0"
+						readonly="true" />
+					<toolbarbutton forward="onFiledown(report)" id="label_report" />
+					<toolbarbutton id="del_report" tooltiptext="删除文件" image="../image/common/close.png"
+						forward="onDeleteAttachfile(report)" visible="false" />
+					<!--					<button id="up_report" label="上传" height="20px"-->
+					<!--						forward="onFileUP(report)" />-->
+					<fileupload id="up_report" label="上传" height="20px"
+						forward="onUpload=ProductionmodeleditWindow.onFileUP(report)" />
+				</hbox>
+
+			</row>
+			<row>
+				<hbox>
+					<label value="*" style="color:#FF0000" />
+					产品工艺流程图:
+				</hbox>
+				<hbox>
+					<a:bind value="productionModel.flowChart" />
+					<textbox id="flowChart" style="border:0px none #ffffff;background-color:#fff;color:#fff; " width="0"
+						readonly="true" />
+					<toolbarbutton forward="onFiledown(flowChart)" id="label_flowChart" />
+					<toolbarbutton id="del_flowChart" image="../image/common/close.png" tooltiptext="删除文件"
+						forward="onDeleteAttachfile(flowChart)" visible="false" />
+					<!--					<button id="up_flowChart" label="上传" height="20px"-->
+					<!--						forward="onFileUP(flowChart)" />-->
+					<fileupload id="up_flowChart" label="上传" height="20px"
+						forward="onUpload=ProductionmodeleditWindow.onFileUP(flowChart)" />
+				</hbox>
+
+			</row>
+			<row>
+				<hbox>
+					<label value="*" style="color:#FF0000" />
+					关键件或产品特性描述填报表:
+				</hbox>
+				<hbox>
+					<a:bind value="productionModel.characterForm" />
+					<textbox id="characterForm" style="border:0px none #ffffff;background-color:#fff;color:#fff; " width="0"
+						readonly="true" />
+					<toolbarbutton forward="onFiledown(characterForm)" id="label_characterForm" />
+					<toolbarbutton id="del_characterForm" image="../image/common/close.png" tooltiptext="删除文件"
+						forward="onDeleteAttachfile(characterForm)" visible="false" />
+					<!--					<button id="up_characterForm" label="上传"-->
+					<!--						height="20px" forward="onFileUP(characterForm)" />-->
+					<fileupload id="up_characterForm" label="上传" height="20px"
+						forward="onUpload=ProductionmodeleditWindow.onFileUP(characterForm)" />
+				</hbox>
+
+			</row>
+
+			<row id="row_pumper" visible="false">
+				汽车消防车产品3C认证申请书:
+				<hbox>
+					<a:bind value="productionModel.pumperCcc" />
+					<textbox id="pumperCcc" style="border:0px none #ffffff;background-color:#fff;color:#fff; " width="0"
+						readonly="true" />
+					<toolbarbutton forward="onFiledown(pumperCcc)" id="label_pumperCcc" />
+					<toolbarbutton id="del_pumperCcc" image="../image/common/close.png" tooltiptext="删除文件"
+						forward="onDeleteAttachfile(pumperCcc)" visible="false" />
+					<!--					<button id="up_pumperCcc" label="上传"-->
+					<!--						height="20px" forward="onFileUP(pumperCcc)" />-->
+					<fileupload id="up_pumperCcc" label="上传" height="20px"
+						forward="onUpload=ProductionmodeleditWindow.onFileUP(pumperCcc)" />
+				</hbox>
+
+			</row>
+
+			<!-- new method for upload multiple files -->
+			<row>
+				<hbox>
+					<label value="*" style="color:red" />
+					产品图片:
+				</hbox>
+				<hbox>
+					<hbox id="box_productImg"></hbox>
+					<a:bind value="productionModel.productImg" />
+					<textbox width="0px" id="tbxProductImg" style="border:0px none #ffffff;background-color:#fff;color:#fff; "
+						readonly="true" />
+					<label />
+					<fileupload id="fpd_productImg" label="上传" height="20px"
+						forward="onUpload=ProductionmodeleditWindow.onFileListUP(productImg)" />
+				</hbox>
+
+			</row>
+
+		</rows>
+	</grid>
+	<separator width="10px" />
+	<div align="left">
+		<hbox>
+			<button label="确定" image="/image/16/apply.png" width="68px" height="26px" style="null" forward="onSave" />
+			<button label="取消" image="/image/common/close.png" width="70px" height="28px" style="null" forward="onCancel" />
+		</hbox>
+	</div>
+
+	<iframe id="downframe" width="0" height="0"></iframe>
+</window>

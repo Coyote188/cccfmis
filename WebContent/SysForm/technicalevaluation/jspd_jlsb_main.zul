@@ -1,0 +1,94 @@
+<?xml  version="1.0" encoding="utf-8"?>
+<?init class="org.zkoss.zkplus.databind.AnnotateDataBinderInit" root="./frmConclusionReport"?>
+<zk>
+	<window id="frmConclusionReport" forward="" title="技术评定安排(个人)" border="normal" contentStyle="true" apply="cccf.ma.web.zk.tech.ConclusionReportController" width="900px">
+		<tabbox tabscroll="false" vflex="true">
+			<tabs>
+				<tab label="技术评定安排"></tab>
+				<tab label="工厂检查资料"></tab>
+				<tab label="申请资料"></tab>
+			</tabs>
+			<tabpanels>
+				<tabpanel id="cpTbp" vflex="true">
+					
+				</tabpanel>
+				<tabpanel id="gcjcTbp" vflex="true"></tabpanel>
+				<tabpanel id="sjzlTbp" vflex="true"></tabpanel>
+			</tabpanels>
+		</tabbox>
+		<div style="margin-top:10px">
+			<grid style="border-bottom:0px">
+				<columns />
+				<auxhead>
+					<auxheader label="审核意见" style="font-weight:bold" />
+				</auxhead>
+				<rows>
+					<row align="center" spans="1,1,1,2">
+						<label value="证书有效期" />
+						<label value="企业人数代码" />
+						<label value="建议操作" />
+						<label value="备注" />
+					</row>
+					<row align="center" spans="1,1,1,2">
+						<label value="@{frmConclusionReport$composer.technicalEvaluation.certificateValid }" />
+						<label value="@{frmConclusionReport$composer.technicalEvaluation.entTollCode }" />
+						<label value="@{frmConclusionReport$composer.technicalEvaluation.operateType }" />
+						<label value="" />
+					</row>
+
+				</rows>
+			</grid>
+			<grid style="border-top:0;border-bottom:0">
+				<columns />
+				<auxhead>
+					<auxheader label="意见" style="font-size:13;font-weight:bold;" />
+				</auxhead>
+			</grid>
+			<grid>
+				<columns>
+					<column width="80px" align="center" />
+					<column />
+				</columns>
+				<rows>
+					<row>
+						<label value="操作类型" />
+						<radiogroup id="optypeRgp" forward="onCheck=onCheckOperateType">
+							<radio label="发证" />
+							<radio label="发通知" selected="true" />
+						</radiogroup>
+					</row>
+					<row>
+						<label value="生成人意见" />
+						<textbox id="opinionTbx" width="98%" rows="4" />
+					</row>
+				</rows>
+			</grid>
+			<grid style="border-top:0;border-bottom:0">
+				<columns />
+				<auxhead>
+					<auxheader label="流程操作" style="font-size:13;font-weight:bold;" />
+				</auxhead>
+			</grid>
+			<grid id="appoveGrid" style="border-top:0px">
+				<columns>
+					<column width="80px" align="center"></column>
+					<column></column>
+				</columns>
+				<rows>
+					<row align="left">
+						<label value="下一步:" />
+						<listbox id="resultListbox" mold="select" rows="1" width="200" />
+					</row>
+					<row align="left">
+						<label value="意见:" />
+						<textbox id="approveMemo" rows="3" width="98%" />
+					</row>
+				</rows>
+			</grid>
+			<div style="margin:10px;margin-left:80px">
+				<button label="提交" image="/image/16/up.png" width="68px" id="submitBtn" height="26px" style="" forward="onSubmit" />
+				<button label="关闭" image="/image/common/close.png" width="68px" height="26px" style="" forward="onCancel" />
+			</div>
+		</div>
+	</window>
+</zk>

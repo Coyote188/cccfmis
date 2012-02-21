@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?init class="cccf.ma.web.zk.AppstatusrecordlistWindowInit" arg0="appstatusrecordlistWindow"?>
+<window title="申请变更记录" border="normal"
+	use="cccf.ma.web.zk.AppstatusrecordlistWindow"
+	xmlns:a="http://www.zkoss.org/2005/zk/annotation"
+	id="appstatusrecordlistWindow"
+	width="720px" sizable="true" closable="true">
+	<separator height="10px" />
+	<div align="center">
+		<a:bind model="appStatusRecordInfoList"
+			selectedItem="appstatusrecordlistWindow.appStatusRecordInfo" />
+		<listbox mold="paging" id="appStatusRecordInfoListbox"
+			width="700px" pageSize="10">
+			<listhead sizable="true">
+
+				<listheader label="变更类别" width="80px" />
+
+				<listheader label="申请日期" width="80px" />
+
+				<listheader label="申批状态" width="60px" />
+
+				<listheader label="申批人员" width="60px" />
+
+				<listheader label="审批日期" width="80px" />
+
+				<listheader label="变更理由" />
+
+			</listhead>
+			<a:bind _var="appStatusRecordInfo" />
+			<listitem value="@{appStatusRecordInfo.asid}">
+
+				<a:bind label="appStatusRecordInfo.changeTypeName" />
+				<listcell />
+
+				<listcell
+					label="@{appStatusRecordInfo.applyDate,converter='com.aidi.core.zk.DateConverter'}" />
+
+				<a:bind label="appStatusRecordInfo.statusName" />
+				<listcell />
+
+				<a:bind label="appStatusRecordInfo.approveUser.name" />
+				<listcell />
+
+				<listcell
+					label="@{appStatusRecordInfo.approveDate,converter='com.aidi.core.zk.DateConverter'}" />
+
+				<a:bind label="appStatusRecordInfo.reason" />
+				<listcell />
+
+			</listitem>
+		</listbox>
+
+		<separator width="10px" />
+		<div align="left">
+			<hbox>
+				<separator width="4px" />
+				<button label="关闭" image="/image/common/close.png"
+					width="68px" height="26px" style="" forward="onClose" />
+			</hbox>
+		</div>
+	</div>
+</window>

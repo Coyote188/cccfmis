@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<window>
+<separator height="20px" />
+	<div align="center" ><label value="数据成功提交!" style="font-size:20px;color:#00;font-weight:bold" /></div>
+</window>

@@ -1,0 +1,396 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<process-definition xmlns="" name="受理流程">
+
+	<swimlane name="本部门领导">
+		<assignment class="openjframework.bpm.handler.DeptSelfAssignmentHandler">
+			<role>部门领导</role>
+		</assignment>
+	</swimlane>
+
+	<swimlane name="中心主任">
+		<assignment class="openjframework.bpm.handler.IdentityAssignmentHandler">
+			<type>role</type>
+			<name>中心主任</name>
+		</assignment>
+	</swimlane>
+
+	<swimlane name="财务科">
+		<assignment class="openjframework.bpm.handler.IdentityAssignmentHandler">
+			<type>role</type>
+			<name>财务科</name>
+		</assignment>
+	</swimlane>
+
+	<start-state name="start-state">
+		<task name="受理申请">
+			<assignment class="openjframework.bpm.handler.UserAssignment"></assignment>
+		</task>
+		<transition to="受理分工" name="提交申请"></transition>
+	</start-state>
+
+	<task-node name="受理分工">
+		<task name="受理分工">
+			<assignment class="cccf.ma.bpm.handler.AcceptAssignmentHandler" />
+			<event type="task-assign">
+				<action name="NoticeCurrentActorAction" class="cccf.ma.bpm.action.NoticeCurrentActorAction"></action>
+			</event>
+			<event type="timer-create">
+				<action name="time_action" class="cccf.ma.bpm.action.ChangeDueDateAction"></action>
+			</event>
+			<timer name='reminder' duedate='2 weeks'>
+			</timer>
+		</task>
+		<transition name="进行符合性审查" to="符合性审查">
+			<action name="approvingAction" class="cccf.ma.bpm.action.ApplicationStatusAction">
+				<status>2</status>
+			</action>
+		</transition>
+	</task-node>
+
+	<task-node name="申请者修改">
+		<task name="申请修改">
+			<assignment class="openjframework.bpm.handler.ApplicantAssignmentHandler" />
+			<event type="task-assign">
+				<action name="NoticeCurrentActorAction" class="cccf.ma.bpm.action.NoticeCurrentActorAction"></action>
+			</event>
+			<event type="timer-create">
+				<action name="time_action" class="cccf.ma.bpm.action.ChangeDueDateAction"></action>
+			</event>
+			<timer name='reminder' duedate='2 weeks'>
+			</timer>
+		</task>
+		<transition to="符合性审查" name="同意提交">
+			<action name="approvingAction" class="cccf.ma.bpm.action.ApplicationStatusAction">
+				<status>2</status>
+			</action>
+		</transition>
+	</task-node>
+
+	<task-node name="符合性审查">
+		<task name="符合性审查">
+			<assignment class="cccf.ma.bpm.handler.ReviewAssignmentHandler" />
+			<event type="task-assign">
+				<action name="NoticeCurrentActorAction" class="cccf.ma.bpm.action.NoticeCurrentActorAction"></action>
+			</event>
+			<event type="timer-create">
+				<action name="time_action" class="cccf.ma.bpm.action.ChangeDueDateAction"></action>
+			</event>
+			<timer name='reminder' duedate='2 weeks'>
+			</timer>
+		</task>
+		<transition to="受理分工" name="需重新分工"></transition>
+		<transition to="申请者修改" name="需补充资料">
+			<action name="approvingAction" class="cccf.ma.bpm.action.ApplicationStatusAction">
+				<status>6</status>
+			</action>
+		</transition>
+		<transition to="合同制定" name="审查通过">
+			<action name="approvingAction" class="cccf.ma.bpm.action.ApplicationStatusAction">
+				<status>3</status>
+			</action>
+			<action name="msgAction" class="cccf.ma.bpm.action.MessageToApplicantAction">
+				<content>您的受理申请已通过。</content>
+			</action>
+		</transition>
+		<transition to="会审" name="进行会审"></transition>
+		<transition to="审核" name="不予受理"></transition>
+	</task-node>
+
+	<task-node name="会审" signal="last-wait" create-tasks="false">
+		<task name="符合性审查(会审)">
+			<event type="task-assign">
+				<action name="NoticeCurrentActorAction" class="cccf.ma.bpm.action.NoticeCurrentActorAction"></action>
+			</event>
+			<event type="timer-create">
+				<action name="time_action" class="cccf.ma.bpm.action.ChangeDueDateAction"></action>
+			</event>
+			<timer name='reminder' duedate='2 weeks'>
+			</timer>
+		</task>
+		<event type="node-enter">
+			<action name="createInstance" class="cccf.ma.bpm.action.CreateCounterSignAction">
+			</action>
+		</event>
+
+		<transition to="符合性审查" name="提交"></transition>
+	</task-node>
+
+	<task-node name="审核">
+		<task name="不予受理审核" swimlane="本部门领导">
+			<event type="task-assign">
+				<action name="NoticeCurrentActorAction" class="cccf.ma.bpm.action.NoticeCurrentActorAction"></action>
+			</event>
+			<event type="timer-create">
+				<action name="time_action" class="cccf.ma.bpm.action.ChangeDueDateAction"></action>
+			</event>
+			<timer name='reminder' duedate='2 weeks'>
+			</timer>
+		</task>
+		<transition to="审批" name="同意"></transition>
+		<transition to="符合性审查" name="不同意"></transition>
+	</task-node>
+
+	<task-node name="审批">
+		<task name="不予受理审批" swimlane="中心主任">
+			<event type="task-assign">
+				<action name="NoticeCurrentActorAction" class="cccf.ma.bpm.action.NoticeCurrentActorAction"></action>
+			</event>
+			<event type="timer-create">
+				<action name="time_action" class="cccf.ma.bpm.action.ChangeDueDateAction"></action>
+			</event>
+			<timer name='reminder' duedate='2 weeks'>
+			</timer>
+		</task>
+		<transition to="受理返还" name="同意"></transition>
+		<transition to="符合性审查" name="不同意"></transition>
+	</task-node>
+
+	<task-node name="受理返还">
+		<task name="受理返还">
+			<assignment class="cccf.ma.bpm.handler.ReviewAssignmentHandler" />
+			<event type="task-assign">
+				<action name="NoticeCurrentActorAction" class="cccf.ma.bpm.action.NoticeCurrentActorAction"></action>
+			</event>
+			<event type="timer-create">
+				<action name="time_action" class="cccf.ma.bpm.action.ChangeDueDateAction"></action>
+			</event>
+			<timer name='reminder' duedate='2 weeks'>
+			</timer>
+		</task>
+		<transition to="end-state" name="同意提交">
+			<action name="approvingAction" class="cccf.ma.bpm.action.ApplicationStatusAction">
+				<status>8</status>
+			</action>
+			<action name="msgAction" class="cccf.ma.bpm.action.MessageToApplicantAction">
+				<content>您的受理申请不予受理。</content>
+			</action>
+		</transition>
+	</task-node>
+
+	<task-node name="合同制定">
+		<task name="合同制定">
+			<assignment class="cccf.ma.bpm.handler.ReviewAssignmentHandler" />
+			<event type="task-assign">
+				<action name="NoticeCurrentActorAction" class="cccf.ma.bpm.action.NoticeCurrentActorAction"></action>
+			</event>
+			<event type="timer-create">
+				<action name="time_action" class="cccf.ma.bpm.action.ChangeDueDateAction"></action>
+			</event>
+			<timer name='reminder' duedate='2 weeks'>
+			</timer>
+		</task>
+		<transition to="合同审核" name="进行合同审核"></transition>
+	</task-node>
+
+	<task-node name="合同审核">
+		<task name="合同审核" swimlane="本部门领导">
+			<event type="task-assign">
+				<action name="NoticeCurrentActorAction" class="cccf.ma.bpm.action.NoticeCurrentActorAction"></action>
+			</event>
+			<event type="timer-create">
+				<action name="time_action" class="cccf.ma.bpm.action.ChangeDueDateAction"></action>
+			</event>
+			<timer name='reminder' duedate='2 weeks'>
+			</timer>
+		</task>
+		<transition to="财务收费" name="通过">
+			<action name="msgAction" class="cccf.ma.bpm.action.MessageToApplicantAction">
+				<content>合同审核已通过,请打印合同。</content>
+			</action>
+			<action name="approvingAction" class="cccf.ma.bpm.action.ApplicationStatusAction">
+				<status>9</status>
+			</action>
+		</transition>
+		<transition to="合同制定" name="不通过"></transition>
+	</task-node>
+
+	<task-node name="财务收费">
+		<task name="财务收费" swimlane="财务科">
+			<event type="task-assign">
+				<action name="NoticeCurrentActorAction" class="cccf.ma.bpm.action.NoticeCurrentActorAction"></action>
+			</event>
+			<event type="timer-create">
+				<action name="time_action" class="cccf.ma.bpm.action.ChangeDueDateAction"></action>
+			</event>
+			<timer name='reminder' duedate='2 weeks'>
+			</timer>
+		</task>
+		<transition to="派组检验计划" name="提交"></transition>
+	</task-node>
+
+	<task-node name="派组检验计划">
+		<task name="派组检验计划">
+			<assignment class="cccf.ma.bpm.handler.ReviewAssignmentHandler" />
+			<event type="task-assign">
+				<action name="NoticeCurrentActorAction" class="cccf.ma.bpm.action.NoticeCurrentActorAction"></action>
+			</event>
+			<event type="timer-create">
+				<action name="time_action" class="cccf.ma.bpm.action.ChangeDueDateAction"></action>
+			</event>
+			<timer name='reminder' duedate='2 weeks'>
+			</timer>
+		</task>
+		<transition to="产品检验" name="产品检验"></transition>
+		<transition to="工厂文件审查" name="工厂检查"></transition>
+		<transition to="评审意见" name="都不做"></transition>
+	</task-node>
+
+	<task-node name="产品检验">
+		<task name="产品检验">
+			<assignment class="cccf.ma.bpm.handler.ReviewAssignmentHandler" />
+			<event type="task-assign">
+				<action name="NoticeCurrentActorAction" class="cccf.ma.bpm.action.NoticeCurrentActorAction"></action>
+			</event>
+			<event type="timer-create">
+				<action name="time_action" class="cccf.ma.bpm.action.ChangeDueDateAction"></action>
+			</event>
+			<timer name='reminder' duedate='2 weeks'>
+			</timer>
+		</task>
+		<transition to="检验资料审查" name="提交"></transition>
+	</task-node>
+
+	<task-node name="资料审查">
+		<task name="资料审查">
+			<assignment class="cccf.ma.bpm.handler.ReviewAssignmentHandler" />
+			<event type="task-assign">
+				<action name="NoticeCurrentActorAction" class="cccf.ma.bpm.action.NoticeCurrentActorAction"></action>
+			</event>
+			<event type="timer-create">
+				<action name="time_action" class="cccf.ma.bpm.action.ChangeDueDateAction"></action>
+			</event>
+			<timer name='reminder' duedate='2 weeks'>
+			</timer>
+		</task>
+		<transition to="评审意见" name="提交"></transition>
+		<transition to="工厂文件审查" name="工厂资料不通过"></transition>
+		<transition to="检验资料审查" name="检验资料不通过"></transition>
+	</task-node>
+
+	<task-node name="检验资料审查">
+		<task name="检验资料审查">
+			<assignment class="cccf.ma.bpm.handler.ReviewAssignmentHandler" />
+			<event type="task-assign">
+				<action name="NoticeCurrentActorAction" class="cccf.ma.bpm.action.NoticeCurrentActorAction"></action>
+			</event>
+			<event type="timer-create">
+				<action name="time_action" class="cccf.ma.bpm.action.ChangeDueDateAction"></action>
+			</event>
+			<timer name='reminder' duedate='2 weeks'>
+			</timer>
+		</task>
+		<transition to="资料审查" name="通过"></transition>
+		<transition to="产品检验" name="不通过"></transition>
+		<transition to="工厂文件审查" name="工厂审查"></transition>
+	</task-node>
+
+	<task-node name="评审意见">
+		<task name="评审意见">
+			<assignment class="cccf.ma.bpm.handler.ReviewAssignmentHandler" />
+			<event type="task-assign">
+				<action name="NoticeCurrentActorAction" class="cccf.ma.bpm.action.NoticeCurrentActorAction"></action>
+			</event>
+			<event type="timer-create">
+				<action name="time_action" class="cccf.ma.bpm.action.ChangeDueDateAction"></action>
+			</event>
+			<timer name='reminder' duedate='2 weeks'>
+			</timer>
+		</task>
+		<transition to="评定安排" name="提交"></transition>
+	</task-node>
+
+	<task-node name="工厂文件审查">
+		<task name="工厂文件审查">
+			<assignment class="cccf.ma.bpm.handler.ReviewAssignmentHandler" />
+			<event type="task-assign">
+				<action name="NoticeCurrentActorAction" class="cccf.ma.bpm.action.NoticeCurrentActorAction"></action>
+			</event>
+			<event type="timer-create">
+				<action name="time_action" class="cccf.ma.bpm.action.ChangeDueDateAction"></action>
+			</event>
+			<timer name='reminder' duedate='2 weeks'>
+			</timer>
+		</task>
+		<transition to="资料审查" name="提交"></transition>
+	</task-node>
+
+	<task-node name="评定安排">
+		<task name="评定安排">
+			<assignment class="cccf.ma.bpm.handler.ReviewAssignmentHandler" />
+			<event type="task-assign">
+				<action name="NoticeCurrentActorAction" class="cccf.ma.bpm.action.NoticeCurrentActorAction"></action>
+			</event>
+			<event type="timer-create">
+				<action name="time_action" class="cccf.ma.bpm.action.ChangeDueDateAction"></action>
+			</event>
+			<timer name='reminder' duedate='2 weeks'>
+			</timer>
+		</task>
+		<transition to="小组评论" name="提交"></transition>
+	</task-node>
+
+	<task-node name="结论上报">
+		<task name="结论上报">
+			<assignment class="cccf.ma.bpm.handler.ReviewAssignmentHandler" />
+			<event type="task-assign">
+				<action name="NoticeCurrentActorAction" class="cccf.ma.bpm.action.NoticeCurrentActorAction"></action>
+			</event>
+			<event type="timer-create">
+				<action name="time_action" class="cccf.ma.bpm.action.ChangeDueDateAction"></action>
+			</event>
+			<timer name='reminder' duedate='2 weeks'>
+			</timer>
+		</task>
+		<transition to="评定结论审批" name="提交"></transition>
+	</task-node>
+
+	<task-node name="小组评论">
+		<task name="小组评论">
+			<assignment class="cccf.ma.bpm.handler.ReviewAssignmentHandler" />
+			<event type="task-assign">
+				<action name="NoticeCurrentActorAction" class="cccf.ma.bpm.action.NoticeCurrentActorAction"></action>
+			</event>
+			<event type="timer-create">
+				<action name="time_action" class="cccf.ma.bpm.action.ChangeDueDateAction"></action>
+			</event>
+			<timer name='reminder' duedate='2 weeks'>
+			</timer>
+		</task>
+		<transition to="结论上报" name="提交"></transition>
+	</task-node>
+
+	<task-node name="评定结论审批">
+		<task name="评定结论审批">
+			<assignment class="cccf.ma.bpm.handler.ReviewAssignmentHandler" />
+			<event type="task-assign">
+				<action name="NoticeCurrentActorAction" class="cccf.ma.bpm.action.NoticeCurrentActorAction"></action>
+			</event>
+			<event type="timer-create">
+				<action name="time_action" class="cccf.ma.bpm.action.ChangeDueDateAction"></action>
+			</event>
+			<timer name='reminder' duedate='2 weeks'>
+			</timer>
+		</task>
+		<transition to="结论处理" name="通过"></transition>
+		<transition to="评定安排" name="不通过"></transition>
+	</task-node>
+
+	<task-node name="结论处理">
+		<task name="结论处理">
+			<assignment class="cccf.ma.bpm.handler.ReviewAssignmentHandler" />
+			<event type="task-assign">
+				<action name="NoticeCurrentActorAction" class="cccf.ma.bpm.action.NoticeCurrentActorAction"></action>
+			</event>
+			<event type="timer-create">
+				<action name="time_action" class="cccf.ma.bpm.action.ChangeDueDateAction"></action>
+			</event>
+			<timer name='reminder' duedate='2 weeks'>
+			</timer>
+		</task>
+		<transition to="end-state" name="提交"></transition>
+	</task-node>
+
+	<end-state name="end-state"></end-state>
+
+</process-definition>

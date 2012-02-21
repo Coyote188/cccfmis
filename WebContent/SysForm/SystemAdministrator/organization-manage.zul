@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?init class="openjframework.web.zk.OrganizationmanageWindowInit" arg0="organizationmanageWindow"?>
+<window title="单位-人员管理" border="normal" 
+	use="openjframework.web.zk.OrganizationmanageWindow"
+	xmlns:a="http://www.zkoss.org/2005/zk/annotation" id="organizationmanageWindow"
+	xmlns="http://www.zkoss.org/2005/zul" xmlns:n="native" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.zkoss.org/2005/zul
+	http://www.zkoss.org/2005/zul/zul.xsd"
+	width="99%"  sizable="true">
+	
+	<hbox id="querybox">
+			
+ 		单位编号:<textbox id="organizationNo" width="100px"/><separator width="10px" /> 
+		
+ 		单位名称:<textbox id="organizationName" width="100px"/><separator width="10px" /> 
+		
+		<button label="查询" image="/image/16/find.png"  forward="onSearch"/>
+	</hbox>
+	<separator width="10px" />
+	
+    <listbox mold="paging" id="organizationInfoListbox" 
+    		 model="@{organizationInfoList}"
+    		width="99%" pageSize="15" checkmark="true">
+			<listhead sizable="true" >
+				<listheader label="单位编号" width="15%"/>
+				<listheader label="单位名称" width="30%"/>
+				<listheader label="单位地址" width="30%"/>
+				<listheader label="是否检验中心" width="15%"/>
+				<listheader label="人员分配" width="20%"/>
+			</listhead>
+			<listitem self="@{each=org}" value="@{org.id}">
+				<listcell label="@{org.organizationNo}"/>
+				<listcell label="@{org.organizationName }"/>
+				<listcell label="@{org.organizationAddr }"/>
+				<listcell label="@{org.checkCenter }"/>
+				<listcell>
+					<toolbarbutton label="分配" style="color:BLUE" forward="onAssignPerson">
+					<custom-attributes org="@{org}"/>
+					</toolbarbutton>
+				</listcell>
+			</listitem>
+	</listbox>
+	 
+	<separator width="10px" />
+	
+</window>

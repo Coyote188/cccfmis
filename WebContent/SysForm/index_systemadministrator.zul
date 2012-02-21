@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?page id="index" title="消防产品网上认证业务系统"  contentType="text/html;charset=UTF-8"?>
+<zk>
+<div align="center" height="100%" style="background:#FFF;">
+<!--首页大小已在1024×768下测试-->
+<window id="Indexwindow"  apply="openjframework.web.zk.IndexSystemAdministrator"
+	xmlns:n="native"  
+    xmlns:w="client"
+	xmlns="http://www.zkoss.org/2005/zul"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation=" http://www.zkoss.org/2005/zul http://www.zkoss.org/2005/zul/zul.xsd"
+    style="width:1024px;height:650px;"  position="center,top">
+      <zscript>
+		<![CDATA[
+			
+		]]>
+	</zscript>
+      <borderlayout height="100%">
+	   	<north size="80px" border="0" style="background:#074389 url(../image/files/top_bg.png) no-repeat left;">
+		  <div id="top_div" style="background-repeat: no-repeat;">
+			<div align="right" style="position:relative; padding-top:0px;padding-right:50px;">
+				 <image src="/image/files/menu.png"  tooltiptext="系统菜单" /> 
+			</div>
+			<div align="right" style="position:relative; padding-top:15px;padding-right:20px;">
+				<html>
+				<![CDATA[ 
+					<span id="jnkc" class="STYLE1" style="font-size:12px;color:#ECECEC;font-weight:bold;">  
+						<SCRIPT>document.getElementById('jnkc').innerHTML=new Date().toLocaleString()+' 星期'+'日一二三四五六'.charAt(new Date().getDay());setInterval("document.getElementById('jnkc').innerHTML=new Date().toLocaleString()+' 星期'+'日一二三四五六'.charAt(new Date().getDay());",1000);</SCRIPT> 
+					</span>
+					]]> 
+				</html>
+			</div>
+		   </div>  
+		</north>
+	
+		<west width="200px" border="0" title="" style="border: 1px solid #9ECAD8;" flex="true"  splittable="true" collapsible="true" maxsize="200">
+		  <div id="viewerDiv" style="overflow:auto;" height="100%">
+			<panel height="120px" title="欢迎${sessionScope.name}" border="normal" >
+				<panelchildren>
+				 <div align="left" style="padding-top:10px;">		
+				    		<hbox align="start">				   		
+							上次登录于:<label id="lastlogtime"/>
+							</hbox>
+							<hbox>				
+							上次登录IP:<label id="lastlogip"/>
+							</hbox>
+							<separator/>
+							
+							<separator/>
+							<hbox align="center">
+							  <button id="modifyBtn" label="修改密码" style="width:72px;height:24px" /> 
+							  <button id="logoutBtn" label="安全退出" style="width:72px;height:24px" /> 
+							 
+							</hbox>
+				</div>
+			  	</panelchildren>
+			</panel>
+			<panel height="100%" title="常用功能" border="normal" id="jhPanel">
+				<panelchildren>
+			  	   <div align="left">
+			  	   <!-- 临时设置的目录 -->
+			  	   <tree id="tempCataTre" zclass="z-dottree">
+						<treecols>
+							<treecol label="" />
+						</treecols>
+						<treechildren>
+							<treeitem value="/SysForm/commontreaty-mange.zul">
+								<treerow>
+									<treecell label="协议管理" image="/image/common/submit.png" tooltiptext="协议管理"/>
+								</treerow>
+							</treeitem>
+							<treeitem value="/SysForm/productcatalogueTreeView.zul">
+								<treerow>
+									<treecell label="产品目录维护" image="/image/common/submit.png" tooltiptext="产品目录维护"/>
+								</treerow>
+							</treeitem>
+							<treeitem>
+								<treerow>
+									<treecell label="单位" image="/image/common/submit.png"/>
+								</treerow>
+								<treechildren>
+									<treeitem value="/SysForm/SystemAdministrator/organizationTreeview.zul">
+										<treerow><!-- 不能改变label -->
+											<treecell label="单位管理" image="/image/common/submit.png" tooltiptext="单位管理"/>
+										</treerow>
+									</treeitem>
+									<treeitem value="/SysForm/SystemAdministrator/organization-manage.zul">
+										<treerow><!-- 不能改变label -->
+											<treecell label="人员分配管理" image="/image/common/submit.png" tooltiptext="单位管理"/>
+										</treerow>
+									</treeitem>
+								</treechildren>
+							</treeitem>
+							<treeitem>
+								<treerow>
+									<treecell label="用户" image="/image/common/submit.png"/>
+								</treerow>
+								<treechildren>
+									<treeitem value="/SysForm/SystemAdministrator/registerUser.zul">
+										<treerow><!-- 不能改变label -->
+											<treecell label="用户注册" image="/image/common/submit.png" tooltiptext="用户注册"/>
+										</treerow>
+									</treeitem>
+									<treeitem value="/SysForm/SystemAdministrator/usermanage.zul">
+										<treerow>
+											<treecell label="用户管理"  image="/image/common/submit.png" tooltiptext="用户管理"/>
+										</treerow>
+									</treeitem>
+									<treeitem value="/SysForm/SystemAdministrator/userattribute-manage.zul">
+										<treerow>
+											<treecell label="属性项管理" image="/image/common/submit.png" tooltiptext="属性项管理"/>
+										</treerow>
+									</treeitem>
+								</treechildren>
+							</treeitem>
+							<treeitem>
+								<treerow>
+									<treecell label="权限管理" image="/image/common/submit.png"/>
+								</treerow>
+								<treechildren>
+									<treeitem value="/SysForm/SystemAdministrator/user_permissionmanage.zul">
+										<treerow>
+											<treecell label="用户模式" image="/image/common/submit.png" tooltiptext="用户模式"/>
+										</treerow>
+									</treeitem>
+									<treeitem value="/SysForm/SystemAdministrator/role-distribute.zul">
+										<treerow>
+											<treecell label="角色模式" image="/image/common/submit.png" tooltiptext="角色模式"/>
+										</treerow>
+									</treeitem>
+									<treeitem value="/SysForm/SystemAdministrator/resource-manage.zul">
+										<treerow>
+											<treecell label="资源管理" image="/image/common/submit.png" tooltiptext="资源管理"/>
+										</treerow>
+									</treeitem>
+								</treechildren>
+							</treeitem>
+							<treeitem>
+								<treerow>
+									<treecell label="账目管理" image="/image/common/submit.png"/>
+								</treerow>
+								<treechildren>
+									<treeitem value="/SysForm/accounttype-manage.zul">
+										<treerow><!-- 不能改变label -->
+											<treecell label="账目类别" image="/image/common/submit.png" tooltiptext="账目类别"/>
+										</treerow>
+									</treeitem>
+									<treeitem value="/SysForm/accountitem-manage.zul">
+										<treerow><!-- 不能改变label -->
+											<treecell label="账目管理" image="/image/common/submit.png" tooltiptext="账目管理"/>
+										</treerow>
+									</treeitem>
+									
+								</treechildren>
+							</treeitem>
+							<treeitem>
+								<treerow>
+									<treecell label="流程管理" image="/image/common/submit.png"/>
+								</treerow>
+								<treechildren>
+									<treeitem value="/SysForm/process_manage.zul">
+										<treerow>
+											<treecell label="流程发布" image="/image/common/submit.png" tooltiptext="账目类别"/>
+										</treerow>
+									</treeitem>
+								</treechildren>
+							</treeitem>
+						</treechildren>
+					</tree>
+			  	   </div>
+			    </panelchildren>
+	  		</panel>
+	  	  </div>
+		</west>
+		<center border="none"  flex="true">
+		  	<div align="left">
+		  	<tabbox id="mainTab"  height="100%">
+				<tabs>
+					<tab label="个人中心"/>
+				</tabs>
+				<tabpanels>
+					<tabpanel id="firstTab">
+						 <attribute name="onCreate">
+						 		<!-- 个人中心暂放 -->
+						 </attribute> 
+					</tabpanel>
+				</tabpanels>
+			</tabbox>
+			</div>
+		</center>
+		<south size="25px" border="0" style="background:#CAE8F0;">
+			<toolbar mold="panel" align="center">
+				消防产品网上认证业务系统		
+			</toolbar>
+	  </south>
+     </borderlayout>
+</window>
+</div>
+</zk>

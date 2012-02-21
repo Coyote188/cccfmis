@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<zk>
+	<window id="win" width="500px" height="350px"
+		title="与${talkObject.name}的对话" maximizable="true" border="normal" 
+		closable="true" apply="openjframework.InstantMessage.ChatOneComposer"
+		style="background:#B7E0F5;" forward="onClose=win.onCloseWin" sizable="true" position="center">
+		<caption image="/image/InstantMessage/users_comments.png" height="30px"/>
+		<borderlayout style="background:#B7E0F5;">
+			<center>
+				<panel height="100%" width="100%">
+					<panelchildren>
+						<borderlayout>
+							<north size="28px" style="background:#B7E0F5;">
+								<div>
+									<hbox>
+									<fileupload id="uploadFul" label="发送文件 " maxsize="-1" image="/image/InstantMessage/mail-forward.png" tooltiptext="发送文件"/>
+									<toolbarbutton id="receivefTlb" label="接收文件" style="font-size:13px" image="/image/InstantMessage/mail_receive.png" tooltiptext="接收文件"/>
+									<style> 
+										.z-button .z-button-tl, .z-button .z-button-tr,  .z-button .z-button-bl, .z-button .z-button-br, .z-button .z-button-tm, .z-button .z-button-bm,  .z-button .z-button-cl, .z-button .z-button-cr {
+										 background-image:none; background-color:transparent;   
+										        } 
+										 .z-button .z-button-cm {  
+									     background-image:none; background-color:transparent;   
+								       }
+								     </style>
+								     </hbox>
+								</div>
+							</north>
+							<center>
+								<panel height="100%">
+									<panelchildren>
+										<div id="chatOne_viewer"
+											style="overflow-y:scroll;" height="100%"/>
+									</panelchildren>
+								</panel>
+							</center>
+							<south splittable="true" size="25%"
+								flex="true">
+								<textbox id="chatOne_text"
+									multiline="true" width="98%" style="margin:0px"
+									value="嗨!${talkObject.name}：您好！"/>
+							</south>
+						</borderlayout>
+					</panelchildren>
+				</panel>
+			</center>
+			<east size="25%" style="background:#B7E0F5;" collapsible="true" splittable="true">
+				<panel height="260px" width="100%"
+					style="background:#B7E0F5;">
+					<panelchildren>
+						<borderlayout width="100%"
+							style="background:transparent;background:#B7E0F5;">
+							<north height="130px" border="none"
+								style="background:transparent">
+								<image src="/image/InstantMessage/man.png"/>
+							</north>
+							<center  border="none"
+								style="background:transparent">
+								<div id="profileDiv">
+									<groupbox height="96%" style="overflow:hidden;"> 
+										<caption label="对方资料"/>
+										<hbox style="margin-top:5px">
+											<label value="姓&#160;&#160;&#160;&#160;&#160;&#160;名:" style="white-space:nowrap;"/>
+											<label value="${talkObject.name}" style="white-space:nowrap;"/>
+										</hbox>
+										<hbox style="margin-top:5px">
+											<label value="职&#160;&#160;&#160;&#160;&#160;&#160;务:" style="white-space:nowrap;"/>
+											<label value="${talkObject.profile.position.name}" style="white-space:nowrap;"/>
+										</hbox>
+										<hbox style="margin-top:5px">
+											<label value="工作单位:" style="white-space:nowrap;"/>
+											<label value="${talkObject.profile.organization.organizationName}" style="white-space:nowrap;"/>
+										</hbox>
+										<hbox style="margin-top:5px">
+											<label value="E-mail:" style="white-space:nowrap;"/>
+											<label value="${talkObject.profile.email}" style="white-space:nowrap;"/>
+										</hbox>
+									</groupbox>
+								</div>
+							</center>
+						</borderlayout>
+					</panelchildren>
+				</panel>
+			</east>
+			<south style="background:#B7E0F5;">
+				<toolbar mold="panel">
+					<button id="sendBtn" label="发送" width="68px" height="26px" image="/image/InstantMessage/Bubble-16x16.png"
+						forward="onClick=win.onSend" onClick='Clients.evalJavaScript("sc()")'/>
+					<button label="取消" width="68px" height="26px" image="/image/common/undo.png"
+						onClick='chatOne_text.value = ""' />
+				</toolbar>
+			</south>
+		</borderlayout>
+	</window>
+	<style dynamic="true">
+		.cells td, .search .item td { border-bottom: 1px solid #BFDBF5;
+		} .search .cell-inner { color: #2C559C; font: italic Tahoma,
+		Arial, Helvetica, sans-serif; } .z-menubar-hor, .z-menubar-ver{
+		border-bottom:0 none; background: transparent none; }
+	</style>
+	<script type="text/javascript">
+						<![CDATA[ 
+						function sc()
+						{
+							var $d=jq("$chatOne_viewer");
+							$d.scrollTop($d.height());
+
+						}
+						
+						 ]]> 
+					</script>
+</zk>

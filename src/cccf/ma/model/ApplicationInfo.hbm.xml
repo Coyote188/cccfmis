@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping SYSTEM "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+<hibernate-mapping>
+	<class name="cccf.ma.model.ApplicationInfo" table="application">
+
+		<id name="id" type="string" unsaved-value="null">
+			<column name="aid" not-null="true" />
+			<generator class="uuid.hex" />
+		</id>
+		<property name="sioid" type="string">
+			<column name="sioid" not-null="false" />
+		</property>
+		<many-to-one name="production" column="productionid" lazy="false" />
+		<many-to-one name="enterprise" column="enterpriseid" lazy="false" />
+		<many-to-one name="manufacture" column="manufactureid" lazy="false" />
+		<many-to-one name="productionEnterprise" column="productionEnterpriseid" lazy="false" />
+		<property name="address" type="string">
+			<column name="address" not-null="false"/>
+		</property>
+		<property name="businessLisence" type="string">
+			<column name="businesslisence" not-null="false" />
+		</property>
+		<property name="organizationCode" type="string">
+			<column name="organizationcode" not-null="false"/>
+		</property>
+		<property name="inspectionDeviceList" type="string">
+			<column name="inspectiondevicelist" not-null="false" />
+		</property>
+		<property name="layoutGraph" type="string">
+			<column name="layoutgraph" not-null="false" />
+		</property>
+		<property name="brand" type="string">
+			<column name="brand" not-null="false"/>
+		</property>
+		<property name="qualityManual" type="string">
+			<column name="qualitymanual" not-null="false" />
+		</property>
+		<property name="originalCertificate" type="string">
+			<column name="originalcertificate" not-null="false" />
+		</property>
+		<property name="stauts" type="java.lang.Integer">
+			<column name="status" not-null="false" />
+		</property>
+		<property name="stauts0" type="java.lang.Integer">
+			<column name="status0" not-null="false" />
+		</property>
+		<property name="processInstanceId" type="java.lang.Long">
+			<column name="processInstanceId" not-null="false" />
+		</property>
+		<set name="productionModel" lazy="false" inverse="false" cascade="all-delete-orphan">
+			<key column="applicationid" />
+			<one-to-many class="cccf.ma.model.ProductionModelInfo" />
+		</set>
+		<property name="applyDate">
+			<column name="applydate" sql-type="datetime" not-null="false" />
+		</property>
+		<many-to-one name="pumperDocuments" class="cccf.ma.model.PumperDocumentsInfo" column="pumperid" lazy="false"
+			cascade="all" unique="true" />
+		<many-to-one name="reveiwUser" class="openjframework.model.UserInfo" column="reveiwuserid" lazy="false" />
+		<many-to-one name="acceptUser" class="openjframework.model.UserInfo" column="acceptuserid" lazy="false" />
+		<property name="contractFileUrl" type="string" length="300">
+			<column name="contractFileUrl" not-null="false" />
+		</property>
+		<property name="amountFee" type="float">
+			<column name="amountFee" not-null="false" />
+		</property>
+		<property name="contractChoice1" type="string">
+			<column name="contractChoice1" not-null="false" />
+		</property>
+		<property name="contractChoice2" type="string">
+			<column name="contractChoice2" not-null="false" />
+		</property>
+		<property name="contractYear" type="string">
+			<column name="contractYear" not-null="false" />
+		</property>
+		<property name="contractMonth" type="string">
+			<column name="contractMonth" not-null="false" />
+		</property>
+		<property name="contractNo" type="string">
+			<column name="contractNo" not-null="false" />
+		</property>
+		<property name="ysYear" type="string">
+			<column name="ysYear" not-null="false" />
+		</property>
+		<property name="ysMonth" type="string">
+			<column name="ysMonth" not-null="false" />
+		</property>
+		<property name="reportUser" type="string">
+			<column name="reportUser" not-null="false" />
+		</property>		
+		<!-- 工厂检查标识 -->
+		<property name="factoryInspection" type="string">
+			<column name="factoryInspection" not-null="false" />
+		</property> 
+		<!-- 审请类型-->
+		<property name="apptype" type="string">
+			<column name="apptype" not-null="false" />
+		</property>
+		<!-- 业务类型-->
+		<property name="businesstype" type="string">
+			<column name="businesstype" not-null="false" />
+		</property>
+		<!-- 工厂计划者 -->
+		<property name="planner" type="string">
+			<column name="planner" not-null="false" />
+		</property>
+		<!-- 工厂参与者 -->
+		<property name="participants" type="string">
+			<column name="participants" not-null="false" />
+		</property>
+		<!-- 见习见证人员 -->
+		<property name="showuser" type="string">
+			<column name="showuser" not-null="false" />
+		</property>
+		<!-- 工厂组长 -->
+		<property name="leader" type="string">
+			<column name="leader" not-null="false" />
+		</property>
+		<!-- 工厂批次号 -->
+		<property name="batchid" type="java.lang.Long" >
+			<column name="batchid" not-null="false" />
+		</property>
+<!--		公共信息类-->
+		<many-to-one name="applicationPublic" column="applications"></many-to-one>
+	</class>
+</hibernate-mapping>

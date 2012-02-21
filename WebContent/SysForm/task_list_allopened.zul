@@ -1,0 +1,84 @@
+<?init class="cccf.ma.bpm.OpenedTaskListInit" arg0="./openedTaskListWindow"?>
+
+<window xmlns:a="http://www.zkoss.org/2005/zk/annotation"
+	apply="cccf.ma.bpm.OpenedTaskListController"
+	id="openedTaskListWindow" width="100%" sizable="true">
+	<div align="left">
+	<separator height="5px" />
+		<hbox id="querybox">
+
+		企业名称:
+		<textbox id="enterpriseName" width="150px" />
+		<separator width="5px" />
+		产品名称:
+		<textbox id="productionName" width="150px" />
+		<separator width="5px" />
+		
+		<button label="查询" image="/image/16/search.png"
+			forward="onSearch" />
+	</hbox>
+	<separator height="5px" />
+		<a:bind model="taskInstanceInfoList" />
+		<listbox mold="paging" id="taskListbox" width="99%"
+			pageSize="7">
+			<listhead sizable="true">
+				<listheader label="企业名称" width="19%" />
+				<listheader label="产品名称" width="19%" />
+				<listheader label="任务名称" width="18%" />
+				<listheader label="待办人员" width="9%" />
+				<listheader label="发起人员" width="7%" />
+				<listheader label="发起日期" width="9%" />
+				<listheader label="到期日期" width="9%" />
+				<listheader label="操作" width="10%" />
+			</listhead>
+			<a:bind _var="taskInstanceInfo" />
+			<listitem style="text-align:left;">
+				<a:bind
+					label="taskInstanceInfo.applicationInfo.enterprise.simpleName" />
+				<listcell
+					tooltiptext="@{taskInstanceInfo.applicationInfo.enterprise.name}" />
+				<a:bind
+					label="taskInstanceInfo.applicationInfo.production.simpleName" />
+				<listcell tooltiptext="@{taskInstanceInfo.applicationInfo.production.productName}"/>
+				<a:bind label="taskInstanceInfo.taskName" />
+				<listcell />
+				<a:bind label="taskInstanceInfo.actorName" />
+				<listcell id="cellActorName" />
+				<a:bind label="taskInstanceInfo.preTask.actorName" />
+				<listcell />
+				<listcell label="@{taskInstanceInfo.preTask.approveDate,converter='com.aidi.core.zk.DateConverter'}"/>
+				<listcell
+					label="@{taskInstanceInfo.dueDate,converter='com.aidi.core.zk.DateConverter'}"
+					context="@{taskInstanceInfo.isExpire}">
+					<attribute name="onCreate">
+						{
+							if (Boolean.parseBoolean(self.getContext()))
+								self.setStyle("color:red;");
+						}
+					</attribute>
+				</listcell>
+				<listcell>
+					<hbox>
+						<toolbarbutton label="详细" style="color:blue" 
+							forward="onDetail()">
+							<custom-attributes
+								taskInstanceInfo="@{taskInstanceInfo}" />
+						</toolbarbutton>
+						<toolbarbutton label="催办" style="color:blue"  context="@{taskInstanceInfo.actorName}" 
+							forward="onRemind()">
+							<attribute name="onCreate">
+								{
+									if (self.getContext()==null)
+										self.setDisabled(true);
+								}
+							</attribute>
+							<custom-attributes
+								taskInstanceInfo="@{taskInstanceInfo}" />
+						</toolbarbutton>
+					</hbox>
+				</listcell>
+			</listitem>
+		</listbox>
+	</div>
+
+</window>

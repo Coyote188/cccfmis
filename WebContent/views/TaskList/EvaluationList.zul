@@ -1,0 +1,42 @@
+<!-- 单项产品任务 -->
+<listbox checkmark="true" multiple="true" vflex="true" hflex="true" id="batch_product_task_list">
+	<listhead>
+		<listheader label="评定报告编号 " width="180px"></listheader>
+		<listheader label="企业名称" width="240px"></listheader>
+		<listheader label="所在地区" width="80px"></listheader>
+		<listheader label="评定类型" width="80px"></listheader>
+		<listheader label="认证评定结论 " width="100px"></listheader>
+		<listheader label="报告评定状态 " width="100px"></listheader>
+		<listheader label="备注" width="100px"></listheader>
+		<listheader></listheader>
+	</listhead>
+	<listitem self="@{each=item}" value="@{item}">
+		<!-- 评定报告编号 -->
+		<listcell label="@{item.no}"></listcell>
+		<!-- 企业名称 -->
+		<listcell label="@{item.enterprise}"></listcell>
+		<!-- 所在地区 -->
+		<!-- 国家 -->
+		<listcell label="@{item.state}">
+			<label value="-"></label>
+			<!-- 地区 -->
+			<label value="@{item.region}"></label>
+		</listcell>
+		<!-- 评定类型-->
+		<listcell label="@{item.type}"></listcell>
+		<!-- 认证评定结论 -->
+		<listcell label="@{item.conclusion}"></listcell>
+		<!-- 报告评定状态  -->
+		<listcell label="@{item.report_status}"></listcell>
+		<!-- 备注-->
+		<listcell label="@{item.nodes}"></listcell>
+		<listcell>
+			<button mold="trendy" label="@{itemButlabel}" forward="onDoSelfItem"></button>
+		</listcell>
+	</listitem>
+	<listfoot>
+		<listfooter span="8" style="margin: 0px; padding: 1px;">
+			<paging id="list_paging" pageSize="20" style="margin: 0px; padding: 0px;"></paging>
+		</listfooter>
+	</listfoot>
+</listbox>

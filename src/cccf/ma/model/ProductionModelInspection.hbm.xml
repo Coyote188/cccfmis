@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2011-5-7 17:30:26 by Hibernate Tools 3.3.0.GA -->
+<hibernate-mapping>
+    <class name="cccf.ma.model.ProductionModelInspection" table="PRODUCTIONMODELINSPECTION">
+        <id name="id" type="java.lang.String">
+            <column name="ID" />
+            <generator class="uuid.hex" />
+        </id>
+        <property name="inspectionType" type="int">
+            <column name="INSPECTIONTYPE" />
+        </property>
+        <property name="productDesignFile" type="java.lang.String">
+            <column name="PRODUCTDESIGNFILE" />
+        </property>
+        <property name="productImg" type="java.lang.String">
+            <column name="PRODUCTIMG" />
+        </property>
+        <property name="productCharacterization" type="java.lang.String">
+            <column name="PRODUCTCHARACTERIZATION" />
+        </property>
+        <property name="whetherAppearanceStructureConswhethertent" type="boolean">
+            <column name="WHETHERAPPEARANCESTRUCTURECONSWHETHERTENT" />
+        </property>
+        <property name="whetherKeyComponentsConswhethertent" type="boolean">
+            <column name="WHETHERKEYCOMPONENTSCONSWHETHERTENT" />
+        </property>
+        <property name="whetherProductionProcessConswhethertent" type="boolean">
+            <column name="WHETHERPRODUCTIONPROCESSCONSWHETHERTENT" />
+        </property>
+        <property name="inspectionResult" type="int">
+            <column name="INSPECTIONRESULT" />
+        </property>
+        <property name="simpleImgs" type="java.lang.String">
+            <column name="SIMPLEIMGS" />
+        </property>
+    </class>
+</hibernate-mapping>

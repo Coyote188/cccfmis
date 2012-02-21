@@ -1,0 +1,38 @@
+<?page title="new page title" contentType="text/html;charset=UTF-8"?>
+<?init class="org.zkoss.zkplus.databind.AnnotateDataBinderInit" root="./frmApplyinfoViewer"?>
+<zk>
+<window id="frmApplyinfoViewer" apply="cccf.ma.web.zk.publicform.ApplicationInfoViewer" border="none">
+		<groupbox mold="3d">
+			<caption label="申请信息" />
+			<grid>
+				<columns>
+					<column label="申请号" />
+					<column label="申请单位" />
+					<column label="所在地区" />
+					<column label="业务类型" />
+					<column label="产品大类" />
+					<column label="申请类型" />
+					<column label="申请时间" />
+				</columns>
+				<rows>
+					<row value="@{frmApplyinfoViewer$composer.appPublicInfo }">
+						<toolbarbutton forward="onViewDetail" style="text-Decoration:underline;color:#3300cc" label="@{frmApplyinfoViewer$composer.appPublicInfo.applyno }" />
+						<toolbarbutton style="text-Decoration:underline;color:#3300cc" forward="onViewEnterpriseInfo" label="@{frmApplyinfoViewer$composer.appPublicInfo.applyEnterpriseName }" >
+							<custom-attributes applyno="@{frmApplyinfoViewer$composer.appPublicInfo.applyno }"/>
+						</toolbarbutton>
+						<label value="">
+							<attribute name="onCreate">
+								String str = ((Map)((Row)self.getParent()).getValue()).get("state") + "," + ((Map)((Row)self.getParent()).getValue()).get("location");
+								self.setValue(str);
+							</attribute>
+						</label>
+						<label value="@{frmApplyinfoViewer$composer.appPublicInfo.businessType }"/>
+						<label value="@{frmApplyinfoViewer$composer.appPublicInfo.productCatalog }"/>
+						<label value="@{frmApplyinfoViewer$composer.appPublicInfo.applyType }"/>
+						<label value="@{frmApplyinfoViewer$composer.appPublicInfo.applydate }"/>
+					</row>
+				</rows>
+			</grid>
+		</groupbox>
+</window>
+</zk>

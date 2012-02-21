@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping SYSTEM "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+<hibernate-mapping>
+  <class name="cccf.ma.model.CopyOfBusinessLicenseInfo" table="COPYOFBUSINESSLICENSE">  
+  
+    <id name="id" type="string" unsaved-value="null" >
+        <column name="cId"  not-null="true"/>
+        <generator class="uuid.hex"/>
+    </id>
+    
+    <property name="image" type="blob">
+         <column name="IMAGE"  not-null="false"/>
+     </property>
+  </class>   
+</hibernate-mapping>

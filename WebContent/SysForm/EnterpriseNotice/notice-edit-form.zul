@@ -1,0 +1,130 @@
+<?page title="new page title" contentType="text/html;charset=UTF-8"?>
+<?init class="org.zkoss.zkplus.databind.AnnotateDataBinderInit" root="./frmNoticeEditer"?>
+<zk>
+	<window id="frmNoticeEditer" border="normal"
+		apply="openjframework.web.zk.MsgSenderController">
+		<style>
+			tr.z-row td.z-row-inner { background: white; border: 0; }
+		</style>
+		<grid style="border:0">
+			<columns>
+				<column width="70px" />
+				<column width="90%" />
+			</columns>
+			<rows>
+				<row>
+					<hbox>
+						<label value="*" style="color:#FF0000" />
+						<label value="收件人：" />
+					</hbox>
+					<hbox>
+						<bandbox id="bdEList" readonly="true"
+							width="300px" value="———企业列表———">
+							<bandpopup>
+								<listbox id="lbxEtpList"
+									model="@{frmSender$composer.enterpriseList}" mold="paging"
+									pageSize="15" width="300px">
+									<listhead>
+										<listheader />
+									</listhead>
+									<listitem
+										self="@{each=enterprise }">
+										<listcell
+											label="@{enterprise.name }" />
+									</listitem>
+								</listbox>
+							</bandpopup>
+						</bandbox>
+						<toolbarbutton id="btnAddEnterprise"
+							label="添加企业" style="text-Decoration:underline;color:#3300cc" />
+						
+					</hbox>
+
+				</row>
+				<row>
+					<hbox>
+						<label value="*" style="color:#FF0000" />
+						<label value="主题：" />
+					</hbox>
+					<hbox>
+						<textbox id="tbxSubject" width="300px"
+							value="@{frmNoticeEditer$composer.msg.subject }"
+							constraint="no empty:请添写通知的主题" />
+						
+					</hbox>
+				</row>
+				<row>
+					<hbox>
+						<label value="*" style="color:#FF0000" />
+						<label value="内容：" />
+						<separator height="190px" />
+					</hbox>
+					<textbox id="tbxMsgContent" width="450px"
+						height="200px" multiline="true"
+						value="@{frmNoticeEditer$composer.msg.content }"
+						constraint="no empty:请添写通知内容" />
+
+				</row>
+<!--				<row>-->
+<!--					<space />-->
+<!--					<hbox>-->
+<!--						<combobox id="cbxMsgRating" value="——选择消息级别——" readonly="true">-->
+<!--							<comboitem self="@{each=rating }" label="@{rating }"/>-->
+<!--						</combobox>-->
+<!--						<space width="20px"/>-->
+<!--						<combobox id="cbxMsgType" value="——请选择通知类型——" readonly="true">-->
+<!--							<comboitem self="@{each=type }" label="@{type }"/>-->
+<!--						</combobox>-->
+<!--					</hbox>-->
+<!--				</row>-->
+				<row>
+					<hbox>
+						<label value="附件：" />
+					</hbox>
+					<vbox>
+						<style>
+							tr.z-row td.z-row-inner { background: white;
+							border: 0; }
+						</style>
+						<grid
+							model="@{frmNoticeEditer$composer.fileList}" id="grdFileList"
+							style=" border:0;" width="300px">
+							<columns>
+								<column label="" width="80%" />
+								<column label="" />
+							</columns>
+							<rows>
+								<row self="@{each=file }">
+									<label value="@{file }" />
+									<toolbarbutton label="删除"
+										forward="onRemove"
+										style="text-Decoration:underline;color:#3300cc">
+										<custom-attributes
+											fileName="@{file }" />
+									</toolbarbutton>
+								</row>
+							</rows>
+						</grid>
+						<hbox>
+							<image src="/image/files/email_attach.png"
+								width="20px" />
+							<fileupload id="btnAddAttch" label="添加附件" />
+						</hbox>
+					</vbox>
+				</row>
+			</rows>
+		</grid>
+		<div>
+			<space width="200px" />
+			<button label="发送" id="btnMsgSend" width="68px" height="26px" image="/image/common/mail_send.png"
+				onClick=""/>
+			<space width="30px" />
+<!--			<button label="取消" id="btnCancel" width="68" height="28"-->
+<!--				onClick="" />-->
+<!--			<space width="30px" />-->
+			<button label="关闭" id="btnClose" width="68px" height="26px" image="/image/common/close.png"
+				onClick="" />
+		</div>
+		<div id="divSearchEngine"></div>
+	</window>
+</zk>

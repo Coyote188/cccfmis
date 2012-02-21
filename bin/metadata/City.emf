@@ -1,0 +1,28 @@
+<EnityModel>
+  <Name>City</Name>
+  <Alias>市</Alias>
+  <PackageName>cccf.ma</PackageName>
+  <DbTableName>CITY</DbTableName>
+  <PrimaryKey>id</PrimaryKey>
+  <PrimaryKeyType>uuid.hex</PrimaryKeyType>
+  <FieldList>
+    <Field>
+      <Name>id</Name>
+      <Alias>市编码</Alias>
+      <DbFieldName>cId</DbFieldName>
+      <DataType>STRING</DataType>
+      <AllowNull>false</AllowNull>
+      <Length>0</Length>
+      <IsLinkProperty>false</IsLinkProperty>
+    </Field>
+    <Field>
+      <Name>name</Name>
+      <Alias>市名</Alias>
+      <DbFieldName>name</DbFieldName>
+      <DataType>STRING</DataType>
+      <AllowNull>true</AllowNull>
+      <Length>0</Length>
+      <IsLinkProperty>false</IsLinkProperty>
+    </Field>
+  </FieldList>
+</EnityModel>

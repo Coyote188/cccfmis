@@ -1,0 +1,57 @@
+<?init class="org.zkoss.zkplus.databind.AnnotateDataBinderInit" arg0="./BatchApprovalTaskWin"?>
+<window id="BatchApprovalTaskWin" title="new page title" border="normal" apply="cccf.mis.web.tsak.batch.approval.BatchApprovalTaskController" forward="onCreate=onInited">
+	<vlayout spacing="0" vflex="true" hflex="true">
+		<toolbar style="border:1px solid #CCC;">
+			<button mold="trendy" image="/res/icons/page_find.png" label="查询" forward="onFind"></button>
+			<button mold="trendy" image="/res/icons/page_refresh.png" label="刷新"></button>
+			<button mold="trendy" image="/res/icons/page_paintbrush.png" label="清理"></button>
+		</toolbar>
+		<grid hflex="true">
+			<columns>
+				<column width="70px" align="right"></column>
+				<column></column>
+				<column width="70px" align="right"></column>
+				<column></column>
+				<column width="70px" align="right"></column>
+				<column></column>
+				<column width="70px" align="right"></column>
+				<column></column>
+			</columns>
+			<rows>
+				<row>
+					<label value="合同号:"></label>
+					<combobox hflex="true" width="160px" id="batch_no">
+						<comboitem></comboitem>
+					</combobox>
+					<label value="批次状态"></label>
+					<combobox hflex="true" id="batch_status">
+						<comboitem></comboitem>
+					</combobox>
+					<label value="创建时间:"></label>
+					<datebox hflex="true" id="start_bach_date"></datebox>
+					<label value="至"></label>
+					<datebox hflex="true" id="end_bach_date"></datebox>
+				</row>
+				<row>
+					<label value="批次名称"></label>
+					<combobox hflex="true" width="160px" id="batch_name">
+						<comboitem></comboitem>
+					</combobox>
+					<label value="创建人"></label>
+					<combobox hflex="true" id="created"></combobox>
+					<label value="流程状态:"></label>
+					<combobox hflex="true" readonly="true" value="待办" id="status">
+						<comboitem label="待办" value="0"></comboitem>
+						<comboitem label="已办" value="1"></comboitem>
+					</combobox>
+				</row>
+			</rows>
+		</grid>
+		<vlayout vflex="true" hflex="true" spacing="0">
+			<toolbar style="border:1px solid #CCC;border-buttom:0px">
+				<button mold="trendy" image="/res/icons/accept.png" label="审批" forward="onDoSelectedItem"></button>
+			</toolbar>
+			<vlayout vflex="true" hflex="true" id="includelayout"></vlayout>
+		</vlayout>
+	</vlayout>
+</window>

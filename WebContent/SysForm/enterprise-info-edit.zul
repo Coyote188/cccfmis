@@ -1,0 +1,449 @@
+<?page title="" contentType="text/html;charset=UTF-8"?>
+<?init class="org.zkoss.zkplus.databind.AnnotateDataBinderInit" root="./frmEnterpriseInfoEdit"?>
+<zk>
+	<window id="frmEnterpriseInfoEdit" title="企业信息修改" border="normal" width="50%"
+		apply="cccf.ma.web.zk.EnterpriseinfoWindow" closable="true">
+		<grid style="border:0">
+			<columns>
+				<column width="20%"/>
+				<column width="80%"/>
+			</columns>
+			<rows>
+				<row>
+						<hbox>
+							企业名称:
+						</hbox>
+						<div>
+							<textbox id="tbx001" width="300px" readonly="true" inplace="true"
+								value="@{frmEnterpriseInfoEdit$composer.enterprise.name }"
+								/>
+						</div>
+					</row>
+					<row>
+						<hbox>
+							企业名称(英文):
+						</hbox>
+						<div>
+							<textbox id="tbx002" width="300px"
+								value="@{frmEnterpriseInfoEdit$composer.enterprise.nameEn }" popup="ppName" />
+							<popup id="ppNameEn">
+								<label value="请添写企业英文名称" />
+							</popup>
+						</div>
+					</row>
+					<row visible="false">
+						<hbox>
+							<label value="*" style="color:#FF0000" />
+							选择产品:
+						</hbox>
+						<div>
+							<bandbox id="bdProduct" width="303px"
+								popup="ppProductList" readonly="true"
+								constraint="no empty:请选择要激活的产品">
+								<bandpopup>
+									<listbox id="lbxProductList"
+										width="295px" mold="paging" pageSize="10"
+										model="@{frmEnterpriseInfoEdit$composer.productList}"
+										checkmark="true" multiple="true" height="340px">
+
+										<listitem self="@{each=pro }"
+											value="@{pro }">
+											<listcell
+												label="@{pro.productName }" />
+										</listitem>
+									</listbox>
+								</bandpopup>
+							</bandbox>
+							<popup id="ppProductList">
+								<label value="请选择至少一类要激活的产品" />
+							</popup>
+						</div>
+					</row>
+					<row>
+
+						<hbox>
+							<label value="*" style="color:#FF0000" />
+							所在地区:
+						</hbox>
+						<hbox>
+							<label value="@{frmEnterpriseInfoEdit$composer.enterprise.state }" />
+							<label value="@{frmEnterpriseInfoEdit$composer.enterprise.location }" />
+						
+						<hbox visible="false">
+							<combobox id="cbxState" value="—选择国家—" readonly="true" width="80px"
+								model="@{frmEnterpriseInfoEdit$composer.sList }">
+								<comboitem self="@{each=stateInfo}"
+									label="@{stateInfo.name}">
+									<custom-attributes
+										stateInfo="@{stateInfo }" />
+								</comboitem>
+							</combobox>
+
+							<div id="divLocation">
+								<div id="divCbxLocation"
+									visible="false">
+									<combobox id="cbxProvince"
+										value="—选择省—" readonly="true" width="80px">
+										<comboitem
+											self="@{each=province }" label="@{province.name }">
+											<custom-attributes
+												province="@{province }" />
+										</comboitem>
+									</combobox>
+									<combobox id="cbxCity" width="80px"
+										readonly="true" value="—选择市—">
+										<comboitem self="@{each=city }"
+											label="@{city.name }">
+										</comboitem>
+									</combobox>
+								</div>
+								<textbox id="tbxLocation" width="160px"
+									popup="ppLocation" constraint="no empty:地区不能为空" visible="true" />
+								<popup id="ppLocation">
+									<label value="请添写企业所在地区" />
+								</popup>
+							</div>
+						</hbox>
+						</hbox>
+					</row>
+					<row>
+						<hbox>
+							<label value="*" style="color:#FF0000" />
+							组织机构代码:
+						</hbox>
+						<div>
+							<textbox id="tbx003" width="300px" popup="ppOrganizationCode" readonly="true" inplace="true"
+								value="@{frmEnterpriseInfoEdit$composer.enterprise.organizationCode }"
+								/>
+						</div>
+					</row>
+					<row>
+						<hbox>
+							<label value="*" style="color:#FF0000" />
+							企业组织性质代码:
+						</hbox>
+						<label value="@{frmEnterpriseInfoEdit$composer.enterprise.organizationNature }" />
+						<div visible="false">
+							<combobox id="cbxOrganizationNature" readonly="true" autodrop="true" width="300px" popup="ppOrganizationNature"  constraint="no empty:请选择组织性质代码"
+								value="unused" model="@{frmEnterpriseInfoEdit$composer.organizationNatureArray }">
+								<comboitem self="@{each=on }" value="@{on }" label="@{on }" />
+							</combobox>
+							<popup id="ppOrganizationNature">
+								<label value="请选择组织性质代码" />
+							</popup>
+						</div>
+					</row>
+					<row>
+						<hbox>
+							<label value="*" style="color:#FF0000" />
+							企业规模:
+						</hbox>
+						<div>
+						<label value="@{frmEnterpriseInfoEdit$composer.enterprise.scaleName }" />
+						<div visible="false">
+							<radiogroup id="rgpBusinessScope">
+								<radio label="大型"/><radio label="中型" checked="true"/><radio label="小型"/>
+							</radiogroup>
+						</div>
+						</div>
+					</row>
+					<row>
+						<hbox>
+							<label value="*" style="color:#FF0000" />
+							法人代表:
+						</hbox>
+						<div>
+							<textbox id="tbx004" width="300px"
+								popup="ppContactAds" readonly="true" inplace="true"
+								value="@{frmEnterpriseInfoEdit$composer.enterprise.legalPerson }"
+								 />
+							<popup id="ppLegalPerson">
+								<label value="请填写企业法定代表人" />
+							</popup>
+						</div>
+					</row>
+					<row>
+						<hbox>
+							法人代表(英文):
+						</hbox>
+						<div>
+							<textbox id="tbx005" width="300px"
+								popup="ppContactAds"
+								value="@{frmEnterpriseInfoEdit$composer.enterprise.legalPersonEn }"
+								 />
+							<popup id="ppLegalPersonEn">
+								<label value="请添写企业法定代表人英文名" />
+							</popup>
+						</div>
+					</row>
+					<row>
+						<hbox>
+							<label value="*" style="color:#FF0000" />
+							法人联系地址:
+						</hbox>
+						<div>
+							<textbox id="tbx006" width="300px"
+								popup="ppContactAds" readonly="true" inplace="true"
+								value="@{frmEnterpriseInfoEdit$composer.enterprise.contactAddForLegal }"
+								/>
+							<popup id="ppcontactAddForLegal">
+								<label value="请填写企业法定代表人联系地址" />
+							</popup>
+						</div>
+					</row>
+					<row>
+						<hbox>
+							法人联系地址(英文):
+						</hbox>
+						<div>
+							<textbox id="tbx007" width="300px"
+								popup="ppContactAds"
+								value="@{frmEnterpriseInfoEdit$composer.enterprise.contactAddForLegalEn }"
+								/>
+							<popup id="ppcontactAddForLegalEn">
+								<label value="请填写企业法定代表人英文联系地址" />
+							</popup>
+						</div>
+					</row>
+					<row>
+						<hbox>
+							<label value="*" style="color:#FF0000" />
+							法人联系电话:
+						</hbox>
+						<div>
+							<textbox id="tbx008" width="300px"
+								popup="ppContactAds"
+								value="@{frmEnterpriseInfoEdit$composer.enterprise.telForLegal }"
+								constraint="no empty:请填写申请企业法定代表人的联系电话" />
+							<popup id="pptelForLegal">
+								<label value="请填写申请企业法定代表人的联系电话" />
+							</popup>
+						</div>
+					</row>
+					<row>
+						<hbox>
+							<label value="*" style="color:#FF0000" />
+							法人手机:
+						</hbox>
+						<div>
+							<textbox id="tbx009" width="300px"
+								popup="ppContactAds"
+								value="@{frmEnterpriseInfoEdit$composer.enterprise.mobileForLegal }"
+								constraint="no empty:请填写申请企业法定代表人的手机" />
+							<popup id="ppmobileForLegal">
+								<label value="请填写申请企业法定代表人的手机" />
+							</popup>
+						</div>
+					</row>
+					<row>
+						<hbox>
+							<label value="*" style="color:#FF0000" />
+							注册地址:
+						</hbox>
+						<div>
+							<textbox id="tbx010" width="300px"
+								value="@{frmEnterpriseInfoEdit$composer.enterprise.registeredAddress }"
+								 readonly="true" inplace="true" />
+						</div>
+					</row>
+					<row>
+						<hbox>
+							注册地址(英文):
+						</hbox>
+						<div>
+							<textbox id="tbx011" width="300px"
+								popup="ppContactAds"
+								value="@{frmEnterpriseInfoEdit$composer.enterprise.registeredAddressEn }"
+								/>
+							<popup id="ppregisteredAddressEn">
+								<label value="请填写企业的英文注册地址（应与营业执照一致）,强制性谁为必填项" />
+							</popup>
+						</div>
+					</row>
+					<row>
+						<hbox>
+							<label value="*" style="color:#FF0000" />
+							注册资金:
+						</hbox>
+						<div>
+							<textbox id="tbx012" width="300px"
+								readonly="true" inplace="true"
+								value="@{frmEnterpriseInfoEdit$composer.enterprise.registeredCapital }"
+								/>
+						</div>
+					</row>
+					<row>
+						<hbox>
+							<label value="*" style="color:#FF0000" />
+							经营范围:
+						</hbox>
+						<div>
+							<textbox id="tbx013" width="300px"
+								popup="ppContactAds" 
+								value="@{frmEnterpriseInfoEdit$composer.enterprise.businessScope }"
+								constraint="no empty:请填写企业的经营范围" />
+							<popup id="ppbusinessScope">
+								<label value="请填写企业的经营范围" />
+							</popup>
+						</div>
+					</row>
+					<row>
+						<hbox>
+							<label value="*" style="color:#FF0000" />
+							通讯地址:
+						</hbox>
+						<div>
+							<textbox id="tbx014" width="300px"
+								popup="ppContactAds"
+								value="@{frmEnterpriseInfoEdit$composer.enterprise.contactAddress }"
+								constraint="no empty:请填写企业的通讯地址" />
+							<popup id="ppContactAds">
+								<label value="请填写企业的通讯地址" />
+							</popup>
+						</div>
+					</row>
+					<row>
+						<hbox>
+							通讯地址(英文):
+						</hbox>
+						<div>
+							<textbox id="tbx015" width="300px"
+								popup="ppContactAds"
+								value="@{frmEnterpriseInfoEdit$composer.enterprise.contactAddressEn }"
+								/>
+							<popup id="ppContactAdsEn">
+								<label value="请填写企业的英文通讯地址" />
+							</popup>
+						</div>
+					</row>
+					<row>
+						<hbox>
+							<label value="*" style="color:#FF0000" />
+							<label value="联系人:" />
+						</hbox>
+						<hbox>
+							<textbox id="tbx016" width="100px"
+								popup="ppContactPerson"
+								value="@{frmEnterpriseInfoEdit$composer.enterprise.contactPerson }"
+								constraint="no empty:请填写企业的联系人姓名" />
+							<space />
+							<hbox>
+								<label value="*" style="color:#FF0000" />
+								<label value="邮政编码:" />
+							</hbox>
+							<space width="10px" />
+							<textbox id="tbx017" width="100px"
+								popup="ppPostalcode"
+								value="@{frmEnterpriseInfoEdit$composer.enterprise.postalcode }"
+								constraint="no empty:请输入正确的邮政编码" />
+							<popup id="ppContactPerson">
+								<label value="请填写企业的联系人姓名" />
+							</popup>
+							<popup id="ppPostalcode">
+								<label value="请添写企业所在地邮编，例如：100000" />
+							</popup>
+						</hbox>
+					</row>
+					<row>
+						<hbox>
+							<label value="联系人(英文):" />
+						</hbox>
+						<div>
+							<textbox id="tbx018" width="300px"
+								popup="ppTelNum"
+								value="@{frmEnterpriseInfoEdit$composer.enterprise.contactPersonEn }"
+								/>
+							<popup id="ppcontactPersonEn">
+								<label
+									value="请填写企业的联系人英文名" />
+							</popup>
+						</div>
+					</row>
+					<row>
+						<hbox>
+							<label value="*" style="color:#FF0000" />
+							<label value="联系电话(座机):" />
+						</hbox>
+						<div>
+							<textbox id="tbx019" width="300px"
+								popup="ppTelNum"
+								value="@{frmEnterpriseInfoEdit$composer.enterprise.telephoneNum }"
+								constraint="no empty:请输入正确的联系电话，例如：021-12345678，多个号码用“，”隔开" />
+							<popup id="ppTelNum">
+								<label
+									value="请添写企业联系电话，例如：010-12345678，多个号码用“，”隔开" />
+							</popup>
+						</div>
+					</row>
+					<row>
+						<hbox>
+							<label value="*" style="color:#FF0000" />
+							<label value="联系电话(手机):" />
+						</hbox>
+						<div>
+							<textbox id="tbx020" width="300px"
+								popup="ppmobileNum"
+								value="@{frmEnterpriseInfoEdit$composer.enterprise.mobileNum }"
+								constraint="no empty:请添写企业联系电话(手机)" />
+							<popup id="ppmobileNum">
+								<label
+									value="请添写企业联系电话(手机)" />
+							</popup>
+						</div>
+					</row>
+					<row>
+						<hbox>
+							<label value="*" style="color:#FF0000" />
+							<label value="传真:" />
+						</hbox>
+						<div>
+							<textbox id="tbx021" width="300px"
+								popup="ppFaxNum"
+								value="@{frmEnterpriseInfoEdit$composer.enterprise.faxNum }"
+								constraint="no empty:传真号码不能为空，多个号码用“，”隔开" />
+							<popup id="ppFaxNum">
+								<label value="请添写企业传真，多个号码用“，”隔开" />
+							</popup>
+						</div>
+					</row>
+					<row>
+						<hbox>
+							<label value="*" style="color:#FF0000" />
+							电子邮箱:
+						</hbox>
+						<div>
+							<textbox id="tbx022" width="300px"
+								popup="ppEmailAddress"
+								value="@{frmEnterpriseInfoEdit$composer.enterprise.emailAddress }"
+								constraint="/(\w+@(\w+\.)+\w{2,3})?/,no empty:请输入正确的邮箱地址，例如:abc@gmail.com" />
+							<popup id="ppEmailAddress">
+								<label
+									value="请添写企业电子邮箱，例如：abc@gmail.com" />
+							</popup>
+						</div>
+					</row>
+					<row>
+						<hbox>
+							企业网址:
+						</hbox>
+						<div>
+							<textbox id="tbx023" width="300px"
+								popup="ppEmailAddress"
+								value="@{frmEnterpriseInfoEdit$composer.enterprise.webAddress }"
+								/>
+							<popup id="ppwebAddress">
+								<label
+									value="请填写企业网站地址" />
+							</popup>
+						</div>
+					</row>
+			</rows>
+		</grid>
+		<div align="center">
+		<hbox align="center">
+			<button label="提交" id="btnModify" width="68px" height="26px"/>
+			<button label="取消" id="btnDetach" width="68px" height="26px"/>
+		</hbox>
+		</div>
+	</window>
+</zk>

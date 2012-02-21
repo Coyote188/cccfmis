@@ -1,0 +1,48 @@
+<?init class="cccfmis.bpm.zk.QualificationInit" arg0="./qualification"?>
+<window use="cccfmis.bpm.zk.Qualification" id="qualification" title="工厂检查资质" border="normal" width="660px" closable="true" sizable="false">
+	<hbox>
+		<listbox id="listbox1" model="@{qualificationInit}" mold="paging" pageSize="8" height="350px" width="350px" checkmark="true" multiple="false"
+			onSelect="qualification.onSelected(event)">
+			<listhead>
+				<listheader label="资质代码" width="80px" />
+				<listheader label="资质名称" width="120px" />
+				<listheader label="资质描述" width="150px" />
+			</listhead>
+			<listitem self="@{each=prequal}" value="@{prequal}">
+				<listcell label="@{prequal.qcode}" />
+				<listcell label="@{prequal.qname}" />
+				<listcell label="@{prequal.qdesc}" />
+			</listitem>
+			<listfoot>
+				<listfooter span="3">
+					<button label="删除" forward="onDel" image="/image/common/close.png" />
+					<button label="取消" onClick="qualification.detach()" image="/image/16/stop.png" />
+				</listfooter>
+			</listfoot>
+		</listbox>
+		<grid>
+			<columns>
+				<column width="80px" />
+				<column width="200px" />
+			</columns>
+			<rows>
+				<row>
+					<label value="资质代码" />
+					<textbox id="qcode" width="180px" />
+				</row>
+				<row>
+					<label value="资质名称" />
+					<textbox value="${map.qname}" id="qname" width="180px" />
+				</row>
+				<row>
+					<label value="资质描述" />
+					<textbox rows="4" id="qdesc" width="185px" />
+				</row>
+				<row>
+					<button label="新增" forward="onAdd" image="/image/common/add.png" />
+					<button label="保存" forward="onSave" image="/image/common/save.png" />
+				</row>
+			</rows>
+		</grid>
+	</hbox>
+</window>

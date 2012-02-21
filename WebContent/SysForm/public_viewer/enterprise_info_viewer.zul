@@ -1,0 +1,56 @@
+<?page title="" contentType="text/html;charset=UTF-8"?>
+<?init class="org.zkoss.zkplus.databind.AnnotateDataBinderInit" root="./frmApplyEnterpriseViewer"?>
+<zk>
+	<window id="frmApplyEnterpriseViewer" apply="cccf.ma.web.zk.publicform.ApplicationEnterpriseInfoViewer" title="" border="none">
+		<groupbox mold="3d">
+			<caption label="申请企业基本信息" />
+			<grid>
+				<columns>
+					<column width="15%" />
+					<column width="35%" />
+					<column width="15%" />
+					<column width="35%" />
+				</columns>
+				<rows>
+					<row>
+						<label value="申请号" />
+						<label
+							value="@{frmApplyEnterpriseViewer$composer.enterpriseInfo.applyno }" />
+						<label value="申请时间" />
+						<label value="@{frmApplyEnterpriseViewer$composer.enterpriseInfo.applydate }" />
+					</row>
+					<row>
+						<label value="申请企业" />
+						<toolbarbutton id="btnEnterpriseView" label="@{frmApplyEnterpriseViewer$composer.enterpriseInfo.applyEnterpriseName }" style="text-Decoration:underline;color:#3300cc;font-size:12" />
+						<label value="业务类型" />
+						<label value="@{frmApplyEnterpriseViewer$composer.enterpriseInfo.businessType }" />
+					</row>
+					<row>
+						<label value="法人代表" />
+						<label value="@{frmApplyEnterpriseViewer$composer.enterpriseInfo.legalPerson }" />
+						<label value="联系人" />
+						<label value="@{frmApplyEnterpriseViewer$composer.enterpriseInfo.contactPerson }" />
+					</row>
+					<row>
+						<label value="联系电话" />
+						<label value="@{frmApplyEnterpriseViewer$composer.enterpriseInfo.telephoneNum }" />
+						<label value="手机" />
+						<label value="@{frmApplyEnterpriseViewer$composer.enterpriseInfo.mobileNum }" />
+					</row>
+					<row>
+						<label value="电子邮件" />
+						<label value="@{frmApplyEnterpriseViewer$composer.enterpriseInfo.emailAddress }" />
+						<label value="传真" />
+						<label value="@{frmApplyEnterpriseViewer$composer.enterpriseInfo.faxNum }" />
+					</row>
+					<row>
+						<label value="地址" />
+						<label value="@{frmApplyEnterpriseViewer$composer.enterpriseInfo.contactAddress }" />
+						<label value="邮政编码" />
+						<label value="@{frmApplyEnterpriseViewer$composer.enterpriseInfo.postalcode }" />
+					</row>
+				</rows>
+			</grid>
+		</groupbox>
+	</window>
+</zk>

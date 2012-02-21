@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?init class="cccf.ma.web.zk.ProductcatalogueeditWindowInit" arg0="ProductCatalogueEditWindow"?>
+<?taglib uri="http://www.zkoss.org/dsp/web/core" prefix="c"?>
+<zk>
+<window style="width:100%;height:100%" 
+		id="ProductCatalogueEditWindow" use="cccf.ma.web.zk.ProductcatalogueeditWindow"
+	    xmlns:n="native" 
+	    xmlns:w="client"
+	    xmlns:a="http://www.zkoss.org/2005/zk/annotation" 
+		xmlns="http://www.zkoss.org/2005/zul"
+		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		xsi:schemaLocation=" http://www.zkoss.org/2005/zul http://www.zkoss.org/2005/zul/zul.xsd">
+		<grid>
+				<columns height="24px">
+			 	 	<column width="100px" align="center" label=" "></column>
+			 	 	<column label="产品基本信息"></column>
+			 	 </columns>
+				  <rows>
+				     <row>  
+					   	产品编号:
+				       	<a:bind value="productCatalogue.productNo"/>
+				       	<label id="productNo" />
+						 	
+				     </row>	
+				     <row>   
+					           产品名称:
+				       <a:bind value="productCatalogue.productName"/>
+				       <label id="productName"/>
+						 	
+				     </row>	
+				     
+				     <row>         
+				      	 执行标准: 
+				       <a:bind value="productCatalogue.observedStandard"/>
+				       <textbox id="observedStandard" width="99%" rows="6" readonly="true"/>
+						 	
+				     </row>	
+				     <row>         
+				       	技术要求: 
+				       <a:bind value="productCatalogue.technicalRequirement"/>
+				       <textbox id="technicalRequirement" width="99%" rows="6" readonly="true"/>
+						 	
+				     </row>	
+				     <row>         
+				       	产品描述: 
+				       <a:bind value="productCatalogue.productDescribe"/>
+				       <textbox id="productDescribe" width="99%" rows="6" readonly="true"/>
+						 	
+				     </row>	
+				      
+				  </rows>
+			 </grid>
+<!--			 -->
+<!--			 <separator />-->
+<!--			 <div align="center">-->
+<!--			   <hbox>-->
+<!--			       <button label="关闭" image="/image/common/close.png"  width="68px" height="26px" style="null" forward="onEnterCancel"/>  -->
+<!--			   </hbox>-->
+<!--			 </div>-->
+</window>
+</zk>

@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?init class="org.zkoss.zkplus.databind.AnnotateDataBinderInit" root="./registWin" ?>
+<zk>
+	<window id="registWin"
+		apply="openjframework.web.zk.RegisterUserComposer" xmlns:n="native"
+		xmlns:w="client" xmlns="http://www.zkoss.org/2005/zul"
+		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		xsi:schemaLocation=" http://www.zkoss.org/2005/zul http://www.zkoss.org/2005/zul/zul.xsd">
+
+		<tabbox tabscroll="false" style="margin-bottom:10px;width:100%;">
+			<tabs>
+				<tab label="用户账号" />
+			</tabs>
+			<tabpanels>
+				<tabpanel>
+					<grid>
+						<columns>
+							<column width="100px" align="center" />
+							<column width="320px"/>
+							<column />
+						</columns>
+						<rows>
+							<row>
+								<hbox>
+									<label value="*"
+										style="color:Red;font-weight:bold;" />
+									<label value="用户名" />
+								</hbox>
+								<hbox>
+								<textbox id="usernameTbx" width="150px" value="@{registWin$composer.account.username }"
+									constraint="/^([\u4E00-\u9FA5A-Za-z]){2,6}\w*$/:格式不正确" />
+								<toolbarbutton id="checkUsernameTol" label="-检测用户名是否存在-" style="color:Blue;font-weight:bold;" image="/image/common/define_permissions.png"/>
+								</hbox>
+								
+								<label style="color:Blue;" value="用户名必须以字母开头，允许5-16字符，只能包含字符、数字和下划线,例:abc_123"/>
+								
+							</row>
+							<row>
+								<hbox>
+									<label value="*"
+										style="color:Red;font-weight:bold;" />
+									<label
+										value="密&#160;&#160;&#160;&#160;码" />
+								</hbox>
+								<textbox id="passTbx" type="password" width="150px" style="font-size:14px;"
+									constraint="/(^[a-zA-Z]\w{5,17}$)/:格式不正确" />
+								<label style="color:Blue;" value="密码必须以字母开头，长度在6-18之间， 只能包含字符、数字和下划线,例:abc_123"/>
+							</row>
+							<row>
+								<hbox>
+									<label value="*"
+										style="color:Red;font-weight:bold;" />
+									<label value="确认密码" />
+								</hbox>
+								<textbox id="affirmTbx" type="password" width="150px" style="font-size:14px;"
+									constraint="/(^[a-zA-Z]\w{5,17}$)/:格式不正确" />
+							<label style="color:Blue;" value="再一次输入密码"/>
+							</row>
+						</rows>
+					</grid>
+				</tabpanel>
+			</tabpanels>
+		</tabbox>
+		<tabbox tabscroll="false" style="margin-bottom:10px;width:100%;">
+			<tabs>
+				<tab label="人员详细资料" />
+			</tabs>
+			<tabpanels>
+				<tabpanel>
+				<grid>
+					<columns>
+						<column width="100px" align="center" />
+						<column />
+						<column width="100px" align="center"/>
+						<column />
+					</columns>
+					<rows>
+						<row>
+							<hbox>
+								<label value="*"
+									style="color:Red;font-weight:bold;" />
+								<label value="人员编码" />
+							</hbox>
+							<textbox id="userNoTbx" width="150px" 
+									 value="@{registWin$composer.profile.userNo}"
+									 constraint="no empty:人员编码不允许为空" maxlength="50"/>
+							<label value="&#160;&#160;政治面貌"/>
+							<combobox id="politicalCbx" value="——请选择政治面貌——" 
+										  model="@{registWin$composer.politicallist}"
+										  autodrop="true" readonly="true">
+									<comboitem self="@{each=political}" 
+											   label="@{political.name}">
+											   <custom-attributes political="@{political }"/>
+									</comboitem>
+							</combobox>
+						</row>
+						<row>
+							<hbox>
+								<label value="*"
+									style="color:Red;font-weight:bold;" />
+								<label value="姓&#160;&#160;&#160;&#160;&#160;&#160;&#160;名" />
+							</hbox>
+							<textbox id="nameTbx" width="150px" 
+									 value="@{registWin$composer.profile.name}"
+									 constraint="no empty:请录入人员姓名" maxlength="20"/>
+							<label value="&#160;&#160;籍&#160;&#160;&#160;&#160;&#160;&#160;&#160;贯" />
+							<textbox id="nativeTbx" width="150px"  
+									 value="@{registWin$composer.profile.nativePlace}"
+									 maxlength="20"/>
+						</row>
+					
+						<row>
+							<hbox>
+								<label value="*"
+									style="color:Red;font-weight:bold;" />
+								<label value="性&#160;&#160;&#160;&#160;&#160;&#160;&#160;别" />
+							</hbox>
+							<combobox id="sexCbx" value="——请选择性别——" 
+									  model="@{registWin$composer.sexlist}"
+									  autodrop="true" readonly="true">
+								<comboitem self="@{each=sex}" 
+										   label="@{sex.value}"
+										   value="@{sex.id}"/>
+							</combobox>
+							<label value="&#160;&#160;职&#160;&#160;&#160;&#160;&#160;&#160;&#160;务" />
+							<combobox id="positionCbx" value="——请选择一个职务——" 
+									 model="@{registWin$composer.positionlist}"
+									  autodrop="true" readonly="true">
+								<comboitem self="@{each=position }"
+										   label="@{position.name}">
+										   <custom-attributes position="@{position}"/>
+								</comboitem>
+							</combobox>
+										   
+						</row>
+						<row>
+							<label value="出生日期" />
+							<datebox id="birthdayDbx" format="yyyy-MM-dd" width="150px" 
+									 value="@{registWin$composer.profile.birthday}"
+								 	 constraint="no future:请录入出生日期且不能为未来的日期"/>
+							 <label value="&#160;&#160;身份证号" />
+							 <textbox id="idcardNoTbx" width="200px"
+							 		  value="@{registWin$composer.profile.idcardNo}"
+				       				  maxlength="18" constraint="/(^\d{15}$)|(^\d{17}([0-9]|X)$)?/:请输入正确的身份证号码" />
+						</row>
+						<row>
+							<label value="联系电话" />
+							<textbox id="teleTbx" width="150px"  maxlength="50" 
+									 value="@{registWin$composer.profile.telephone}"/>
+							
+							<label value="E-mail" />
+							<textbox id="emailTbx" width="150px" maxlength="50" 
+							 		 value="@{registWin$composer.profile.email}"
+									 constraint="/(\w+@(\w+\.)+\w{2,3})?/:请输入正确的邮箱地址，例如:abc@gmail.com" />
+						</row>
+						<row spans="1,3">
+							<label value="&#160;&#160;所属部门"/>
+							<hbox align="center">
+							<combobox id="organizationCbx" value="——请选择一个部门——" 
+										  model="@{registWin$composer.organizationlist}"
+										  autodrop="true" readonly="true">
+									<comboitem self="@{each=organization}" 
+											   label="@{organization.organizationName}">
+											   <custom-attributes organization="@{organization }"/>
+									</comboitem>
+							</combobox>
+							<separator width="20px"/>
+								<hbox id="dynamicHbx" align="center">
+									<label value="说明:部门在这里可以不分配,批量分配时可以使用" style="color:Blue;"/>
+									<toolbarbutton id="assignTlb" label="人员分配管理" style="text-Decoration:underline;color:#ff2007;font-weight:bold;" tooltiptext="转到人员分配管理"/>
+								</hbox>
+							</hbox>
+						</row>
+					</rows>
+				</grid>
+				</tabpanel>
+			</tabpanels>
+		</tabbox>
+		<div align="center" >
+		<button id="registBtn" label="提交注册" 
+					height="26px" image="/image/16/up.png"/>
+		</div>
+	</window>
+</zk>

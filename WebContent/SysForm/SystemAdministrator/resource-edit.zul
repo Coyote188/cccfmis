@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?init class="openjframework.web.zk.ResourceeditWindowInit" arg0="ResourceEditWindow"?>
+<window title="资源编辑" border="normal" 
+	use="openjframework.web.zk.ResourceeditWindow"
+	xmlns:a="http://www.zkoss.org/2005/zk/annotation" id="ResourceEditWindow"
+	xmlns="http://www.zkoss.org/2005/zul"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.zkoss.org/2005/zul
+	http://www.zkoss.org/2005/zul/zul.xsd"
+	width="600px"  sizable="true">
+	
+<grid>
+		<columns>
+			<column label="" width="150px" />
+			<column label="" align="left" />
+		</columns>
+  <rows>
+     <row>         
+       资源编码: 
+       <a:bind value="resource.no"/>
+       <textbox id="no" width="100px"/>
+		 	
+     </row>	
+     <row>         
+       名称: 
+       <a:bind value="resource.name"/>
+       <textbox id="name" constraint="no empty:不能为空" width="100px"/>
+		 	
+     </row>	
+     <row>         
+       资源描述: 
+       <a:bind value="resource.resDesc"/>
+       <textbox id="resDesc" width="100px"/>
+		 	
+     </row>	
+     <row>         
+       资源类别: 
+       <a:bind value="resource.type.name"/>
+       <combobox id="type" model="@{typeList}"  onSelect="ResourceEditWindow.ontypeSelect(event)" autodrop="true" width="100px">
+         <comboitem self="@{each=type}"  label="@{type.name}"  value="@{type.no}"/>
+       </combobox>
+		 	
+     </row>	
+     <row>         
+       资源URL: 
+       <a:bind value="resource.resourceUrl"/>
+       <textbox id="resourceUrl" width="300px"/>
+		 	
+     </row>	
+  </rows>
+ </grid>
+<separator width="10px" />
+ <div align="left">
+   <hbox>
+       <button label="保存" image="/image/common/save.png"  width="70px" height="28px" style="null" forward="onSave"/>
+       <button label="关闭" image="/image/common/close.png"  width="70px" height="28px" style="null" forward="onCancel"/>  
+   </hbox>
+ </div>
+</window>			   

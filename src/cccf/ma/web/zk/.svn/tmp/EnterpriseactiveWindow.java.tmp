@@ -1,0 +1,160 @@
+package cccf.ma.web.zk;
+
+import java.math.*;
+import java.util.*;
+import java.sql.*;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Set;
+import javax.jws.soap.SOAPBinding.Use;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
+import openjframework.service.*;
+import openjframework.model.*;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
+import org.zkoss.zk.ui.*;
+import org.zkoss.zk.ui.event.Event;
+import org.zkoss.zk.ui.event.EventListener;
+import org.zkoss.zk.ui.event.Events;
+import org.zkoss.zul.*;
+
+import com.aidi.core.zk.*;
+import cccf.ma.model.*;
+import cccf.ma.service.*;
+import cccf.myenum.ActivateStatus;
+
+@SuppressWarnings( { "serial", "unchecked", "unused" })
+public class EnterpriseactiveWindow extends Window {
+
+	public final static String ON_ACTIVE = "onCreate";
+	public final static String ON_REFUSED = "onCreate";
+
+	Long taskInstanceId;
+	String processId = "0";
+	String userId;
+	HashMap params = new HashMap();
+
+	private Grid grdEnterpriseActive;
+	private Window enterpriseactiveWindow;
+	private Button btnAutoActive;
+	private List<EnterpriseInfo> list;
+
+	public EnterpriseInfo enterpriseInfo;
+
+	public EnterpriseInfo getEnterpriseInfo() {
+		return enterpriseInfo;
+	}
+
+	public void setEnterpriseInfo(EnterpriseInfo entity) {
+		this.enterpriseInfo = entity;
+	}
+
+	public void onCreate() {
+		list = EnterpriseInfoServiceUtil.findByInactiveEnterprise();
+		Components.wireVariables(this, this);
+		grdEnterpriseActive.setRowRenderer(new EnterpriseActiveRowRenderer());
+		ListModel lModel = new SimpleListModel(list);
+		grdEnterpriseActive.setModel(lModel);		
+		int defaultStatus = EnterpriseInfoServiceUtil.getDefaultStatus();
+		if(defaultStatus == 0){
+			btnAutoActive.setLabel("手动激活");
+		}else {
+			btnAutoActive.setLabel("自动激活");
+		}
+	}
+
+	public List<EnterpriseInfo> getObjList() {
+		Listbox listbox = getListbox();
+		List<EnterpriseInfo> list = (List<EnterpriseInfo>) listbox.getModel();
+		return list;
+	}
+
+	public Listbox getListbox() {
+		return (Listbox) this.getFellow("enterpriseInfoListbox");
+	}
+
+	private void onView(EnterpriseInfo enterprise)
+			throws SuspendNotAllowedException, InterruptedException {
+		params.put("enterprise", enterprise);
+		Window frmEnterpriseInfo = (Window) Executions.createComponents(
+				"enterprise-viewer.zul", null, params);
+		frmEnterpriseInfo.setParent(this);
+		frmEnterpriseInfo.doModal();
+	}
+
+	private void onActive(EnterpriseInfo enterprise)
+			throws InterruptedException {
+		int reply = Messagebox.show("是否确认激活该企业", "提示", Messagebox.YES
+				| Messagebox.NO, Messagebox.QUESTION);
+		if (reply == Messagebox.YES) {
+			EnterpriseInfoServiceUtil.activeEnterprise(enterprise);
+			onCreate();
+		} else {
+			return;
+		}
+	}
+
+	private void onRefused(Event event){
+		EnterpriseInfo e = (EnterpriseInfo) event.getData();
+		onCreate();
+	}
+	
+	//设置企业注册后自动/手动激活
+	public void onAutoActiveSwitch(){
+		String msgStr="企业激活当前设置为：";
+		switch (EnterpriseInfoServiceUtil.getDefaultStatus()) {
+		case 1:
+			EnterpriseInfoServiceUtil.setDefaultStatus(0);
+			btnAutoActive.setLabel("手动激活");
+			msgStr += "手动激活";
+			break;
+
+		case 0:
+			EnterpriseInfoServiceUtil.setDefaultStatus(1);
+			btnAutoActive.setLabel("自动激活");
+			msgStr += "自动激活";
+			break;
+		}
+		try {//
+			Messagebox.show(msgStr,"操作提示",Messagebox.OK, msgStr);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+	}
+
+	private class EnterpriseActiveRowRenderer implements RowRenderer {
+
+		@Override
+		public void render(Row row, Object data) throws Exception {
+			final EnterpriseInfo enterprise = (EnterpriseInfo) data;
+			final Toolbarbutton btnEName = new Toolbarbutton(enterprise
+					.getName());
+			btnEName.addEventListener(Events.ON_CLICK, new EventListener() {
+				@Override
+				public void onEvent(Event arg0) throws Exception {
+					onView(enterprise);
+				}
+			});
+			btnEName.setParent(row);
+			new Label(enterprise.getLocation()).setParent(row);
+			new Label(enterprise.getContactPerson()).setParent(row);
+			new Label(enterprise.getTelephoneNum()).setParent(row);
+			final Button btnActive = new Button("激活");
+			btnActive.addEventListener(Events.ON_CLICK, new EventListener() {
+				@Override
+				public void onEvent(Event arg0) throws Exception {
+					onActive(enterprise);
+				}
+			});
+			btnActive.setParent(row);
+
+		}
+
+	}
+
+}

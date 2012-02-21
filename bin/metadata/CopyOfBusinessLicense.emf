@@ -1,0 +1,27 @@
+<EnityModel>
+  <Name>CopyOfBusinessLicense</Name>
+  <Alias>企业营业执照副本复印件</Alias>
+  <PackageName>cccf.ma</PackageName>
+  <DbTableName>COPYOFBUSINESSLICENSE</DbTableName>
+  <PrimaryKey>id</PrimaryKey>
+  <PrimaryKeyType>uuid.hex</PrimaryKeyType>
+  <FieldList>
+    <Field>
+      <Name>id</Name>
+      <Alias></Alias>
+      <DbFieldName>cId</DbFieldName>
+      <DataType>STRING</DataType>
+      <AllowNull>false</AllowNull>
+      <Length>0</Length>
+      <IsLinkProperty>false</IsLinkProperty>
+    </Field>
+    <Field>
+      <Name>image</Name>
+      <Alias>复件图片</Alias>
+      <DbFieldName>IMAGE</DbFieldName>
+      <DataType>BLOB</DataType>
+      <AllowNull>true</AllowNull>
+      <Length>0</Length>
+    </Field>
+  </FieldList>
+</EnityModel>

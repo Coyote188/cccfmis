@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?init class="org.zkoss.zkplus.databind.AnnotateDataBinderInit" root="./modifyProfileWin" ?>
+<zk>
+	<window id="modifyProfileWin" closable="true"
+			sizable="false"
+			apply="openjframework.web.zk.ModifyProfile">
+		<div align="center">
+		<grid style="margin-top:10px" width="90%">
+			<columns>
+				<column width="100px" align="center" />
+				<column align="left"/>
+				<column width="100px" align="center" />
+				<column  align="left"/>
+			</columns>
+			<rows>
+				<row spans="1,3">
+					<label value="人员编码" />
+					<label id="userNoLab" value="@{modifyProfileWin$composer.profile.userNo}"/>
+				</row>
+				<row spans="1,3">
+					<label value="姓&#160;&#160;&#160;&#160;&#160;&#160;&#160;名" />
+					<label id="nameLab" value="@{modifyProfileWin$composer.profile.name}"/>
+				</row>
+				<row spans="1,3">
+					<label value="性&#160;&#160;&#160;&#160;&#160;&#160;&#160;别" />
+					<label value="@{modifyProfileWin$composer.profile.sexname}" />
+				</row>
+				
+				<row spans="1,3">
+					<label
+						value="职&#160;&#160;&#160;&#160;&#160;&#160;&#160;务" />
+					<label id="positionLab" value="@{modifyProfileWin$composer.profile.position.name}"/>
+						
+				</row>
+				<row spans="1,3">
+					<label value="单&#160;&#160;&#160;&#160;&#160;&#160;&#160;位" />
+					<label value="@{modifyProfileWin$composer.profile.organization.organizationName }"/>
+				</row>
+				<row spans="4"   style="background:#CC0;border:#CC0;"  height="20px">
+					<label style="font-weight:bold;color:#FFF;font-size:16px;" value="个&#160;&#160;&#160;&#160;人&#160;&#160;&#160;&#160;维&#160;&#160;&#160;&#160;护"/>
+				</row>
+				<row style="border:normal" >
+					
+					<label value="&#160;&#160;政治面貌" />
+					<combobox id="politicalCbx"   value="@{modifyProfileWin$composer.profile.politicalStatus.name}"
+						model="@{modifyProfileWin$composer.politicallist}" autodrop="true"
+						readonly="true" >
+						<comboitem self="@{each=political}"
+							label="@{political.name}">
+							<custom-attributes
+								political="@{political }" />
+						</comboitem>
+					</combobox>
+					<label value="&#160;&#160;身份证号" />
+					<textbox id="idcardNoTbx" width="150px"  
+						value="@{modifyProfileWin$composer.profile.idcardNo}" maxlength="18"
+						constraint="/(^\d{15}$)|(^\d{17}([0-9]|X)$)?/:请输入正确的身份证号码" />
+				</row>
+				<row>
+					<label value="籍&#160;&#160;&#160;&#160;&#160;&#160;&#160;贯" />
+					<textbox id="nativeTbx" width="150px"  
+						value="@{modifyProfileWin$composer.profile.nativePlace}" maxlength="20" />
+						<label value="生&#160;&#160;&#160;&#160;&#160;&#160;&#160;日" />
+					<datebox id="birthdayDbx" format="yyyy-MM-dd"  
+						width="150px" value="@{modifyProfileWin$composer.profile.birthday}"
+						constraint="no future:请录入出生日期且不能为未来的日期" />
+				</row>
+				<row>
+					<label value="联系电话" />
+					<textbox id="teleTbx" width="150px" maxlength="50"  
+						value="@{modifyProfileWin$composer.profile.telephone}" />
+
+					<label value="E-mail" />
+					<textbox id="emailTbx" width="150px" maxlength="50"
+						value="@{modifyProfileWin$composer.profile.email}"  
+						constraint="/(\w+@(\w+\.)+\w{2,3})?/:请输入正确的邮箱地址，例如:abc@gmail.com" />
+				</row>
+				
+			</rows>
+		</grid>
+		</div>
+		<div style="margin-top:10px;" align="center">
+			<button id="modify" label="保存" image="/image/common/save.png" width="68px" height="26px"/>
+			<button id="cancel" label="取消"  focus="true"  image="/image/common/close.png" style="margin-left:10px;" width="68px" height="26px"/>
+		</div>
+	</window>
+</zk>

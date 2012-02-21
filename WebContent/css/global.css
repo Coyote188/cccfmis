@@ -1,0 +1,36 @@
+/*
+µ×²ã¹Ì¶¨À¸ begin
+*/
+.bottom_fixed {
+bottom: 2px;
+right: 10px;
+position: fixed;
+z-index: 99999999999;
+}
+
+/*
+µ×²ã¹Ì¶¨À¸ end
+*/ /*
+ÃÔÄã´°¿Ú begin
+*/
+.mini_window {
+width: 200px;
+border: 1px solid #86A4BE;
+background-color: #FFFFFF;
+}
+
+.mini_window_title {
+height: 20px;
+padding-right: 5px;
+padding-left: 5px;
+background-image: url("../image/files/column-bg.png");
+background-repeat: repeat-x;
+background-color: #C3E7FB;
+}
+
+.mini_window_content {
+padding: 4px;
+}
+/*
+ÃÔÄã´°¿Úend
+*/

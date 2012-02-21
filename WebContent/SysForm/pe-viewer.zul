@@ -1,0 +1,353 @@
+<?page title="new page title" contentType="text/html;charset=UTF-8"?>
+<?init class="org.zkoss.zkplus.databind.AnnotateDataBinderInit" root="./frmProViewer"?>
+<window width="75%" border="normal" height="75%" id="frmProViewer" apply="cccf.ma.web.zk.PEViewerController">
+	<vlayout hflex="true" vflex="true" style="overflow:auto;">
+		<grid id="grdfacEditer" style="border: 0" width="99%">
+			<columns>
+				<column width="35%" />
+				<column width="65%" />
+			</columns>
+			<rows>
+				<row style="border: 0;background:white;">
+					<hbox align="center">
+
+						<label value="生产厂名称:" />
+					</hbox>
+					<label value="@{frmProViewer$composer.fac.name }" />
+
+				</row>
+				<row style="border: 0;background:white;">
+					<hbox align="center">
+
+						<label value="生产厂名称(英文):" />
+					</hbox>
+					<label value="@{frmProViewer$composer.fac.facNameEn }" />
+
+				</row>
+				<row style="border: 0;background:white;">
+					<hbox align="center">
+
+						<label value="生产厂组织机构代码:" />
+					</hbox>
+					<label value="@{frmProViewer$composer.fac.facCode }" />
+
+				</row>
+
+				<row>
+					<hbox>
+						<label value="*" style="color:#FF0000" />
+						企业组织性质代码:
+					</hbox>
+					<label id="cbxOrganizationNature" value="@{frmProViewer$composer.fac.organizationNature }" />
+				</row>
+				<row>
+					<hbox>
+						<label value="*" style="color:#FF0000" />
+						企业规模:
+					</hbox>
+					<label value="@{frmProViewer$composer.fac.scaleName }" />
+				</row>
+
+				<row style="border: 0;background:white;">
+					<hbox align="center">
+
+						<label value="生产厂法人(负责人):" />
+					</hbox>
+					<label value="@{frmProViewer$composer.fac.facLegalPerson }" />
+
+				</row>
+
+				<row>
+					<hbox align="center">
+						<label value="生产厂法人(负责人英文):" />
+					</hbox>
+					<label value="@{frmProViewer$composer.fac.legalPersonEn }" />
+				</row>
+				<row>
+					<hbox>
+						<label value="*" style="color:#FF0000" />
+						法人联系地址:
+					</hbox>
+					<div>
+						<label id="contactAddForLegal" value="@{frmProViewer$composer.fac.contactAddForLegal }" />
+					</div>
+				</row>
+				<row>
+					<hbox>
+						<label value="*" style="color:#FF0000" />
+						法人联系地址(英文):
+					</hbox>
+					<div>
+						<label id="contactAddForLegalEn" value="@{frmProViewer$composer.fac.contactAddForLegalEn }" />
+					</div>
+				</row>
+				<row>
+					<hbox>
+						<label value="*" style="color:#FF0000" />
+						法人联系电话:
+					</hbox>
+					<div>
+						<label id="telForLegal" width="350px" value="@{frmProViewer$composer.fac.telForLegal }" />
+					</div>
+				</row>
+				<row>
+					<hbox>
+						<label value="*" style="color:#FF0000" />
+						法人手机:
+					</hbox>
+					<label id="mobileForLegal" value="@{frmProViewer$composer.fac.mobileForLegal }" />
+				</row>
+
+				<row style="border: 0;background:white;" visible="false">
+					<hbox align="center">
+
+						<label value="生产厂机构类型:" />
+					</hbox>
+					<label value="@{frmProViewer$composer.fac.facType }" />
+
+				</row>
+				<row style="border: 0;background:white;" visible="false">
+					<hbox align="center">
+
+						<label value="生产厂经济行业:" />
+					</hbox>
+					<label value="@{frmProViewer$composer.fac.facEcocalling }" />
+
+				</row>
+				<row style="border: 0;background:white;" visible="false">
+					<hbox align="center">
+
+						<label value="生产厂经济行业(新国标代码):" />
+					</hbox>
+					<label value="@{frmProViewer$composer.fac.facEcocallingNew }" />
+
+				</row>
+				<row style="border: 0;background:white;" visible="false">
+					<hbox align="center">
+
+						<label value="生产厂经济类型:" />
+					</hbox>
+					<label value="@{frmProViewer$composer.fac.facEcotype }" />
+
+				</row>
+				<row style="border: 0;background:white;" visible="false">
+					<hbox align="center">
+
+						<label value="生产厂经济类型(新国标代码):" />
+					</hbox>
+					<label value="@{frmProViewer$composer.fac.facEcoTypeNew }" />
+
+				</row>
+
+				<row style="border: 0;background:white;" visible="false">
+					<hbox align="center">
+
+						<label value="生产厂标志:" />
+					</hbox>
+					<label value="@{frmProViewer$composer.fac.facFlag }" />
+
+				</row>
+
+				<!-- 2011.5.16 -->
+				<row>
+					<hbox>
+						<label value="*" style="color:#FF0000" />
+						注册地址:
+					</hbox>
+					<div>
+						<label id="registeredAddress" value="@{frmProViewer$composer.fac.registeredAddress }" />
+					</div>
+				</row>
+				<row>
+					<hbox>
+						<label value="*" style="color:#FF0000" />
+						注册地址(英文):
+					</hbox>
+					<div>
+						<label id="registeredAddressEn" value="@{frmProViewer$composer.fac.registeredAddressEn }" />
+					</div>
+				</row>
+				<row>
+					<hbox>
+						<label value="*" style="color:#FF0000" />
+						注册资金:
+					</hbox>
+					<div>
+						<label id="registeredCapital" value="@{frmProViewer$composer.fac.registeredCapital }" />
+					</div>
+				</row>
+				<row style="border: 0;background:white;">
+					<hbox align="center">
+
+						<label value="生产厂经营范围:" />
+					</hbox>
+					<label multiline="true" value="@{frmProViewer$composer.fac.facWorkRange }" />
+
+				</row>
+
+				<row style="border: 0;background:white;">
+					<hbox align="center">
+
+						<label value="生产厂所在国家地区:" />
+					</hbox>
+					<label value="@{frmProViewer$composer.fac.facCountry }" />
+
+				</row>
+				<row style="border: 0;background:white;">
+					<hbox align="center">
+
+						<label value="生产厂所在地区:" />
+					</hbox>
+					<label value="@{frmProViewer$composer.fac.facDistrict }" />
+
+				</row>
+				<!-- 2011.5.16 -->
+				<row>
+					<hbox>
+						<label value="*" style="color:#FF0000" />
+						通讯地址:
+					</hbox>
+					<div>
+						<label id="contactAddress" value="@{frmProViewer$composer.fac.contactAddress }" />
+					</div>
+				</row>
+				<row>
+					<hbox>
+						<label value="*" style="color:#FF0000" />
+						通讯地址(英文):
+					</hbox>
+					<div>
+						<label id="contactAddressEn" value="@{frmProViewer$composer.fac.contactAddressEn }" />
+					</div>
+				</row>
+				<row>
+					<hbox align="center">
+						<label value="*" style="color:#ff0000" />
+						<label value="实际生产厂地址 :" />
+					</hbox>
+					<label value="@{frmProViewer$composer.fac.realAdd }" />
+
+				</row>
+				<row>
+					<hbox align="center">
+						<label value="实际生产厂地址 (英文):" />
+					</hbox>
+					<label value="@{frmProViewer$composer.fac.realAddEn }" />
+
+				</row>
+				<row>
+					<hbox align="center">
+						<label value="实际生产厂 邮编:" />
+					</hbox>
+					<label value="@{frmProViewer$composer.fac.realZip }" />
+
+				</row>
+
+
+				<!--				<row style="border: 0;background:white;">-->
+				<!--					<hbox align="center">-->
+				<!---->
+				<!--						<label value="通讯地址:" />-->
+				<!--					</hbox>-->
+				<!--					<label-->
+				<!--						value="@{frmProViewer$composer.fac.contactAddress }" />-->
+				<!---->
+				<!--				</row>-->
+				<!--				<row style="border: 0;background:white;">-->
+				<!--					<hbox align="center">-->
+				<!---->
+				<!--						<label value="通讯地址(英文):" />-->
+				<!--					</hbox>-->
+				<!--					<label-->
+				<!--						value="@{frmProViewer$composer.fac.facAddressEn }" />-->
+				<!---->
+				<!--				</row>-->
+				<row style="border: 0;background:white;">
+					<hbox align="center">
+
+						<label value="生产厂邮编:" />
+					</hbox>
+					<label value="@{frmProViewer$composer.fac.facZip }" />
+
+				</row>
+				<row style="border: 0;background:white;" visible="false">
+					<hbox align="center">
+
+						<label value="生产厂编号:" />
+					</hbox>
+					<label value="@{frmProViewer$composer.fac.facCoding }" />
+
+				</row>
+				<row style="border: 0;background:white;">
+					<hbox align="center">
+
+						<label value="生产厂电子邮件:" />
+					</hbox>
+					<label value="@{frmProViewer$composer.fac.facEmail }" />
+
+				</row>
+				<row style="border: 0;background:white;">
+					<hbox align="center">
+
+						<label value="生产厂联系人:" />
+					</hbox>
+					<label value="@{frmProViewer$composer.fac.facLinkMan }" />
+
+				</row>
+				<row style="border: 0;background:white;">
+					<hbox align="center">
+
+						<label value="生产厂联系人(英文):" />
+					</hbox>
+					<label value="@{frmProViewer$composer.fac.facLinkManEn }" />
+
+				</row>
+				<row style="border: 0;background:white;">
+					<hbox align="center">
+
+						<label value="生产厂联系电话:" />
+					</hbox>
+					<label value="@{frmProViewer$composer.fac.facTel }" />
+
+				</row>
+				<row style="border: 0;background:white;">
+					<hbox align="center">
+
+						<label value="生产厂联系电话(手机):" />
+					</hbox>
+					<label value="@{frmProViewer$composer.fac.facMob }" />
+
+				</row>
+				<row style="border: 0;background:white;">
+					<hbox align="center">
+
+						<label value="生产厂传真:" />
+					</hbox>
+					<label value="@{frmProViewer$composer.fac.facFax }" />
+
+				</row>
+				<row style="border: 0;background:white;">
+					<hbox align="center">
+
+						<label value="网址:" />
+					</hbox>
+					<label value="@{frmProViewer$composer.fac.webAddress }" />
+
+				</row>
+				<row style="border: 0;background:white;">
+					<hbox align="center">
+
+						<label value="简介:" />
+					</hbox>
+					<label value="@{frmProViewer$composer.fac.note }" />
+
+				</row>
+			</rows>
+		</grid>
+		<div align="center">
+			<button id="btnModify" label="修改" width="68px" height="26px" />
+			<space width="5%" />
+			<button id="btnGoback" label="返回" width="68px" height="26px" />
+		</div>
+	</vlayout>
+</window>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping SYSTEM "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+<hibernate-mapping>
+  <class name="cccf.ma.model.EnterpriseOwnActivatedProductListInfo" table="enterpriseownactivatedproductList">  
+  
+    <id name="id" type="string" unsaved-value="null" >
+        <column name="id"  not-null="true"/>
+        <generator class="uuid.hex"/>
+    </id>
+    
+    <many-to-one name="enterprise" column="enterprise_id"   lazy="false"/> 
+    <many-to-one name="product" column="product_id"   lazy="false"/> 
+     <property name="applydate">
+         <column name="applydate" sql-type="datetime" not-null="true"/>
+     </property>
+     <property name="activatedate">
+         <column name="activatedate" sql-type="datetime" not-null="false"/>
+     </property>
+    <property name="activateStatus" type="java.lang.Integer">
+         <column name="activateStatus"  not-null="true"/>
+     </property>
+    <many-to-one name="activateuser" column="activateuser" lazy="false"/> 
+    <property name="description" type="string">
+         <column name="description"  not-null="false"/>
+     </property>
+  </class>   
+</hibernate-mapping>

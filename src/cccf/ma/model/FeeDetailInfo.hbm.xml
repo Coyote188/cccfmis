@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping SYSTEM "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+<hibernate-mapping>
+  <class name="cccf.ma.model.FeeDetailInfo" table="feedetail">  
+  
+    <id name="feeId" type="string" unsaved-value="null" >
+        <column name="feeId"  not-null="true"/>
+        <generator class="uuid.hex"/>
+    </id>
+    
+    <many-to-one name="accountItem" column="accountItem" lazy="false"/> 
+     <property name="feeDate">
+         <column name="feeDate" sql-type="datetime" not-null="false"/>
+     </property>
+    <property name="sum" type="float">
+         <column name="sum"  not-null="false"/>
+     </property>
+    <many-to-one name="application" column="applicationId" lazy="false"/> 
+    <property name="casherId" type="string">
+         <column name="casherId"  not-null="true"/>
+     </property>
+     <property name="unit" type="string">
+         <column name="unit"  not-null="true"/>
+     </property>
+      <property name="number" type="int">
+         <column name="number"  not-null="false"/>
+     </property>
+     <property name="number2" type="int">
+         <column name="number2"  not-null="false"/>
+     </property>
+  </class>   
+</hibernate-mapping>

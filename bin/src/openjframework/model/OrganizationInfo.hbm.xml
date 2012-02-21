@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping SYSTEM "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+<hibernate-mapping>
+  <class name="openjframework.model.OrganizationInfo" table="organization">  
+  
+    <id name="id" type="string" unsaved-value="null" >
+        <column name="id"  not-null="true"/>
+        <generator class="uuid.hex"/>
+    </id>
+    
+    <property name="orgNo" type="string">
+         <column name="orgNo"  not-null="true"/>
+     </property>
+    <property name="orgName" type="string">
+         <column name="orgName"  not-null="true"/>
+     </property>
+    <many-to-one name="orgType" column="orgType" lazy="false"/> 
+    <property name="orgLevel" type="string">
+         <column name="orgLevel"  not-null="false"/>
+     </property>
+    <property name="parentOrgID" type="string">
+         <column name="parentOrgID"  not-null="true"/>
+     </property>
+    <property name="orgDesc" type="string">
+         <column name="orgDesc"  not-null="false"/>
+     </property>
+    <property name="orgAddr" type="string">
+         <column name="orgAddr"  not-null="false"/>
+     </property>
+    <property name="orgTel" type="string">
+         <column name="orgTel"  not-null="false"/>
+     </property>
+     <many-to-one name="principal" column="principal" lazy="false"
+       class="openjframework.model.UserInfo" 
+      unique="true"/>    
+    <many-to-one name="branchesofleader" column="branchesofleader" lazy="false"/> 
+  </class>   
+</hibernate-mapping>

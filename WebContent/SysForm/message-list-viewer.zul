@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?init class="org.zkoss.zkplus.databind.AnnotateDataBinderInit" root="./frmMsgListViewer"?>
+<window border="none"
+	apply="openjframework.web.zk.MessageListController"
+	xmlns:a="http://www.zkoss.org/2005/zk/annotation" id="frmMsgListViewer"
+	width="99%">
+
+	<separator width="10px" />
+	<tabbox id="mainTab" tabscroll="false" height="100%">
+		<tabs>
+			<tab id="tbUnread" label="未读消息" />
+			<tab id="tbReaded" label="已读消息" />
+			<tab id="tbAll" label="所有消息" />
+		</tabs>
+	</tabbox>
+	<grid id="grdMsgList" mold="paging" pageSize="10" style="border:0" model="@{frmMsgListViewer$composer.msgList }">
+		<columns>
+			<column label="消息类型" width="10%" />
+			<column label="发送人" width="10%" />
+			<column label="发送日期" width="15%" />
+			<column label="消息主题" width="40%" />
+			<column label="阅读状态" width="10%" />
+			<column label="操作" width="15%" />
+		</columns>
+		<rows>
+			<row self="@{each=msg }">
+				<label value="@{msg.TypeName }" />
+				<label value="@{msg.sendUser.name }" />
+				<label value="@{msg.sendDate,converter='com.aidi.core.zk.DateConverter' }" />
+				<label value="@{msg.subject }" />
+				<label value="@{msg.readStatus }" >
+					<attribute name="onCreate">
+					{
+					if (self.getValue().equals("0")) {
+							self.setValue("未读");
+						} else {
+							self.setValue("已读");
+						}
+					}
+					</attribute>
+				</label>
+				<hbox>
+					<toolbarbutton id="btnRead" label="阅读" >
+						<custom-attributes msg="@{msg }"/>
+					</toolbarbutton>
+					<toolbarbutton id="btnRemove" label="删除" >
+						<custom-attributes msg="@{msg }"/>
+					</toolbarbutton>
+				</hbox>
+			</row>
+		</rows>
+	</grid>
+</window>

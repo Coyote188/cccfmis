@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?init class="org.zkoss.zkplus.databind.AnnotateDataBinderInit" root="./frameWin" ?>
+<zk>
+<window title="@{frameWin$composer.title_Win}" border="normal"
+	id="frameWin" apply="cccf.ma.web.zk.Treaty_frameController"
+	xmlns:a="http://www.zkoss.org/2005/zk/annotation" 
+	xmlns="http://www.zkoss.org/2005/zul"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.zkoss.org/2005/zul
+	http://www.zkoss.org/2005/zul/zul.xsd"
+	width="720px" height="500px" sizable="false" closable="true">
+    
+</window>
+</zk>

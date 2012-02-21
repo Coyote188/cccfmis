@@ -1,0 +1,598 @@
+package cccf.ma.function;
+
+import java.util.ArrayList;
+import java.util.HashMap; 
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map; 
+import java.util.Set;
+
+import net.modellite.spring.BeanAdapter;
+import openjframework.bpm.model.TaskInstanceInfo;
+import openjframework.bpm.service.TaskInstanceInfoServiceUtil;
+import openjframework.model.UserInfo;
+import openjframework.service.UserInfoServiceUtil;
+
+import org.jbpm.JbpmConfiguration;
+import org.jbpm.JbpmContext; 
+import org.jbpm.taskmgmt.exe.PooledActor;
+import org.jbpm.taskmgmt.exe.TaskInstance;
+import org.springframework.orm.hibernate3.HibernateTemplate;
+ 
+import cccf.ma.model.ApplicationInfo;  
+import cccf.ma.model.ApplicationPublicInfo;
+import cccf.ma.model.Attachment;
+import cccf.ma.service.ApplicationInfoServiceUtil; 
+
+import com.aidi.bpm.service.BpmUtil; 
+import com.aidi.core.service.BaseDAOServcieUtil;
+public class Functions {
+	static JbpmConfiguration jbpmConfiguration = JbpmConfiguration
+			.getInstance();
+
+	protected static HibernateTemplate getHibernateTemplate() {
+		return BeanAdapter
+				.getBean("hibernateTemplate", HibernateTemplate.class);
+	}
+	
+	/**
+	 * 通过申请号得到企业详细信息
+	 * @param applyno
+	 * @return
+	 */
+	public static Map query6ByApplyno(String applyno){
+		StringBuffer hql = new StringBuffer("select new map(")
+	      .append("o.applicationInfo.applicationPublic.applyno as applyno")  //检申请号 businessType
+	      .append(",")
+	      .append("o.applicationInfo.applicationPublic.applyEnterprise.name as applyEnterpriseName")  //申请企业名称
+	      .append(",")
+	      .append("o.applicationInfo.applicationPublic.businessType as businessType")  //业务类型
+	      .append(",")
+	      .append("o.applicationInfo.applicationPublic.applyEnterprise.contactAddress as contactAddress") //联系地址
+	      .append(",")
+	      .append("o.applicationInfo.applicationPublic.applyEnterprise.postalcode as postalcode") //邮编 
+	       .append(",")
+	      .append("o.productModel.surveyReport.surverType as surverType") //邮编 
+	      .append(")")
+	      .append(" from ApplicationInfoProductModel o")
+	      .append(" where")
+	      .append(" o.applicationInfo.applicationPublic.applyno='").append(applyno).append("'");  
+		return (Map) getHibernateTemplate().find(hql.toString()).get(0);
+	}
+	
+	/**
+	 * 通过申请号得到企业详细信息
+	 * @param applyno
+	 * @return
+	 */
+	public static Map getApplyEnterpriseInfoByApplyno(String applyno){
+		StringBuffer hql = new StringBuffer("select new map(")
+	      .append("o.applyno as applyno")  //检申请号
+	      .append(",")
+	      .append("o.applyEnterprise.name as applyEnterpriseName")  //申请单位
+	      .append(",")
+	      .append("o.applyEnterprise.atts as atts") //申请企业附件
+	      .append(",")
+	      .append("o.applyEnterprise.state as state")    //所在地区
+	      .append(",")
+	      .append("o.applyEnterprise.location as location")    //所在地区
+	      .append(",")
+	      .append("o.applyEnterprise.legalPerson as legalPerson") //法人
+	      .append(",") 
+	      .append("o.applyEnterprise.contactPerson as contactPerson")  //联系人
+	      .append(",")
+	      .append("o.applyEnterprise.telephoneNum as telephoneNum")  //联系电话
+	      .append(",")
+	      .append("o.applyEnterprise.mobileNum as mobileNum")  // 联系电话（手机）
+	      .append(",")
+	      .append("o.applyEnterprise.emailAddress as emailAddress")  //电子邮件
+	      .append(",")
+	      .append("o.applyEnterprise.faxNum as faxNum") //传真
+	      .append(",")
+	      .append("o.applyEnterprise.contactAddress as contactAddress") //联系地址
+	      .append(",")
+	      .append("o.applyEnterprise.postalcode as postalcode") //邮编
+	      .append(",")
+	      .append("o.businessType as businessType")   //业务类型
+	      .append(",")
+	      .append("o.productCatalog as productCatalog")   //产品大类
+	      .append(",")
+	      .append("o.applyType as applyType")   //申请类型
+	      .append(",")
+	      .append("o.applydate as applydate")   //申请时间
+	      .append(")")
+	      .append(" from ApplicationPublicInfo o")
+	      .append(" where")
+	      .append(" o.applyno='").append(applyno).append("'");  
+		return (Map) getHibernateTemplate().find(hql.toString()).get(0);
+	}
+	
+	public static List getApplyAttachmentsByApplyno(String applyno){
+		 StringBuffer hql = new StringBuffer("select new map(")
+		  .append("o.attachment.name as name")   //文件名称
+		  .append(",")
+		  .append("o.attachment.path as path")   //文件路径 
+	      .append(")")
+	      .append(" from ApplicationPublicInfoAttachment o")
+	      .append(" where")
+	      .append(" o.applicationPublicInfo.applyno='").append(applyno).append("'");    
+		
+		return getHibernateTemplate().find(hql.toString());
+	}
+	
+	/**
+	 * 通过附件ID 得到附件名、附件地址
+	 * @param attId
+	 * @return
+	 */
+	public static Map getEnterpriseAttByAttId(String attId){
+		 StringBuffer hql = new StringBuffer("select new map(")
+		  .append("o.name as name")   //文件名称
+		  .append(",")
+		  .append("o.path as path")   //文件路径 
+	      .append(")")
+	      .append("from Attachment o")
+	      .append(" where ")
+	      .append("o.id='").append(attId).append("'");    
+		List result = getHibernateTemplate().find(hql.toString());
+		return  result.isEmpty() ? null: (Map)result.get(0);
+	}		
+	
+    /**
+	 * 输入 ：申请号
+	 * 输出 ：申请号、申请单位、所在地区、业务类型、产品大类、申请类型、申请时间
+	*/
+	public static Map getApplyInfoListByApplyno(String applyno){
+		StringBuffer hql = new StringBuffer("select new map(")
+	      .append("o.applyno as applyno")                                          //检申请号
+	      .append(",")
+	      .append("o.applyEnterprise.name as applyEnterpriseName")                 //申请单位
+	      .append(",")
+	      .append("o.applyEnterprise.state as state")    //所在地区
+	      .append(",")
+	      .append("o.applyEnterprise.location as location")    //所在地区
+	      .append(",")
+	      .append("o.businessType as businessType")   //业务类型
+	      .append(",")
+	      .append("o.productCatalog as productCatalog")   //产品大类
+	      .append(",")
+	      .append("o.applyType as applyType")   //申请类型
+	      .append(",")
+	      .append("o.applydate as applydate")   //申请时间
+	      .append(",") 
+	      .append("o.contractAgree as contractAgree")        //合同信息,是否同意派发审核组
+	      .append(",")
+	      .append("o.contractYear as contractYear")          //合同信息,审核时间年
+	      .append(",")
+	      .append("o.contractMonth as contractMonth")        //合同信息,审核时间月
+	      .append(",")
+	      .append("o.contractApprove as contractApprove")    //合同信息,是否预审核 
+	      .append(")")
+	      .append(" from ApplicationPublicInfo o")
+	      .append(" where")
+	      .append(" o.applyno='").append(applyno).append("'");  
+		return (Map) getHibernateTemplate().find(hql.toString()).get(0);
+	}
+	
+	
+	/**
+	 * 根据申请号 获取 产品详细信息
+	 */
+	public static List<Map> getProductInfoListByApplyno(String applyno){
+		StringBuffer hql = new StringBuffer("select DISTINCT new map(")
+		  .append("o.applicationInfo.applicationPublic.applydate as applydate")     //申请时间
+	      .append(",")
+	      .append("o.applicationInfo.applicationPublic.applyno as applyno")     //申请号
+	      .append(",")
+	      .append("o.applicationInfo.applicationPublic.businessType as businessType")     //业务类型
+	      .append(",")
+	      .append("o.applicationInfo.applicationPublic.productCatalog as productCatalog")  //产品大类名称
+	      .append(",")
+	      .append("o.applicationInfo.applicationPublic.applyType as applyType")        //申请类型 
+	      .append(",")
+	      .append("o.applicationInfo.applicationPublic.applyEnterprise.name as applyEnterprise_name")        //申请企业名称 
+	      .append(",")
+	      .append("o.productModel.manufactureInfo.name as manufactureInfo_name")   //生产厂
+	      .append(",")
+	      .append("o.productModel.productCatalogueInfo.productName as productName")   //产品名称
+	      .append(",")
+	      .append("o.productModel.productCatalogueInfo.caRule as caRule")   //认证规则
+	      .append(",")
+	      .append("o.productModel.productCatalogueInfo.observedStandard as observedStandard")//执行标准
+	      .append(",")
+	      .append("o.productModel.productionEnterpriseInfo.name as productionEnterpriseName")//制造商
+	      .append(",")
+	      .append("o.productModel.surveyReport.surverOrgName as surverOrgName")//质检中心
+	       .append(",")
+	      .append("o.productModel.surveyReport.surveyReportSN as surveyReportSN")//检验报告编号
+	      .append(",")
+	      .append("o.productModel.isMainModel as isMainModel")            //主型  true  ,分型false
+	      .append(",")
+	      .append("case when o.productModel.isMainModel=true then '主型' else '分型' end as isMainModel_label")      
+	      .append(",")
+	      .append("o.productModel.whetherSign as whetherSign")            //是否被标记
+	      .append(",")
+	      .append("o.productModel.id as id")            //主型  true  ,分型false
+	      .append(",")
+	      .append("o.productModel.specification as specification")             //规格型号
+	      .append(",")
+	      .append("o.productModel.characterization as characterization")        //特性描述
+	      .append(",")
+	      .append("o.productModel.id as productModel_id")        //规格型号ID
+	      .append(")")
+	      .append(" from ApplicationInfoProductModel o")
+	      .append(" where")
+	      .append(" o.applicationInfo.sioid='").append(applyno).append("'");
+		
+		List list = getHibernateTemplate().find(hql.toString());
+	    if(list != null){
+	    	for(int i=0;i<list.size();i++){
+	    		Map m = (Map)list.get(i);
+	    		m.put("sn", i+1);   //序号 
+	    	}
+	    }
+		return list;
+	}
+	
+	/**
+	 * 根据产品型号ID 获取 产品详细信息
+	 */
+	public static Map getProductInfoListByPMID(String pmid){
+		StringBuffer hql = new StringBuffer("select DISTINCT new map(")
+		  .append("o.applicationInfo.applicationPublic.applydate as applydate")     //申请时间
+	      .append(",")
+	      .append("o.applicationInfo.applicationPublic.businessType as businessType")     //业务类型
+	      .append(",")
+	      .append("o.applicationInfo.applicationPublic.applyType as applyType")        //申请类型 
+	      .append(",")
+	      .append("o.applicationInfo.applicationPublic.productCatalog as applyProduct_name")  //产品大类名称 
+	      .append(",")
+	      .append("o.applicationInfo.applicationPublic.applyEnterprise.name as applyEnterprise_name")        //申请企业名称 
+	      .append(",")
+	      .append("o.productModel.manufactureInfo.name as manufactureInfo_name")   //生产厂
+	       .append(",")
+	      .append("o.productModel.productionEnterpriseInfo.name as productionEnterpriseName")//制造商
+	      .append(",")
+	      .append("o.productModel.productCatalogueInfo.productName as productName")   //产品名称
+	      .append(",")
+	      .append("o.productModel.specification as specification")        //规格型号
+	      .append(",")
+	      .append("o.productModel.productCatalogueInfo.observedStandard as observedStandard")//执行标准 
+	      .append(",")
+	      .append("o.productModel.surveyReport.surverOrgName as surverOrgName")//质检中心
+	      .append(")")
+	      .append(" from ApplicationInfoProductModel o")
+	      .append(" where")
+	      .append(" o.productModel.id='").append(pmid).append("'");  
+		return (Map) getHibernateTemplate().find(hql.toString()).get(0);
+	}
+	
+	/**
+	 * 根据 申请号 获取 产品型号
+	 */
+	public static List<Map> getProductModelListByApplyno(String applyno){
+		StringBuffer hql = new StringBuffer("select DISTINCT new map(")
+	      .append("o.productModel.surveyReport.surverOrgName as surverOrgName")     //检验机构名称
+	      .append(",")
+	      .append("o.productModel.specification as specification")        //规格型号
+	      .append(",")
+	      .append("o.productModel.manufactureInfo.name as manufactureInfo_name")   //特性描述
+	      .append(",")
+	      .append("o.productModel.productCatalogueInfo.productName as productName")   //产品名称
+	      .append(",")
+	      .append("o.productModel.productCatalogueInfo.id as productId")   //产品Id
+	      .append(")")
+	      .append(" from ApplicationInfoProductModel o")
+	      .append(" where")
+	      .append(" o.applicationInfo.sioid='").append(applyno).append("'");  
+		return getHibernateTemplate().find(hql.toString());
+	}
+	
+	/**
+	 * 根据 申请号获得符合性审查信息
+	 */
+	public static Map getConformityInfo(String applyno){ 
+		StringBuffer hql=new StringBuffer("select  new map(") 
+	      .append("o.applyno as applyno")            //申请号
+	      .append(",")                                 
+	      .append("o.applydate as applydate")       //提交日期   
+          .append(",")
+	      .append("o.applyEnterprise.name as enterprise_name")   //申请企业
+	      .append(",")
+	      .append("o.applyEnterprise.state||'-'||o.applyEnterprise.location as enterprise_state_location")   //申请企业
+	      .append(",")
+	      .append("o.applyEnterprise.name as enterprise_name")   //申请企业
+	      .append(",")
+	      .append("o.applyType as applyType")                     //申请类型
+	      .append(",")
+	      .append("o.businessType as businessType")         //业务类型
+	      .append(",")
+	      .append("o.applyEnterprise.registeredAddress as registeredAddress")    //企业注册地址
+	      .append(",")
+	      .append("o.applyEnterprise.postalcode as enterprise_legalPerson")         //法人_
+	      .append(",")
+	      .append("o.applyEnterprise.telForLegal as enterprise_telForLegal")         //法人电话
+	      .append(")")
+	      .append(" from ApplicationPublicInfo o")
+	      .append(" where")
+	      .append(" o.applyno='").append(applyno).append("'") ; 
+		 
+		Map conformityInfo = (Map) getHibernateTemplate().find(hql.toString()).get(0); 
+		
+		//申请材料列表 
+		hql = new StringBuffer("select DISTINCT new map(") 
+	      .append("o.attachment.path as path")           //附件路径
+	      .append(",")
+	      .append("o.attachment.name as name")            //主型  true  ,分型false
+          .append(",")
+	      .append("o.attachment.id as id")                  //附件ID 
+	      .append(")")
+	      .append(" from ApplicationPublicInfoAttachment o")
+	      .append(" where")
+	      .append(" o.applicationPublicInfo.applyno='").append(applyno).append("'") 
+		  .append(" order by sn asc"); 
+		List<Map> attachments =  getHibernateTemplate().find(hql.toString()); 
+		conformityInfo.put("attachments", attachments);
+		if(attachments!=null){
+			for (Map map : attachments ){ 
+				 map.put("sn", attachments.size());  //附件序号
+			}
+		}
+		/**申请产品信息列表**/
+		// --产品型号 
+		hql = new StringBuffer("select DISTINCT new map(")
+	      .append("o.productModel.id as id")                              //产品ID
+	      .append(",")
+	      .append("o.productModel.specification as specification")        //规格型号
+	      .append(",")
+	      .append("o.productModel.characterization as characterization")   //特性描述
+	      .append(",")
+	      .append("o.productModel.isMainModel as isMainModel")            //主型  true  ,分型false
+          .append(",")
+	      .append("o.productModel.surveyReport.id as surveyReport_id")    
+	      .append(")")
+	      .append(" from ApplicationInfoProductModel o")
+	      .append(" where")
+	      .append(" o.applicationInfo.sioid='").append(applyno).append("'");  
+		List<Map> productModelList =  getHibernateTemplate().find(hql.toString());
+		//-- 产品型号的附件
+		hql = new StringBuffer("select DISTINCT new map(")
+	      .append("o.productModel.id as productModel_id")  //产品型号ID
+	      .append(",")
+	      .append(" p.name as name")                        //附件名称
+	      .append(",")
+	      .append(" p.attachment.name as fileName")         //附件文件名
+	      .append(",")
+	      .append(" p.attachment.path as filePath")         //附件文件路径
+	      .append(",")
+	      .append(" p.attachment.id as fileId")             //附件ID
+	      .append(")")
+	      .append(" from ApplicationInfoProductModel o , ProductModelAttachment p")
+	      .append(" where")
+	      .append(" o.productModel=p.productModel") 
+	      .append(" and o.applicationInfo.sioid='").append(applyno).append("'");
+	     
+		List<Map> productModelAttachmentList =getHibernateTemplate().find(hql.toString());
+		//关联产品型号附件 
+	 	HashMap<String,Map> tmpMap = new HashMap<String,Map>();
+	 	Set<String> idSet =new HashSet<String>();
+	 	for(Map i : productModelList){ 
+	 		tmpMap.put((String) i.get("id"), i);
+	 		i.put("productModelAttachmentList", new ArrayList ());
+	 		idSet.add((String) i.get("surveyReport_id"));
+	 	}
+	 	for(Map i : productModelAttachmentList){
+	 		Map productModel=tmpMap.get((String) i.get("productModel_id"));
+	 		List list = (List) productModel.get("productModelAttachmentList");
+	 		list.add(i); 
+	 	} 
+	 	
+		hql = new StringBuffer("select DISTINCT new map(")
+	      .append("o.productModel.surveyReport.id as id")
+	      .append(",")
+	      .append("o.productModel.productCatalogueInfo.productName as productName")//产品名称
+	      .append(",") 
+	      .append("o.productModel.surveyReport.surverOrgName as surverOrgName")//质检中心 
+	      .append(",")
+	      .append("o.productModel.productCatalogueInfo.observedStandard as observedStandard")//执行标准
+	      .append(",")
+	      .append("o.productModel.productionEnterpriseInfo.name as productionEnterpriseName")//生产厂
+	      .append(",")
+	      .append("o.productModel.manufactureInfo.name as manufactureName")//制造商
+	       .append(",")
+	      .append("o.productModel.manufactureInfo.registeredAddress as registeredAddress")//实际生产地址
+	      .append(")")
+	      .append(" from ApplicationInfoProductModel o")
+	      .append(" where")
+	      .append(" o.applicationInfo.sioid='").append(applyno).append("'"); 
+		List<Map> productList = getHibernateTemplate().find(hql.toString());  
+		//关联
+		tmpMap.clear();
+		for(Map i : productList){ 
+	 		tmpMap.put((String) i.get("id"), i);
+	 		i.put("productModelList", new ArrayList ());
+	 	}
+	 	for(Map i : productModelList){
+	 		Map surveyReport=tmpMap.get((String) i.get("surveyReport_id"));
+	 		List list = (List) surveyReport.get("productModelList");
+	 		list.add(i); 
+	 	}
+	 	
+	 	conformityInfo.put("productList",productList); //申请产品信息列表  
+		
+		
+		return conformityInfo;
+	}
+	
+	/**
+	 * 取得所有待处理任务信息
+	 * 
+	 * @return
+	 */
+	public static Map getAllInstanceInfoListOfOpened() {
+		Map taskInstanceInfoList = new HashMap();
+		List<TaskInstance> taskInstanceList = BpmUtil.getAllTaskInstanceListOfOpened();
+		for (TaskInstance ti : taskInstanceList) {
+			Long taskInstanceId = ti.getId();
+			JbpmContext jbpmContext = jbpmConfiguration.createJbpmContext();
+			 
+			TaskInstance taskInstance = jbpmContext.getTaskInstance(taskInstanceId);
+
+			Map task = new HashMap();
+			task.put("taskInstanceId", taskInstance.getId()); 
+			task.put("name", taskInstance.getName()); 
+			task.put("actorId", taskInstance.getActorId()) ;
+		
+			if (taskInstance.getActorId() != null) {
+				UserInfo user = UserInfoServiceUtil.getById(taskInstance
+						.getActorId());
+				task.put("actorName", user.getName()) ; 
+			} else {
+				Set poolActors = taskInstance.getPooledActors();
+				if (poolActors != null) {
+					String actors="";
+					for(Object actor:poolActors){
+						String aid=((PooledActor)actor).getActorId();
+						UserInfo user = UserInfoServiceUtil.getById(aid);
+						actors="["+user.getName()+"]";
+						if(poolActors.size()>1) actors=actors+"等"; 
+						task.put("actorName", actors) ; 
+						break;
+					}
+				}
+
+			}
+			task.put("dueDate", taskInstance.getDueDate());   
+
+			// 申请
+			if (taskInstance.getVariable("entityName") != null) { 
+				task.put("entityName", taskInstance.getVariable("entityName").toString());   
+				task.put("entityId", taskInstance.getVariable("rowId").toString());  
+				taskInstanceInfoList.put(task.get("entityId"), task);
+			}
+			jbpmContext.close();
+
+			// 前一任务
+			Long pretaskInstanceId = taskInstance.getId();
+			TaskInstanceInfo preTaskInstanceInfo = TaskInstanceInfoServiceUtil
+					.getPreTaskInstanceInfo(pretaskInstanceId);
+			
+			//发起人
+			task.put("initiatorName", preTaskInstanceInfo.getActorName()) ;
+			//发起时间
+			task.put("initiateTime", preTaskInstanceInfo.getApproveDate()) ;  
+			  
+
+		}
+		return taskInstanceInfoList;
+	}
+	
+	
+	/**根据application条件查询待处理任务
+	 * @param sql
+	 * @return
+	 */
+	public static List queryOpenTasks(String hql){
+		List retList = new ArrayList(); 
+		List<Map> applicationList=getHibernateTemplate().find(hql);
+		if(applicationList==null)return null;
+		Map taskInstanceInfoMap = getAllInstanceInfoListOfOpened();
+		List<String> aidList= new ArrayList();
+		for(Map obj : applicationList){
+			String objId = (String) obj.get("id");
+			Map task = (Map) taskInstanceInfoMap.get(objId);
+			if(task!=null){
+				obj.put("task", task);
+				retList.add(obj);
+			}
+		} 
+		
+		return retList;
+	} 
+	 
+
+	/**
+	 * 获取当前用户任务列表
+	 * @return
+	 */ 
+	public static List  getCurrentLoginUserTaskList(String taskname) {
+		UserInfo user = UserInfoServiceUtil.getCurrentLoginUser();
+		List list = BpmUtil.getMyTaskList(user.getId());
+		Map<String,Map> tmpMap = new HashMap<String,Map>(); 
+		for (int i = 0; i < list.size(); i++) {
+			TaskInstance taskInstance = (TaskInstance) list.get(i);
+
+			JbpmContext jbpmContext = jbpmConfiguration.createJbpmContext(); 
+			TaskInstance ti = jbpmContext.getTaskInstance(taskInstance.getId());
+			// 前一任务
+			Long taskInstanceId = taskInstance.getId();
+			TaskInstanceInfo preTaskInstanceInfo = TaskInstanceInfoServiceUtil.getPreTaskInstanceInfo(taskInstanceId);
+			
+			//输入任务名称不为空 且 不等于任务名 过滤掉
+			if(taskname!=null && !ti.getName().equals(taskname)){
+				continue;
+			}
+			
+			String entityName = "";
+			// 产品  
+			String rowId = "" ;
+			if (ti.getVariable("rowId") != null) {
+				rowId = ti.getVariable("rowId").toString();
+			}
+			if (ti.getVariable("entityName") != null) {
+				entityName = ti.getVariable("entityName").toString();
+			}
+			if (entityName.equals("ApplicationInfo")) {
+				ApplicationInfo app = ApplicationInfoServiceUtil.getById(rowId);
+				if(app==null||app.getApplicationPublic()==null)continue; 
+				app.setApplicationPublic((ApplicationPublicInfo) BaseDAOServcieUtil.findById(ApplicationPublicInfo.class, app.getApplicationPublic().getId()));
+				Map appPub = tmpMap.get(app.getApplicationPublic().getId());
+				List tasks=null;
+				if(appPub==null){
+					appPub = new HashMap(); 
+					appPub.put("applyId", app.getApplicationPublic().getId());
+					//申请号
+					appPub.put("applyno", app.getApplicationPublic().getApplyno()); 
+					//申请企业名称
+					appPub.put("enterprisename", app.getApplicationPublic().getApplyEnterprise().getName());
+					//申请企业区域
+					appPub.put("enterpriseLocation", app.getApplicationPublic().getApplyEnterprise().getAddForView());
+					//申请产品大类
+					appPub.put("productname", app.getApplicationPublic().getProductCatalog());
+					//申请类型
+					appPub.put("applytype", app.getApplicationPublic().getApplyType());
+					//业务类型
+					appPub.put("businesstype", app.getApplicationPublic().getBusinessType());
+					//申请时间
+					appPub.put("applydate", app.getApplicationPublic().getApplydate());
+					 
+					appPub.put("tasks", new ArrayList());  
+
+					tmpMap.put(app.getApplicationPublic().getId(), appPub);
+				}
+				tasks =  (List) appPub.get("tasks");
+				
+				Map task = new HashMap(); 
+				task.put("taskId", ti.getId());
+				task.put("applicationId",app.getId());
+				//产品名称
+				task.put("productname",app.getProduction().getProductName());
+				//任务名称
+				task.put("taskname",ti.getName());
+				//发起人员
+				task.put("username",preTaskInstanceInfo.getActorName());
+				//发起时间
+				task.put("date",preTaskInstanceInfo.getActorName());
+				task.put("sn", tasks.size());
+				
+				tasks.add(task);
+			}
+			jbpmContext.close(); 
+		}
+		
+		return new ArrayList(tmpMap.values());
+	}
+
+	
+    
+}

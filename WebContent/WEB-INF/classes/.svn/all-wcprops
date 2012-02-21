@@ -1,0 +1,17 @@
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/dlyhc.cccfmis/!svn/ver/991/trunk/WebContent/WEB-INF/classes
+END
+hibernate.cfg.xml
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/dlyhc.cccfmis/!svn/ver/991/trunk/WebContent/WEB-INF/classes/hibernate.cfg.xml
+END
+jbpm.cfg.xml
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/dlyhc.cccfmis/!svn/ver/4/trunk/WebContent/WEB-INF/classes/jbpm.cfg.xml
+END

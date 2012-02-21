@@ -1,0 +1,11 @@
+K 10
+svn:ignore
+V 143
+application-apply-r.zul
+state-location-manage.zul
+passwordrecovery.zul
+enterprise-info-edit.zul
+enterprise-fileuploader.zul
+component-test.zul
+
+END

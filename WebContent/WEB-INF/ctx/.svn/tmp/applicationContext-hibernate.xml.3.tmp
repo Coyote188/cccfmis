@@ -1,0 +1,664 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.0.xsd">
+
+	<bean id="nativeDataSource" class="net.modellite.jdbcp.DriverManagerDataSource">
+		<property name="url">
+			<value>jdbc:mysql://localhost:3306/cccfmis</value>
+		</property>
+		<property name="prop">
+			<props>
+				<prop key="user">root</prop>
+				<prop key="password">111111</prop>
+				<prop key="useUnicode">true</prop>
+				<prop key="characterEncoding">UTF-8</prop>
+			</props>
+		</property>
+	</bean>
+	<bean id="dataSource" class="com.aidi.core.spring.DynamicDataSource">
+		<property name="targetDataSources">
+			<map key-type="java.lang.String">
+				<entry key="cccf" value-ref="cccf" />
+			</map>
+		</property>
+		<property name="defaultTargetDataSource" ref="cccf" />
+	</bean>
+	<!-- Choose the dialect that matches your "dataSource" definition -->
+	<bean id="mySessionFactory" class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
+		<property name="dataSource" ref="dataSource" />
+		<property name="mappingResources">
+			<list>
+				<value>com/aidi/framework/model/DataDictInfo.hbm.xml</value>
+				<value>com/aidi/bpm/model/Approve.hbm.xml</value>
+				<value>com/aidi/bpm/model/ProcessForm.hbm.xml</value>
+				<value>com/aidi/bpm/model/TaskForm.hbm.xml</value>
+				<value>openjframework/model/PositionInfo.hbm.xml</value>
+				<value>openjframework/model/ResourceTypeInfo.hbm.xml</value>
+				<value>openjframework/model/PoliticalStatusInfo.hbm.xml</value>
+				<value>openjframework/model/UserInfo.hbm.xml</value>
+				<value>openjframework/model/UserLogInfo.hbm.xml</value>
+				<value>openjframework/model/MessageInfo.hbm.xml</value>
+				<value>cccf/ma/model/StateInfo.hbm.xml</value>
+				<value>cccf/ma/model/EnterpriseInfo.hbm.xml</value>
+				<value>cccf/ma/model/ProductionModelInfo.hbm.xml</value>
+				<value>cccf/ma/model/ProductCatalogueInfo.hbm.xml</value>
+				<value>cccf/ma/model/ApplicationInfo.hbm.xml</value>
+				<value>cccf/ma/model/CommonTreatyInfo.hbm.xml</value>
+				<value>cccf/ma/model/PumperDocumentsInfo.hbm.xml</value>
+				<value>cccf/ma/model/ManufactureInfo.hbm.xml</value>
+				<value>cccf/ma/model/LocationInfo.hbm.xml</value>
+				<value>cccf/ma/model/Product_User_ListInfo.hbm.xml</value>
+				<value>cccf/ma/model/AppStatusRecordInfo.hbm.xml</value>
+				<value>cccf/ma/model/EnterpriseProductModel.hbm.xml</value>
+				<value>cccf/ma/model/ProductionEnterpriseInfo.hbm.xml</value>
+				<value>cccf/ma/model/CommentItemInfo.hbm.xml</value>
+				<value>cccf/ma/model/EnterpriseOwnActivatedProductListInfo.hbm.xml</value>
+				<value>openjframework/model/RoleInfo.hbm.xml</value>
+				<value>openjframework/model/OrganizationInfo.hbm.xml</value>
+				<value>openjframework/model/ProfileInfo.hbm.xml</value>
+				<value>openjframework/model/NoticeInfo.hbm.xml</value>
+				<value>cccf/ma/model/EnterpriseNoticeInfo.hbm.xml</value>
+				<value>openjframework/model/InstantMessageInfo.hbm.xml</value>
+				<value>cccf/ma/model/FeeDetailInfo.hbm.xml</value>
+				<value>cccf/ma/model/AccountTypeInfo.hbm.xml</value>
+				<value>cccf/ma/model/AccountItemInfo.hbm.xml</value>
+				<value>openjframework/model/ResourceInfo.hbm.xml</value>
+				<value>openjframework/model/PermissionInfo.hbm.xml</value>
+				<value>cccf/ma/model/AttachFileMemoInfo.hbm.xml</value>
+				<value>cccf/ma/model/ProductionModelInspection.hbm.xml</value>
+				<value>cccf/ma/model/FactoryInspection.hbm.xml</value>
+				<value>cccf/ma/model/Attachment.hbm.xml</value>
+				<value>cccf/ma/model/ApplicationPublicInfo.hbm.xml</value>
+				<value>cccf/ma/model/ApplicationInfoProductModel.hbm.xml</value>
+				<value>cccf/ma/model/DataDictionary.hbm.xml</value> 
+				<value>cccf/ma/model/SurveyReport.hbm.xml</value> 
+				<value>cccf/ma/model/ProductModel.hbm.xml</value>
+				<value>cccf/ma/model/ProductModelAttachment.hbm.xml</value>
+				
+				<value>cccf/ma/model/FactoryChecklist.hbm.xml</value>
+				<value>cccf/ma/model/FactoryCheckResult.hbm.xml</value>
+			</list>
+		</property>
+		<property name="hibernateProperties">
+			<props>
+				<prop key="hibernate.dialect">org.hibernate.dialect.MySQL5Dialect</prop>
+				<prop key="hibernate.show_sql">true</prop>
+				<prop key="hibernate.cache.provider_class">org.hibernate.cache.HashtableCacheProvider</prop>
+				<prop key="hibernate.hbm2ddl.auto">update</prop>
+			</props>
+		</property>
+	</bean>
+	<!-- Transaction manager for a single Hibernate SessionFactory (alternative to JTA) -->
+	<bean id="myTransactionManager" class="org.springframework.orm.hibernate3.HibernateTransactionManager">
+		<property name="sessionFactory" ref="mySessionFactory" />
+	</bean>
+	<bean id="UserInfoService" class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
+		<property name="transactionManager">
+			<ref bean="myTransactionManager" />
+		</property>
+		<property name="target">
+			<ref bean="UserInfoServiceTarget" />
+		</property>
+		<property name="transactionAttributes">
+			<props>
+				<prop key="find*">PROPAGATION_REQUIRED,readOnly,-InfoObjectException</prop>
+				<prop key="save*">PROPAGATION_REQUIRED,-InfoObjectException</prop>
+			</props>
+		</property>
+	</bean>
+	<bean id="UserInfoServiceTarget" class="openjframework.service.impl.UserInfoServiceImpl" />
+	<bean id="cccf" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<property name="driverClassName">
+			<value>com.mysql.jdbc.Driver</value>
+		</property>
+		<property name="url">
+			<value>jdbc:mysql://localhost:3306/cccfmis?useUnicode=true&amp;characterEncoding=UTF-8</value>
+		</property>
+		<property name="username">
+			<value>root</value>
+		</property>
+		<property name="password">
+			<value>111111</value>
+		</property>
+	</bean>
+	<bean id="StateInfoService" class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
+		<property name="transactionManager">
+			<ref bean="myTransactionManager" />
+		</property>
+		<property name="target">
+			<ref bean="StateInfoServiceTarget" />
+		</property>
+		<property name="transactionAttributes">
+			<props>
+				<prop key="find*">PROPAGATION_REQUIRED,readOnly,-InfoObjectException</prop>
+				<prop key="save*">PROPAGATION_REQUIRED,-InfoObjectException</prop>
+			</props>
+		</property>
+	</bean>
+	<bean id="StateInfoServiceTarget" class="cccf.ma.service.impl.StateInfoServiceImpl" />
+	<bean id="EnterpriseInfoService" class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
+		<property name="transactionManager">
+			<ref bean="myTransactionManager" />
+		</property>
+		<property name="target">
+			<ref bean="EnterpriseInfoServiceTarget" />
+		</property>
+		<property name="transactionAttributes">
+			<props>
+				<prop key="find*">PROPAGATION_REQUIRED,readOnly,-InfoObjectException</prop>
+				<prop key="save*">PROPAGATION_REQUIRED,-InfoObjectException</prop>
+			</props>
+		</property>
+	</bean>
+	<bean id="EnterpriseInfoServiceTarget" class="cccf.ma.service.impl.EnterpriseInfoServiceImpl" />
+	<bean id="ProductionModelInfoService" class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
+		<property name="transactionManager">
+			<ref bean="myTransactionManager" />
+		</property>
+		<property name="target">
+			<ref bean="ProductionModelInfoServiceTarget" />
+		</property>
+		<property name="transactionAttributes">
+			<props>
+				<prop key="find*">PROPAGATION_REQUIRED,readOnly,-InfoObjectException</prop>
+				<prop key="save*">PROPAGATION_REQUIRED,-InfoObjectException</prop>
+			</props>
+		</property>
+	</bean>
+	<bean id="ProductionModelInfoServiceTarget" class="cccf.ma.service.impl.ProductionModelInfoServiceImpl" />
+	<bean id="ProductCatalogueInfoService" class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
+		<property name="transactionManager">
+			<ref bean="myTransactionManager" />
+		</property>
+		<property name="target">
+			<ref bean="ProductCatalogueInfoServiceTarget" />
+		</property>
+		<property name="transactionAttributes">
+			<props>
+				<prop key="find*">PROPAGATION_REQUIRED,readOnly,-InfoObjectException</prop>
+				<prop key="save*">PROPAGATION_REQUIRED,-InfoObjectException</prop>
+			</props>
+		</property>
+	</bean>
+	<bean id="ProductCatalogueInfoServiceTarget" class="cccf.ma.service.impl.ProductCatalogueInfoServiceImpl" />
+	<bean id="ApplicationInfoService" class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
+		<property name="transactionManager">
+			<ref bean="myTransactionManager" />
+		</property>
+		<property name="target">
+			<ref bean="ApplicationInfoServiceTarget" />
+		</property>
+		<property name="transactionAttributes">
+			<props>
+				<prop key="find*">PROPAGATION_REQUIRED,readOnly,-InfoObjectException</prop>
+				<prop key="save*">PROPAGATION_REQUIRED,-InfoObjectException</prop>
+			</props>
+		</property>
+	</bean>
+	<bean id="ApplicationInfoServiceTarget" class="cccf.ma.service.impl.ApplicationInfoServiceImpl" />
+	<bean id="PositionInfoService" class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
+		<property name="transactionManager">
+			<ref bean="myTransactionManager" />
+		</property>
+		<property name="target">
+			<ref bean="PositionInfoServiceTarget" />
+		</property>
+		<property name="transactionAttributes">
+			<props>
+				<prop key="find*">PROPAGATION_REQUIRED,readOnly,-InfoObjectException</prop>
+				<prop key="save*">PROPAGATION_REQUIRED,-InfoObjectException</prop>
+			</props>
+		</property>
+	</bean>
+	<bean id="PositionInfoServiceTarget" class="openjframework.service.impl.PositionInfoServiceImpl" />
+	<bean id="ResourceTypeInfoService" class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
+		<property name="transactionManager">
+			<ref bean="myTransactionManager" />
+		</property>
+		<property name="target">
+			<ref bean="ResourceTypeInfoServiceTarget" />
+		</property>
+		<property name="transactionAttributes">
+			<props>
+				<prop key="find*">PROPAGATION_REQUIRED,readOnly,-InfoObjectException</prop>
+				<prop key="save*">PROPAGATION_REQUIRED,-InfoObjectException</prop>
+			</props>
+		</property>
+	</bean>
+	<bean id="ResourceTypeInfoServiceTarget" class="openjframework.service.impl.ResourceTypeInfoServiceImpl" />
+	<bean id="CommonTreatyInfoService" class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
+		<property name="transactionManager">
+			<ref bean="myTransactionManager" />
+		</property>
+		<property name="target">
+			<ref bean="CommonTreatyInfoServiceTarget" />
+		</property>
+		<property name="transactionAttributes">
+			<props>
+				<prop key="find*">PROPAGATION_REQUIRED,readOnly,-InfoObjectException</prop>
+				<prop key="save*">PROPAGATION_REQUIRED,-InfoObjectException</prop>
+			</props>
+		</property>
+	</bean>
+	<bean id="CommonTreatyInfoServiceTarget" class="cccf.ma.service.impl.CommonTreatyInfoServiceImpl" />
+	<bean id="PumperDocumentsInfoService" class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
+		<property name="transactionManager">
+			<ref bean="myTransactionManager" />
+		</property>
+		<property name="target">
+			<ref bean="PumperDocumentsInfoServiceTarget" />
+		</property>
+		<property name="transactionAttributes">
+			<props>
+				<prop key="find*">PROPAGATION_REQUIRED,readOnly,-InfoObjectException</prop>
+				<prop key="save*">PROPAGATION_REQUIRED,-InfoObjectException</prop>
+			</props>
+		</property>
+	</bean>
+	<bean id="PumperDocumentsInfoServiceTarget" class="cccf.ma.service.impl.PumperDocumentsInfoServiceImpl" />
+	<bean id="ManufactureInfoService" class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
+		<property name="transactionManager">
+			<ref bean="myTransactionManager" />
+		</property>
+		<property name="target">
+			<ref bean="ManufactureInfoServiceTarget" />
+		</property>
+		<property name="transactionAttributes">
+			<props>
+				<prop key="find*">PROPAGATION_REQUIRED,readOnly,-InfoObjectException</prop>
+				<prop key="save*">PROPAGATION_REQUIRED,-InfoObjectException</prop>
+			</props>
+		</property>
+	</bean>
+	<bean id="ManufactureInfoServiceTarget" class="cccf.ma.service.impl.ManufactureInfoServiceImpl" />
+	<bean id="FileUtilService" class="cccf.ma.service.FileUtilService" />
+	<bean id="LocationInfoService" class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
+		<property name="transactionManager">
+			<ref bean="myTransactionManager" />
+		</property>
+		<property name="target">
+			<ref bean="LocationInfoServiceTarget" />
+		</property>
+		<property name="transactionAttributes">
+			<props>
+				<prop key="find*">PROPAGATION_REQUIRED,readOnly,-InfoObjectException</prop>
+				<prop key="save*">PROPAGATION_REQUIRED,-InfoObjectException</prop>
+			</props>
+		</property>
+	</bean>
+	<bean id="LocationInfoServiceTarget" class="cccf.ma.service.impl.LocationInfoServiceImpl" />
+	<bean id="Product_User_ListInfoService" class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
+		<property name="transactionManager">
+			<ref bean="myTransactionManager" />
+		</property>
+		<property name="target">
+			<ref bean="Product_User_ListInfoServiceTarget" />
+		</property>
+		<property name="transactionAttributes">
+			<props>
+				<prop key="find*">PROPAGATION_REQUIRED,readOnly,-InfoObjectException</prop>
+				<prop key="save*">PROPAGATION_REQUIRED,-InfoObjectException</prop>
+			</props>
+		</property>
+	</bean>
+	<bean id="Product_User_ListInfoServiceTarget" class="cccf.ma.service.impl.Product_User_ListInfoServiceImpl" />
+	<bean id="AppStatusRecordInfoService" class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
+		<property name="transactionManager">
+			<ref bean="myTransactionManager" />
+		</property>
+		<property name="target">
+			<ref bean="AppStatusRecordInfoServiceTarget" />
+		</property>
+		<property name="transactionAttributes">
+			<props>
+				<prop key="find*">PROPAGATION_REQUIRED,readOnly,-InfoObjectException</prop>
+				<prop key="save*">PROPAGATION_REQUIRED,-InfoObjectException</prop>
+			</props>
+		</property>
+	</bean>
+	<bean id="AppStatusRecordInfoServiceTarget" class="cccf.ma.service.impl.AppStatusRecordInfoServiceImpl" />
+	<bean id="ProductionEnterpriseInfoService" class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
+		<property name="transactionManager">
+			<ref bean="myTransactionManager" />
+		</property>
+		<property name="target">
+			<ref bean="ProductionEnterpriseInfoServiceTarget" />
+		</property>
+		<property name="transactionAttributes">
+			<props>
+				<prop key="find*">PROPAGATION_REQUIRED,readOnly,-InfoObjectException</prop>
+				<prop key="save*">PROPAGATION_REQUIRED,-InfoObjectException</prop>
+			</props>
+		</property>
+	</bean>
+	<bean id="ProductionEnterpriseInfoServiceTarget" class="cccf.ma.service.impl.ProductionEnterpriseInfoServiceImpl" />
+	<bean id="CommentItemInfoService" class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
+		<property name="transactionManager">
+			<ref bean="myTransactionManager" />
+		</property>
+		<property name="target">
+			<ref bean="CommentItemInfoServiceTarget" />
+		</property>
+		<property name="transactionAttributes">
+			<props>
+				<prop key="find*">PROPAGATION_REQUIRED,readOnly,-InfoObjectException</prop>
+				<prop key="save*">PROPAGATION_REQUIRED,-InfoObjectException</prop>
+			</props>
+		</property>
+	</bean>
+	<bean id="CommentItemInfoServiceTarget" class="cccf.ma.service.impl.CommentItemInfoServiceImpl" />
+	<bean id="EnterpriseOwnActivatedProductListInfoService" class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
+		<property name="transactionManager">
+			<ref bean="myTransactionManager" />
+		</property>
+		<property name="target">
+			<ref bean="EnterpriseOwnActivatedProductListInfoServiceTarget" />
+		</property>
+		<property name="transactionAttributes">
+			<props>
+				<prop key="find*">PROPAGATION_REQUIRED,readOnly,-InfoObjectException</prop>
+				<prop key="save*">PROPAGATION_REQUIRED,-InfoObjectException</prop>
+			</props>
+		</property>
+	</bean>
+	<bean id="EnterpriseOwnActivatedProductListInfoServiceTarget" class="cccf.ma.service.impl.EnterpriseOwnActivatedProductListInfoServiceImpl" />
+	<bean id="RoleInfoService" class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
+		<property name="transactionManager">
+			<ref bean="myTransactionManager" />
+		</property>
+		<property name="target">
+			<ref bean="RoleInfoServiceTarget" />
+		</property>
+		<property name="transactionAttributes">
+			<props>
+				<prop key="find*">PROPAGATION_REQUIRED,readOnly,-InfoObjectException</prop>
+				<prop key="save*">PROPAGATION_REQUIRED,-InfoObjectException</prop>
+			</props>
+		</property>
+	</bean>
+	<bean id="RoleInfoServiceTarget" class="openjframework.service.impl.RoleInfoServiceImpl" />
+	<bean id="OrganizationInfoService" class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
+		<property name="transactionManager">
+			<ref bean="myTransactionManager" />
+		</property>
+		<property name="target">
+			<ref bean="OrganizationInfoServiceTarget" />
+		</property>
+		<property name="transactionAttributes">
+			<props>
+				<prop key="find*">PROPAGATION_REQUIRED,readOnly,-InfoObjectException</prop>
+				<prop key="save*">PROPAGATION_REQUIRED,-InfoObjectException</prop>
+			</props>
+		</property>
+	</bean>
+	<bean id="OrganizationInfoServiceTarget" class="openjframework.service.impl.OrganizationInfoServiceImpl" />
+	<bean id="ProfileInfoService" class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
+		<property name="transactionManager">
+			<ref bean="myTransactionManager" />
+		</property>
+		<property name="target">
+			<ref bean="ProfileInfoServiceTarget" />
+		</property>
+		<property name="transactionAttributes">
+			<props>
+				<prop key="find*">PROPAGATION_REQUIRED,readOnly,-InfoObjectException</prop>
+				<prop key="save*">PROPAGATION_REQUIRED,-InfoObjectException</prop>
+			</props>
+		</property>
+	</bean>
+	<bean id="ProfileInfoServiceTarget" class="openjframework.service.impl.ProfileInfoServiceImpl" />
+	<bean id="NoticeInfoService" class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
+		<property name="transactionManager">
+			<ref bean="myTransactionManager" />
+		</property>
+		<property name="target">
+			<ref bean="NoticeInfoServiceTarget" />
+		</property>
+		<property name="transactionAttributes">
+			<props>
+				<prop key="find*">PROPAGATION_REQUIRED,readOnly,-InfoObjectException</prop>
+				<prop key="save*">PROPAGATION_REQUIRED,-InfoObjectException</prop>
+			</props>
+		</property>
+	</bean>
+	<bean id="NoticeInfoServiceTarget" class="openjframework.service.impl.NoticeInfoServiceImpl" />
+	<bean id="EnterpriseNoticeInfoService" class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
+		<property name="transactionManager">
+			<ref bean="myTransactionManager" />
+		</property>
+		<property name="target">
+			<ref bean="EnterpriseNoticeInfoServiceTarget" />
+		</property>
+		<property name="transactionAttributes">
+			<props>
+				<prop key="find*">PROPAGATION_REQUIRED,readOnly,-InfoObjectException</prop>
+				<prop key="save*">PROPAGATION_REQUIRED,-InfoObjectException</prop>
+			</props>
+		</property>
+	</bean>
+	<bean id="EnterpriseNoticeInfoServiceTarget" class="cccf.ma.service.impl.EnterpriseNoticeInfoServiceImpl" />
+	<bean id="InstantMessageInfoService" class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
+		<property name="transactionManager">
+			<ref bean="myTransactionManager" />
+		</property>
+		<property name="target">
+			<ref bean="InstantMessageInfoServiceTarget" />
+		</property>
+		<property name="transactionAttributes">
+			<props>
+				<prop key="find*">PROPAGATION_REQUIRED,readOnly,-InfoObjectException</prop>
+				<prop key="save*">PROPAGATION_REQUIRED,-InfoObjectException</prop>
+			</props>
+		</property>
+	</bean>
+	<bean id="InstantMessageInfoServiceTarget" class="openjframework.service.impl.InstantMessageInfoServiceImpl" />
+	<bean id="FeeDetailInfoService" class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
+		<property name="transactionManager">
+			<ref bean="myTransactionManager" />
+		</property>
+		<property name="target">
+			<ref bean="FeeDetailInfoServiceTarget" />
+		</property>
+		<property name="transactionAttributes">
+			<props>
+				<prop key="find*">PROPAGATION_REQUIRED,readOnly,-InfoObjectException</prop>
+				<prop key="save*">PROPAGATION_REQUIRED,-InfoObjectException</prop>
+			</props>
+		</property>
+	</bean>
+	<bean id="FeeDetailInfoServiceTarget" class="cccf.ma.service.impl.FeeDetailInfoServiceImpl" />
+	<bean id="AccountTypeInfoService" class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
+		<property name="transactionManager">
+			<ref bean="myTransactionManager" />
+		</property>
+		<property name="target">
+			<ref bean="AccountTypeInfoServiceTarget" />
+		</property>
+		<property name="transactionAttributes">
+			<props>
+				<prop key="find*">PROPAGATION_REQUIRED,readOnly,-InfoObjectException</prop>
+				<prop key="save*">PROPAGATION_REQUIRED,-InfoObjectException</prop>
+			</props>
+		</property>
+	</bean>
+	<bean id="AccountTypeInfoServiceTarget" class="cccf.ma.service.impl.AccountTypeInfoServiceImpl" />
+	<bean id="AccountItemInfoService" class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
+		<property name="transactionManager">
+			<ref bean="myTransactionManager" />
+		</property>
+		<property name="target">
+			<ref bean="AccountItemInfoServiceTarget" />
+		</property>
+		<property name="transactionAttributes">
+			<props>
+				<prop key="find*">PROPAGATION_REQUIRED,readOnly,-InfoObjectException</prop>
+				<prop key="save*">PROPAGATION_REQUIRED,-InfoObjectException</prop>
+			</props>
+		</property>
+	</bean>
+	<bean id="AccountItemInfoServiceTarget" class="cccf.ma.service.impl.AccountItemInfoServiceImpl" />
+	<bean id="ResourceInfoService" class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
+		<property name="transactionManager">
+			<ref bean="myTransactionManager" />
+		</property>
+		<property name="target">
+			<ref bean="ResourceInfoServiceTarget" />
+		</property>
+		<property name="transactionAttributes">
+			<props>
+				<prop key="find*">PROPAGATION_REQUIRED,readOnly,-InfoObjectException</prop>
+				<prop key="save*">PROPAGATION_REQUIRED,-InfoObjectException</prop>
+			</props>
+		</property>
+	</bean>
+	<bean id="ResourceInfoServiceTarget" class="openjframework.service.impl.ResourceInfoServiceImpl" />
+	<bean id="PermissionInfoService" class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
+		<property name="transactionManager">
+			<ref bean="myTransactionManager" />
+		</property>
+		<property name="target">
+			<ref bean="PermissionInfoServiceTarget" />
+		</property>
+		<property name="transactionAttributes">
+			<props>
+				<prop key="find*">PROPAGATION_REQUIRED,readOnly,-InfoObjectException</prop>
+				<prop key="save*">PROPAGATION_REQUIRED,-InfoObjectException</prop>
+			</props>
+		</property>
+	</bean>
+	<bean id="PermissionInfoServiceTarget" class="openjframework.service.impl.PermissionInfoServiceImpl" />
+	<bean id="AttachFileMemoInfoService" class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
+		<property name="transactionManager">
+			<ref bean="myTransactionManager" />
+		</property>
+		<property name="target">
+			<ref bean="AttachFileMemoInfoServiceTarget" />
+		</property>
+		<property name="transactionAttributes">
+			<props>
+				<prop key="find*">PROPAGATION_REQUIRED,readOnly,-InfoObjectException</prop>
+				<prop key="save*">PROPAGATION_REQUIRED,-InfoObjectException</prop>
+			</props>
+		</property>
+	</bean>
+	<bean id="AttachFileMemoInfoServiceTarget" class="cccf.ma.service.impl.AttachFileMemoInfoServiceImpl" />
+	
+
+	<bean id="EnterpriseProductModelService" class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
+		<property name="transactionManager">
+			<ref bean="myTransactionManager" />
+		</property>
+		<property name="target">
+			<ref bean="EnterpriseProductModelServiceTarget" />
+		</property>
+		<property name="transactionAttributes">
+			<props>
+				<prop key="find*">PROPAGATION_REQUIRED,readOnly,-InfoObjectException</prop>
+				<prop key="save*">PROPAGATION_REQUIRED,-InfoObjectException</prop>
+			</props>
+		</property>
+	</bean>
+	<bean id="EnterpriseProductModelServiceTarget" class="cccf.ma.service.impl.EnterpriseProductModelServiceImpl" />
+	
+	<!--  -->
+	<bean id="FactoryInspectionService" class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
+		<property name="transactionManager">
+			<ref bean="myTransactionManager" />
+		</property>
+		<property name="target">
+			<ref bean="FactoryInspectionServiceTarget" />
+		</property>
+		<property name="transactionAttributes">
+			<props>
+				<prop key="find*">PROPAGATION_REQUIRED,readOnly,-InfoObjectException</prop>
+				<prop key="save*">PROPAGATION_REQUIRED,-InfoObjectException</prop>
+			</props>
+		</property>
+	</bean>
+	<bean id="FactoryInspectionServiceTarget" class="cccf.ma.service.impl.FactoryInspectionServiceImpl" />
+	<bean id="PMIService" class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
+		<property name="transactionManager">
+			<ref bean="myTransactionManager" />
+		</property>
+		<property name="target">
+			<ref bean="PMIServiceTarget" />
+		</property>
+		<property name="transactionAttributes">
+			<props>
+				<prop key="find*">PROPAGATION_REQUIRED,readOnly,-InfoObjectException</prop>
+				<prop key="save*">PROPAGATION_REQUIRED,-InfoObjectException</prop>
+			</props>
+		</property>
+	</bean>
+	<bean id="PMIServiceTarget" class="cccf.ma.service.impl.PMI" />
+	<bean id="ApplicationPublicInfoService" class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
+	    <property name="transactionManager">
+	      <ref bean="myTransactionManager"/>
+	    </property>
+	    <property name="target">
+	      <ref bean="ApplicationPublicInfoServiceTarget"/>
+	    </property>
+	    <property name="transactionAttributes">
+	      <props>
+	        <prop key="find*">PROPAGATION_REQUIRED,readOnly,-InfoObjectException</prop>
+	        <prop key="save*">PROPAGATION_REQUIRED,-InfoObjectException</prop>
+	      </props>
+	    </property>
+	  </bean>
+	  <bean id="ApplicationPublicInfoServiceTarget" class="cccf.ma.service.impl.ApplicationPublicInfoServiceImpl"/>
+	  
+	  
+	  <!-- 检验报告 -->
+	  <bean id="SurveyReportService" class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
+		<property name="transactionManager">
+			<ref bean="myTransactionManager" />
+		</property>
+		<property name="target">
+			<ref bean="SurveyReportServiceTarget" />
+		</property>
+		<property name="transactionAttributes">
+			<props>
+				<prop key="find*">PROPAGATION_REQUIRED,readOnly,-InfoObjectException</prop>
+				<prop key="save*">PROPAGATION_REQUIRED,-InfoObjectException</prop>
+			</props>
+		</property>
+	</bean>
+	<bean id="SurveyReportServiceTarget" class="cccf.ma.service.impl.SurveyReportServiceImpl" />
+<<<<<<< .mine
+	
+	<bean id="FactoryCheckService" class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
+		<property name="transactionManager">
+			<ref bean="myTransactionManager" />
+		</property>
+		<property name="target">
+			<ref bean="FactoryCheckServiceTarget" />
+		</property>
+		<property name="transactionAttributes">
+			<props>
+				<prop key="find*">PROPAGATION_REQUIRED,readOnly,-InfoObjectException</prop>
+				<prop key="save*">PROPAGATION_REQUIRED,-InfoObjectException</prop>
+			</props>
+		</property>
+	</bean>
+	<bean id="FactoryCheckServiceTarget" class="cccf.ma.service.impl.FactoryCheckServiceImpl" />
+=======
+	
+	 <!-- 认证申请 -->
+	  <bean id="ApplicationPublicService" class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
+		<property name="transactionManager">
+			<ref bean="myTransactionManager" />
+		</property>
+		<property name="target">
+			<ref bean="ApplicationPublicServiceTarget" />
+		</property>
+		<property name="transactionAttributes">
+			<props>
+				<prop key="find*">PROPAGATION_REQUIRED,readOnly,-InfoObjectException</prop>
+				<prop key="save*">PROPAGATION_REQUIRED,-InfoObjectException</prop>
+			</props>
+		</property>
+	</bean>
+	<bean id="ApplicationPublicServiceTarget" class="cccf.ma.service.impl.ApplicationPublicServiceImpl" />
+>>>>>>> .r830
+</beans>

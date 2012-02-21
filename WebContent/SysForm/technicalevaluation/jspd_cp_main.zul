@@ -1,0 +1,79 @@
+<?xml  version="1.0" encoding="utf-8"?>
+<zk>
+<window title="技术评定" border="normal" contentStyle="true" apply="cccf.ma.web.zk.JspdCPMainController"  width="900px">
+			<tabbox  tabscroll="false" vflex="true">
+				<tabs>
+					<tab label="技术评定初审"></tab>
+					<tab label="工厂检查资料"></tab>
+					<tab label="申请资料"></tab>
+				</tabs>
+				<tabpanels>
+					<tabpanel id="cpTbp"  vflex="true" >
+					</tabpanel>	
+					<tabpanel id="gcjcTbp" vflex="true">
+					</tabpanel>
+					<tabpanel id="sjzlTbp" vflex="true">
+					</tabpanel>
+				</tabpanels>
+			</tabbox>
+			<div style="margin-top:10px" >
+				<grid style="border-bottom:0px">
+						<columns>
+							<column width="80px" align="center"></column>
+							<column></column>
+						</columns>
+					<rows>
+						<row>
+							<label value="证书有效期"/>
+							<hbox align="center">
+								<listbox id="limitLbx" mold="select">
+									<listitem label="三年" selected="true"/>
+									<listitem label="五年"/>
+								</listbox>
+								<separator width="100px"/>
+								<label value="企业人数代码"/>
+								<listbox mold="select" id="noLbx">
+									<listitem label="L" selected="true"/>
+									<listitem label="S"/>
+									<listitem label="M"/>
+								</listbox>
+							</hbox>
+						</row>
+						<row>
+							<label value="操作类型"/>
+							<radiogroup id="optypeRgp" forward="onCheck=onCheckOperateType">
+								<radio label="发证" />
+								<radio label="发通知" selected="true" />
+							</radiogroup>	
+						</row>
+						<row>
+							<label value="生成人意见"/>
+							<textbox id="opinionTbx" width="99%" rows="4"/>
+						</row>
+					</rows>
+				</grid>
+				<grid id="appoveGrid"  style="border-top:0px">
+					<columns>
+						<column width="80px" align="center"></column>
+						<column></column>
+					</columns>
+					<rows>
+						<row align="left">
+							<label value="处理结论" />
+							<listbox id="resultListbox" mold="select" rows="1" width="200" />
+						</row>
+						<row align="left">
+							<label value="意  见" />
+							<textbox id="approveMemo" rows="3" width="98%" />
+						</row>
+					</rows>
+				</grid>
+				<div style="margin:10px;margin-left:80px">
+					<button label="提交" image="/image/16/up.png" width="68px" id="submitBtn" height="26px" style=""
+									forward="onSubmit" />
+					<button label="关闭" image="/image/common/close.png" width="68px" height="26px" style=""
+									forward="onCancel" />
+				</div>
+			</div>
+</window>
+</zk>

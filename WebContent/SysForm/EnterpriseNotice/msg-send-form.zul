@@ -1,0 +1,72 @@
+<?page title="new page title" contentType="text/html;charset=UTF-8"?>
+<?init class="org.zkoss.zkplus.databind.AnnotateDataBinderInit" root="./frmSender"?>
+<zk>
+	<window id="frmSender"
+		apply="openjframework.web.zk.MsgSenderController"
+		border="normal" xmlns:n="native" width="100%"
+		xmlns:w="client" xmlns="http://www.zkoss.org/2005/zul"
+		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		xsi:schemaLocation=" http://www.zkoss.org/2005/zul http://www.zkoss.org/2005/zul/zul.xsd">
+
+		<vbox>
+			<hbox>
+				<vbox>
+					<hbox align="center">
+						<label value="*" style="color:#FF0000" />
+						<label value="主题" />
+						<textbox id="tbxSubject" width="200px" constraint="no empty:请添写消息主题"
+							value="@{frmSender$composer.msg.subject }" />
+						<label value="发送到" />
+						<bandbox id="bdEList" readonly="true"
+							width="100px" value="—企业列表—">
+							<bandpopup>
+								<listbox id="lbxEtpList"
+									model="@{frmSender$composer.enterpriseList}" mold="paging"
+									pageSize="20" width="100px">
+									<listhead>
+										<listheader />
+									</listhead>
+									<listitem
+										self="@{each=enterprise }">
+										<listcell
+											label="@{enterprise.name }" />
+									</listitem>
+								</listbox>
+							</bandpopup>
+						</bandbox>
+					</hbox>
+					<hbox align="center">
+						<label value="*" style="color:#FF0000" />
+						<label value="内容" />
+						<textbox id="tbxMsgContent" height="100px" constraint="no empty:请添写消息内容"
+							value="@{frmSender$composer.msg.content }" width="400px"
+							multiline="true" />
+					</hbox>
+					<hbox>
+
+					</hbox>
+
+					<div align="center">
+						<button id="btnMsgSend" label="发送" width="68px"
+							height="28px" />
+						<space width="50px" />
+						<button id="btnCancel" label="取消" width="68px"
+							height="28px" />
+					</div>
+				</vbox>
+				<vbox>
+					<groupbox width="200px">
+						<caption>
+							<label value="消息发送规则" />
+						</caption>
+						<label value="*" style="color:#FF0000" />
+						请在下方选择企业，可按企业名称查找、产品查找、地区查找;
+					</groupbox>
+				</vbox>
+			</hbox>
+			<div id="divMainForm">
+				
+			</div>
+		</vbox>
+	</window>
+</zk>

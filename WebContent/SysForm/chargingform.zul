@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<zk>
+<window title=" " id="chargingWin" apply="cccf.ma.web.zk.ChargingFormController" closable="true" width="650px" border="normal">
+	<groupbox mold="3d" open="true" closable="true"
+		id="feeGroup">
+		<caption label="收费表单" image="/image/common/calendar.png"
+			style="font-size:9pt;color:BLUE;" tooltiptext="点击打开/收缩" />
+		<grid width="99%" id="feeGrid">
+			<columns>
+				<column label="分类" width="90px" align="center" />
+				<column label="项目" width="150px" align="center" />
+				<column label="单位" width="50px" align="center" />
+				<column label="数量" width="220px"  align="center" />
+				<column label="金额(元)" align="center" />
+			</columns>
+			<rows></rows>
+			<foot>
+				<footer>合计(元)</footer>
+				<footer>
+					<label id="amountFee"></label>
+				</footer>
+				<footer></footer>
+			</foot>
+		</grid>
+		<div align="center" style="margin-top:10px;">
+			<button label="保存" width="68px" height="26px" forward="onSave"/>
+			<button label="取消" width="68px" height="26px" onClick="chargingWin.detach()"/>
+		</div>
+	</groupbox>
+</window>
+</zk>

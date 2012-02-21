@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?init class="cccf.ma.web.zk.AccounttypeeditWindowInit" arg0="AccountTypeEditWindow"?>
+<window title="账目类别编辑" border="normal"
+	use="cccf.ma.web.zk.AccounttypeeditWindow"
+	xmlns:a="http://www.zkoss.org/2005/zk/annotation"
+	id="AccountTypeEditWindow" xmlns="http://www.zkoss.org/2005/zul"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.zkoss.org/2005/zul
+	http://www.zkoss.org/2005/zul/zul.xsd"
+	width="500px" sizable="true">
+
+	<grid>
+		<columns>
+			<column width="100px" align="left" />
+			<column align="left" />
+		</columns>
+		<rows>
+			<row>
+				名称:
+				<a:bind value="accountType.name" />
+				<textbox id="name" constraint="no empty:不能为空"
+					width="200px" />
+
+			</row>
+			<row>
+				描述:
+				<a:bind value="accountType.desc" />
+				<textbox id="desc" width="350px" />
+
+			</row>
+			<row>
+				允许自定义:
+				<a:bind checked="accountType.isCustom" />
+				<checkbox id="isCustom" label="允许自定义" />
+
+			</row>
+		</rows>
+	</grid>
+	<separator width="10px" />
+	<div align="left">
+		<hbox>
+			<button label="保存" image="/image/common/save.png"
+				width="68px" height="26px" style="null" forward="onSave" />
+			<button label="关闭" image="/image/common/close.png"
+				width="68px" height="26px" style="null" forward="onCancel" />
+		</hbox>
+	</div>
+</window>

@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?init class="com.aidi.bpm.zk.TaskFormEditInit" arg0="./taskFormWindow"?>
+
+<window title="工作流表单定义" border="normal"
+	use="com.aidi.bpm.zk.TaskFormEditWindow"
+	xmlns:a="http://www.zkoss.org/2005/zk/annotation" id="taskFormWindow"
+	xmlns="http://www.zkoss.org/2005/zul"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.zkoss.org/2005/zul
+	http://www.zkoss.org/2005/zul/zul.xsd"
+	width="400px" closable="true" sizable="true">
+
+
+	
+			<grid>
+			   <columns>
+				<column label="" width="80px" />
+				<column label="" />
+			    </columns>
+				<rows>
+					<row>
+					    任务名称:
+					    <a:bind value="task.name" />
+					    <label id="name"/>
+					</row>
+					<row>
+					    表单类型:
+					    <a:bind selectedItem="taskForm.formType" />
+					     <combobox id="comboFormType">
+					       <comboitem label="自定义表单" value="1"/>
+					       <comboitem label="外接表单" value="2"/>
+					    </combobox>
+					</row>
+					<row>
+					    外接表单URL:
+					    <a:bind value="taskForm.formURL" />
+					     <textbox id="formURL"/>
+					</row>
+					<row>
+					    窗口宽度:
+					    <a:bind value="taskForm.windowWidth" />
+					     <textbox id="windowWidth"/>
+					</row>
+					<row>
+					    窗口高度:
+					    <a:bind value="taskForm.windowHeight" />
+					     <textbox id="windowHeight"/>
+					</row>					
+					
+				</rows>
+			</grid>
+
+		
+		<separator width="30px" />
+			<div align="center">
+				<hbox>
+					<button label="导入列" image="/image/common/reply.png"  forward="onImportCol"/>
+					<separator width="10px" />
+					<button label="保存" image="/image/16/filesave.png"  forward="onSave"/>
+					<separator width="10px" />
+					<button label="取消" image="/image/common/undo.png" forward="onCancel"/>
+				</hbox>
+			</div>
+</window>

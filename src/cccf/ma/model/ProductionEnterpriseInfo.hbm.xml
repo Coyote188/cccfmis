@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping SYSTEM "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+<hibernate-mapping>
+  <class name="cccf.ma.model.ProductionEnterpriseInfo" table="productionenterprise">  
+  
+    <id name="id" type="string" unsaved-value="null" >
+        <column name="pid"  not-null="true"/>
+        <generator class="uuid.hex"/>
+    </id>
+    
+    <property name="name" type="string">
+         <column name="name"  not-null="false" length="100"/>
+     </property>
+    <property name="contactAddress" type="string">
+         <column name="contactaddress"  not-null="false" length="200"/>
+     </property>
+    <property name="status" type="java.lang.Integer">
+         <column name="status" length="100"  not-null="false"/>
+     </property>
+    <many-to-one name="enterprise" column="enterprise" lazy="false"/> 
+    
+    
+     <property name="facNameEn" type="string" length="100">
+         <column name="facNameEn"  not-null="false" length="100"/>
+     </property>
+     <property name="facCode" type="string">
+         <column name="facCode" length="100"  not-null="false"/>
+     </property>
+     <property name="facLegalPerson" type="string">
+         <column name="facLegalPerson" length="100"  not-null="false"/>
+     </property>
+     <property name="facType" type="string">
+         <column name="facType" length="100"  not-null="false"/>
+     </property>
+     <property name="facEcocalling" type="string">
+         <column name="facEcocalling" length="100"  not-null="false"/>
+     </property>
+     <property name="facEcocallingNew" type="string">
+         <column name="facEcocallingNew" length="100"  not-null="false"/>
+     </property>
+     <property name="facEcotype" type="string">
+         <column name="facEcotype" length="100"  not-null="false"/>
+     </property>
+     <property name="facEcoTypeNew" type="string">
+         <column name="facEcoTypeNew"  length="100" not-null="false"/>
+     </property>
+     <property name="facWorkRange" type="string">
+         <column name="facWorkRange" length="250" not-null="false"/>
+     </property>
+     <property name="facFlag" type="string">
+         <column name="facFlag"  length="100" not-null="false"/>
+     </property>
+     <property name="facCountry" type="string">
+         <column name="facCountry"  length="50" not-null="false"/>
+     </property>
+     <property name="facDistrict" type="string">
+         <column name="facDistrict"  length="100" not-null="false"/>
+     </property>
+     <property name="facAddressEn" type="string">
+         <column name="facAddressEn"  length="200" not-null="false"/>
+     </property>
+     <property name="facZip" type="string">
+         <column name="facZip"  length="100" not-null="false"/>
+     </property>
+     <property name="facEmail" type="string">
+         <column name="facEmail"  length="100" not-null="false"/>
+     </property>
+     <property name="facLinkMan" type="string">
+         <column name="facLinkMan" length="100"  not-null="false"/>
+     </property>
+     <property name="facTel" type="string">
+         <column name="facTel"  length="100" not-null="false"/>
+     </property>
+     <property name="facFax" type="string">
+         <column name="facFax"  length="100" not-null="false"/>
+     </property>
+     
+     <!-- 2011.5.17 -->
+    <property name="contactAddressEn" type="string">
+         <column name="contactAddressEn"  not-null="false" length="100"/>
+     </property>
+     <property name="facMob" type="string">
+         <column name="facMob"  not-null="false" length="100"/>
+     </property>
+     <property name="facLinkManEn" type="string">
+         <column name="facLinkManEn"  not-null="false" length="100"/>
+     </property>
+     <property name="realAdd" type="string">
+         <column name="realAdd"  not-null="false" length="100"/>
+     </property>
+     <property name="realAddEn" type="string">
+         <column name="realAddEn"  not-null="false" length="100"/>
+     </property>
+     <property name="realZip" type="string">
+         <column name="realZip"  not-null="false" length="100"/>
+     </property>
+     <property name="organizationNature" type="string">
+         <column name="organizationNature"  not-null="false" length="100"/>
+     </property>
+     <property name="scale" type="java.lang.Integer">
+         <column name="scale"  not-null="false"/>
+     </property>
+     <property name="legalPersonEn" type="string">
+         <column name="legalPersonEn"  not-null="false" length="100"/>
+     </property>
+     <property name="contactAddForLegal" type="string">
+         <column name="contactAddForLegal"  not-null="false" length="100"/>
+     </property>
+      <property name="contactAddForLegalEn" type="string">
+         <column name="contactAddForLegalEn"  not-null="false" length="100"/>
+     </property>
+      <property name="telForLegal" type="string">
+         <column name="telForLegal"  not-null="false" length="100"/>
+     </property>
+      <property name="mobileForLegal" type="string">
+         <column name="mobileForLegal"  not-null="false" length="100"/>
+     </property>
+      <property name="registeredAddress" type="string">
+         <column name="registeredAddress"  not-null="false" length="100"/>
+     </property>
+      <property name="registeredAddressEn" type="string">
+         <column name="registeredAddressEn"  not-null="false" length="100"/>
+     </property>
+      <property name="registeredCapital" type="string">
+         <column name="registeredCapital"  not-null="false" length="100"/>
+     </property>
+      <property name="businessScope" type="string">
+         <column name="businessScope"  not-null="false" length="100"/>
+     </property>
+<!--      <property name="contactPersonEn" type="string">-->
+<!--         <column name="contactPersonEn"  not-null="false" length="100"/>-->
+<!--     </property>-->
+     <property name="webAddress" type="string">
+         <column name="webAddress"  not-null="false" length="100"/>
+     </property>
+    <property name="note" type="string">
+         <column name="note"  not-null="false" length="100"/>
+     </property>
+  </class>   
+</hibernate-mapping>

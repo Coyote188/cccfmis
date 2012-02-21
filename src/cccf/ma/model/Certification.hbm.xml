@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping SYSTEM "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+<hibernate-mapping>
+	<class name="cccf.ma.model.Certification" table="tb_certification"> 
+		<id name="id" type="string" unsaved-value="null" length="36">
+			<column name="id" not-null="true" />
+			<generator class="uuid.hex" />
+		</id> 
+		<property name="applyid" length="40" />
+		<property name="certNumber" length="50" />
+		<property name="appId" length="40" />
+		<property name="appName" length="60" />
+		<property name="appAdress" />
+		<property name="productionEnterpriseAdress" />
+		<property name="productionEnterpriseName" length="60" />
+		<property name="productionEnterpriseId" length="40" />
+		<property name="manufactureAdress" /> 
+		<property name="manufactureName"  length="60" />
+		<property name="manufactureId"  length="40"/>
+		<property name="productName" length="60" />
+		<property name="productModel"  length="60" />
+		<property name="validityBeginDate" />
+		<property name="validityEndDate" />
+		<property name="observedStandard"  length="60" />
+		<property name="technicalRequirement" />
+		<property name="caRule" length="60"/> 
+		<property name="systemStandards" length="60"/> 
+		<property name="status" /> 
+	</class>
+</hibernate-mapping>

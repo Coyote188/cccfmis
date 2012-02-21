@@ -1,0 +1,144 @@
+<?page title="检验报告" contentType="text/html;charset=UTF-8"?>
+<?init class="org.zkoss.zkplus.databind.AnnotateDataBinderInit" root="./winSurveyReportList"?>
+<window title="检验报告" id="winSurveyReportList" border="normal" apply="cccf.ma.web.zk.surveyreport.SurveyReportListController"
+	vflex="true" hflex="true">
+	<vlayout spacing="0" vflex="true" hflex="true">
+		<toolbar>
+			<button label="新增" forward="onAdd" />
+			<button label="查询" forward="onQuery" />
+		</toolbar>
+		<grid>
+			<columns>
+				<column width="100px" />
+				<column />
+				<column width="100px" />
+				<column />
+			</columns>
+			<rows>
+				<row>
+					<cell align="right">
+						<checkbox label="报告状态" id="cb_status" />
+					</cell>
+					<cell>
+						<combobox id="cbb_status">
+							<comboitem label="全部" value="-1" />
+							<comboitem label="未审核" value="0" />
+							<comboitem label="审核通过" value="1" />
+							<comboitem label="审核未通过" value="2" />
+							<comboitem label="未审核(重提交)" value="3" />
+						</combobox>
+					</cell>
+					<cell align="right">
+						<checkbox label="报告编号" id="cb_surveyReportSN" />
+					</cell>
+					<cell>
+						<textbox id="tb_surveyReportSN" width="98%" />
+					</cell>
+				</row>
+				<row>
+					<cell align="right">
+						<checkbox label="企业名称" checked="false" id="cb_enterpriseInfo_name" />
+					</cell>
+					<cell>
+						<textbox id="tb_enterpriseInfo_name" width="98%" />
+					</cell>
+					<cell align="right">
+						<checkbox label="产品名称" checked="false" id="cb_productCatalogueInfo_productName" />
+					</cell>
+					<cell>
+						<textbox id="tb_productCatalogueInfo_productName" width="98%" />
+					</cell>
+				</row>
+			</rows>
+		</grid>
+		<listbox vflex="true" hflex="true" id="lb_surveyReport" model="@{winSurveyReportList$composer.surveyReportList}"
+			mold="paging" multiple="false" width="98%">
+			<listhead sizable="true">
+				<listheader label="报告编号" />
+				<listheader label="企业名称" />
+				<listheader label="产品名称" />
+				<listheader label="生产商" />
+				<listheader label="制造商" />
+				<listheader label="检验类型" />
+				<listheader label="检验结论" />
+				<listheader label="编制人" />
+				<listheader label="编制时间" />
+				<listheader label="审核人" />
+				<listheader label="审核时间" />
+				<listheader label="状态" />
+				<listheader label="操作" width="100px" />
+			</listhead>
+			<listitem self="@{each=surveyReportList}">
+				<listcell label="@{surveyReportList.surveyReportSN}" />
+				<listcell label="@{surveyReportList.enterpriseInfo_name}" />
+				<listcell label="@{surveyReportList.productCatalogueInfo_productName}" />
+				<listcell label="@{surveyReportList.manufactureInfo_name}" />
+				<listcell label="@{surveyReportList.productionEnterpriseInfo_name}" />
+				<listcell label="@{surveyReportList.surverType}" />
+				<listcell label="@{surveyReportList.surverVerdict}">
+					<attribute name="onCreate">
+	if (self.getLabel().equals("1"))
+	{
+		self.setLabel("合格");
+	} else
+	{
+		self.setLabel("不合格");
+	}</attribute>
+				</listcell>
+				<listcell label="@{surveyReportList.organizer}" />
+				<listcell label="@{surveyReportList.organizeTime}" />
+				<listcell label="@{surveyReportList.auditor}" />
+				<listcell label="@{surveyReportList.auditTime}" />
+				<listcell label="@{surveyReportList.status}">
+					<attribute name="onCreate">
+	if (self.getLabel().equals("0"))
+	{
+		self.setLabel("未审核");
+	} else if (self.getLabel().equals("1"))
+	{
+		self.setLabel("审核通过");
+	} else if (self.getLabel().equals("2"))
+	{
+		self.setLabel("审核不通过");
+	} else if (self.getLabel().equals("3"))
+	{
+		self.setLabel("未审核(重提交)");
+	}</attribute>
+				</listcell>
+				<listcell label="@{surveyReportList.status}">
+					<button label="查看" forward="onRead">
+						<custom-attributes surveyReportItem="@{surveyReportList}" />
+					</button>
+					<button label="审核" forward="onAudit">
+						<attribute name="onCreate">
+	String	value	= ((Listcell) self.getParent()).getLabel();	if ("0".equals(value) || "3".equals(value))
+	{
+		self.setVisible(true);
+	} else
+	{
+		self.setVisible(false);
+	}</attribute>
+						<custom-attributes surveyReportItem="@{surveyReportList}" />
+					</button>
+					<button label="重交审核" forward="onToRepeatAudit">
+						<attribute name="onCreate">
+	String	value	= ((Listcell) self.getParent()).getLabel();	if ("2".equals(value))
+	{
+		self.setVisible(true);
+	} else
+	{
+		self.setVisible(false);
+	}
+	((Listcell) self.getParent()).setLabel("");</attribute>
+						<custom-attributes surveyReportItem="@{surveyReportList}" />
+					</button>
+				</listcell>
+			</listitem>
+			<listfoot>
+				<listfooter span="13">
+					<paging id="listPaging" pageSize="6" forward="onCreate=onShowCount" width="98%" />
+				</listfooter>
+			</listfoot>
+		</listbox>
+	</vlayout>
+</window>

@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<?init class="cccfmis.bpm.zk.ApplictionPDWindowInit" arg0="pdrwfpApproveWindow"?>
+<window title="评定人员分配" id="pdrwfpApproveWindow" border="normal" height="100%" width="100%"
+	use="cccfmis.bpm.zk.ApplictionPdrwfpWindow">
+	<borderlayout height="100%">
+		<center flex="true">
+			<tabbox height="100%">
+				<tabs>
+					<tab label="人员分配"></tab>
+					<tab label="厂检资料"></tab>
+					<tab label="申请资料"></tab>
+				</tabs>
+				<tabpanels height="100%">
+					<tabpanel height="100%">
+						<borderlayout>
+							<center autoscroll="true">
+								<vlayout style="text-align:left;">
+									<groupbox mold="3d" open="true">
+										<caption label="上报人员分配">[点击打开/关闭]</caption>
+										<grid>
+											<rows>
+												<row>
+													<label value="分配上报人员:" style="color:red;" />
+													<cell colspan="4">
+														<bandbox id="bdReportUserList" width="400px" readonly="true">
+															<bandpopup>
+																<listbox id="lbxReportUserList" width="380px" mold="paging"
+																	pageSize="15" onSelect="pdrwfpApproveWindow.onReportUserSelect()" model="@{reviewUserList}" checkmark="true"
+																	multiple="true">
+
+																	<listitem self="@{each=user}" value="@{user}">
+																		<listcell label="@{user.Name }" />
+																	</listitem>
+																</listbox>
+															</bandpopup>
+														</bandbox>
+													</cell>
+												</row>
+											</rows>
+										</grid>
+									</groupbox>
+									<listbox id="_certifications">
+										<auxhead>
+											<auxheader></auxheader>
+											<auxheader colspan="2" label="证书有效期"></auxheader>
+											<auxheader></auxheader>
+											<auxheader></auxheader>
+											<auxheader></auxheader>
+											<auxheader></auxheader>
+										</auxhead>
+										<listhead>
+											<listheader label="证书编号" width="200px"></listheader>
+											<listheader width="120px" label="起始日期"></listheader>
+											<listheader width="120px" label="截止日期"></listheader>
+											<listheader label="证书规格型号"></listheader>
+											<listheader label="产品标准和技术要求"></listheader>
+											<listheader label="执行标准"></listheader>
+											<listheader label="证书状态" width="140px"></listheader>
+										</listhead>
+									</listbox>
+								</vlayout>
+							</center>
+						</borderlayout>
+					</tabpanel>
+					<tabpanel height="100%">
+						<include height="100%" src="/cccfpage/items/gcjc-zl.zul"></include>
+					</tabpanel>
+					<tabpanel height="100%">
+						<include height="100%" src="/cccfpage/items/sqzl.zul"></include>
+					</tabpanel>
+				</tabpanels>
+			</tabbox>
+		</center>
+		<south title="工作流操作" collapsible="true" splittable="false">
+			<grid id="appoveGrid">
+				<columns>
+					<column width="80px" align="center"></column>
+					<column></column>
+				</columns>
+				<rows>
+					<row align="left">
+						<label value="下一步:" />
+						<cell>
+							<listbox id="resultListbox" mold="select" rows="1" width="200" />
+
+						</cell>
+					</row>
+					<row>
+						<separator />
+						<cell align="left">
+							<button label="提交" image="/image/16/up.png" width="68px" id="btSubmit" height="26px" style=""
+								forward="onSubmit" />
+							<button label="关闭" image="/image/common/close.png" width="68px" height="26px" style=""
+								forward="onCancel" />
+							<button label="回退" disabled="true"></button>
+						</cell>
+					</row>
+					<row align="left">
+						<label value="意见:" />
+						<textbox id="approveMemo" rows="3" width="98%" />
+					</row>
+				</rows>
+			</grid>
+		</south>
+	</borderlayout>
+</window>

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<window title="表单填报" border="normal"
+	use="com.aidi.bpm.zk.ProcessStartWindow"
+	xmlns:a="http://www.zkoss.org/2005/zk/annotation" id="processStartWindow"
+	xmlns="http://www.zkoss.org/2005/zul"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.zkoss.org/2005/zul
+	http://www.zkoss.org/2005/zul/zul.xsd"
+	width="400px" sizable="true">
+
+
+	
+			<grid id="webformGrid">
+				
+			</grid>
+			<div align="center">
+				<hbox>
+					<button id="submit" label="提交" image="/image/16/filesave.png"  forward="onSave"/>
+					<separator width="10px" />
+					<label id="success" value="数据提交成功,工作流启动！" visible="false"/>
+				</hbox>
+			</div>
+
+		
+
+</window>
+ 

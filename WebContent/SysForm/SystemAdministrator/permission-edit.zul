@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?init class="openjframework.web.zk.PermissioneditWindowInit" arg0="permissionEditWindow"?>
+<window title="权限分配" border="normal"
+	use="openjframework.web.zk.PermissioneditWindow"
+	xmlns:a="http://www.zkoss.org/2005/zk/annotation" width="450px"
+	sizable="true" id="permissionEditWindow">
+
+	<grid>
+		<columns>
+			<column label="" width="100px" />
+			<column label="" align="left" />
+		</columns>
+		<rows>
+			<row>
+				资源:
+				<a:bind value="permission.resource.name" />
+				<textbox id="resource" readonly="true" width="200px" />
+			</row>
+			<row>
+				角色列表:
+				<bandbox id="bdRoleList" width="300px" readonly="true"
+					constraint="no empty:请选择角色">
+					<bandpopup>
+						<listbox id="lbxRoleList" width="280px"
+							mold="paging" pageSize="15"
+							onSelect="permissionEditWindow.onRoleListSelect()"
+							model="@{roleListList}" checkmark="true" multiple="true">
+
+							<listitem self="@{each=role}"
+								value="@{role}">
+								<listcell label="@{role.Name }" />
+							</listitem>
+						</listbox>
+					</bandpopup>
+				</bandbox>
+
+			</row>
+			<row visible="false">
+				操作类别:
+				<a:bind value="permission.operationType" />
+				<combobox id="operationType"
+					model="@{operationTypeList}"
+					onSelect="PermissionEditWindow.onoperationTypeSelect(event)"
+					autodrop="true" width="200px">
+					<comboitem self="@{each=operationType}"
+						label="@{operationType.}" value="@{operationType.}" />
+				</combobox>
+
+			</row>
+			<row>
+				权限类别:
+				<hbox>
+					<checkbox label="可用" checked="true" id="ckVisible" />
+					<checkbox label="可见" id="ckEnable" />
+					<checkbox label="可写" id="ckWriteble" />
+				</hbox>
+			</row>
+		</rows>
+	</grid>
+	<separator width="10px" />
+	<div align="left">
+		<hbox>
+			<button label="保存" image="/image/common/save.png"
+				width="68px" height="26px" style="" forward="onSave" />
+			<button label="关闭" image="/image/common/close.png"
+				width="68px" height="26px" style="" forward="onCancel" />
+		</hbox>
+	</div>
+</window>

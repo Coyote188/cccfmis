@@ -1,0 +1,300 @@
+<?page title="" contentType="text/html;charset=UTF-8"?>
+<?init class="org.zkoss.zkplus.databind.AnnotateDataBinderInit" root="./frmFactoryInspectionForm"?>
+<zk>
+	<window id="frmFactoryInspectionForm" title="" border="none" apply="cccf.ma.web.zk.FactoryInspectionController">
+		<tabbox id="tbxInspectionForm" mold="accordion"> <!--  mold="accordion" -->
+			<tabs>
+				<tab id="tbBaseInformation" label="基本信息" />
+				<tab id="tbFacInsInfomation" label="工厂检查信息" />
+				<tab id="tbInspectionComments" label="检查意见" />
+				<tab id="tbProduct" label="产品："/>
+<!--				<tab id="tbInspectionResult" label="检查结论"/>-->
+			</tabs>
+			<tabpanels>
+				<tabpanel id="tbpBaseInformation"> <!--  -->
+					<grid style="border:0;">
+						<columns>
+							<column label="类别" width="15%"/>
+							<column label="名称" width="35%"/>
+							<column label="地址" width="40%"/>
+							<column label="联系人" width="10%"/>
+						</columns>
+						<rows>
+							<row>
+								<hbox>
+									<label value="*" style="color:red" />
+									<label value="申请人（法人）"/>
+								</hbox>
+								<label value="@{frmFactoryInspectionForm$composer.enterprise.name }"/>
+								<label value="@{frmFactoryInspectionForm$composer.enterprise.location }"/>
+								<label value="@{frmFactoryInspectionForm$composer.enterprise.contactPerson }"/>
+							</row>
+							<row>
+								<hbox>
+									<label value="*" style="color:red" />
+									<label value="生产企业"/>
+								</hbox>
+								<label value="@{frmFactoryInspectionForm$composer.penterprise.name }"/>
+								<label value="@{frmFactoryInspectionForm$composer.penterprise.facDistrict }"/>
+								<label value="@{frmFactoryInspectionForm$composer.penterprise.facLinkMan }"/>
+							</row>
+							<row>
+								<hbox>
+									<label value="*" style="color:red" />
+									<label value="制造商"/>
+								</hbox>
+								<label value="@{frmFactoryInspectionForm$composer.manufacture.name }"/>
+								<label value="@{frmFactoryInspectionForm$composer.manufacture.manuDistrict }"/>
+								<label value="@{frmFactoryInspectionForm$composer.manufacture.manuLinkMan }"/>
+							</row>
+						</rows>
+					</grid>
+				</tabpanel>
+				
+				<tabpanel id="tbpFacInsInfomation">
+					<grid style="border:0;">
+						<columns>
+							<column label=""/>
+							<column label=""/>
+							<column label=""/>
+							<column label=""/>
+						</columns>
+						<rows>
+							<row>
+								<label value="工厂检查号"/>
+								<textbox value="@{frmFactoryInspectionForm$composer.factoryInspection.facInspectionNo }"/>
+								<label value="现场检查开始时间"/>
+								<datebox value="@{frmFactoryInspectionForm$composer.factoryInspection.startTime }"/>
+							</row>
+							<row>
+								<label value="申请企业"/>
+								<label value="@{frmFactoryInspectionForm$composer.enterprise.name }"/>
+								<label value="现场检查结束时间"/>
+								<datebox value="@{frmFactoryInspectionForm$composer.factoryInspection.endTime }"/>
+							</row>
+							<row>
+								<label value="业务类型"/>
+								<textbox value="@{frmFactoryInspectionForm$composer.factoryInspection.businessType }"/>
+								<label value="检查类型"/>
+								<textbox value="@{frmFactoryInspectionForm$composer.factoryInspection.typeOfInspection }"/>
+							</row>
+							<row>
+								<label value="联系人"/>
+								<label value="@{frmFactoryInspectionForm$composer.enterprise.contactPerson }"/>
+								<label value="联系电话"/>
+								<label value="@{frmFactoryInspectionForm$composer.enterprise.telephoneNum }"/>
+							</row>
+							<row>
+								<label value="通讯地址"/>
+								<label value="@{frmFactoryInspectionForm$composer.enterprise.contactAddress }"/>
+								<label value="邮编"/>
+								<label value="@{frmFactoryInspectionForm$composer.enterprise.postalcode }"/>
+							</row>
+							<row>
+								<label value="检查组"/>
+								<textbox value="@{frmFactoryInspectionForm$composer.factoryInspection.checkGroup }"/>
+							</row>
+						</rows>
+					</grid>
+				</tabpanel>
+					
+				<tabpanel id="tbpInspectionComments">
+					<grid>
+						<columns>
+							<column label="" width="15%"/>
+							<column label=""/>
+						</columns>
+						<rows>
+							<row>
+								<hbox>
+									<label value="*" style="color:red"/>
+									<label value="工厂条件"/>
+								</hbox>
+								<radiogroup id="rdpFactoryConditions">
+									<radio label="符合要求" value="1"/>
+									<radio label="不符合要求（见不合格事实）" value="3"/>
+									<radio label="未检查" value="4"/>
+								</radiogroup>
+							</row>
+							<row>
+								<hbox>
+									<label value="*" style="color:red"/>
+									<label value="生产设备、检验设备"/>
+								</hbox>
+								<radiogroup id="rdpEquipmentConditions">
+									<radio label="符合规格要求" value="1"/>
+									<radio label="不符合规格要求（见不合格事实）" value="3"/>
+									<radio label="未检查" value="4"/>
+								</radiogroup>
+							</row>
+							<row>
+								<hbox>
+									<label value="*" style="color:red"/>
+									<label value="证书使用情况"/>
+								</hbox>
+								<radiogroup id="rdpCertificateUsage">
+									<radio label="未发现违规情况" value="1"/>
+									<radio label="发现违规情况（见不合格事实）" value="2"/>
+									<radio label="未检查" value="3"/>
+								</radiogroup>
+							</row>
+							<row>
+								<hbox>
+									<label value="*" style="color:red"/>
+									<label value="标志使用情况"/>
+								</hbox>
+								<radiogroup id="rdpFlagUsage">
+									<radio label="未发现违规情况" value="1"/>
+									<radio label="发现违规情况（见不合格事实）" value="2"/>
+									<radio label="未检查" value="3"/>
+								</radiogroup>
+							</row>
+							<row>
+								<hbox>
+									<label value="工厂条件变化情况"/>
+								</hbox>
+								<radiogroup id="rdpFacConditionChange">
+									<radio label="有" value="0"/>
+									<radio label="无" value="1"/>
+								</radiogroup>
+							</row>
+						</rows>
+					</grid>
+					<button id="btnFillFactoryChecklist" label="工厂质保能力审查检查表"/>
+				</tabpanel>
+					
+				<tabpanel id="tbpProduct" height="300px" style="overflow:auto;" vflex="false" hflex="false">
+				<hbox align="center">
+					<label value="检验中心：" />
+					<textbox value="@{frmFactoryInspectionForm$composer.factoryInspection.inspectionCenter }" style="font-size:16px;font-weight:bold"/>
+				</hbox>
+				<!-- 怎么样处理呢？ -->
+					<grid style="border:0;" id="grdProductionInspection" model="@{frmFactoryInspectionForm$composer.productionModel }">
+						<columns>
+							<column label="序号" width="10%"/>
+							<column label="规格型号" width="10%"/>
+							<column label="检查方式" width="10%"/>
+							<column label="一致性检查结论" width="30%"/>
+							<column label="检查结论" width="10%"/>
+							<column label="操作" width="10%"/>
+							<column label="抽样照片"/>
+						</columns>
+						<rows>
+							<row self="@{each=productModel }" value="@{productModel.model }">
+								<label value="@{ }" />
+								<label value="@{productModel.model }" />
+								<combobox width="99%">
+									<comboitem label="实物" value="0"/>
+									<comboitem label="图纸" value="1"/>
+									<comboitem label="生产工艺文件" value="2"/>
+								</combobox>
+								<!--  -->
+								<vbox>
+									<hbox>
+										<label value="产品设计文件：" />
+										<toolbarbutton label="附件" forward="onClick=onOpenAttachment(flowChart)">
+											<custom-attributes flowChart="@{productModel.flowChart }"/>
+										</toolbarbutton>
+									</hbox><hbox>
+										<label value="产品图片：" />
+										<toolbarbutton label="附件" forward="onClick=onOpenAttachment(productImg)">
+											<custom-attributes productImg="@{productModel.productImg }"/>
+										</toolbarbutton>
+									</hbox><hbox>
+										<label value="产品特性描述表" />
+										<toolbarbutton label="附件" forward="onClick=onOpenAttachment(characterForm)">
+											<custom-attributes characterForm="@{productModel.characterForm }"/>
+										</toolbarbutton>
+									</hbox>
+									<checkbox label="外观结构是否一致"/>
+									<checkbox label="关键件是否一致"/>
+									<checkbox label="生产工艺是否一致"/>
+								</vbox>
+								
+								<combobox width="99%">
+									<comboitem label="通过" value="0"/>
+									<comboitem label="未通过" value="1"/>
+									<comboitem label="未检查" value="2"/>
+								</combobox>
+								<combobox forward="onSelect=onEnableSimpleUploader" width="99%">
+									<comboitem label="是" value="0"/>
+									<comboitem label="否" value="1"/>
+								</combobox>
+								<hbox>
+									<bandbox width="100px"><bandpopup>
+										<listbox width="300px" style="border:0;">
+											<listitem self="@{each=media }" value="@{media }">
+												<listcell label="@{media.name }" />
+											</listitem>
+										</listbox>
+									</bandpopup></bandbox>
+									<fileupload id="fpdSampleImage"  label="浏览..." forward="onUpload=onSimpleImgUpload" visible="false"/>
+								</hbox>
+							</row>
+						</rows>
+					</grid>
+					<grid id="grdFiles" model="@{frmFactoryInspectionForm$composer.medias }">
+						<auxhead>
+							<auxheader colspan="7" label="附件：" style="font-size:16px;color:red;" height="20px" /> 
+						</auxhead>
+						<columns/>
+						<rows>
+							<row spans="1,6" self="@{each=media }">
+								<label value="1"/>
+								<label value="@{media.name }"/>
+								<toolbarbutton label="删除" style="text-decoration:underline;" forward="onRemoveFile">
+									<custom-attributes media="@{media }"/>
+								</toolbarbutton>
+							</row>
+						</rows>
+						<foot>
+							<footer>
+								<div align="right">
+									<label value="文件名：" />
+									<textbox id="tbxFileName" />
+									<label value="类型：" />
+									<textbox id="tbxFileType" />
+									<fileupload id="fpdBrowser" label="浏览..."/>
+								</div>
+							</footer>
+						</foot>						
+					</grid>
+					<label value="不符合事实说明：" style="font-size:16px;;color:red;"/>
+					<textbox multiline="true" value="@{frmFactoryInspectionForm$composer.factoryInspection.unMeetDescription }" width="99%"/>
+					
+				</tabpanel>
+				
+<!--				<tabpanel id="tbpInspectionResult">-->
+<!--					<grid style="border:0;">-->
+<!--						<rows>-->
+<!--							<row>-->
+<!--								<label value="工厂检查结论：" style="font-size:14px"/>	-->
+<!--							</row>-->
+<!--							<row>-->
+<!--								<grid style="border:0;">-->
+<!--									<columns>-->
+<!--										<column label="" width="20%"/>-->
+<!--										<column label=""/>-->
+<!--									</columns>-->
+<!--									<rows>-->
+<!--										<row>-->
+<!--											<label value="检查结论：" />-->
+<!--											<radiogroup id="rdpInspectionResult">-->
+<!--												<radio label="通过" value="0"/>-->
+<!--												<radio label="不通过" value="1"/>-->
+<!--											</radiogroup>-->
+<!--										</row>-->
+<!--										<row>-->
+<!--											<label value="检查结论：" />-->
+<!--											<textbox multiline="true" width="40%" value="@{frmFactoryInspectionForm$composer.factoryInspection.inspectionResultDescription }"/>-->
+<!--										</row>-->
+<!--									</rows>-->
+<!--								</grid>-->
+<!--							</row>-->
+<!--						</rows>-->
+<!--					</grid>-->
+<!--				</tabpanel>-->
+			</tabpanels>
+		</tabbox>
+	</window>
+</zk>

@@ -1,0 +1,35 @@
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/dlyhc.cccfmis/!svn/ver/633/trunk/src-trilby/net/modellite/jdbcp/spi
+END
+Test.java
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/dlyhc.cccfmis/!svn/ver/613/trunk/src-trilby/net/modellite/jdbcp/spi/Test.java
+END
+PreparedJExecAdapter.java
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/dlyhc.cccfmis/!svn/ver/493/trunk/src-trilby/net/modellite/jdbcp/spi/PreparedJExecAdapter.java
+END
+JAdapterFactry.java
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/dlyhc.cccfmis/!svn/ver/491/trunk/src-trilby/net/modellite/jdbcp/spi/JAdapterFactry.java
+END
+JWrapDriverManager.java
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/dlyhc.cccfmis/!svn/ver/475/trunk/src-trilby/net/modellite/jdbcp/spi/JWrapDriverManager.java
+END
+PreparedJEntityAdapter.java
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/dlyhc.cccfmis/!svn/ver/633/trunk/src-trilby/net/modellite/jdbcp/spi/PreparedJEntityAdapter.java
+END

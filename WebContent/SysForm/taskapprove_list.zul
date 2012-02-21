@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?init class="com.aidi.bpm.zk.TaskApproveListWindowInit" arg0="taskApproveListWindow"?>
+<window title="工作流审批进程" border="normal"
+	xmlns:a="http://www.zkoss.org/2005/zk/annotation"
+	id="taskApproveListWindow" 
+	width="800" sizable="true" closable="true">
+	<separator width="10px" />
+	<div align="center">
+			<label value="审批进程"
+				style="font-size:14px;color:#000;font-weight:bold;" />
+			<a:bind model="taskInstanceInfoList" />
+			<listbox mold="paging" id="taskListbox" width="780px"
+				pageSize="10">
+				<listhead sizable="true">
+					<listheader label="任务名称" width="150px" />
+				<listheader label="审批人员" width="60px" />
+				<listheader label="完成日期" width="150px" />
+				<listheader label="审批结果" width="120px" />
+				<listheader label="审批意见"  />
+				</listhead>
+				<a:bind _var="taskInstanceInfo" />
+				<listitem style="text-align:left;">
+					<a:bind label="taskInstanceInfo.taskName" />
+					<listcell />
+					<a:bind label="taskInstanceInfo.actorName" />
+					<listcell />
+					<listcell label="@{taskInstanceInfo.approveDate}" />
+					<a:bind label="taskInstanceInfo.approveResult" />
+					<listcell />
+					<listcell>
+						<label value="@{taskInstanceInfo.simpleMemo}"
+							tooltiptext="@{taskInstanceInfo.approveMemo}" />
+					</listcell>
+				</listitem>
+			</listbox>
+		</div>
+		<separator width="10px" />
+
+</window>

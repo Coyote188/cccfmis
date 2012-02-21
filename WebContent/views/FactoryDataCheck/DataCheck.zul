@@ -1,0 +1,76 @@
+<?page title="工厂检查-文件审查" contentType="text/html;charset=UTF-8"?>
+<?init class="org.zkoss.zkplus.databind.AnnotateDataBinderInit" arg0="./FactoryDataCheckWin"?>
+<window apply="cccf.mis.web.tsak.factory.check.DataSendController" border="normal" closable="true" height="100%" width="100%"
+	id="FactoryDataCheckWin" title="文件审查">
+	<vlayout style="overflow:auto;" vflex="true" hflex="true">
+		<grid>
+			<auxhead>
+				<auxheader label="文件审查信息" image="/image/16/doc.png" style="font-size:14px;font-weight:bold;color:BlUE;"
+					colspan="4" />
+			</auxhead>
+			<columns></columns>
+			<rows>
+				<row>
+					<label value="工厂检查号" />
+					<label value="-" />
+					<label value="开始日期" />
+					<datebox></datebox>
+				</row>
+				<row>
+					<label value="申请企业" />
+					<label value="-" />
+					<label value="结束日期" />
+					<datebox></datebox>
+				</row>
+				<row>
+					<label value="业务类型" />
+					<label value="-" />
+					<label value="检验类型" />
+					<label value="-" />
+				</row>
+				<row>
+					<label value="联系人" />
+					<label value="-" />
+					<label value="联系电话" />
+					<label value="-" />
+				</row>
+				<row>
+					<label value="通讯地址" />
+					<label value="-" />
+					<label value="邮政编码" />
+					<label value="-" />
+				</row>
+				<row spans="1,3">
+					<label value="检查组" />
+					<label value="-" />
+				</row>
+			</rows>
+		</grid>
+		<!--申请信息-->
+		<include src="/views/public/Apply_Detail.zul"></include>
+		<!-- ;;;; -->
+		<separator></separator>
+		<grid id="appoveGrid">
+			<columns>
+				<column width="100px" align="left"></column>
+				<column></column>
+			</columns>
+			<rows>
+				<row>
+					<label value="处理结论:" />
+					<cell>
+						<radiogroup id="resultradiogroup">
+							<radio label="通过" value="通过" checked="true"></radio>
+							<radio label="不通过" value="不通过"></radio>
+						</radiogroup>
+						<button mold="trendy" label="提交" image="/image/16/up.png" id="submitBtn" forward="onSubmit" />
+					</cell>
+				</row>
+				<row>
+					<label value="备注:" />
+					<textbox id="approveMemo" rows="3" width="100%" />
+				</row>
+			</rows>
+		</grid>
+	</vlayout>
+</window>

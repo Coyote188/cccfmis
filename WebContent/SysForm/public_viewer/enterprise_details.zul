@@ -1,0 +1,162 @@
+<?page title="new page title" contentType="text/html;charset=UTF-8"?>
+<?init class="org.zkoss.zkplus.databind.AnnotateDataBinderInit" root="./frmEnterpriseInfoViewer"?>
+<zk>
+	<window id="frmEnterpriseInfoViewer" width="650px" position="center,top" apply="cccf.ma.web.zk.publicform.EnterpriseViewerController" title="企业信息" border="normal"
+		closable="true">
+		<groupbox>
+			<grid id="grdEditEnterpriseInfo"  style="border:0">
+				<columns>
+					<column width="15%" />
+					<column width="35%" />
+					<column width="15%" />
+					<column width="35%" />
+				</columns>
+				<rows>
+					<row id="rEName">
+						企业名称:
+						<label id="name"
+							value="@{frmEnterpriseInfoViewer$composer.enterprise.name }" />
+						企业名称(英文)
+						<label id="nameEn"
+							value="@{frmEnterpriseInfoViewer$composer.enterprise.nameEn }" />
+					</row>
+					<row id="rEState">
+						国家:
+						<label id="state"
+							value="@{frmEnterpriseInfoViewer$composer.enterprise.state }" />
+						地区:
+						<label id="location"
+							value="@{frmEnterpriseInfoViewer$composer.enterprise.location }" />
+					</row>
+					<row id="rELocation">
+						组织机构代码:
+						<label id="organizationCode"
+							value="@{frmEnterpriseInfoViewer$composer.enterprise.organizationCode }" />
+						组织性质代码:
+						<label id="organizationNature"
+							value="@{frmEnterpriseInfoViewer$composer.enterprise.organizationNature }" />
+					</row>
+
+					<row id="rLegal">
+						法人:
+						<label id="legalPerson"
+							value="@{frmEnterpriseInfoViewer$composer.enterprise.legalPerson }" />
+						法人(英文):
+						<label id="legalPersonEn"
+							value="@{frmEnterpriseInfoViewer$composer.enterprise.legalPersonEn }" />
+					</row>
+					<row id="rLegalAdd">
+						法人:
+						<label id="contactAddForLegal"
+							value="@{frmEnterpriseInfoViewer$composer.enterprise.contactAddForLegal }" />
+						法人(英文):
+						<label id="contactAddForLegalEn"
+							value="@{frmEnterpriseInfoViewer$composer.enterprise.contactAddForLegalEn }" />
+					</row>
+					<row id="rtelForLegal">
+						法人电话:
+						<label id="telForLegal"
+							value="@{frmEnterpriseInfoViewer$composer.enterprise.telForLegal }" />
+						法人手机:
+						<label id="mobileForLegal"
+							value="@{frmEnterpriseInfoViewer$composer.enterprise.mobileForLegal }" />
+					</row>
+					<row id="rregisteredAddress">
+						注册地址:
+						<label id="registeredAddress"
+							value="@{frmEnterpriseInfoViewer$composer.enterprise.registeredAddress }" />
+						注册地址(英文):
+						<label id="registeredAddressEn"
+							value="@{frmEnterpriseInfoViewer$composer.enterprise.registeredAddressEn }" />
+					</row>
+					<row>
+						注册资金:
+						<label id="registeredCapital"
+							value="@{frmEnterpriseInfoViewer$composer.enterprise.registeredCapital }" />
+						企业规模:
+						<label id="scale"
+							value="@{frmEnterpriseInfoViewer$composer.enterprise.scaleName }" />
+					</row>
+
+					<row id="rECAdd">
+						通信地址:
+						<label id="contactAddress"
+							value="@{frmEnterpriseInfoViewer$composer.enterprise.contactAddress }" />
+						通信地址:
+						<label id="contactAddressEn"
+							value="@{frmEnterpriseInfoViewer$composer.enterprise.contactAddressEn }" />
+					</row>
+					<row id="rECPerson">
+						联系人:
+						<label id="contactPerson"
+							value="@{frmEnterpriseInfoViewer$composer.enterprise.contactPerson }" />
+						联系人(英文):
+						<label id="contactPersonEn"
+							value="@{frmEnterpriseInfoViewer$composer.enterprise.contactPersonEn }" />
+					</row>
+					<row id="rETel">
+						联系电话:
+						<label id="telephoneNum"
+							value="@{frmEnterpriseInfoViewer$composer.enterprise.telephoneNum }" />
+						手机:
+						<label id="mobileNum"
+							value="@{frmEnterpriseInfoViewer$composer.enterprise.mobileNum }" />
+					</row>
+					<row id="rEFax">
+						传真:
+						<label id="faxNum"
+							value="@{frmEnterpriseInfoViewer$composer.enterprise.faxNum }" />
+						邮政编码:
+						<label id="postalcode"
+							value="@{frmEnterpriseInfoViewer$composer.enterprise.postalcode }" />
+					</row>
+					<row>
+
+					</row>
+					<row>
+						邮件地址:
+						<label id="emailAddress"
+							value="@{frmEnterpriseInfoViewer$composer.enterprise.emailAddress }" />
+						企业网站:
+						<label id="webAddress"
+							value="@{frmEnterpriseInfoViewer$composer.enterprise.webAddress }" />
+					</row>
+
+				</rows>
+			</grid>
+			<grid style="border:0">
+				<columns>
+					<column width="15%" />
+					<column width="85%" />
+				</columns>
+				<rows>
+					<row id="rEnterpriseScale">
+						经营范围:
+						<label id="businessScope" multiline="true"
+							value="@{frmEnterpriseInfoViewer$composer.enterprise.businessScope }" />
+					</row>
+
+					<row>
+						<label value="附件" /> 
+						<grid id="grdFileList" style="border:0" model="@{frmEnterpriseInfoViewer$composer.attachs }"
+							height="auto" width="100%">
+							<auxhead height="10px">
+								<auxheader colspan="8" label="企业文件列表"
+									style="font-size:12" />
+							</auxhead>
+							<columns />
+							<rows>
+								<row spans="4,1" self="@{each=att }">
+									<label value="@{att.name }"/>
+									<toolbarbutton forward="onViewFileOnline" image="/image/common/view_file.png" label="下载" style="text-Decoration:underline;color:#3300cc">
+										<custom-attributes att="@{att.path }"/>
+									</toolbarbutton>
+								</row>
+							</rows>
+						</grid>
+					</row>
+				</rows>
+			</grid>
+		</groupbox>
+	</window>
+</zk>

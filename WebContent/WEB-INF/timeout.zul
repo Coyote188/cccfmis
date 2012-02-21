@@ -1,0 +1,5 @@
+<window width="80%" title="登录超时" border="normal">
+	<vbox>
+		请重新登录
+	</vbox>
+</window>

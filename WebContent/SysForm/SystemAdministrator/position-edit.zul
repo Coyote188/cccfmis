@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?init class="openjframework.web.zk.PositioneditWindowInit" arg0="PositionEditWindow"?>
+<window title="职务编辑" border="normal" 
+	use="openjframework.web.zk.PositioneditWindow"
+	xmlns:a="http://www.zkoss.org/2005/zk/annotation" id="PositionEditWindow"
+	xmlns="http://www.zkoss.org/2005/zul"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.zkoss.org/2005/zul
+	http://www.zkoss.org/2005/zul/zul.xsd"
+	width="300px"  sizable="true" closable="true">
+	
+	<grid>
+		<columns>
+			<column width="100px"></column>
+			<column></column>
+		</columns>
+		  <rows>
+		     <row>         
+		       代码: 
+		       <a:bind value="position.no"/>
+		       <textbox id="no" width="100px"/>
+				 	
+		     </row>	
+		     <row>         
+		       名称: 
+		       <a:bind value="position.name"/>
+		       <textbox id="name" width="100px"/>
+				 	
+		     </row>	
+		  </rows>
+	 </grid>
+	<separator width="10px" />
+	 <div align="center">
+	   <hbox>
+	       <button label="保存" image="/image/common/save.png"
+	       	width="70px" height="28px" style="null" forward="onSave" />
+	       <button label="关闭" image="/image/common/close.png"
+	       	width="70px" height="28px" style="null" forward="onCancel" />
+	   </hbox>
+	 </div>
+</window>			   

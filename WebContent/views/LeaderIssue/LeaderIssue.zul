@@ -1,0 +1,53 @@
+<?page title="评定安排" contentType="text/html;charset=UTF-8"?>
+<?init class="org.zkoss.zkplus.databind.AnnotateDataBinderInit" arg0="./LeaderIssueWin"?>
+<window closable="true" height="100%" width="100%" title="评定安排" border="normal" id="LeaderIssueWin"
+	apply="cccf.mis.web.tsak.evaluation.leader.LeaderIssueController">
+	<vlayout hflex="true" vflex="true" style="overflow:auto;">
+		<include src="/views/public/Evaluation_msg.zul"></include>
+		<grid>
+			<auxhead>
+				<auxheader colspan="5" image="/res/icons/page.png" label="操作信息"></auxheader>
+			</auxhead>
+			<columns>
+				<column width="160px"></column>
+				<column></column>
+			</columns>
+			<rows>
+				<row>
+					<label value="评定报告"></label>
+					<toolbarbutton label="预览"></toolbarbutton>
+				</row>
+			</rows>
+		</grid>
+		<grid id="appoveGrid">
+			<columns>
+				<column width="100px" align="left"></column>
+				<column></column>
+			</columns>
+			<rows>
+				<row>
+					<label value=""></label>
+					<cell>
+						<combobox visible="false" id="reveiwUser" model="@{reviewUserList}" constraint="no empty:派组人员"
+							autodrop="true" width="200px" readonly="true">
+							<comboitem self="@{each=person}" label="@{person.name}" value="@{person.id}" />
+						</combobox>
+						<button image="/res/icons/accept.png" mold="trendy" label="提交" width="68px" id="btSubmit" height="26px"
+							forward="onSubmit" />
+					</cell>
+				</row>
+				<row>
+					<label value="审批结论:"></label>
+					<listbox id="resultListbox" mold="select" rows="1" width="200">
+						<listitem label="通过" selected="true" value="通过"></listitem>
+						<listitem label="不通过" value="不通过"></listitem>
+					</listbox>
+				</row>
+				<row>
+					<label value="备注:" />
+					<textbox id="approveMemo" rows="4" hflex="true" />
+				</row>
+			</rows>
+		</grid>
+	</vlayout>
+</window>

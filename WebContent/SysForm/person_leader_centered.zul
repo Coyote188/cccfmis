@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<zk>
+	<window id="person_centered_Win">
+	
+		<grid style="border:0;">
+			<columns>
+				<column label="" />
+			</columns>
+			<rows>
+				<row>
+					<tabbox width="98%">
+						<tabs>
+							<tab label="待办事务" />
+							<tab label="已办事务" />
+							<tab label="事务跟踪" />
+						</tabs>
+						<tabpanels>
+							<tabpanel id="mytaskPanel">
+								<panel>
+									<panelchildren>
+										<attribute name="onCreate">
+											Window	objWindow	= (Window) Executions.createComponents("mytask_list.zul", null, null);	objWindow.setParent(self);
+											objWindow.doEmbedded();
+										</attribute>
+									</panelchildren>
+								</panel>
+							</tabpanel>
+							<tabpanel id="myEndTaskPanel">
+								<attribute name="onCreate">
+									Window	objWindow	= (Window) Executions.createComponents("myendtask_list.zul", null, null);	objWindow.setParent(self);
+									objWindow.doEmbedded();
+								</attribute>
+							</tabpanel>
+							<tabpanel id="openTaskPanel">
+								<attribute name="onCreate">
+									Window objWindow = (Window) Executions.createComponents("task_list_allopened.zul",
+										null, null);
+									objWindow.setParent(self);
+									objWindow.doEmbedded();
+								</attribute>
+							</tabpanel>
+						</tabpanels>
+					</tabbox>
+				</row>
+				<row>
+					<!-- 原消息中心空出的部分 -->
+				</row>
+			</rows>
+		</grid>
+	</window>
+</zk>

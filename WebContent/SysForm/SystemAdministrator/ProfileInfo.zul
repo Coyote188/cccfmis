@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?init class="org.zkoss.zkplus.databind.AnnotateDataBinderInit" root="./registWin" ?>
+<zk>
+	<window id="registWin" width="500px" title="人员详细信息" border="normal"
+		apply="openjframework.web.zk.RegisterUserComposer" xmlns:n="native"
+		xmlns:w="client" xmlns="http://www.zkoss.org/2005/zul" closable="true"
+		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+		xsi:schemaLocation=" http://www.zkoss.org/2005/zul http://www.zkoss.org/2005/zul/zul.xsd" position="right,center">
+		<grid>
+					<columns>
+						<column width="65px" align="center" />
+						<column />
+						<column width="65px" align="center"/>
+						<column width="150px"/>
+					</columns>
+					<rows height="26px">
+						<row>
+							<label value="人员编码" />
+							<label value="@{registWin$composer.profile.userNo}" />
+							<label value="政治面貌"/>
+							<label value="@{registWin$composer.profile.political.name }"/>
+						</row>
+						<row>
+							<label value="姓&#160;&#160;&#160;&#160;&#160;&#160;&#160;名" />
+							<label value="@{registWin$composer.profile.name}"/>
+							<label value="籍&#160;&#160;&#160;&#160;&#160;&#160;&#160;贯" />
+							<label value="@{registWin$composer.profile.nativePlace}" />
+						</row>
+					
+						<row>
+							<label value="性&#160;&#160;&#160;&#160;&#160;&#160;&#160;别" />
+							<label value="@{registWin$composer.profile.sexname}"/>
+							<label value="职&#160;&#160;&#160;&#160;&#160;&#160;&#160;务" />
+							<label value="@{registWin$composer.profile.position.name}"/>		   
+						</row>
+						<row>
+							<label value="出生日期"/>
+							<label value="@{registWin$composer.profile.birthday,converter='com.aidi.core.zk.DateConverter'}"/>
+							<label value="身份证号" />
+							<label value="@{registWin$composer.profile.idcardNo}"/>
+						</row>
+						<row>
+							<label value="联系电话" />
+							<label value="@{registWin$composer.profile.telephone}"/>
+							<label value="E-&#160;&#160;mail" />
+							<label value="@{registWin$composer.profile.email}"/>
+						</row>
+						<row>
+							<label value="所属部门"/>
+							<label value="@{registWin$composer.profile.organization.organizationName }"/>
+							<label value="用户账号" />
+							<label value="@{registWin$composer.account.username }"/>
+						</row>
+					</rows>
+				</grid>
+	</window>
+</zk>

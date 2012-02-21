@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?init class="cccf.ma.web.zk.ProductcataloguemanageWindowInit" arg0="productcataloguemanageWindow"?>
+<window title="产品目录管理" border="normal" 
+	use="cccf.ma.web.zk.ProductcataloguemanageWindow"
+	xmlns:a="http://www.zkoss.org/2005/zk/annotation" id="productcataloguemanageWindow"
+	xmlns="http://www.zkoss.org/2005/zul"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.zkoss.org/2005/zul
+	http://www.zkoss.org/2005/zul/zul.xsd"
+	width="720px"  sizable="true">
+	
+	<a:bind model="productCatalogueInfoList" selectedItem="productcataloguemanageWindow.productCatalogueInfo"/>
+    <listbox mold="paging" id="productCatalogueInfoListbox" width="100%" pageSize="15" checkmark="true" multiple="true" >
+		<listhead sizable="true" >
+					
+			<listheader sort="auto" label="产品编号" width="30%"/>
+					
+			<listheader sort="auto" label="产品名称" width="30%"/>
+			
+			<listheader sort="auto" label="产品级别" width="10%"/>
+					
+			<listheader sort="auto" label="激活状态" width="10%"/>
+					
+			<listheader sort="auto" label="证书编码" width="20%"/>
+					
+				
+		</listhead>
+			<a:bind _var="productCatalogueInfo"/>
+			<listitem value="@{productCatalogueInfo.id}">
+			
+			    <a:bind label="productCatalogueInfo.productNo"/>
+				<listcell/>
+				
+			    <a:bind label="productCatalogueInfo.productName"/>
+				<listcell/>
+				
+			    <a:bind label="productCatalogueInfo.productParent.productName"/>
+				<listcell/>
+				
+			    <a:bind label="productCatalogueInfo.activateStatus"/>
+				<listcell/>
+				
+			    <a:bind label="productCatalogueInfo.certificatesNo"/>
+				<listcell/>
+				
+			</listitem>
+	</listbox>
+	 
+	<separator width="10px" />
+	<div align="left">
+   <hbox>
+       <button label="增加" image="/image/common/add.png" width="70px" height="28px" style="null" forward="onAdd"/>
+       <button label="修改" image="/image/common/edit.png" width="70px" height="28px" style="null" forward="onEdit"/>
+       <button label="删除" image="/image/common/delete.png" width="70px" height="28px" style="null" forward="onDelete"/>
+    </hbox>
+   </div>
+</window>

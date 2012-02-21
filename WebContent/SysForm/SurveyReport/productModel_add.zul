@@ -1,0 +1,68 @@
+<?init class="org.zkoss.zkplus.databind.AnnotateDataBinderInit" root="./winProductModelForm" ?>  
+<zk>
+<window title="添加产品型号" border="normal" width="600px" closable="true" id="winProductModelForm"
+apply="cccf.ma.web.zk.surveyreport.ProductModelController" >
+  <grid> 
+        <columns><column width="100px" ></column><column></column></columns>
+		<rows>  
+			<row>	
+			     <cell  align="right">
+			                   规格型号 :
+			      </cell>
+			     <textbox width="99%" id="_specification"/> 
+			</row> 
+			<row>	
+			     <cell  align="right">
+			                   特性描述 :
+			      </cell>
+			     <textbox width="99%" id="_characterization"/>
+			</row> 
+			<row>	
+			     <cell align="right">
+			          是否是主型 :
+			     </cell>
+			      <checkbox id="isMainModel"/>
+			</row>
+			<row>	
+			     <cell   align="right">
+			                  产品图片 :
+			      </cell>
+			      <cell>
+			         <textbox id="tb_uploadProductPicture"/>
+			         <fileupload id="f_uploadProductPicture"  label="浏览..." forward="onUpload=onUploadProductPicture"  />
+			      </cell>
+			</row> 
+			<row>	
+			     <cell align="right">
+			                  产品设计文件 :
+			      </cell>
+			       <cell>
+			         <textbox id="tb_designDocument"/>
+			         <fileupload id="f_designDocument"  label="浏览..." forward="onUpload=onDesignDocument"  />
+			      </cell> 
+			</row> 
+			<row>	
+			     <cell align="right">
+			                  其它文件:
+			      </cell>
+			       <cell>
+			         <textbox id="tb_otherDocument"/>
+			         <fileupload id="f_otherDocument"  label="浏览..." forward="onUpload=onOtherDocument"  />
+			      </cell>  
+			</row> 
+		 </rows>
+		<foot>
+			 <footer>
+			     <cell> 
+					 <toolbarbutton label="保存" image="/image/common/export.png" forward="onSave" />	
+				       <toolbarbutton label="取消" image="/image/16/button_cancel.png" >
+					       <attribute name="onClick">
+						        Events.sendEvent(Events.ON_CLOSE, winProductModelForm, null);
+						   </attribute>
+				       </toolbarbutton>  
+				 </cell>  
+			 </footer>
+		 </foot>
+	</grid>
+</window>
+</zk>

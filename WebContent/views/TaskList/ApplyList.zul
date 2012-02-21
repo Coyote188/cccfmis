@@ -1,0 +1,46 @@
+<!-- 申请任务列表 -->
+<listbox checkmark="true" multiple="true" vflex="true" hflex="true" id="task_list" >
+	<listhead sizable="true">
+		<listheader label="申请号" width="160px"></listheader>
+		<listheader label="企业名称" width="240px"></listheader>
+		<listheader label="所在地区" width="110px"></listheader>
+		<listheader label="业务类型" width="80px"></listheader>
+		<listheader label="产品大类" width="160px"></listheader>
+		<listheader label="质检中心" width="100px"></listheader>
+		<listheader label="申请类型" width="80px"></listheader>
+		<listheader label="申请时间" width="78px"></listheader>
+		<listheader width="85px"></listheader>
+		<listheader></listheader>
+	</listhead>
+	<listitem self="@{each=item}" value="@{item}">
+		<!-- 申请号 -->
+		<listcell label="@{item.no}" image="/res/icons/clock.png"></listcell>
+		<!-- 企业名称 -->
+		<listcell label="@{item.enterprise}"></listcell>
+		<!-- 国家 -->
+		<listcell label="@{item.state}">
+			<label value="-"></label>
+			<!-- 地区 -->
+			<label value="@{item.region}"></label>
+		</listcell>
+		<!-- 业务类型-->
+		<listcell label="@{item.business_type}"></listcell>
+		<!-- 产品大类 -->
+		<listcell label="@{item.product_catalog}"></listcell>
+		<!-- 质检中心 -->
+		<listcell label="@{item.surver_orgname}"></listcell>
+		<!-- 申请类型-->
+		<listcell label="@{item.apply_type}"></listcell>
+		<!-- 申请时间-->
+		<listcell label="@{item.apply_date}" style="white-space: nowrap;"></listcell>
+		<listcell>
+			<button mold="trendy" label="@{itemButlabel}" forward="onDoSelfItem"></button>
+		</listcell>
+		<listcell/>
+	</listitem>
+	<listfoot>
+		<listfooter span="9" style="margin: 0px; padding: 1px;">
+			<paging  id="list_paging" pageSize="20" style="margin: 0px; padding: 0px;"></paging>
+		</listfooter>
+	</listfoot>
+</listbox>

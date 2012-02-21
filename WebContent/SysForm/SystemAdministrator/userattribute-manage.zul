@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<zk>
+<window style="width:100%;" 
+	xmlns:n="native" 
+    xmlns:w="client"
+	xmlns="http://www.zkoss.org/2005/zul"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation=" http://www.zkoss.org/2005/zul http://www.zkoss.org/2005/zul/zul.xsd">
+	<grid>
+			<columns>
+				<column label="" />
+				<column label="" />
+			</columns>
+			<rows>
+				<row>
+					<panel title="政治面貌维护"  collapsible="true" closable="true"  border="normal"
+						maximizable="true" style="height:450px;">
+						<panelchildren>
+							<attribute name="onCreate">
+								Window objWindow = (Window) Executions.createComponents("/SysForm/SystemAdministrator/politicalstatus-manage.zul",
+										null, null);
+								objWindow.setParent(self);
+								objWindow.doEmbedded();
+							</attribute>
+						</panelchildren>
+					</panel>
+					<panel title="职务维护"  collapsible="true" closable="true" border="normal"
+						maximizable="true" style="height:450px;">
+						<panelchildren>
+							<attribute name="onCreate">
+								Window objWindow = (Window) Executions.createComponents("/SysForm/SystemAdministrator/position-manage.zul",
+										null, null);
+								objWindow.setParent(self);
+								objWindow.doEmbedded();
+							</attribute>
+						</panelchildren>
+					</panel>
+				</row>
+				
+			</rows>
+		</grid>		
+	
+</window>
+</zk>

@@ -1,0 +1,55 @@
+<?page title="new page title" contentType="text/html;charset=UTF-8"?>
+<?init class="org.zkoss.zkplus.databind.AnnotateDataBinderInit" root="./frmLocationSelect"?>
+<zk>
+	<window id="frmLocationSelect"
+		apply="openjframework.web.zk.MsgLocationSelectController"
+		border="normal">
+		<hbox>
+			<listbox id="lbxState" width="120px" multiple="true"
+				checkmark="true" model="@{frmLocationSelect$composer.sList }">
+				
+				<auxhead>
+				<auxheader label="国家">
+					<space width="15%"/>
+					<toolbarbutton id="btnCheckAll" label="全选" style="text-Decoration:underline;color:#3300cc"/>
+					<toolbarbutton id="btnOkState" label="确认" style="text-Decoration:underline;color:#3300cc"/>
+				</auxheader> 
+				</auxhead>
+				<listhead/>
+				<listitem self="@{each=state }" value="@{state }">
+					<listcell label="@{state.name }" />
+				</listitem>
+			</listbox>
+			<listbox id="lbxPro" width="120px" multiple="true"
+				checkmark="true"
+				model="@{frmLocationSelect$composer.pList }">
+				<listhead>
+					<listheader label="省" />
+				</listhead>
+				<listitem self="@{each=pro }" value="@{pro }">
+					<listcell label="@{pro.name }" />
+				</listitem>
+			</listbox>
+			<listbox id="lbxCity" width="120px" multiple="true"
+				checkmark="true"
+				model="@{frmLocationSelect$composer.cList }">
+				<auxhead >
+<!--					<auxheader label="市"/>-->
+					<auxheader >
+						<checkbox id="cbxSelectAll" label="市"/>
+						<space width="35%"/>
+						<toolbarbutton id="btnOkLoc" label="确认" style="text-Decoration:underline;color:#3300cc"/>
+					</auxheader>
+				</auxhead>
+				<listhead>
+<!--					<listheader label="市" />-->
+				</listhead>
+				<listitem self="@{each=city }" value="@{city }">
+					<listcell label="@{city.name }" />
+				</listitem>
+			</listbox>
+			<div id="divEpList">
+			</div>
+		</hbox>
+	</window>
+</zk>

@@ -1,0 +1,36 @@
+<?init class="com.aidi.bpm.zk.TaskManageInit" arg0="./taskManageWindow"?>
+
+<window title="任务" border="normal" 
+	use="com.aidi.bpm.zk.TaskManageWindow"
+	xmlns:a="http://www.zkoss.org/2005/zk/annotation" id="taskManageWindow"
+	xmlns="http://www.zkoss.org/2005/zul"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.zkoss.org/2005/zul
+	http://www.zkoss.org/2005/zul/zul.xsd"
+	width="400px"  sizable="true">
+
+	<a:bind model="taskList" selectedItem="taskManageWindow.task"/>
+		<listbox mold="paging" id="taskListbox" width="380px" pageSize="15"  >
+			<listhead sizable="true" >
+				<listheader sort="auto" label="任务名称"  width="300px" />
+			</listhead>
+			<a:bind _var="task"/>
+			<listitem value="@{task.id}" >
+				<a:bind label="task.name"/>
+				<listcell/>
+				
+			</listitem>
+		</listbox>
+		<separator width="10px" />
+		<div align="center">
+		<hbox>
+			
+			
+			<button label="表单定义" image="/image/common/add_template.png"  forward="onManageForm"/>
+			<separator width="10px" />
+			<button label="取消" image="/image/common/undo.png" forward="onCancel"/>
+		</hbox>
+		
+	        </div>
+
+</window>

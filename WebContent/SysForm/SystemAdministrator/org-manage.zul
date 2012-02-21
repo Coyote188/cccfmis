@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<window id="orgwindow" width="100%" height="100%"
+	apply="openjframework.web.zk.OrgComposer" sizable="true">
+	<borderlayout>
+		<west border="0" width="250px">
+			<tree id="tree" width="99%" height="430px"
+				zclass="z-dottree">
+				<treecols>
+					<treecol label="评定中心部门维护"
+						style="font-size:25px;color:#FF0000;font-weight:bold;"
+						image="/image/treelink/syjh.png" />
+				</treecols>
+			</tree>
+		</west>
+		<center id="orgc" flex="true" autoscroll="true">
+
+		</center>
+	</borderlayout>
+</window>

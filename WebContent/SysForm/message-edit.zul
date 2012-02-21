@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?init class="dltax.oa.web.zk.MessageeditWindowInit" arg0="MessageEditWindow"?>
+<window title="" border="normal" 
+	use="dltax.oa.web.zk.MessageeditWindow"
+	xmlns:a="http://www.zkoss.org/2005/zk/annotation" id="MessageEditWindow"
+	xmlns="http://www.zkoss.org/2005/zul"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.zkoss.org/2005/zul
+	http://www.zkoss.org/2005/zul/zul.xsd"
+	width="100%"  sizable="true">
+	<div align="center">
+	  <label value="消息编辑" style="font-size:32px;color:#008BB6;font-weight:bold;"/>
+	</div>
+	
+<grid>
+<columns><column width="150px" align="center"></column></columns>
+  <rows>
+     <row> 
+     <label value="消息类型:" style="font-size:14px;color:#008BB6;font-weight:bold;"/>        
+        
+       <a:bind value="message.type"/>
+       <combobox id="type" model="@{typeList}"  onSelect="MessageEditWindow.ontypeSelect(event)" autodrop="true" width="250px">
+         <comboitem self="@{each=type}"  label="@{type.}"  value="@{type.}"/>
+       </combobox>
+		 	
+     </row>	
+     <row> 
+     <label value="发件人: " style="font-size:14px;color:#008BB6;font-weight:bold;"/>        
+       
+       <a:bind value="message.sendUser.name"/>
+       <combobox id="sendUser" model="@{sendUserList}"  onSelect="MessageEditWindow.onsendUserSelect(event)" autodrop="true" width="250px">
+         <comboitem self="@{each=sendUser}"  label="@{sendUser.name}"  value="@{sendUser.id}"/>
+       </combobox>
+		 	
+     </row>	
+     <row> 
+     <label value="*收件人:" style="font-size:14px;color:#008BB6;font-weight:bold;"/>        
+        
+       <a:bind value="message.receiveUser.name"/>
+       <combobox id="receiveUser" model="@{receiveUserList}"  onSelect="MessageEditWindow.onreceiveUserSelect(event)" autodrop="true" width="250px">
+         <comboitem self="@{each=receiveUser}"  label="@{receiveUser.name}"  value="@{receiveUser.id}"/>
+       </combobox>
+		 	
+     </row>	
+     <row>
+     <label value="*发送日期:" style="font-size:14px;color:#008BB6;font-weight:bold;"/>         
+        
+       <a:bind value="message.sendDate"/>
+       <datebox id="sendDate" width="250px" format="yyyy-MM-dd"/>
+		 	
+     </row>	
+     <row>
+     <label value="*消息内容:" style="font-size:14px;color:#008BB6;font-weight:bold;"/>         
+        
+       <a:bind value="message.content"/>
+       <textbox id="content" rows="6" width="60%"/>
+		 	
+     </row>	
+     <row> 
+     <label value="*URL:" style="font-size:14px;color:#008BB6;font-weight:bold;"/>        
+        
+       <a:bind value="message.messageUrl"/>
+       <textbox id="messageUrl" width="250px"/>
+		 	
+     </row>	
+     <row> 
+     
+     <label value=" *阅读状态:" style="font-size:14px;color:#008BB6;font-weight:bold;"/>        
+      
+       <hbox> 
+       <a:bind value="message.readStatus"/>
+       <textbox id="readStatus" width="100px" value="0"/>
+       <label value="(0-未读,1-也读)"/>
+		</hbox> 	
+     </row>	
+  </rows>
+ </grid>
+<separator width="10px" />
+ <div align="left">
+   <hbox>
+       <button label="保存" image="/image/common/save.png"  width="70px" height="28px" style="null" forward="onSave"/>
+       <button label="关闭" image="/image/common/close.png"  width="70px" height="28px" style="null" forward="onCancel"/>  
+   </hbox>
+ </div>
+</window>			   

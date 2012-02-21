@@ -1,0 +1,234 @@
+<?page title="评定信息组件" contentType="text/html;charset=UTF-8"?>
+<window apply="cccf.mis.web.pub.EvaluationMsgController">
+	<groupbox mold="3d" closable="false">
+		<caption image="/res/icons/page.png" label="申请企业信息"></caption>
+		<grid>
+			<columns>
+				<column></column>
+				<column></column>
+				<column></column>
+				<column></column>
+			</columns>
+			<rows>
+				<row>
+					<label value="申请企业"></label>
+					<label value="${applyEnt.name}"></label>
+					<label value="专真"></label>
+					<label value="${applyEnt.faxNum}"></label>
+				</row>
+				<row>
+					<label value="联系人"></label>
+					<label value="${applyEnt.contactPerson}"></label>
+					<label value="联系电话"></label>
+					<label value="${applyEnt.telephoneNum}"></label>
+				</row>
+				<row>
+					<label value="通讯地址"></label>
+					<label value="${applyEnt.contactAddress}"></label>
+					<label value="邮政编码"></label>
+					<label value="${applyEnt.postalcode}"></label>
+				</row>
+				<row>
+					<label value="企业英文名"></label>
+					<label value="${applyEnt.nameEn}"></label>
+					<label value="企业英文地址"></label>
+					<label value="${applyEnt.contactAddressEn}"></label>
+				</row>
+			</rows>
+		</grid>
+	</groupbox>
+	<grid>
+		<auxhead>
+			<auxheader colspan="9" image="/res/icons/page.png" label="申请认证产品"></auxheader>
+		</auxhead>
+		<columns>
+			<column label="" width="40px"></column>
+			<column label="序号" width="40px"></column>
+			<column label="产品名称"></column>
+			<column label="主/分型" width="60px"></column>
+			<column label="规格型号"></column>
+			<column label="产品描述"></column>
+			<column label="生产厂-制造商"></column>
+			<column label="执行示准"></column>
+			<column label="认证规则"></column>
+			<column label="相关链接"></column>
+		</columns>
+		<rows>
+			<row height="26px" forEach="${products}">
+				<cell>
+					<checkbox disabled="true" checked="${each.checked}"></checkbox>
+				</cell>
+				<cell>
+					<label value="${each.sn}"></label>
+				</cell>
+				<cell>
+					<label value="${each.productName}"></label>
+				</cell>
+				<cell>
+					<label value="${each.isMainModel_label}"></label>
+				</cell>
+				<cell>
+					<label value="${each.specification}"></label>
+				</cell>
+				<cell>
+					<label value="${each.characterization}"></label>
+				</cell>
+				<cell>
+					<label value="${each.manufactureInfo_name}"></label>
+					<label value="-"></label>
+					<label value="${each.productionEnterpriseName}"></label>
+					<label value="地止:"></label>
+					<label value="${each.registeredAddress}"></label>
+				</cell>
+				<cell>
+					<label value="${each.observedStandard}"></label>
+				</cell>
+				<cell>
+					<label value="${each.caRule}"></label>
+				</cell>
+				<cell>
+					<groupbox mold="3d" open="false">
+						<caption image="/res/icons/folder_link.png" label="打开"></caption>
+						<vbox>
+							<toolbarbutton forward="onOpenApply" image="/res/icons/attach.png" style="color:blue;"
+								label="申请信息[${each.applyno}]">
+								<custom-attributes applyno="${each.applyno}" />
+							</toolbarbutton>
+							<toolbarbutton forward="onOpenSurvey" image="/res/icons/attach.png" style="color:blue;"
+								label="检验报告[${each.surveyReportSN}]">
+								<custom-attributes survey="${each.surveyReportSN}" />
+							</toolbarbutton>
+							<toolbarbutton image="/res/icons/attach.png" label="[合同${applyEnt.contractNo}]">
+								<custom-attributes contract="${applyEnt.contractNo}" />
+							</toolbarbutton>
+							<toolbarbutton image="/res/icons/attach.png" label="[工厂检查]"></toolbarbutton>
+							<toolbarbutton image="/res/icons/attach.png" label="[证书编号]"></toolbarbutton>
+						</vbox>
+					</groupbox>
+				</cell>
+			</row>
+		</rows>
+	</grid>
+	<grid>
+		<auxhead>
+			<auxheader colspan="4" image="/res/icons/page.png" label="审核意见"></auxheader>
+		</auxhead>
+		<columns>
+			<column label="证书有效期"></column>
+			<column label="企业人数代码"></column>
+			<column label="建议操作"></column>
+			<column label="备注"></column>
+		</columns>
+		<rows>
+			<row height="26px">
+				<cell>
+					<label value="${report.certificateValid}"></label>
+				</cell>
+				<cell>
+					<label value="${report.entTollCode }"></label>
+				</cell>
+				<cell>
+					<label value="${report.operateType }"></label>
+				</cell>
+				<cell>
+					<label value="${report.memo}"></label>
+				</cell>
+			</row>
+		</rows>
+	</grid>
+	<grid>
+		<auxhead>
+			<auxheader colspan="6" image="/res/icons/page.png" label="评定信息"></auxheader>
+		</auxhead>
+		<columns>
+			<column label="评定阶段"></column>
+			<column label="评定人员"></column>
+			<column label="结论"></column>
+			<column label="评定日期"></column>
+			<column label="意见"></column>
+			<column label="备注"></column>
+		</columns>
+		<rows>
+			<row height="26px">
+				<cell>
+					<label value="生成"></label>
+				</cell>
+				<cell>
+					<label value="${opinion.opName_r1 }"></label>
+				</cell>
+				<cell>
+					<label value="${opinion.approveResult_r1 }"></label>
+				</cell>
+				<cell>
+					<label value="${opinion.opinionContent_r1 }"></label>
+				</cell>
+				<cell>
+					<label value="${opinion.memo_r1 }"></label>
+				</cell>
+				<cell>
+					<label value="${opinion.evaluationTime_r1 }"></label>
+				</cell>
+			</row>
+			<row height="26px">
+				<cell>
+					<label value="初评"></label>
+				</cell>
+				<cell>
+					<label value="${opinion.opName_r2 }"></label>
+				</cell>
+				<cell>
+					<label value="${opinion.approveResult_r2 }"></label>
+				</cell>
+				<cell>
+					<label value="${opinion.opinionContent_r2 }"></label>
+				</cell>
+				<cell>
+					<label value="${opinion.memo_r2 }"></label>
+				</cell>
+				<cell>
+					<label value="${opinion.evaluationTime_r2 }"></label>
+				</cell>
+			</row>
+			<row height="26px">
+				<cell>
+					<label value="复评"></label>
+				</cell>
+				<cell>
+					<label value="${opinion.opName_r3 }"></label>
+				</cell>
+				<cell>
+					<label value="${opinion.approveResult_r3 }"></label>
+				</cell>
+				<cell>
+					<label value="${opinion.opinionContent_r3 }"></label>
+				</cell>
+				<cell>
+					<label value="${opinion.memo_r3 }"></label>
+				</cell>
+				<cell>
+					<label value="${opinion.evaluationTime_r3 }"></label>
+				</cell>
+			</row>
+			<row height="26px">
+				<cell>
+					<label value="评定"></label>
+				</cell>
+				<cell>
+					<label value="${opinion.opName_r4 }"></label>
+				</cell>
+				<cell>
+					<label value="${opinion.approveResult_r4 }"></label>
+				</cell>
+				<cell>
+					<label value="${opinion.opinionContent_r4 }"></label>
+				</cell>
+				<cell>
+					<label value="${opinion.memo_r4 }"></label>
+				</cell>
+				<cell>
+					<label value="${opinion.evaluationTime_r4 }"></label>
+				</cell>
+			</row>
+		</rows>
+	</grid>
+</window>

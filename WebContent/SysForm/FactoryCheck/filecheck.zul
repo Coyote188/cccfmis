@@ -1,0 +1,123 @@
+<?page title="文件审查" contentType="text/html;charset=UTF-8"?>
+<?init class="org.zkoss.zkplus.databind.AnnotateDataBinderInit" root="./frmFilecheck"?>
+<zk>
+	<window id="frmFilecheck" height="100%" width="100%"
+		apply="cccf.ma.web.zk.factorycheck.FilecheckController" title="文件审查"
+		border="normal" closable="true">
+
+		<borderlayout height="100%">
+			<center id="ctFacInspectionContent" flex="true"
+				autoscroll="true">
+				<groupbox mold="3d">
+					<caption label="文件审查信息" />
+					<grid>
+						<columns>
+							<column width="20%" />
+							<column width="30%" />
+							<column width="20%" />
+							<column width="30%" />
+						</columns>
+						<rows>
+							<row>
+								<label value="工厂检查号" />
+								<label
+									value="@{frmFilecheck$composer.checkInfo.applyno }" />
+								<label value="开始时间" />
+								<label value="" />
+							</row>
+							<row>
+								<label value="申请企业" />
+								<label value="@{frmFilecheck$composer.checkInfo.applyEnterpriseName }" />
+								<label value="结束时间" />
+								<label value="" />
+							</row>
+							<row>
+								<label value="业务类型" />
+								<label value="@{frmFilecheck$composer.checkInfo.businessType }" />
+								<label value="检查类型" />
+								<label value="@{frmFilecheck$composer.checkInfo.surverType }" />
+							</row>
+							<row>
+								<label value="联系地址" />
+								<label value="@{frmFilecheck$composer.checkInfo.contactAddress }" />
+								<label value="邮政编码" />
+								<label value="@{frmFilecheck$composer.checkInfo.postalcode }" />
+							</row>
+						</rows>
+					</grid>
+					<separator height="15px" />
+					<listbox>
+						<listhead>
+							<listheader label="申请号" />
+							<listheader label="生产厂" />
+							<listheader label="产品类别" />
+							<listheader label="申请类别" />
+							<listheader label="检验中心" />
+							<listheader label="文件审查" />
+						</listhead>
+						<listitem>
+							<listcell label="@{frmFilecheck$composer.applyInfo.applyno }" />
+							<listcell label="@{frmFilecheck$composer.applyInfo.productionEnterpriseName }" />
+							<listcell label="@{frmFilecheck$composer.applyInfo.productCatalog }" />
+							<listcell label="@{frmFilecheck$composer.applyInfo.applyType }" />
+							<listcell label="@{frmFilecheck$composer.applyInfo.surverOrgName }" />
+							<listcell>
+								<toolbarbutton id="btnFileCheck" label="文件审查" style="text-Decoration:underline;color:#3300cc;font-size:12" />
+							</listcell>
+						</listitem>
+					</listbox>
+				</groupbox>
+			</center>
+			<south title="工作流操作" collapsible="true"
+				splittable="false">
+				<vbox>
+				<groupbox mold="3d">
+				<caption label="前一任务" />
+							<listbox >
+								<listhead>
+									<listheader label="任务名称"/>
+									<listheader label="执行人员" />
+									<listheader label="完成日期"/>
+									<listheader label="执行结果"/>
+									<listheader label="意见"/>
+								</listhead>
+								<listitem>
+									<listcell label="@{frmFilecheck$composer.preTaskInstanceInfo.taskName }"/>
+									<listcell label="@{frmFilecheck$composer.preTaskInstanceInfo.actorName }" />
+									<listcell label="@{frmFilecheck$composer.preTaskInstanceInfo.approveDate }" />
+									<listcell label="@{frmFilecheck$composer.preTaskInstanceInfo.approveResult }" />
+									<listcell label="@{frmFilecheck$composer.preTaskInstanceInfo.approveMemo }" />
+								</listitem>
+							</listbox>
+				</groupbox>				
+				<grid id="appoveGrid">
+					<columns>
+						<column width="80px" align="center"></column>
+						<column></column>
+					</columns>
+					<rows>
+						<row align="left">
+							<label value="下一步:" />
+							<cell>
+								<listbox id="resultListbox"
+									mold="select" rows="1" width="200" />
+								<button label="提交"
+									image="/image/16/up.png" width="68px" id="btSubmit"
+									height="26px" style="" forward="onSubmit" />
+								<button label="关闭"
+									image="/image/common/close.png" width="68px" height="26px"
+									style="" forward="onCancel" />
+								<button label="回退" disabled="true"></button>
+							</cell>
+						</row>
+						<row align="left">
+							<label value="意见:" />
+							<textbox id="approveMemo" rows="3"
+								width="98%" />
+						</row>
+					</rows>
+				</grid></vbox>
+			</south>
+		</borderlayout>
+	</window>
+</zk>

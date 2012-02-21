@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?init class="org.zkoss.zkplus.databind.AnnotateDataBinderInit" root="./filedownloadWin" ?>
+<zk>
+<window id="filedownloadWin"  width="300px" 
+		apply="openjframework.InstantMessage.FiledownloadMiniWinComposer">
+ <attribute name="onCreate">
+ Clients.evalJavaScript("showMini()");
+ </attribute>
+	<div id="_down_window" >
+		<div style="height:25px;padding-right: 10px;
+					padding-left: 5px;
+					background-repeat: repeat-x;
+					background-color: #ECECEC;">
+			<div style="float:left;font-weight:bold;">
+				<image src="/image/files/folderdown.png" />
+				文件下载
+			</div>
+			<div align="right" style="float:right;">
+				<image src="/image/files/close.gif"
+						style="margin-top:2px;margin-right:2px;cursor:pointer;"
+						onClick='Clients.evalJavaScript("hideMini()")'
+						forward="onClick=filedownloadWin.onClose"
+						hover="/image/16/button_cancel.png" tooltiptext=" 关闭窗口" />
+			</div>
+		</div>
+		<div style="padding-bottom:20px">
+			<listbox style="border:0px;" model="@{filedownloadWin$composer.attlist}">
+				<listhead>
+					<listheader />
+					<listheader width="40px"/>
+					<listheader width="40px"/>
+				</listhead>
+				<listitem self="@{each='name'}" value="@{ name }">
+					<listcell label="@{name}" style="white-space:nowrap;"/>
+					<listcell>
+					 <toolbarbutton id="receiveTlb" width="30px" label="接收" style="color:Blue;text-Decoration:underline;">
+					 <custom-attributes att="@{name}"/>
+					 </toolbarbutton>
+					</listcell>
+					<listcell>
+					 <toolbarbutton id="cancelTlb" width="30px" label="拒绝" style="color:Blue;text-Decoration:underline;">
+					  <custom-attributes att="@{name}"/>
+					 </toolbarbutton >
+					</listcell>
+				</listitem>
+				
+			</listbox>
+	   </div>
+	</div>
+</window>
+	<script type="text/javascript">
+		
+		<![CDATA[ function showMini() 
+		{ 
+			var $d=jq("filedownloadWin");
+			$d.show().fadeOut(2500);
+			}
+		function hideMini() 
+		{
+			var $d=jq("$filedownloadWin");
+			$d.hide().fadeIn();
+			}
+		]]>
+		    
+     </script>
+</zk>

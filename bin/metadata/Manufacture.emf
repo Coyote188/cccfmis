@@ -1,0 +1,37 @@
+<EnityModel>
+  <Name>Manufacture</Name>
+  <Alias>制造商/生产企业</Alias>
+  <PackageName>cccf.ma</PackageName>
+  <DbTableName>manufacture</DbTableName>
+  <PrimaryKey>id</PrimaryKey>
+  <PrimaryKeyType>uuid.hex</PrimaryKeyType>
+  <FieldList>
+    <Field>
+      <Name>id</Name>
+      <Alias></Alias>
+      <DbFieldName>mId</DbFieldName>
+      <DataType>STRING</DataType>
+      <AllowNull>false</AllowNull>
+      <Length>0</Length>
+      <IsLinkProperty>false</IsLinkProperty>
+    </Field>
+    <Field>
+      <Name>contactAddress</Name>
+      <Alias>通讯地址</Alias>
+      <DbFieldName>CONTACTADDRESS</DbFieldName>
+      <DataType>STRING</DataType>
+      <AllowNull>true</AllowNull>
+      <Length>0</Length>
+      <IsLinkProperty>false</IsLinkProperty>
+    </Field>
+    <Field>
+      <Name>name</Name>
+      <Alias>名称</Alias>
+      <DbFieldName>NAME</DbFieldName>
+      <DataType>STRING</DataType>
+      <AllowNull>true</AllowNull>
+      <Length>0</Length>
+      <IsLinkProperty>false</IsLinkProperty>
+    </Field>
+  </FieldList>
+</EnityModel>

@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?init class="org.zkoss.zkplus.databind.AnnotateDataBinderInit" root="./productUsersWin" ?>
+<zk>
+<window id="productUsersWin" apply="cccf.ma.web.zk.ProductUsersListComposer"
+	xmlns:n="native"  width="100%" 
+    xmlns:w="client"
+	xmlns="http://www.zkoss.org/2005/zul" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation=" http://www.zkoss.org/2005/zul http://www.zkoss.org/2005/zul/zul.xsd" >
+	<div>
+	       <div align="right">
+	       <label value="【产品名称】" style="font-size:14px;color:RED;font-weight:bold;"/>
+	       <label value="@{productUsersWin$composer.proName}" style="font-size:12px;color:BLUE;font-weight:bold;"/>
+	       </div>
+		  <groupbox>
+			<caption label="符合性审查人员"  style="font-size:12px;color:#163973;font-weight:bold;"/>
+			<grid id="reviewGrd">
+				<columns>
+					<column />
+					<column />
+					<column />
+					<column />
+				</columns>
+			</grid>
+		  </groupbox>
+		  <groupbox>
+			<caption label="工厂检查人员"  style="font-size:12px;color:#163973;font-weight:bold;"/>
+			<grid id="checkGrd">
+				<columns>
+					<column />
+					<column />
+					<column />
+					<column />
+				</columns>
+			</grid>
+		  </groupbox>
+		  <groupbox>
+			<caption label="评定人员"  style="font-size:12px;color:#163973;font-weight:bold;"/>
+			<grid id="assessGrd">
+				<columns>
+					<column />
+					<column />
+					<column />
+					<column />
+				</columns>
+			</grid>
+		  </groupbox>
+	  	  <button id="saveBtn" image="/image/common/save.png"
+	  	  		  label="保存" width="68px" height="26px"
+	  	  		  />
+	</div>
+	
+</window>
+</zk>

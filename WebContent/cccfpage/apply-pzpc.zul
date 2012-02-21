@@ -1,0 +1,136 @@
+<?page title="派组批次管理" contentType="text/html;charset=UTF-8"?>
+<zk>
+	<window title="派组批次管理" border="normal" width="100%" height="100%">
+		<borderlayout>
+			<north title="批次" splittable="true" collapsible="true">
+				<listbox>
+					<listhead>
+						<listheader label="批次"></listheader>
+						<listheader label="工厂检查号"></listheader>
+						<listheader label="新建时间"></listheader>
+						<listheader label="状态"></listheader>
+						<listheader></listheader>
+					</listhead>
+					<listitem>
+						<listcell>20100301</listcell>
+						<listcell>H000301</listcell>
+						<listcell>2010-3-25</listcell>
+						<listcell>新批次</listcell>
+						<listcell>
+							<toolbarbutton label="删除"></toolbarbutton>
+						</listcell>
+					</listitem>
+					<listitem>
+						<listcell>20100302</listcell>
+						<listcell>H000302</listcell>
+						<listcell>2010-3-25</listcell>
+						<listcell>新批次</listcell>
+						<listcell>
+							<toolbarbutton label="删除"></toolbarbutton>
+						</listcell>
+					</listitem>
+					<listfoot>
+						<listfooter>
+							<toolbarbutton label="新建"></toolbarbutton>
+						</listfooter>
+					</listfoot>
+				</listbox>
+			</north>
+			<west title="检查人员库" width="30%" splittable="true" collapsible="true">
+				<listbox vflex="true">
+					<listhead>
+						<listheader label="姓名"></listheader>
+						<listheader label="单位"></listheader>
+						<listheader label="资质"></listheader>
+					</listhead>
+					<listitem>
+						<listcell>张工</listcell>
+						<listcell>评定中心</listcell>
+						<listcell>[CCC-1][]CCC-2]</listcell>
+					</listitem>
+				</listbox>
+			</west>
+			<center flex="true" title="已添加的审请">
+				<grid>
+					<columns menupopup="auto">
+						<column label="申请人"></column>
+						<column label="产品"></column>
+						<column label="地址"></column>
+						<column label="制造商"></column>
+						<column label="生产厂"></column>
+						<column label="生产厂地址"></column>
+						<column label="联系人"></column>
+						<column label="联系电话"></column>
+						<column label="传真"></column>
+						<column label="电子邮件"></column>
+						<column></column>
+					</columns>
+					<rows>
+						<row>
+							<cell></cell>
+							<cell></cell>
+							<cell></cell>
+							<cell></cell>
+							<cell></cell>
+							<cell></cell>
+							<cell></cell>
+							<cell></cell>
+							<cell></cell>
+							<cell></cell>
+							<cell>
+								<toolbarbutton label="删除"></toolbarbutton>
+							</cell>
+						</row>
+						<row>
+							<cell></cell>
+							<cell></cell>
+							<cell></cell>
+							<cell></cell>
+							<cell></cell>
+							<cell></cell>
+							<cell></cell>
+							<cell></cell>
+							<cell></cell>
+							<cell></cell>
+							<cell>
+								<toolbarbutton label="删除"></toolbarbutton>
+							</cell>
+						</row>
+					</rows>
+					<foot>
+						<footer>
+							<toolbarbutton label="添加申请"></toolbarbutton>
+						</footer>
+					</foot>
+				</grid>
+			</center>
+			<south title="工作流操作" collapsible="true" splittable="false">
+				<grid id="appoveGrid">
+					<columns>
+						<column width="80px" align="center"></column>
+						<column></column>
+					</columns>
+					<rows>
+						<row align="left">
+							<label value="下一步:" />
+							<cell>
+								<listbox id="resultListbox" mold="select" rows="1" width="200">
+									<listitem value="审批" label="审批"></listitem>
+								</listbox>
+								<button label="提交" image="/image/16/up.png" width="68px" id="btSubmit" height="26px" style=""
+									forward="onSubmit" />
+								<button label="关闭" image="/image/common/close.png" width="68px" height="26px" style=""
+									forward="onCancel" />
+								<button label="回退" disabled="true"></button>
+							</cell>
+						</row>
+						<row align="left">
+							<label value="意见:" />
+							<textbox id="approveMemo" rows="3" width="98%" />
+						</row>
+					</rows>
+				</grid>
+			</south>
+		</borderlayout>
+	</window>
+</zk>

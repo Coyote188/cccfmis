@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?init class="cccf.ma.web.zk.CommontreatymangeWindowInit" arg0="commontreatymangeWindow"?>
+<window title="" border="none" 
+	use="cccf.ma.web.zk.CommontreatymangeWindow"
+	xmlns:a="http://www.zkoss.org/2005/zk/annotation" id="commontreatymangeWindow"
+	xmlns="http://www.zkoss.org/2005/zul"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.zkoss.org/2005/zul
+	http://www.zkoss.org/2005/zul/zul.xsd"
+	style="width:99%;height:100%;" sizable="true">
+	
+	<hbox id="querybox">
+			
+ 		协议标题:<textbox id="title" width="100px"/><separator width="10px" /> 
+		
+ 		协议分类:<textbox id="type" width="100px"/><separator width="10px" /> 
+		
+		<button label="查询" image="/image/16/find.png"  forward="onSearch"/>
+	</hbox>
+	<separator width="10px" />
+	
+	<a:bind model="commonTreatyInfoList" selectedItem="commontreatymangeWindow.commonTreatyInfo"/>
+    <listbox mold="paging" id="commonTreatyInfoListbox" width="99%" pageSize="10" checkmark="true" multiple="true" >
+		<listhead sizable="true" >
+					
+			<listheader label="协议标题"/>
+					
+			<listheader  label="协议分类" width="100px"/>
+					
+			<listheader  label="拟定日期" width="100px"/>
+				
+		</listhead>
+			<a:bind _var="commonTreatyInfo"/>
+			<listitem value="@{commonTreatyInfo.id}">
+			
+			    <a:bind label="commonTreatyInfo.title"/>
+				<listcell />
+				
+			    <a:bind label="commonTreatyInfo.typeName"/>
+				<listcell/>
+				
+			    <listcell label="@{commonTreatyInfo.date,converter='com.aidi.core.zk.DateConverter'}"/>
+			    
+			</listitem>
+	</listbox>
+	 
+	<separator width="10px" />
+	<div align="left">
+   <hbox>
+       <button label="增加" image="/image/common/add.png" width="70px" height="28px" style="null" forward="onAdd"/>
+       <button label="修改" image="/image/common/edit.png" width="70px" height="28px" style="null" forward="onEdit"/>
+       <button label="删除" image="/image/common/delete.png" width="70px" height="28px" style="null" forward="onDelete"/>
+    </hbox>
+   </div>
+</window>

@@ -1,0 +1,100 @@
+<?page title="new page title" contentType="text/html;charset=UTF-8"?>
+<?init class="org.zkoss.zkplus.databind.AnnotateDataBinderInit" root="./frmFactoryCheckList"?>
+<zk>
+<window id="frmFactoryCheckList" apply="cccf.ma.web.zk.factorycheck.ChecklistManageController" title="" border="normal">
+	<listbox id="lbxChecklist" style="border:0" model="@{frmFactoryCheckList$composer.checklist }">
+	<listhead />
+	<auxhead>
+		<auxheader colspan="5" label="序号"/>
+		<auxheader colspan="10" label="检查项目"/>
+		<auxheader colspan="75" label="检查要求"/>
+		<auxheader colspan="10" label="操作"/>
+	</auxhead>
+	<listitem self="@{each=item }">
+		<listcell span="10">
+		<vbox width="100%">
+			<hbox width="100%">
+				<hbox width="100%">
+					<textbox width="100%" readonly="true" inplace="true" value="@{item.path }"  style="border:0"/>
+					<textbox width="100%" readonly="true" inplace="true" value="@{item.checkItem }"  style="border:0"/>
+					<textbox width="100%" readonly="true" inplace="true" value="@{item.checkContent }"  style="border:0"/>
+					<toolbarbutton label="删除" forward="onRemove" style="text-Decoration:underline;color:#3300cc">
+						<custom-attributes arg="@{item }"/>
+					</toolbarbutton>
+				</hbox>
+			</hbox>
+			<listbox style="border:0" model="@{item.children }">
+				<listhead/>
+				<listitem self="@{each=item_ii }">
+					<listcell>
+						<vbox>
+							<hbox width="100%">
+								<textbox width="90%" readonly="true" inplace="true" value="@{item_ii.path }"  style="border:0"/>
+								<textbox width="90%" readonly="true" inplace="true" value="@{item_ii.checkItem }"  style="border:0"/>
+								<textbox width="90%" readonly="true" inplace="true" value="@{item_ii.checkContent }"  style="border:0"/>
+								<toolbarbutton label="删除" forward="onRemove" style="text-Decoration:underline;color:#3300cc">
+									<custom-attributes arg="@{item_ii }"/>
+								</toolbarbutton>
+							</hbox>
+							<listbox style="border:0" model="@{item_ii.children }">
+								<listhead/>
+								<listitem self="@{each=item_iii }">
+									<listcell>
+										<hbox width="100%">
+											<textbox width="90%" readonly="true" inplace="true" value="@{item_iii.path }"  style="border:0"/>
+											<textbox width="90%" readonly="true" inplace="true" value="@{item_iii.checkItem }"  style="border:0"/>
+											<textbox width="90%" readonly="true" inplace="true" value="@{item_iii.checkContent }"  style="border:0"/>
+											<toolbarbutton label="删除" forward="onRemove" style="text-Decoration:underline;color:#3300cc">
+												<custom-attributes arg="@{item_iii }"/>
+											</toolbarbutton>
+										</hbox>
+									</listcell>
+								</listitem>
+							</listbox>
+						</vbox>
+					</listcell>
+				</listitem>
+			</listbox>
+
+		</vbox>
+		</listcell>
+	</listitem>
+</listbox>
+<grid>
+		<columns>
+			<column label="" width="15%"/>
+			<column label="" width="10%"/>
+			<column label="" width="5%"/>
+			<column label="" width="20%"/>
+			<column label="" width="50%"/>
+		</columns>
+		<rows>
+			<row>
+				<label value="父节点" />
+				<label value="显示序列" />
+				<label value="排序" />
+				<label value="检查项目" />
+				<label value="检查要求" />
+			</row>
+			<row>
+				<combobox id="cbxItemParent" mold="rounded" width="99%" readonly="true" autodrop="true" model="@{frmFactoryCheckList$composer.checklist }">
+					<comboitem self="@{each=check }" label="@{check.checkItem }" value="@{check }">
+<!--						<label value="@{check.path }"/>-->
+<!--						<label value="@{check.checkItem }"/>-->
+					</comboitem>
+				</combobox>
+				<textbox id="tbxPath" value="@{frmFactoryCheckList$composer.facCheck.path }" width="90%" constraint="no empty:工厂质保能力审查检查序号不能为空，请填写!"/>
+				<intbox id="tbxSerialNum" value="@{frmFactoryCheckList$composer.facCheck.serialNum }" width="90%" constraint="no empty:工厂质保能力审查检查排序不能为空，请填写!"/>
+				<textbox id="tbxCheckItem" value="@{frmFactoryCheckList$composer.facCheck.checkItem }"  width="95%" constraint="no empty:工厂质保能力审查检查项目不能为空，请填写!"/>
+				<textbox id="tbxCheckContent" value="@{frmFactoryCheckList$composer.facCheck.checkContent }"  width="95%" constraint="no empty:工厂质保能力审查检查要求不能为空，请填写!"/>
+			</row>
+			<row>
+				<space />
+				<button id="btnAdd" label="添加" height="26px" width="68px"/>
+				<space />
+				<button id="btnCancel" label="取消" height="26px" width="68px"/>
+			</row>
+		</rows>
+	</grid>
+</window>
+</zk>

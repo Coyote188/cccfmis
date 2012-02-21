@@ -1,0 +1,48 @@
+<?init class="cccf.ma.bpm.MyEndTaskListInit" arg0="./myEndTaskListWindow"?>
+
+<window xmlns:a="http://www.zkoss.org/2005/zk/annotation" apply="cccf.ma.bpm.MyEndTaskListController" id="myEndTaskListWindow"
+	width="99%" sizable="false" height="100%">
+	<borderlayout height="100%" width="100%">
+		<north title=" " collapsible="true" splittable="true" autoscroll="true">
+			<div style="padding-top:3px;padding-bottom:3px;">
+			<a:bind model="taskInstanceInfoList" />
+			<listbox mold="paging" id="taskListbox" width="98%" pageSize="13" height="100%" checkmark="true">
+				<listhead sizable="true">
+					<listheader label="企业名称" width="19%" />
+					<listheader label="产品名称" width="19%" />
+					<listheader label="发起人员" width="15%" />
+					<listheader label="任务名称" width="30%" />
+					<listheader label="完成时间" width="15%" />
+				</listhead>
+				<a:bind _var="taskInstanceInfo" />
+				<listitem style="text-align:left;" value="@{taskInstanceInfo}">
+					<a:bind label="taskInstanceInfo.applicationInfo.enterprise.simpleName" />
+					<listcell tooltiptext="@{taskInstanceInfo.applicationInfo.enterprise.name}" />
+					<a:bind label="taskInstanceInfo.applicationInfo.production.simpleName" />
+					<listcell tooltiptext="@{taskInstanceInfo.applicationInfo.production.productName}" />
+					<a:bind label="taskInstanceInfo.preTask.actorName" />
+					<listcell />
+					<a:bind label="taskInstanceInfo.simpleTaskName" />
+					<listcell tooltiptext="@{taskInstanceInfo.taskName}" />
+					<listcell label="@{taskInstanceInfo.approveDate,converter='com.aidi.core.zk.DateConverter'}" />
+				</listitem>
+				<listfoot>
+					<listfooter>
+					<hbox>
+						<toolbarbutton label="追回" image="/image/16/back.png" style="color:blue" forward="onRollbackTask" />
+						<toolbarbutton label="详细" image="/image/common/view_templates.png" style="color:blue"
+							forward="onDetail2" />
+					</hbox>
+					</listfooter>
+					<listfooter>
+					<toolbarbutton id="pdvTlb" label="流程图显示" image="/image/16/style.png" style="color:blue"/>
+					</listfooter>
+				</listfoot>
+			</listbox>
+			</div>
+		</north>
+<!--		<center autoscroll="true" >-->
+<!--			<div id="divDetail2" align="center"></div>-->
+<!--		</center>-->
+	</borderlayout>
+</window>

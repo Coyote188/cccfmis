@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<root-container name="工厂检查流程" width="668" height="473">
+  <node name="开始" x="139" y="9" width="132" height="36">
+    <edge>
+      <label x="5" y="-10"/>
+    </edge>
+  </node>
+  <node name="结束" x="142" y="436" width="132" height="36"/>
+  <node name="文件审查" x="142" y="362" width="132" height="36">
+    <edge>
+      <label x="-19" y="-11"/>
+    </edge>
+    <edge>
+      <label x="5" y="-10"/>
+    </edge>
+  </node>
+  <node name="资料补充" x="372" y="359" width="132" height="36">
+    <edge>
+      <label x="5" y="-10"/>
+      <bendpoint w1="-98" h1="45" w2="101" h2="43"/>
+    </edge>
+  </node>
+  <node name="派组审批" x="143" y="290" width="132" height="36">
+    <edge>
+      <label x="5" y="-10"/>
+    </edge>
+    <edge>
+      <label x="5" y="-10"/>
+      <bendpoint w1="-125" h1="-65" w2="-122" h2="75"/>
+    </edge>
+  </node>
+  <node name="资质审核" x="143" y="219" width="132" height="36">
+    <edge>
+      <label x="5" y="-10"/>
+    </edge>
+    <edge>
+      <label x="5" y="-10"/>
+      <bendpoint w1="47" h1="-36" w2="50" h2="33"/>
+    </edge>
+  </node>
+  <node name="人员分配" x="140" y="150" width="132" height="36">
+    <edge>
+      <label x="-20" y="-15"/>
+    </edge>
+  </node>
+  <node name="派组安排" x="139" y="80" width="132" height="36">
+    <edge>
+      <label x="5" y="-10"/>
+    </edge>
+  </node>
+</root-container>

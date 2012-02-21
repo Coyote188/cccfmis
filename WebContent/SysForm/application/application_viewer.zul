@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?init class="org.zkoss.zkplus.databind.AnnotateDataBinderInit" root="./frmAppViewer"?>
+<zk>
+	<window apply="cccf.ma.web.zk.app.ApplicationViewerController" title="申请信息" border="normal" closable="true"
+		id="frmAppViewer" width="60%">
+		<separator height="2px" />
+		<groupbox mold="3d" width="99%" open="true">
+			<caption label="基本信息"
+				style="font-size:14px;color:RED;font-weight:bold;"
+				image="/image/16/doc.png" tooltiptext="点击打开/收缩" />
+			<separator width="6px" />
+			<grid>
+				<columns>
+					<column width="120px"></column>
+					<column></column>
+				</columns>
+				<rows>
+					<row>
+						<hbox width="100px">
+							申请号
+						</hbox>
+						<label value="@{frmAppViewer$composer.applyInfo.applyno }" />
+					</row>
+					<row>
+						<hbox width="100px">
+							申请类型
+						</hbox>
+						<label value="@{frmAppViewer$composer.applyInfo.applyType }" />
+					</row>
+					<row>
+						<hbox width="100px">
+							业务类型
+						</hbox>
+						<label value="@{frmAppViewer$composer.applyInfo.businessType }" />
+					</row>
+					<row>
+						<hbox width="100px">
+							申请产品大类
+						</hbox>
+						<label value="@{frmAppViewer$composer.applyInfo.productCatalog }" />
+					</row>
+				</rows>
+			</grid>
+		</groupbox>
+		<separator height="2px" /><div id="divProductModels"></div>
+<!--		<groupbox mold="3d" width="99%" open="true">-->
+<!--			<caption label="申请产品列表"-->
+<!--				style="font-size:14px;color:RED;font-weight:bold;"-->
+<!--				image="/image/16/doc.png" tooltiptext="点击打开/收缩" />-->
+<!--			<listbox id="productmodelLbx">-->
+<!--				<listhead>-->
+<!--					<listheader label="产品名称" />-->
+<!--					<listheader label="规格型号" />-->
+<!--					<listheader label="特性描述" />-->
+<!--					<listheader label="检验报告" />-->
+<!--					<listheader label="生产厂" />-->
+<!--					<listheader label="制造商" />-->
+<!--				</listhead>-->
+<!--				<listitem self="@{each=productmodel}">-->
+<!--					<listcell label="@{productmodel.productName}"/>-->
+<!--					<listcell label="@{productmodel.specification}"/>-->
+<!--					<listcell label="@{productmodel.characterization}"/>-->
+<!--					<listcell label="@{productmodel.surveyReportSN}"/>-->
+<!--					<listcell label="@{productmodel.produtionName}"/>-->
+<!--					<listcell label="@{productmodel.manufactureName}"/>-->
+<!--				</listitem>-->
+<!--			</listbox>-->
+<!---->
+<!--		</groupbox>-->
+		<groupbox mold="3d" width="99%" open="true">
+			<caption label="合同信息"
+				style="font-size:14px;color:RED;font-weight:bold;"
+				image="/image/16/doc.png" tooltiptext="点击打开/收缩" />
+			<separator width="6px" />
+			<vbox>
+				<hbox align="start">
+					<label style="vertical-align: middle;"
+						value="甲方是否同意由乙方按计划派遣审核组(乙方一般在收到甲方审核费后两周内发出审核计划)：" />
+					<label value="@{frmAppViewer$composer.applyInfo.contractAgree }" style="text-Decoration:underline;color:red;font-size:13"/>
+				</hbox>
+				<hbox align="start">
+					<label style="vertical-align: middle;"
+						value="不同意乙方计划时，甲方希望正式审核时间在" />
+					<label width="30px" style="text-Decoration:underline;color:red;font-size:13" id="contractYear" value="@{frmAppViewer$composer.applyInfo.contractYear }"/>
+					<label style="vertical-align: middle;"
+						value="年" />
+					<label width="30px" id="contractMonth" style="text-Decoration:underline;color:red;font-size:13" value="@{frmAppViewer$composer.applyInfo.contractMonth }"/>
+					<label style="vertical-align: middle;"
+						value="月" />
+				</hbox>
+				<hbox align="start">
+					<label style="vertical-align: middle;"
+						value="预审核（甲方决定）:" />
+					<label value="@{frmAppViewer$composer.applyInfo.contractApprove }" style="text-Decoration:underline;color:red;font-size:13"/>
+				</hbox>
+			</vbox>
+		</groupbox>
+		<separator width="2px" />
+		<groupbox mold="3d" width="99%" open="true">
+			<caption label="基本文件"
+				style="font-size:14px;color:RED;font-weight:bold;"
+				image="/image/common/folder.png" tooltiptext="点击打开/收缩" />
+			<separator width="6px" />
+			<grid model="@{frmAppViewer$composer.att }">
+				<columns>
+					<column width="60%" align="left" />
+					<column align="left" />
+				</columns>
+				<rows>
+					<row self="@{each=t }">
+						<label value="@{t.name }"/>
+						<toolbarbutton forward="onViewFileOnline" label="查看" style="text-Decoration:underline;color:#3300cc;font-size:12px">
+							<custom-attributes filepath="@{t.path }"/>							
+						</toolbarbutton>
+					</row>
+				</rows>
+			</grid>
+		</groupbox>
+	</window>
+</zk>

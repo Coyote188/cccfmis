@@ -1,0 +1,42 @@
+<?page title="new page title" contentType="text/html;charset=UTF-8"?>
+<?init class="org.zkoss.zkplus.databind.AnnotateDataBinderInit" root="./frmProductionEnterprise"?>
+<window id="frmProductionEnterprise" apply="cccf.ma.web.zk.ProductionEnterpriseController">
+	<vlayout hflex="true" vflex="true" style="overflow:auto;">
+		<vlayout id="grdProbox">
+			<grid id="grdPro" mold="paging" pageSize="8" model="@{frmProductionEnterprise$composer.proList }">
+				<columns>
+					<column label="名称" width="20%" />
+					<column label="法人" width="10%" />
+					<column label="国家" width="10%" />
+					<column label="地区" width="20%" />
+					<column label="联系人" width="20%" />
+					<column label="状态" width="10%" />
+					<column label="操作" width="10%" />
+				</columns>
+				<rows>
+					<row self="@{each=manu }" value="@{manu }">
+						<label value="@{manu.name }" />
+						<label value="@{manu.facLegalPerson }" />
+						<label value="@{manu.facCountry }" />
+						<label value="@{manu.contactAddress }" />
+						<label value="@{manu.facLinkMan }" />
+						<label value="@{manu.statusName }" />
+						<hbox>
+							<toolbarbutton id="btnRemove" label="删除" style="color: #3300ff;text-Decoration:underline">
+								<custom-attributes manu="@{manu }" />
+							</toolbarbutton>
+							<toolbarbutton id="btnDetial" label="详细" style="color: #3300ff;text-Decoration:underline">
+								<custom-attributes manu="@{manu }" />
+							</toolbarbutton>
+						</hbox>
+					</row>
+				</rows>
+			</grid>
+			<separator height="10px" />
+			<div align="right">
+				<button id="btnAdd" label="添加新生产企业" height="26px" width="150px" />
+			</div>
+		</vlayout>
+		<vlayout id="editbox"></vlayout>
+	</vlayout>
+</window>

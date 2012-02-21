@@ -1,0 +1,547 @@
+<?page title="new page title" contentType="text/html;charset=UTF-8"?>
+<?init class="org.zkoss.zkplus.databind.AnnotateDataBinderInit" root="./frmManuViewer"?>
+<zk>
+	<window id="frmManuViewer"
+		apply="cccf.ma.web.zk.ManuViewerController">
+		<grid id="grdfacEditer" style="border: 0" width="99%">
+			<columns>
+				<column width="35%" />
+				<column width="65%" />
+			</columns>
+			<rows>
+				<row style="border: 0;background:white;">
+					<hbox align="center">
+
+						<label value="制造商名称:" />
+					</hbox>
+					<label value="@{frmManuViewer$composer.manu.name }" />
+
+				</row>
+				<row style="border: 0;background:white;">
+					<hbox align="center">
+
+						<label value="制造商名称(英文):" />
+					</hbox>
+					<label
+						value="@{frmManuViewer$composer.manu.manuNameEn }" />
+
+				</row>
+				<row style="border: 0;background:white;">
+					<hbox align="center">
+
+						<label value="制造商组织机构代码:" />
+					</hbox>
+					<label
+						value="@{frmManuViewer$composer.manu.manucode }" />
+
+				</row>
+
+				<row>
+					<hbox>
+
+						企业组织性质代码:
+					</hbox>
+					<label id="cbxOrganizationNature"
+						value="@{frmManuViewer$composer.manu.organizationNature }" />
+				</row>
+				<row>
+					<hbox>
+
+						企业规模:
+					</hbox>
+					<label
+						value="@{frmManuViewer$composer.manu.scaleName }" />
+				</row>
+
+				<row style="border: 0;background:white;">
+					<hbox align="center">
+
+						<label value="制造商法人(负责人):" />
+					</hbox>
+					<label
+						value="@{frmManuViewer$composer.manu.manuLegalPerson }" />
+
+				</row>
+
+				<row>
+					<hbox align="center">
+						<label value="制造商法人(负责人英文):" />
+					</hbox>
+					<label
+						value="@{frmManuViewer$composer.manu.legalPersonEn }" />
+				</row>
+				<row>
+					<hbox>
+
+						法人联系地址:
+					</hbox>
+					<div>
+						<label id="contactAddForLegal"
+							value="@{frmManuViewer$composer.manu.contactAddForLegal }" />
+					</div>
+				</row>
+				<row>
+					<hbox>
+
+						法人联系地址(英文):
+					</hbox>
+					<div>
+						<label id="contactAddForLegalEn"
+							value="@{frmManuViewer$composer.manu.contactAddForLegalEn }" />
+					</div>
+				</row>
+				<row>
+					<hbox>
+
+						法人联系电话:
+					</hbox>
+					<div>
+						<label id="telForLegal" width="350px"
+							value="@{frmManuViewer$composer.manu.telForLegal }" />
+					</div>
+				</row>
+				<row>
+					<hbox>
+
+						法人手机:
+					</hbox>
+					<label id="mobileForLegal"
+						value="@{frmManuViewer$composer.manu.mobileForLegal }" />
+				</row>
+
+				<row style="border: 0;background:white;"
+					visible="false">
+					<hbox align="center">
+
+						<label value="制造商机构类型:" />
+					</hbox>
+					<label
+						value="@{frmManuViewer$composer.manu.manuType }" />
+
+				</row>
+				<row style="border: 0;background:white;"
+					visible="false">
+					<hbox align="center">
+
+						<label value="制造商经济行业:" />
+					</hbox>
+					<label
+						value="@{frmManuViewer$composer.manu.manuEcocalling }" />
+
+				</row>
+				<row style="border: 0;background:white;"
+					visible="false">
+					<hbox align="center">
+
+						<label value="制造商经济行业(新国标代码):" />
+					</hbox>
+					<label
+						value="@{frmManuViewer$composer.manu.manuEcocallingNew }" />
+
+				</row>
+				<row style="border: 0;background:white;"
+					visible="false">
+					<hbox align="center">
+
+						<label value="制造商经济类型:" />
+					</hbox>
+					<label
+						value="@{frmManuViewer$composer.manu.manuEcotype }" />
+
+				</row>
+				<row style="border: 0;background:white;"
+					visible="false">
+					<hbox align="center">
+
+						<label value="制造商经济类型(新国标代码):" />
+					</hbox>
+					<label
+						value="@{frmManuViewer$composer.manu.manuEcoTypeNew }" />
+
+				</row>
+
+				<row style="border: 0;background:white;"
+					visible="false">
+					<hbox align="center">
+
+						<label value="制造商标志:" />
+					</hbox>
+					<label
+						value="@{frmManuViewer$composer.manu.manuFlag }" />
+
+				</row>
+
+				<!-- 2011.5.16 -->
+				<row>
+					<hbox>
+
+						注册地址:
+					</hbox>
+					<div>
+						<label id="registeredAddress"
+							value="@{frmManuViewer$composer.manu.registeredAddress }" />
+					</div>
+				</row>
+				<row>
+					<hbox>
+
+						注册地址(英文):
+					</hbox>
+					<div>
+						<label id="registeredAddressEn"
+							value="@{frmManuViewer$composer.manu.registeredAddressEn }" />
+					</div>
+				</row>
+				<row>
+					<hbox>
+
+						注册资金:
+					</hbox>
+					<div>
+						<label id="registeredCapital"
+							value="@{frmManuViewer$composer.manu.registeredCapital }" />
+					</div>
+				</row>
+				<row style="border: 0;background:white;">
+					<hbox align="center">
+
+						<label value="制造商经营范围:" />
+					</hbox>
+					<label multiline="true"
+						value="@{frmManuViewer$composer.manu.manuWorkRange }" />
+
+				</row>
+
+				<row style="border: 0;background:white;">
+					<hbox align="center">
+
+						<label value="制造商所在国家地区:" />
+					</hbox>
+					<label
+						value="@{frmManuViewer$composer.manu.manuCountry }" />
+
+				</row>
+				<row style="border: 0;background:white;">
+					<hbox align="center">
+
+						<label value="制造商所在地区:" />
+					</hbox>
+					<label
+						value="@{frmManuViewer$composer.manu.manuDistrict }" />
+
+				</row>
+				<!-- 2011.5.16 -->
+				<row>
+					<hbox>
+
+						通讯地址:
+					</hbox>
+					<div>
+						<label id="contactAddress"
+							value="@{frmManuViewer$composer.manu.contactAddress }" />
+					</div>
+				</row>
+				<row>
+					<hbox>
+
+						通讯地址(英文):
+					</hbox>
+					<div>
+						<label id="contactAddressEn"
+							value="@{frmManuViewer$composer.manu.contactAddressEn }" />
+					</div>
+				</row>
+				<row style="border: 0;background:white;">
+					<hbox align="center">
+
+						<label value="制造商邮编:" />
+					</hbox>
+					<label
+						value="@{frmManuViewer$composer.manu.manuZip }" />
+
+				</row>
+				<row style="border: 0;background:white;"
+					visible="false">
+					<hbox align="center">
+
+						<label value="制造商编号:" />
+					</hbox>
+					<label
+						value="@{frmManuViewer$composer.manu.manuCoding }" />
+
+				</row>
+				<row style="border: 0;background:white;">
+					<hbox align="center">
+
+						<label value="制造商电子邮件:" />
+					</hbox>
+					<label
+						value="@{frmManuViewer$composer.manu.manuEmail }" />
+
+				</row>
+				<row style="border: 0;background:white;">
+					<hbox align="center">
+
+						<label value="制造商联系人:" />
+					</hbox>
+					<label
+						value="@{frmManuViewer$composer.manu.manuLinkMan }" />
+
+				</row>
+				<row style="border: 0;background:white;">
+					<hbox align="center">
+
+						<label value="制造商联系人(英文):" />
+					</hbox>
+					<label
+						value="@{frmManuViewer$composer.manu.manuLinkManEn }" />
+
+				</row>
+				<row style="border: 0;background:white;">
+					<hbox align="center">
+
+						<label value="制造商联系电话:" />
+					</hbox>
+					<label
+						value="@{frmManuViewer$composer.manu.manuTel }" />
+
+				</row>
+				<row style="border: 0;background:white;">
+					<hbox align="center">
+
+						<label value="制造商联系电话(手机):" />
+					</hbox>
+					<label
+						value="@{frmManuViewer$composer.manu.manuMob }" />
+
+				</row>
+				<row style="border: 0;background:white;">
+					<hbox align="center">
+
+						<label value="制造商传真:" />
+					</hbox>
+					<label
+						value="@{frmManuViewer$composer.manu.manuFax }" />
+
+				</row>
+				<row style="border: 0;background:white;">
+					<hbox align="center">
+
+						<label value="网址:" />
+					</hbox>
+					<label
+						value="@{frmManuViewer$composer.manu.webAddress }" />
+
+				</row>
+				<row style="border: 0;background:white;">
+					<hbox align="center">
+
+						<label value="简介:" />
+					</hbox>
+					<label value="@{frmManuViewer$composer.manu.note }" />
+
+				</row>
+			</rows>
+		</grid>
+
+		<!-- 2011.5.16 停用 start
+			<grid id="grdManuEditer" style="border: 0" width="99%">
+			<columns>
+			<column width="35%" />
+			<column width="65%" />
+			</columns>
+			<rows>
+			<row style="border: 0;background:white;">
+			<hbox align="center">
+			
+			<label value="制造商名称:" />
+			</hbox>
+			<label
+			value="@{frmManuViewer$composer.manu.name }"  />
+			
+			</row>
+			<row style="border: 0;background:white;">
+			<hbox align="center">
+			
+			<label value="制造商名称(英文):" />
+			</hbox>
+			<label
+			value="@{frmManuViewer$composer.manu.manuNameEn }"/>
+			
+			</row>
+			<row style="border: 0;background:white;">
+			<hbox align="center">
+			
+			<label value="制造商组织机构代码:" />
+			</hbox>
+			<label
+			value="@{frmManuViewer$composer.manu.manucode }"  />
+			
+			</row>
+			<row style="border: 0;background:white;">
+			<hbox align="center">
+			
+			<label value="制造商法人(负责人):" />
+			</hbox>
+			<label
+			value="@{frmManuViewer$composer.manu.manuLegalPerson }"
+			/>
+			
+			</row>
+			<row style="border: 0;background:white;">
+			<hbox align="center">
+			
+			<label value="制造商机构类型:" />
+			</hbox>
+			<label
+			value="@{frmManuViewer$composer.manu.manuType }"  />
+			
+			</row>
+			<row style="border: 0;background:white;">
+			<hbox align="center">
+			
+			<label value="制造商经济行业:" />
+			</hbox>
+			<label
+			value="@{frmManuViewer$composer.manu.manuEcocalling }"
+			/>
+			
+			</row>
+			<row style="border: 0;background:white;">
+			<hbox align="center">
+			
+			<label value="制造商经济行业(新国标代码):" />
+			</hbox>
+			<label
+			value="@{frmManuViewer$composer.manu.manuEcocallingNew }"
+			/>
+			
+			</row>
+			<row style="border: 0;background:white;">
+			<hbox align="center">
+			
+			<label value="制造商经济类型:" />
+			</hbox>
+			<label
+			value="@{frmManuViewer$composer.manu.manuEcotype }"  />
+			
+			</row>
+			<row style="border: 0;background:white;">
+			<hbox align="center">
+			
+			<label value="制造商经济类型(新国标代码):" />
+			</hbox>
+			<label value="@{frmManuViewer$composer.manu.manuEcoTypeNew }" />
+			
+			</row>
+			<row style="border: 0;background:white;">
+			<hbox align="center">
+			
+			<label value="制造商经营范围:" />
+			</hbox>
+			<label
+			value="@{frmManuViewer$composer.manu.manuWorkRange }"  />
+			
+			</row>
+			<row style="border: 0;background:white;">
+			<hbox align="center">
+			
+			<label value="制造商标志:" />
+			</hbox>
+			<label
+			value="@{frmManuViewer$composer.manu.manuFlag }"  />
+			
+			</row>
+			<row style="border: 0;background:white;">
+			<hbox align="center">
+			
+			<label value="制造商所在国家地区:" />
+			</hbox>
+			<label
+			value="@{frmManuViewer$composer.manu.manuCountry }"  />
+			
+			</row>
+			<row style="border: 0;background:white;">
+			<hbox align="center">
+			
+			<label value="制造商所在地区:" />
+			</hbox>
+			<label
+			value="@{frmManuViewer$composer.manu.manuDistrict }"  />
+			
+			</row>
+			<row style="border: 0;background:white;">
+			<hbox align="center">
+			
+			<label value="制造商地址:" />
+			</hbox>
+			<label
+			value="@{frmManuViewer$composer.manu.contactAddress }"  />
+			
+			</row>
+			<row style="border: 0;background:white;">
+			<hbox align="center">
+			
+			<label value="制造商地址(英文):" />
+			</hbox>
+			<label
+			value="@{frmManuViewer$composer.manu.manuAddressEn }"  />
+			
+			</row>
+			<row style="border: 0;background:white;">
+			<hbox align="center">
+			
+			<label value="制造商邮编:" />
+			</hbox>
+			<label
+			value="@{frmManuViewer$composer.manu.manuZip }"  />
+			
+			</row>
+			<row style="border: 0;background:white;">
+			<hbox align="center">
+			
+			<label value="制造商电子邮件:" />
+			</hbox>
+			<label
+			value="@{frmManuViewer$composer.manu.manuEmail }"  />
+			
+			</row>
+			<row style="border: 0;background:white;">
+			<hbox align="center">
+			
+			<label value="制造商联系人:" />
+			</hbox>
+			<label
+			value="@{frmManuViewer$composer.manu.manuLinkMan }"  />
+			
+			</row>
+			<row style="border: 0;background:white;">
+			<hbox align="center">
+			
+			<label value="制造商联系电话:" />
+			</hbox>
+			<label
+			value="@{frmManuViewer$composer.manu.manuTel }"  />
+			
+			</row>
+			<row style="border: 0;background:white;">
+			<hbox align="center">
+			
+			<label value="制造商传真:" />
+			</hbox>
+			<label
+			value="@{frmManuViewer$composer.manu.manuFax }"  />
+			
+			</row>
+			</rows>
+			</grid>
+		-->
+		<div align="center">
+			<button id="btnModify" label="修改" width="68px"
+				height="26px" />
+			<space width="5%" />
+			<button id="btnGoback" label="返回" width="68px"
+				height="26px" />
+		</div>
+	</window>
+</zk>

@@ -1,0 +1,39 @@
+<?page title="登录界面" contentType="text/html;charset=UTF-8"?>
+<zk>
+<window apply="openjframework.web.zk.Login" 
+    xmlns:n="native" 
+    xmlns:w="client"
+	xmlns="http://www.zkoss.org/2005/zul"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation=" http://www.zkoss.org/2005/zul http://www.zkoss.org/2005/zul/zul.xsd">
+	<div style="position:relative; z-index:1;">
+		<image src="image/files/login_bg.jpg" style="height:100%;width:100%"/>
+		
+			<div  style="position:absolute;top:60%;height:100%;width:100%;left:20%;z-index:2;">
+			<div align="center" style="width:250px;height:120px;border: 1px solid #FFF;">
+				<vbox>
+					<separator/>
+					<hbox>
+					
+						<label value="用户名:" style="font-size:14px;color:#FFF;font-weight:bold;"/>
+						<textbox id="usernameTbx" maxlength="10"/>			
+					</hbox>
+					<hbox>
+						<label value="密 &#160;&#160;码:" style="font-size:14px;color:#FFF;font-weight:bold;"/>
+						<textbox id="passwordTbx" type="password" maxlength="16"/>				
+					</hbox>
+					<separator/>
+					<hbox align="center">
+						<separator width="10px"/>
+						<button id="loginBtn" label="登录"/>
+						<separator width="10px"/>
+						<button id="loseBtn" label="忘记密码"/>
+						<separator width="10px"/>
+						<button id="registerBtn" label="注册"/>
+					</hbox>
+				</vbox>
+			</div>
+		</div>
+	</div>
+</window>
+</zk>

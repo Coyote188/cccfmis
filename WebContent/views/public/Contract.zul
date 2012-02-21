@@ -1,0 +1,282 @@
+<?page title="new page title" contentType="text/html;charset=UTF-8"?>
+<window title="new page title" border="normal">
+	<vlayout spacing="3" vflex="true" hflex="true" style="overflow: auto;">
+		<grid>
+			<columns>
+				<column label="合同信息" image="/res/icons/page.png"></column>
+			</columns>
+			<rows>
+				<row height="26px">
+					<hbox>
+						<label value="合同编号"></label>
+						<label value="${contract.contractNo}"></label>
+					</hbox>
+				</row>
+				<row height="26px">
+					<hbox>
+						<label value="甲方是否同意由乙方按计划派遣审核组(乙方一般在收到甲方审核费后两周内发出审核计划):"></label>
+						<label value="${contract.agreedAuditTeams}"></label>
+					</hbox>
+				</row>
+				<row height="26px">
+					<hbox>
+						<label value="不同意乙方计划时，甲方希望正式审核时间在:"></label>
+						<label value="${contract.auditYear}" />
+						<label style="vertical-align: middle;" value="年" />
+						<label value="${contract.auditYear}" />
+						<label style="vertical-align: middle;" value="月" />
+					</hbox>
+				</row>
+				<row height="26px">
+					<hbox>
+						<label value="预审核(甲方决定):"></label>
+						<label value="${contract.preverify}"></label>
+					</hbox>
+				</row>
+				<row height="26px">
+					<hbox>
+						<label style="vertical-align: middle;" value="预审时间(通常应比正式审核时间提前一个月以上):" />
+						<label value="${contract.preverifyYear}" />
+						<label style="vertical-align: middle;" value="年" />
+						<label value="${contract.preverifyMonth}" />
+						<label style="vertical-align: middle;" value="月" />
+					</hbox>
+				</row>
+			</rows>
+		</grid>
+		<grid>
+			<auxhead>
+				<auxheader image="/res/icons/page.png" colspan="8" label="收费单"></auxheader>
+			</auxhead>
+			<columns>
+				<column label="分类" align="left" width="80px"></column>
+				<column label="项目" align="left" width="80px"></column>
+				<column label="单位" align="left" width="55px"></column>
+				<column label="单价" align="left" width="80px"></column>
+				<column label="数量" align="left" width="250px"></column>
+				<column label="金额(元)" align="left" width="100px"></column>
+				<column label="备注" align="left"></column>
+			</columns>
+			<rows>
+
+				<row style="background:#FFF;height:26px">
+					<cell rowspan="3">
+						<label value="获证费"></label>
+					</cell>
+					<cell>
+						<label value="申请费"></label>
+					</cell>
+					<cell>
+						<label value="单元"></label>
+					</cell>
+					<cell>
+						<label value="${bills.unitPrice_r1 }"></label>
+					</cell>
+					<cell>
+						<label value="${bills.quantity_r1 }"></label>
+					</cell>
+					<cell>
+						<label value="${bills.price_r1 }"></label>
+					</cell>
+					<cell>
+						<label value="${bills.memo_r1 }"></label>
+					</cell>
+				</row>
+				<row style="background:#FFF;height:26px">
+					<cell>
+						<label value="工厂检厂费"></label>
+					</cell>
+					<cell>
+						<label value="人日"></label>
+					</cell>
+					<cell>
+						<label value="${bills.unitPrice_r2 }"></label>
+					</cell>
+					<cell>
+						<hbox>
+							<label value="规定:"></label>
+							<label value="${bills.quantity_r2 }"></label>
+							<label value="异地:"></label>
+							<label value="${bills.quantity_1_r2 }"></label>
+						</hbox>
+					</cell>
+					<cell>
+						<label value="${bills.price_r2 }"></label>
+					</cell>
+					<cell>
+						<label value="${bills.memo_r2 }"></label>
+					</cell>
+				</row>
+				<row style="background:#FFF;height:26px">
+					<cell>
+						<label value="批准与注册费"></label>
+					</cell>
+					<cell>
+						<label value="单元"></label>
+					</cell>
+					<cell>
+						<label value="${bills.unitPrice_r3 }"></label>
+					</cell>
+					<cell>
+						<label value="${bills.quantity_r3 }"></label>
+					</cell>
+					<cell>
+						<label value="${bills.price_r3 }"></label>
+					</cell>
+					<cell>
+						<label value="${bills.memo_r3 }"></label>
+					</cell>
+				</row>
+				<row style="background:#FFF;height:26px">
+					<cell rowspan="2">
+						<label value="变更费"></label>
+					</cell>
+					<cell>
+						<label value="申请费"></label>
+					</cell>
+					<cell>
+						<label value="单元"></label>
+					</cell>
+					<cell>
+						<label value="${bills.unitPrice_r4 }"></label>
+					</cell>
+					<cell>
+						<label value="${bills.quantity_r4 }"></label>
+					</cell>
+					<cell>
+						<label value="${bills.price_r4 }"></label>
+					</cell>
+					<cell>
+						<label value="${bills.memo_r4 }"></label>
+					</cell>
+				</row>
+				<row style="background:#FFF;height:26px">
+					<cell>
+						<label value="工厂检厂费"></label>
+					</cell>
+					<cell>
+						<label value="人日"></label>
+					</cell>
+					<cell>
+						<label value="${bills.unitPrice_r5 }"></label>
+					</cell>
+					<cell>
+						<hbox>
+							<label value="规定:"></label>
+							<label value="${bills.quantity_r5 }"></label>
+							<label value="异地:"></label>
+							<label value="${bills.quantity_1_r5 }"></label>
+						</hbox>
+					</cell>
+					<cell>
+						<label value="${bills.price_r5 }"></label>
+					</cell>
+					<cell>
+						<label value="${bills.memo_r5 }"></label>
+					</cell>
+				</row>
+				<row style="background:#FFF;height:26px">
+					<cell rowspan="2">
+						<label value="保持费"></label>
+					</cell>
+					<cell>
+						<label value="监督费"></label>
+					</cell>
+					<cell>
+						<label value="人日"></label>
+					</cell>
+					<cell>
+						<label value="${bills.unitPrice_r6 }"></label>
+					</cell>
+					<cell>
+						<hbox>
+							<label value="规定:"></label>
+							<label value="${bills.quantity_r6 }"></label>
+							<label value="异地:"></label>
+							<label value="${bills.quantity_1_r6 }"></label>
+						</hbox>
+					</cell>
+					<cell>
+						<label value="${bills.price_r6 }"></label>
+					</cell>
+					<cell>
+						<label value="${bills.memo_r6 }"></label>
+					</cell>
+				</row>
+				<row style="background:#FFF;height:26px">
+					<cell>
+						<label value="年金"></label>
+					</cell>
+					<cell>
+						<label value="张"></label>
+					</cell>
+					<cell>
+						<label value="${bills.unitPrice_r7 }"></label>
+					</cell>
+					<cell>
+						<label value="${bills.quantity_r7 }"></label>
+					</cell>
+					<cell>
+						<label value="${bills.price_r7 }"></label>
+					</cell>
+					<cell>
+						<label value="${bills.memo_r7 }"></label>
+					</cell>
+				</row>
+				<row style="background:#FFF;height:26px">
+					<cell rowspan="2">
+						<label value="其它"></label>
+					</cell>
+					<cell>
+						<label value="标志费"></label>
+					</cell>
+					<cell>
+						<label value="枚"></label>
+					</cell>
+					<cell>
+						<label value="${bills.unitPrice_r8 }"></label>
+					</cell>
+					<cell>
+						<label value="${bills.quantity_r8 }"></label>
+					</cell>
+					<cell>
+						<label value="${bills.price_r8 }"></label>
+					</cell>
+					<cell>
+						<label value="${bills.memo_r8 }"></label>
+					</cell>
+				</row>
+				<row style="background:#FFF;height:26px">
+					<cell>
+						<label value="其它"></label>
+					</cell>
+					<cell>
+						<label value="${bills.unit_r9 }"></label>
+					</cell>
+					<cell>
+						<label value="${bills.unitPrice_r9 }"></label>
+					</cell>
+					<cell>
+						<label value="${bills.quantity_r9 }"></label>
+					</cell>
+					<cell>
+						<label value="${bills.price_r9}"></label>
+					</cell>
+					<cell>
+						<label value="${bills.memo_r9 }"></label>
+					</cell>
+				</row>
+				<row style="background:#FFF;height:26px">
+					<cell></cell>
+					<cell colspan="4">
+						<label value="合计"></label>
+					</cell>
+					<cell>
+						<label value="${contract.feeTotal}"></label>
+					</cell>
+					<cell></cell>
+				</row>
+			</rows>
+		</grid>
+	</vlayout>
+</window>

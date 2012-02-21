@@ -1,0 +1,10 @@
+<?page title="new page title" contentType="text/html;charset=UTF-8"?>
+<zk>
+<window id="frmMsgWindow" title="系统消息" border="normal" width="600px" closable="true">
+<attribute name="onCreate">
+	Window objWindow = (Window)
+	Executions.createComponents("/SysForm/message-list-viewer.zul",frmMsgWindow,null);
+	objWindow.doEmbedded();
+</attribute>
+</window>
+</zk>

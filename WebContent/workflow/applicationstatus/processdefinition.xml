@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<process-definition  xmlns=""  name="申请变更流程">
+
+
+	<start-state name="start-state1">
+		<task name="申请变更">
+			<assignment class="openjframework.bpm.handler.UserAssignment"></assignment>
+		</task>
+		<transition to="申请变更审批">
+		</transition>
+	</start-state>
+
+
+	<task-node name="申请变更审批">
+		<task name="申请变更审批">
+			<event type="task-assign">
+				<action name="NoticeCurrentActorAction" class="cccf.ma.bpm.action.NoticeCurrentActorAction"></action>
+			</event>
+			<event type="timer-create">
+				<action name="time_action" class="cccf.ma.bpm.action.ChangeDueDateAction"></action>
+			</event>
+			<timer name='reminder' duedate='2 weeks'>
+			</timer>
+		</task>
+		<transition to="end-state1" name="同意">
+			<action name="approvingAction" class="cccf.ma.bpm.action.AppStatusChangeAction">
+				<status>1</status>
+			</action>
+			<action name="msgAction" class="cccf.ma.bpm.action.MessageToApplicantAction">
+				<content>您的申请变更审批通过。</content>
+			</action>
+		</transition>
+		<transition to="end-state1" name="不同意">
+			<action name="disApprovingAction" class="cccf.ma.bpm.action.AppStatusChangeAction">
+				<status>2</status>
+			</action>
+			<action name="msgAction" class="cccf.ma.bpm.action.MessageToApplicantAction">
+				<content>您的申请变更审批未通过。</content>
+			</action>
+		</transition>
+	</task-node>
+
+
+	<end-state name="end-state1"></end-state>
+
+
+</process-definition>

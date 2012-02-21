@@ -1,0 +1,53 @@
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/dlyhc.cccfmis/!svn/ver/991/trunk/src/openjframework/InstantMessage
+END
+ChatOneComposer.java
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/dlyhc.cccfmis/!svn/ver/303/trunk/src/openjframework/InstantMessage/ChatOneComposer.java
+END
+PopupMessageComposer.java
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/dlyhc.cccfmis/!svn/ver/991/trunk/src/openjframework/InstantMessage/PopupMessageComposer.java
+END
+UserListComposer.java
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/dlyhc.cccfmis/!svn/ver/304/trunk/src/openjframework/InstantMessage/UserListComposer.java
+END
+ChatRoomComposer.java
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/dlyhc.cccfmis/!svn/ver/247/trunk/src/openjframework/InstantMessage/ChatRoomComposer.java
+END
+UserListData.java
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/dlyhc.cccfmis/!svn/ver/210/trunk/src/openjframework/InstantMessage/UserListData.java
+END
+IndexComposer.java
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/dlyhc.cccfmis/!svn/ver/303/trunk/src/openjframework/InstantMessage/IndexComposer.java
+END
+SearchUserListComposer.java
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/dlyhc.cccfmis/!svn/ver/304/trunk/src/openjframework/InstantMessage/SearchUserListComposer.java
+END
+FiledownloadMiniWinComposer.java
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/dlyhc.cccfmis/!svn/ver/303/trunk/src/openjframework/InstantMessage/FiledownloadMiniWinComposer.java
+END

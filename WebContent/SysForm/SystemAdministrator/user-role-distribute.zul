@@ -1,0 +1,25 @@
+<?page title="new page title" contentType="text/html;charset=UTF-8"?>
+<?init class="org.zkoss.zkplus.databind.AnnotateDataBinderInit" root="./frmUserList" ?>
+<zk>
+	<window id="frmUserList" border="normal"
+		apply="openjframework.web.zk.UserListController">
+		<grid id="userGrd">
+			<auxhead>
+				<auxheader label="所有用户:" colspan="6" height="22px"
+					style="font-size:14px;color:#0F3B82;font-weight:bold;"
+					image="/image/common/impersonate_user.png" />
+			</auxhead>
+			<columns />
+		</grid>
+		<div align="center">
+			<hbox>
+				<button id="user_select_Btn" label="全选" width="68px"
+					height="26px" />
+				<button id="user_notselect_Btn" label="全不选" width="68px"
+					height="26px" />
+				<button id="btnUpdate" label="更新" width="68px"
+					height="26px" image="/image/16/reload.png" />
+			</hbox>
+		</div>
+	</window>
+</zk>

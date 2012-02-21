@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping SYSTEM "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+<hibernate-mapping>
+	<class name="cccf.ma.model.ProductModelAttachment" table="tb_productmodelattachment">
+
+		<id name="id" type="string" unsaved-value="null" length="36" >
+			<column name="sid" not-null="true" />
+			<generator class="uuid.hex" />
+		</id>  
+		<many-to-one name="productModel" column="productModel_id"/>
+		<many-to-one name="attachment" column="attachment_id"/> 
+		<property name="name"  length="100"  /> 
+	</class>
+</hibernate-mapping>

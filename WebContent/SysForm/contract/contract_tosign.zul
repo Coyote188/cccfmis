@@ -1,0 +1,58 @@
+<?page title="new page title" contentType="text/html;charset=UTF-8"?>
+<?init class="org.zkoss.zkplus.databind.AnnotateDataBinderInit" root="./frmContractTosign"?>
+
+<zk>
+<window id="frmContractTosign" title="" apply="cccf.ma.web.zk.contract.ContractToSignController" border="normal">
+	<grid style="">
+		<columns>
+			<column width="20%"/>
+			<column width=""/>
+		</columns>
+		<rows>
+			<row>	
+				<div align="center"><image src="/image/16/ico_search.png" width="15px"/></div>
+				<div align="right" width="99%" style="vertical-align:middle;">
+					<label value="按业务类型：" />
+					<combobox mold="rounded" id="cbxSearchByType" style="vertical-align:middle;width:100px">
+						<comboitem label=""/>
+					</combobox>
+					<label value="企业名称：" />
+					<textbox id="tbxSearchByEName" style="vertical-align:middle;width:100px"/>
+					<label value="申请号：" />
+					<textbox id="tbxSearchByApplyNo" style="vertical-align:middle;width:100px"/>
+					<space width="5px" />
+					<button width="68px" height="26px" label="查找" image="/image/16/search.png" id="btnSearch" style="vertical-align:middle;"/>
+				</div>
+			</row>
+		</rows>
+	</grid>
+	<separator height="15px"/>
+	<groupbox mold="3d">
+		<caption label="操作"/>
+		<button id="btnContractSign" label="合同签订" width="75px" height="26px"/>
+	</groupbox>
+	<separator height="5px"/>
+	<listbox id="lbxContractTosignList" model="@{frmContractTosign$composer.taskList }" checkmark="true" multiple="true">
+		<listhead>
+			<listheader label="申请号" />
+			<listheader label="申请企业" />
+			<listheader label="所在地区" />
+			<listheader label="业务类型" />
+			<listheader label="产品大类" />
+			<listheader label="申请类型" />
+			<listheader label="申请时间" />
+		</listhead>
+		<listitem self="@{each=app }" value="@{app.applyId }">
+			<listcell label="@{app.applyno }" />
+			<listcell label="@{app.enterprisename }" />
+			<listcell label="@{app.enterpriseLocation }"/>
+			<listcell label="@{app.businesstype }"/>
+			<listcell label="@{app.productname }"/>
+			<listcell label="@{app.applytype }"/>
+			<listcell label="@{app.applydate }"/>
+		</listitem>
+	</listbox>
+
+	
+</window>
+</zk>

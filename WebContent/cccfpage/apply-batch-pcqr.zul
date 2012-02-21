@@ -1,0 +1,82 @@
+<?page title="工厂检查-批次确认" contentType="text/html;charset=UTF-8"?>
+<?init class="org.zkoss.zkplus.databind.AnnotateDataBinderInit" arg0="./gcjcPCwinsh"?>
+<window border="none" height="100%" id="gcjcPCwinsh" apply="cccfmis.gcjc.zk.ApplyGcjcshWindow">
+	<borderlayout>
+		<north height="60px" splittable="true" collapsible="false">
+			<listbox checkmark="true" model="@{batchlist}" id="pclist" vflex="true" forward="onSelect=onPcSelect">
+				<listhead>
+					<listheader label="批次"></listheader>
+					<listheader label="名称"></listheader>
+					<listheader label="新建时间"></listheader>
+					<listheader label="创建人"></listheader>
+					<listheader label="企业数"></listheader>
+					<listheader label="批次状态"></listheader> 
+					<listheader label="备注"></listheader>
+					<listheader label="操作" width="100px"></listheader>
+				</listhead>
+				<listitem self="@{each=fck}" value="@{fck.id}" draggable="pcitem">
+					<listcell label="@{fck.batch}"></listcell>
+					<listcell label="@{fck.batch_name}"></listcell>
+					<listcell label="@{fck.create_date,converter='com.aidi.core.zk.DateConverter'}"></listcell>
+					<listcell label="@{fck.created_name}"></listcell>
+					<listcell label="@{fck.application_count}"></listcell>
+					<listcell label="@{fck.state}"></listcell>
+					<listcell label="@{fck.notes}"></listcell>
+					<listcell>
+						<toolbarbutton label="确认通过" forward="onPass"></toolbarbutton>
+					</listcell>
+				</listitem>
+			</listbox>
+		</north>
+		<center flex="true">
+			<hlayout>
+				<groupbox hflex="true" vflex="true" mold="3d" closable="false">
+					<caption label="申请列表" />
+					<listbox id="appList" model="@{applicationlist}" checkmark="true" multiple="true" vflex="true">
+						<listhead>
+							<listheader label="申请企业" />
+							<listheader label="申请产品" />
+							<listheader label="制造商" />
+							<listheader label="生产商" />
+							<!--  <listheader label="申请类型" />
+								<listheader label="业务类型" />-->
+							<listheader label="见习见证人员" />
+						</listhead>
+						<listitem self="@{each=appliction}" value="@{appliction}">
+							<listcell label="@{appliction.enterprise.name}" />
+							<listcell label="@{appliction.production.productName}" />
+							<listcell label="@{appliction.productionEnterprise.name}" />
+							<listcell label="@{appliction.manufacture.name}" />
+							<!--<listcell label="@{appliction.apptype}" />
+								<listcell label="@{appliction.businesstype}" />-->
+							<listcell label="@{appliction.showuser}" />
+						</listitem>
+					</listbox>
+				</groupbox>
+				<groupbox hflex="true" vflex="true" mold="3d" closable="false">
+					<caption label="待添加见习见证人员" />
+					<hbox vflex="true">
+						<vbox vflex="true">
+							<groupbox mold="3d" width="200px" closable="false" vflex="true">
+								<caption label="已选人员" />
+								<vlayout id="haselect" height="70px" style="overflow:auto;" vflex="true"></vlayout>
+							</groupbox>
+							<button label="添加到申请" forward="onSavePass"/>
+						</vbox>
+						<listbox hflex="true" vflex="true" height="100%" id="userlist" model="@{userList}" checkmark="true" multiple="true"
+							forward="onSelect=onSelectUser" mold="paging" pageSize="10">
+							<listhead>
+								<listheader label="姓名" />
+								<listheader label="所属部门" />
+							</listhead>
+							<listitem self="@{each=user}" value="@{user}">
+								<listcell label="@{user.name}" />
+								<listcell label="@{user.organization}" />
+							</listitem>
+						</listbox>
+					</hbox>
+				</groupbox>
+			</hlayout>
+		</center>
+	</borderlayout>
+</window>

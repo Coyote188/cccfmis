@@ -1,0 +1,241 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?init class="cccf.ma.web.zk.ApplicationAcceptWindowInit" arg0="contractApproveWindow"?>
+<window title="合同审批" border="normal" use="cccf.ma.web.zk.ApplicationContractWindow" xmlns:a="http://www.zkoss.org/2005/zk/annotation" id="contractApproveWindow"
+	width="100%" sizable="true" height="100%" closable="true" position="center,top">
+	<vlayout>
+		<div align="left">
+			<hbox align="start" id="info">
+				<label value="任务:合同审批" style="font-size:14px;color:#B70A0A;font-weight:bold;" />
+				<label style="font-size:14px;color:#B70A0A;font-weight:bold;">申请企业：</label>
+				<label value="@{inspectionApplication.enterprise.name}" style="font-size:14px;color:#B70A0A;font-weight:bold;"></label>
+				<separator width="10px" />
+				<image src="../image/common/activate.png" />
+				<label height="26px" style="vertical-align: middle;">当前状态：</label>
+				<label id="statusName" style="vertical-align: middle;" value="@{inspectionApplication.statusName}" />
+				<toolbarbutton id="btChangeStatusList" label="变更记录" style="color:blue" forward="onChangeStatusList" />
+			</hbox>
+		</div>
+		<separator height="4px" />
+		
+		<div id="divContractInfo"></div>
+		<div id="divApplyList"/>
+		
+		<!-- 2011.5.21 停用 start -->
+		<groupbox mold="3d" open="true" closable="true" visible="false">
+			<caption label="基本信息" style="font-size:14px;color:RED;font-weight:bold;" tooltiptext="点击打开/收缩" />
+			<separator width="6px" />
+			<grid>
+				<columns>
+					<column width="180px" align="left" />
+					<column align="left" />
+				</columns>
+				<rows>
+					<row>
+						<hbox>
+							<label value="*" style="color:#FF0000" />
+							申请号:
+						</hbox>
+						<a:bind value="inspectionApplication.sioid" />
+						<label id="sioid" />
+					</row>
+					<row>
+						<hbox>
+							<label value="*" style="color:#FF0000" />
+							申请产品:
+						</hbox>
+						<a:bind value="inspectionApplication.production.productName" />
+						<textbox id="production" width="350px" readonly="true"></textbox>
+					</row>
+					<row>
+						<hbox>
+							<label value="*" style="color:#FF0000" />
+							申请类型:
+						</hbox>
+						<a:bind value="inspectionApplication.apptype" />
+						<textbox id="apptype" width="350px" readonly="true"></textbox>
+					</row>
+					<row>
+						<hbox>
+							<label value="*" style="color:#FF0000" />
+							业务类型:
+						</hbox>
+						<a:bind value="inspectionApplication.businesstype" />
+						<textbox id="bustype" width="350px" readonly="true"></textbox>
+					</row>
+					<row>
+						<hbox>
+							<label value="*" style="color:#FF0000" />
+							生产企业:
+						</hbox>
+						<a:bind value="inspectionApplication.productionEnterprise.name" />
+						<textbox id="productionEnterprise" width="350px" readonly="true" />
+					</row>
+					<row>
+						<hbox>
+							<label value="*" style="color:#FF0000" />
+							制造商:
+						</hbox>
+						<a:bind value="inspectionApplication.manufacture.name" />
+						<textbox id="manufacture" width="350px" readonly="true" />
+					</row>
+					<row visible="false">
+						<hbox>
+							<label value="*" style="color:#FF0000" />
+							通讯地址:
+						</hbox>
+						<a:bind value="inspectionApplication.address" />
+						<textbox id="address" width="550px" readonly="true" />
+
+					</row>
+				</rows>
+			</grid>
+		</groupbox>
+		<separator height="2px" />
+		<groupbox mold="3d" open="true" visible="false" closable="true" id="otherFiles">
+			<caption label="检验资料" style="font-size:9pt;color:BLUE;" image="/image/common/folder.png" tooltiptext="点击打开/收缩" />
+		</groupbox>
+		
+		<!-- end -->
+		
+		<separator height="2px" />
+		<div align="center">
+			<groupbox mold="3d" open="true" closable="true" id="feeGroup">
+				<caption label="收费表单" image="/image/common/calendar.png" style="font-size:9pt;color:BLUE;" tooltiptext="点击打开/收缩" />
+				<separator width="6px" />
+
+				<grid width="99%" id="feeGrid">
+					<columns>
+						<column label="分类" width="140px" align="center" />
+						<column label="项目" width="140px" align="center" />
+						<column label="单位" width="140px" align="center" />
+						<column label="数量" align="center" />
+						<column label="金额(元)" align="center" />
+					</columns>
+					<rows></rows>
+					<foot>
+						<footer>合计(元)</footer>
+						<footer>
+							<label id="amountFee" value="@{inspectionApplication.amountFee}"></label>
+						</footer>
+						<footer></footer>
+					</foot>
+				</grid>
+
+			</groupbox>
+		</div>
+		<separator width="2px" />
+		<groupbox mold="3d">
+			<caption label="前一任务" style="font-size:9pt;color:BLUE;" image="/image/16/down.png" tooltiptext="点击打开/收缩" />
+			<separator height="4px" />
+			<div align="center">
+				<listbox mold="paging" id="preTaskListbox" width="99%" pageSize="5">
+					<listhead sizable="true">
+						<listheader label="任务名称" />
+						<listheader label="执行人员" />
+						<listheader label="完成日期" />
+						<listheader label="执行结果" />
+						<listheader label="意见" />
+					</listhead>
+					<listitem style="text-align:left;">
+						<a:bind label="preTaskInstanceInfo.taskName" />
+						<listcell />
+						<a:bind label="preTaskInstanceInfo.actorName" />
+						<listcell />
+						<listcell label="@{preTaskInstanceInfo.approveDate}" />
+						<a:bind label="preTaskInstanceInfo.approveResult" />
+						<listcell />
+						<listcell>
+							<label value="@{preTaskInstanceInfo.simpleMemo}" tooltiptext="@{preTaskInstanceInfo.approveMemo}" />
+						</listcell>
+					</listitem>
+				</listbox>
+			</div>
+		</groupbox>
+		<separator width="2px" />
+		<groupbox mold="3d" open="true" closable="true">
+			<caption label="已完成的所有任务" image="/image/16/down.png" style="font-size:9pt;color:BLUE;" tooltiptext="点击打开/收缩" />
+			<separator width="6px" />
+			<div align="center">
+				<a:bind model="taskInstanceInfoList" />
+				<listbox mold="paging" id="taskListbox" width="99%" pageSize="4">
+					<listhead sizable="true">
+						<listheader label="任务名称" />
+						<listheader label="执行人员" />
+						<listheader label="完成日期" />
+						<listheader label="执行结果" />
+						<listheader label="意见" />
+						<listheader label="详细意见" />
+					</listhead>
+					<a:bind _var="taskInstanceInfo" />
+					<listitem style="text-align:left;">
+						<a:bind label="taskInstanceInfo.taskName" />
+						<listcell />
+						<a:bind label="taskInstanceInfo.actorName" />
+						<listcell />
+						<listcell label="@{taskInstanceInfo.approveDate}" />
+						<a:bind label="taskInstanceInfo.approveResult" />
+						<listcell />
+						<listcell>
+							<label value="@{taskInstanceInfo.simpleMemo}" tooltiptext="@{taskInstanceInfo.approveMemo}" />
+						</listcell>
+						<listcell>
+							<toolbarbutton label="详细" style="color:blue" forward="onAttachFileMemo()">
+								<custom-attributes taskInstanceId="@{taskInstanceInfo.taskInstanceId}" />
+							</toolbarbutton>
+						</listcell>
+					</listitem>
+				</listbox>
+			</div>
+		</groupbox>
+		<separator width="2px" />
+		<div align="left">
+			<grid id="appoveGrid">
+				<columns>
+					<column width="80px" align="center"></column>
+					<column></column>
+				</columns>
+				<rows>
+					<row>
+						<hbox>
+							<label value="*" style="color:#FF0000" />
+							合同文件:
+						</hbox>
+						<hbox>
+							<a:bind value="inspectionApplication.contractFileUrl" />
+							<textbox id="contractFileUrl" style="border:0px none #ffffff;background-color:#fff;color:#fff; " width="0" readonly="true" />
+							<toolbarbutton id="label_contractFileUrl" forward="onFiledown(contractFileUrl)" />
+							<toolbarbutton id="del_contractFileUrl" image="../image/common/close.png" forward="onDeleteAttachfile(contractFileUrl)"
+								visible="false" tooltiptext="删除文件" />
+							<button id="up_contractFileUrl" label="预览" height="20px" forward="onGenConstractFile" />
+						</hbox>
+					</row>
+					<row align="left">
+						<label value="下一步:" />
+						<listbox id="resultListbox" mold="select" rows="1" width="200" />
+					</row>
+					<row align="left">
+						<label value="意见:" />
+						<textbox id="approveMemo" rows="2" cols="140" />
+					</row>
+				</rows>
+			</grid>
+		</div>
+		<separator width="4px" />
+		<div align="left">
+			<hbox>
+				<separator width="10px" />
+				<button label="提交" image="/image/16/up.png" width="68px" id="btSubmit" height="26px" style="" forward="onSubmit" />
+				<button label="下一条" image="/image/16/next.png" id="btNext" height="26px" style="" forward="onNext">
+					<attribute name="onCreate">
+						Clients.scrollIntoView(info);
+					</attribute>
+				</button>
+				<button label="关闭" image="/image/common/close.png" width="68px" height="26px" style="" forward="onCancel" />
+			</hbox>
+		</div>
+		<separator height="2px" />
+		<iframe id="downframe" height="0" width="0"></iframe>
+	</vlayout>
+</window>
+
+

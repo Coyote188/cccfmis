@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+ 
+<?page title="国税局即时通讯平台 "  contentType="text/html;charset=UTF-8"?>
+<zk >
+<window id="MessageIndex" width="99%">
+	<borderlayout id="main" height="474px" style="background:#c5e6ef;" apply="openjframework.InstantMessage.IndexComposer">
+		<!-- list -->
+		<east width="150px" title="在线员工" flex="true" margins="0,5,5,5"
+			collapsible="true">
+			<include src="InstantMessage/userList.zul" />
+		</east>
+		<!-- Content -->
+		<center flex="true">
+			<tabbox>
+				<tabs>	
+					<tab label="公共信息"  selected="true" />
+				</tabs>
+				<tabpanels>
+					<tabpanel>
+						<include src="InstantMessage/chatRoom.zul" />
+					</tabpanel>
+				</tabpanels>
+			</tabbox>
+		</center>
+	</borderlayout>
+</window>
+</zk>

@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<?init class="cccfmis.bpm.zk.ApplictionPDWindowInit" arg0="zlscApproveWindow"?>
+<window title="工厂检查资料上传" id="zlscApproveWindow" border="normal"
+	height="100%" width="100%" use="cccfmis.bpm.zk.ApplictionGCJCWindow">
+	<borderlayout height="100%">
+		<center id="ctFacInspectionContent" flex="true" autoscroll="true">
+			
+		</center>
+		<south title="工作流操作" collapsible="true" splittable="false">
+			<grid id="appoveGrid">
+				<columns>
+					<column width="80px" align="center"></column>
+					<column></column>
+				</columns>
+				<rows>
+					<row align="left">
+						<label value="下一步:" />
+						<cell>
+							<listbox id="resultListbox" mold="select"
+								rows="1" width="200" />
+							<button label="提交" image="/image/16/up.png"
+								width="68px" id="btSubmit" height="26px" style=""
+								forward="onSubmit" />
+							<button label="关闭"
+								image="/image/common/close.png" width="68px" height="26px"
+								style="" forward="onCancel" />
+							<button label="回退" disabled="true"></button>
+						</cell>
+					</row>
+					<row align="left">
+						<label value="意见:" />
+						<textbox id="approveMemo" rows="3" width="98%" />
+					</row>
+					<row>
+		<!-- unused part -->
+			<tabbox height="100%" visible="false">
+				<tabs>
+					<tab label="资料上传"></tab>
+					<tab label="申请资料"></tab>
+				</tabs>
+				<tabpanels height="100%">
+					<tabpanel height="100%">
+						<borderlayout>
+							<center style="border:0px;" flex="true"
+								autoscroll="false" border="normal">
+								<listbox id="fileList" popup="ture"
+									multiple="true" checkmark="true">
+									<listhead>
+										<listheader width="200px"
+											label="文件类型" align="left" />
+										<listheader label="文件名称"
+											align="left" />
+										<listheader label="查看"
+											align="left" />
+										<listheader width="120px"
+											align="left" />
+									</listhead>
+									<listfoot>
+										<listfooter label="名称">
+											<textbox id="fileName"/>
+										</listfooter>
+										<listfooter label="类型:" >
+											<textbox id="fileType"/>
+										</listfooter>
+										<listfooter>
+											<fileupload
+												forward="onUpload=onFileUP" label="文件上传" tooltiptext="单击按钮选择文件上传"/>
+										</listfooter>
+										<listfooter label="">
+											<toolbarbutton label="多项删除" style="color:red;" forward="onMultiDel"/>
+										</listfooter>
+									</listfoot>
+								</listbox>
+							</center>
+						</borderlayout>
+					</tabpanel>
+					<tabpanel height="100%">
+						<include height="100%"
+							src="/cccfpage/items/sqzl.zul">
+						</include>
+					</tabpanel>
+				</tabpanels>
+				</tabbox>
+					</row>
+				</rows>
+			</grid>
+		</south>
+	</borderlayout>
+</window>

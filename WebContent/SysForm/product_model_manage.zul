@@ -1,0 +1,186 @@
+<?page title="" contentType="text/html;charset=UTF-8"?>
+<?init class="org.zkoss.zkplus.databind.AnnotateDataBinderInit" root="./frmProductModelManage"?>
+<zk>
+	<window style="overflow:auto;" id="frmProductModelManage" title="" border="none" height="100%" width="99%" apply="cccf.ma.web.zk.ProductModelManageController">
+		<hbox>
+			<groupbox mold="3d" closable="false" width="440px">
+				<caption label="检验报告" />
+				<grid>
+					<columns>
+						<column width="120px" />
+						<column width="300px" />
+					</columns>
+					<rows>
+						<row>
+							<label value="企业名称" />
+							<bandbox id="BenterPriseList" width="250px" readonly="true">
+								<bandpopup width="260px" height="355px">
+									<listbox id="enterPriseList" checkmark="true" multiple="false" mold="paging" pageSize="20" height="350px" width="250px"
+										model="@{frmProductModelManage$composer.enterpriseList}">
+										<auxhead>
+											<auxheader>
+												<textbox id="searchValue" width="170px" />
+												<button id="searchEnterprise" label="查找" />
+											</auxheader>
+										</auxhead>
+										<listhead>
+											<listheader label="企业名称" width="250px" />
+										</listhead>
+										<listitem self="@{each=enterprise}" value="@{enterprise}">
+											<listcell label="@{enterprise.name}" />
+										</listitem>
+									</listbox>
+								</bandpopup>
+							</bandbox>
+						</row>
+						<row>
+							<label value="产品名称" />
+							<combobox id="Eproduct" model="@{modelList}" readonly="true" width="250px">
+								<comboitem self="@{each=product}" value="@{product.product.id}" label="@{product.product.productName}" />
+							</combobox>
+						</row>
+						<row>
+							<label value="生产商" />
+							<combobox id="productionenterprise" model="@{modelList}" readonly="true" width="250px">
+								<comboitem self="@{each=erprise}" value="@{erprise}" label="@{erprise.name}" />
+							</combobox>
+						</row>
+						<row>
+							<label value="制造商" />
+							<combobox id="manufacture" model="@{modelList}" readonly="true" width="250px">
+								<comboitem self="@{each=facture}" value="@{facture}" label="@{facture.name}" />
+							</combobox>
+						</row>
+						<row>
+							<label value="检验报告编号" />
+							<bandbox width="250px" id="echeckno" readonly="true">
+								<bandpopup width="250px" height="202px">
+									<listbox id="noList" width="240px" model="@{modelList}" height="200px" checkmark="true" multiple="false"
+										onSelect="echeckno.setValue(self.getSelectedItem().getLabel());echeckno.close();">
+										<listhead>
+											<listheader>
+												<textbox id="newNo" />
+												<button label="新增" id="addNo" />
+											</listheader>
+										</listhead>
+										<listitem self="@{each=preno}" value="@{preno}" label="@{preno.checkno}" />
+									</listbox>
+								</bandpopup>
+							</bandbox>
+						</row>
+						<row>
+							<label value="检验机构名称" />
+							<textbox width="245px" id="eorgname" />
+						</row>
+						<row>
+							<label value="检验依据" />
+							<textbox width="245px" id="echeckby" />
+						</row>
+						<row>
+							<label value="检验结论" />
+							<combobox width="250px" id="ereport" readonly="true">
+							  <comboitem label="通过"/>
+							  <comboitem label="不通过"/>
+							</combobox>
+						</row>
+						<row>
+							<label value="签发日期" />
+							<datebox width="250px" id="esetdate" />
+						</row>
+						<row>
+							<label value="检验类型" />
+							<textbox width="245px" id="echecktype" />
+						</row>
+						<row>
+							<label value="检验报告" />
+							<hbox>
+								<textbox id="secheckfile" readonly="true" />
+								<fileupload id="echeckfile" label="上传资料"  forward="onUpload=onFileUP(checkfile)"/>
+							</hbox>
+						</row>
+					</rows>
+				</grid>
+			</groupbox>
+			<groupbox mold="3d" closable="false" width="480px" id="modellist">
+				<caption label="具体产品型号" />
+				<vbox>
+					<listbox id="enterModelList" width="470" model="@{modelList}" mold="paging" pageSize="10">
+						<listhead>
+							<listheader label="产品名称" />
+							<listheader label="规格型号" />
+							<listheader label="特性描述" />
+							<listheader label="产品图片" />
+							<listheader label="产品设计文件" width="100px" />
+							<listheader label="删除" width="70px" />
+						</listhead>
+						<listitem self="@{each=model}" value="@{model}">
+							<listcell label="@{model.tempname}" />
+							<listcell label="@{model.model}" />
+							<listcell label="@{model.name}" />
+							<listcell>
+								<a href="@{model.productimage}" target="_blank">
+									<attribute name="onCreate">
+	                                   self.setLabel(self.getHref() == null || self.getHref() == "" ? "" : "查看");
+                                    </attribute>
+								</a>
+							</listcell>
+							<listcell>
+								<a href="@{model.designfile}" target="_blank">
+									<attribute name="onCreate">
+	                                  self.setLabel(self.getHref() == null || self.getHref() == "" ? "" : "查看");
+                                    </attribute>
+								</a>
+							</listcell>
+							<listcell>
+								<toolbarbutton label="删除" forward="onDelete" />
+							</listcell>
+						</listitem>
+					</listbox>
+					<grid>
+						<rows>
+							<row>
+								<label value="产品名称" />
+								<textbox id="tempname" />
+							</row>
+							<row>
+								<label value="规格型号" />
+								<textbox id="emodel" />
+							</row>
+							<row>
+								<label value="特性描述" />
+								<textbox id="ename" />
+							</row>
+							<row>
+								<label value="产品图片" />
+								<hbox>
+									<textbox id="sproductimage" readonly="true" />
+									<fileupload label="浏览.." forward="onUpload=onFileUP(productimage)" />
+								</hbox>
+							</row>
+							<row>
+								<label value="产品设计文件" />
+								<hbox>
+									<textbox id="sdesignfile" readonly="true" />
+									<fileupload label="浏览.." forward="onUpload=onFileUP(designfile)" />
+								</hbox>
+							</row>
+							<row>
+								<label value="其它文件" />
+								<hbox>
+									<textbox id="sotherfile" readonly="true" />
+									<fileupload label="浏览.." forward="onUpload=onFileUP(other)" />
+								</hbox>
+							</row>
+						</rows>
+						<foot>
+							<footer>
+								<button label="增加" forward="onSave" />
+								<button label="取消" />
+							</footer>
+						</foot>
+					</grid>
+				</vbox>
+			</groupbox>
+		</hbox>
+	</window>
+</zk>

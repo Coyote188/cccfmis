@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?init class="cccf.ma.web.zk.CommentItemeidtWindowInit" arg0="CommentItemEditWindow"?>
+<window title="常用批语浏览" border="normal" 
+	use="cccf.ma.web.zk.CommentItemeidtWindow"
+	xmlns:a="http://www.zkoss.org/2005/zk/annotation" id="CommentItemEditWindow"
+	xmlns="http://www.zkoss.org/2005/zul"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.zkoss.org/2005/zul
+	http://www.zkoss.org/2005/zul/zul.xsd"
+	width="600px" height="500px" sizable="true">
+	<div align="center">
+		<label value="常用批语浏览"
+			style="font-size:32px;color:#008BB6;font-weight:bold;" />
+	</div>
+	<grid>
+		<columns>
+			<column width="80px" align="center"></column>
+		</columns>
+		<rows>
+		<row>
+				<label value="*标题:"
+					style="font-size:14px;color:#008BB6;font-weight:bold;" />
+				<a:bind value="commentItem.title" />
+				 <textbox id="title" width="200px" readonly="true" maxlength="50"/>
+
+			</row>
+		<row width="520px" height="320px">
+				<label value="*内容:"
+					style="font-size:14px;color:#008BB6;font-weight:bold;" />
+				<a:bind value="commentItem.content" />
+				<ckeditor id="content" toolbar="Basic" width="480px" height="270px" />
+			</row>
+		</rows>
+	</grid>
+	<separator width="10px" />
+	<div align="center">
+		<hbox>
+			<button label="关闭" image="/image/files/close.gif"
+				width="68px" height="26px" style="null" forward="onCancel" />
+		</hbox>
+	</div>
+</window>

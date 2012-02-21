@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<window title="处理任务" border="normal"
+	use="com.aidi.bpm.zk.MyTaskUrlFormWindow"
+	xmlns:a="http://www.zkoss.org/2005/zk/annotation" id="myTaskFormWindow"
+	width="800px" height="400px" closable="true" sizable="true">
+
+	<include id="urlform" width="99%" height="400px" />
+	<attribute name="onCreate">
+	Window objWindow = (Window) Executions.createComponents("task_end.zul",
+			self, null);
+	objWindow.doEmbedded();
+	</attribute>
+
+
+</window>

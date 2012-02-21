@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<zk> 
+	<window id="todotaskWin" apply="cccf.ma.web.zk.TodoTaskList" width="100%" contentStyle="overflow:none;"  vflex="false"
+		height="100%">
+		<groupbox id="todoTaskGpx" mold="3d"  vflex="true" open="true">
+<!--		<attribute name="onOpen">-->
+<!--			self.setVflex("false");-->
+<!--			if(detailGpx.isOpen())-->
+<!--			{-->
+<!--				detailGpx.setVflex("false");-->
+<!--				detailGpx.setOpen(false);-->
+<!--			}-->
+<!--		</attribute>-->
+			<caption label="我的待办事项" height="22px"/>
+			<!-- 选择事件  -->
+				<tree id="tlTre" vflex="true" checkmark="true" multiple="true" >
+					<treecols visible="false">
+						<treecol label="企业名称" width="250px" />
+						<treecol label="任务名称" />
+						<treecol label="发起人员" width="100px"
+							align="center" />
+						<treecol label="发起时间" width="100px"
+							align="center" />
+					</treecols>
+					<treechildren>
+						<treeitem value="${each}" forEach="${epgroup}"
+							open="false" forward="onOpen=onTreeLargeClassOpen">
+							<treerow>
+								<treecell label="${each}" span="4" />
+							</treerow>
+							<treechildren />
+						</treeitem>
+					</treechildren>
+				</tree>
+			</groupbox>
+<!--			<groupbox id="detailGpx" mold="3d" open="true">-->
+<!--			<attribute name="onOpen">-->
+<!--				self.setVflex("false");-->
+<!--				if(todoTaskGpx.isOpen())-->
+<!--				{-->
+<!--					todoTaskGpx.setVflex("false");-->
+<!--					todoTaskGpx.setOpen(false);-->
+<!--				}-->
+<!--			</attribute>-->
+<!--				<caption id="detailCap"  height="22px" label=""/>-->
+<!--				<div id="detailDiv"/>-->
+<!--			</groupbox>-->
+	</window>
+</zk>

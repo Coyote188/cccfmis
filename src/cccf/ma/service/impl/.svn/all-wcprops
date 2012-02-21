@@ -1,0 +1,281 @@
+K 25
+svn:wc:ra_dav:version-url
+V 59
+/dlyhc.cccfmis/!svn/ver/1467/trunk/src/cccf/ma/service/impl
+END
+EnterpriseInfoServiceImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/dlyhc.cccfmis/!svn/ver/214/trunk/src/cccf/ma/service/impl/EnterpriseInfoServiceImpl.java
+END
+CommentItemInfoServiceImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/dlyhc.cccfmis/!svn/ver/115/trunk/src/cccf/ma/service/impl/CommentItemInfoServiceImpl.java
+END
+CommonTreatyInfoServiceImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/dlyhc.cccfmis/!svn/ver/58/trunk/src/cccf/ma/service/impl/CommonTreatyInfoServiceImpl.java
+END
+EnterpriseNoticeInfoServiceImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/dlyhc.cccfmis/!svn/ver/266/trunk/src/cccf/ma/service/impl/EnterpriseNoticeInfoServiceImpl.java
+END
+FeeDetailInfoServiceImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/dlyhc.cccfmis/!svn/ver/278/trunk/src/cccf/ma/service/impl/FeeDetailInfoServiceImpl.java
+END
+AttachFileMemoInfoServiceImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/dlyhc.cccfmis/!svn/ver/384/trunk/src/cccf/ma/service/impl/AttachFileMemoInfoServiceImpl.java
+END
+TechnicalEvaluationReportCreateServiceImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 107
+/dlyhc.cccfmis/!svn/ver/1275/trunk/src/cccf/ma/service/impl/TechnicalEvaluationReportCreateServiceImpl.java
+END
+FactoryInspectionServiceImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/dlyhc.cccfmis/!svn/ver/705/trunk/src/cccf/ma/service/impl/FactoryInspectionServiceImpl.java
+END
+ProductionEnterpriseInfoServiceImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/dlyhc.cccfmis/!svn/ver/106/trunk/src/cccf/ma/service/impl/ProductionEnterpriseInfoServiceImpl.java
+END
+ObjectApproveServiceImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/dlyhc.cccfmis/!svn/ver/907/trunk/src/cccf/ma/service/impl/ObjectApproveServiceImpl.java
+END
+FinanceServiceImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/dlyhc.cccfmis/!svn/ver/1172/trunk/src/cccf/ma/service/impl/FinanceServiceImpl.java
+END
+AcceptDivisionServiceImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/dlyhc.cccfmis/!svn/ver/1076/trunk/src/cccf/ma/service/impl/AcceptDivisionServiceImpl.java
+END
+PumperDocumentsInfoServiceImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/dlyhc.cccfmis/!svn/ver/21/trunk/src/cccf/ma/service/impl/PumperDocumentsInfoServiceImpl.java
+END
+TechnicalEvaluationAuditServiceImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/dlyhc.cccfmis/!svn/ver/1275/trunk/src/cccf/ma/service/impl/TechnicalEvaluationAuditServiceImpl.java
+END
+AccountTypeInfoServiceImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/dlyhc.cccfmis/!svn/ver/278/trunk/src/cccf/ma/service/impl/AccountTypeInfoServiceImpl.java
+END
+ConformityReviewServiceImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/dlyhc.cccfmis/!svn/ver/1467/trunk/src/cccf/ma/service/impl/ConformityReviewServiceImpl.java
+END
+ApplicationPublicInfoServiceImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/dlyhc.cccfmis/!svn/ver/766/trunk/src/cccf/ma/service/impl/ApplicationPublicInfoServiceImpl.java
+END
+ApplicationInfoServiceImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/dlyhc.cccfmis/!svn/ver/21/trunk/src/cccf/ma/service/impl/ApplicationInfoServiceImpl.java
+END
+ProductCatalogueInfoServiceImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/dlyhc.cccfmis/!svn/ver/9/trunk/src/cccf/ma/service/impl/ProductCatalogueInfoServiceImpl.java
+END
+FactoryCheckDatasServiceImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/dlyhc.cccfmis/!svn/ver/1373/trunk/src/cccf/ma/service/impl/FactoryCheckDatasServiceImpl.java
+END
+TechnicalEvaluationArrangeServiceImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 102
+/dlyhc.cccfmis/!svn/ver/1275/trunk/src/cccf/ma/service/impl/TechnicalEvaluationArrangeServiceImpl.java
+END
+PMI.java
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/dlyhc.cccfmis/!svn/ver/705/trunk/src/cccf/ma/service/impl/PMI.java
+END
+LocationInfoServiceImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/dlyhc.cccfmis/!svn/ver/106/trunk/src/cccf/ma/service/impl/LocationInfoServiceImpl.java
+END
+TechnicalEvaluationApprovalServiceImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 103
+/dlyhc.cccfmis/!svn/ver/1443/trunk/src/cccf/ma/service/impl/TechnicalEvaluationApprovalServiceImpl.java
+END
+StateInfoServiceImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/dlyhc.cccfmis/!svn/ver/106/trunk/src/cccf/ma/service/impl/StateInfoServiceImpl.java
+END
+AssignPlanServiceImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/dlyhc.cccfmis/!svn/ver/1200/trunk/src/cccf/ma/service/impl/AssignPlanServiceImpl.java
+END
+TechnicalEvaluationPrintServiceImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/dlyhc.cccfmis/!svn/ver/1290/trunk/src/cccf/ma/service/impl/TechnicalEvaluationPrintServiceImpl.java
+END
+AppStatusRecordInfoServiceImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/dlyhc.cccfmis/!svn/ver/100/trunk/src/cccf/ma/service/impl/AppStatusRecordInfoServiceImpl.java
+END
+EnterpriseProductModelServiceImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/dlyhc.cccfmis/!svn/ver/636/trunk/src/cccf/ma/service/impl/EnterpriseProductModelServiceImpl.java
+END
+ApplicationPublicServiceImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/dlyhc.cccfmis/!svn/ver/1402/trunk/src/cccf/ma/service/impl/ApplicationPublicServiceImpl.java
+END
+EnterpriseOwnActivatedProductListInfoServiceImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 112
+/dlyhc.cccfmis/!svn/ver/122/trunk/src/cccf/ma/service/impl/EnterpriseOwnActivatedProductListInfoServiceImpl.java
+END
+FactoryCheckServiceImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/dlyhc.cccfmis/!svn/ver/839/trunk/src/cccf/ma/service/impl/FactoryCheckServiceImpl.java
+END
+WorkFlowServiceImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/dlyhc.cccfmis/!svn/ver/1120/trunk/src/cccf/ma/service/impl/WorkFlowServiceImpl.java
+END
+AbstractBaseService.java
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/dlyhc.cccfmis/!svn/ver/1046/trunk/src/cccf/ma/service/impl/AbstractBaseService.java
+END
+ContractServiceImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/dlyhc.cccfmis/!svn/ver/1465/trunk/src/cccf/ma/service/impl/ContractServiceImpl.java
+END
+FactoryCheckDatasCheckServiceImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/dlyhc.cccfmis/!svn/ver/1373/trunk/src/cccf/ma/service/impl/FactoryCheckDatasCheckServiceImpl.java
+END
+TechnicalEvaluationServiceImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/dlyhc.cccfmis/!svn/ver/985/trunk/src/cccf/ma/service/impl/TechnicalEvaluationServiceImpl.java
+END
+ProductionModelInfoServiceImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/dlyhc.cccfmis/!svn/ver/31/trunk/src/cccf/ma/service/impl/ProductionModelInfoServiceImpl.java
+END
+Product_User_ListInfoServiceImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/dlyhc.cccfmis/!svn/ver/84/trunk/src/cccf/ma/service/impl/Product_User_ListInfoServiceImpl.java
+END
+AssignBatchServiceImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/dlyhc.cccfmis/!svn/ver/1358/trunk/src/cccf/ma/service/impl/AssignBatchServiceImpl.java
+END
+ManufactureInfoServiceImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/dlyhc.cccfmis/!svn/ver/106/trunk/src/cccf/ma/service/impl/ManufactureInfoServiceImpl.java
+END
+TechnicalEvaluationResultUpServiceImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 103
+/dlyhc.cccfmis/!svn/ver/1275/trunk/src/cccf/ma/service/impl/TechnicalEvaluationResultUpServiceImpl.java
+END
+AccountItemInfoServiceImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/dlyhc.cccfmis/!svn/ver/278/trunk/src/cccf/ma/service/impl/AccountItemInfoServiceImpl.java
+END
+SurveyReportServiceImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/dlyhc.cccfmis/!svn/ver/1410/trunk/src/cccf/ma/service/impl/SurveyReportServiceImpl.java
+END
+AssignDivisionServiceImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/dlyhc.cccfmis/!svn/ver/1186/trunk/src/cccf/ma/service/impl/AssignDivisionServiceImpl.java
+END
+FactoryFileReviewServiceImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/dlyhc.cccfmis/!svn/ver/1373/trunk/src/cccf/ma/service/impl/FactoryFileReviewServiceImpl.java
+END

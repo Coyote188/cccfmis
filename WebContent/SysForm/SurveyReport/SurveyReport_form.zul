@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?init class="org.zkoss.zkplus.databind.AnnotateDataBinderInit" root="./winSurveyReportForm"?>
+
+<window title="添加检验报告" border="normal" closable="true" width="99%" id="winSurveyReportForm"
+	apply="cccf.ma.web.zk.surveyreport.SurveyReportFormController">
+	<grid>
+		<columns>
+			<column width="200px"></column>
+			<column></column>
+		</columns>
+		<rows>
+			<row>
+				<cell align="right">企业名称 :</cell>
+				<bandbox id="bb_enterpriseList" width="250px" readonly="true">
+					<bandpopup width="605px" height="355px">
+						<listbox id="lb_searchEnterprise" forward="onSelect=onSelectEnterprise"
+							model="@{winSurveyReportForm$composer.enterpriseList}" checkmark="true" multiple="false" mold="paging" height="98%"
+							width="98%">
+							<auxhead>
+								<auxheader colspan="4">
+									<textbox id="tb_searchEnterprise" />
+									<button label="查找" forward="onSearchEnterprise" />
+								</auxheader>
+							</auxhead>
+							<listhead>
+								<listheader label="企业名称" />
+								<listheader label="国家" />
+								<listheader label="地区" />
+								<listheader label="联系人" />
+							</listhead>
+							<listitem self="@{each=enterprise}" value="@{enterprise}">
+								<listcell label="@{enterprise.name}" />
+								<listcell label="@{enterprise.state}" />
+								<listcell label="@{enterprise.location}" />
+								<listcell label="@{enterprise.contactPerson}" />
+							</listitem>
+						</listbox>
+					</bandpopup>
+				</bandbox>
+			</row>
+			<row>
+				<cell align="right">产品名称 :</cell>
+				<combobox id="cb_product" model="@{modelList}" readonly="true" width="250px">
+					<comboitem self="@{each=product}" value="@{product.product.id}" label="@{product.product.productName}">
+						<custom-attributes product="@{product.product}" />
+					</comboitem>
+				</combobox>
+			</row>
+			<row>
+				<cell align="right">检验报告编号 :</cell>
+				<textbox id="surveyReportSN" />
+			</row>
+			<row>
+				<cell align="right">检验日期 :</cell>
+				<cell>
+					自
+					<datebox id="surveyFromDate" />
+					至
+					<datebox id="surveyToDate" />
+				</cell>
+			</row>
+			<row>
+				<cell align="right">检验机构名称 :</cell>
+				<combobox id="organizationCbx" value="——请选择一个部门——" model="@{winSurveyReportForm$composer.organizationlist}"
+					autodrop="true" readonly="true">
+					<comboitem self="@{each=organization}" label="@{organization.organizationName}">
+						<custom-attributes organization="@{organization}" />
+					</comboitem>
+				</combobox>
+			</row>
+			<row>
+				<cell align="right">检验依据 :</cell>
+				<textbox width="400" id="surverAccording" />
+			</row>
+			<row>
+				<cell align="right">检验结论 :</cell>
+				<vbox>
+					<radiogroup id="surverVerdict">
+						<radio label="合格" selected="true" value="1" />
+						<radio label="不合格" value="0" />
+					</radiogroup>
+					<textbox width="400px" height="100px" id="surverVerdictContent" />
+				</vbox>
+			</row>
+			<row>
+				<cell align="right">签发日期 :</cell>
+				<datebox id="issuingDate" />
+			</row>
+			<row>
+				<cell align="right">检验类型 :</cell>
+				<combobox id="surveyType" value="——请选择检验类型——" model="@{winSurveyReportForm$composer.surveyTypeList}"
+					autodrop="true" readonly="true">
+					<comboitem self="@{each=item}" label="@{item.dataValue}">
+						<custom-attributes surveyType="@{item}}" />
+					</comboitem>
+				</combobox>
+
+			</row>
+			<row>
+				<cell align="right">制造商 :</cell>
+				<bandbox id="bb_ProductionEnterpriseInfo" width="250px" readonly="true">
+					<bandpopup width="600px" height="120px">
+						<listbox id="lb_searchProductionEnterpriseInfo" forward="onSelect=onSelectProductionEnterpriseInfo"
+							model="@{winSurveyReportForm$composer.productionEnterpriseInfoList}" checkmark="true" multiple="false" mold="paging"
+							height="98%" width="98%">
+							<listhead>
+								<listheader label="制造商名称" />
+								<listheader label="所在地区" />
+								<listheader label="地址" />
+								<listheader label="联系人" />
+							</listhead>
+							<listitem self="@{each=product}" value="@{product}">
+								<listcell label="@{product.name}" />
+								<listcell label="@{product.facDistrict}" />
+								<listcell label="@{product.facAddressEn}" />
+								<listcell label="@{product.facLinkMan}" />
+							</listitem>
+						</listbox>
+					</bandpopup>
+				</bandbox>
+			</row>
+			<row>
+				<cell align="right">生产厂名称 :</cell>
+				<bandbox id="bb_ManufactureInfo" width="250px" readonly="true">
+					<bandpopup width="600px" height="120px">
+						<listbox id="lb_searchManufactureInfo" forward="onSelect=onSelectManufactureInfo"
+							model="@{winSurveyReportForm$composer.manufactureInfoList}" checkmark="true" multiple="false" mold="paging" height="98%"
+							width="98%">
+							<listhead>
+								<listheader label="制造商名称" />
+								<listheader label="制造商地区" />
+								<listheader label="制造商地址" />
+								<listheader label="联系人" />
+							</listhead>
+							<listitem self="@{each=product}" value="@{product}">
+								<listcell label="@{product.name}" />
+								<listcell label="@{product.contactAddress}" />
+								<listcell label="@{product.manuDistrict}" />
+								<listcell label="@{product.manuLinkMan}" />
+							</listitem>
+						</listbox>
+					</bandpopup>
+				</bandbox>
+			</row>
+			<row>
+				<cell align="right">委托单位 :</cell>
+				<textbox id="agentOrg" />
+			</row>
+			<row>
+				<cell align="right">抽样单位 :</cell>
+				<textbox id="samplingOrg" />
+			</row>
+			<row spans="2">				
+				<button label="添加产品型号" image="/image/common/add_article.png" forward="onOpen_productModel_add" />
+			</row>
+			<row spans="2">
+				<listbox id="lb_productModelList">
+					<listhead>
+						<listheader label="规格型号" sort="auto" width="100px" />
+						<listheader label="是否是主型" sort="auto" width="100px" />
+						<listheader label="特性描述" sort="auto" width="100px" />
+						<listheader label="附件" />
+						<listheader label="操作" width="100px" />
+					</listhead>
+					<listitem self="@{each=productmodel}">
+						<listcell label="@{productmodel.specification}" />
+						<listcell label="@{productmodel.isMainModel}">
+							<attribute name="onCreate">
+	String	iRet	= self.getLabel();	if ("false".equals(iRet))
+	{
+		self.setLabel("分型");
+	} else
+	{
+		self.setLabel("主型");
+	}</attribute>
+						</listcell>
+						<listcell label="@{productmodel.characterization}" />
+						<listcell>
+							<grid model="@{productmodel.productModelAttachment }" style="border:0;">
+								<columns>
+									<column width="100px" />
+									<column />
+								</columns>
+								<rows>
+									<row self="@{each=Attachment}">
+										<label value="@{Attachment.name}" />
+										<label value="@{Attachment.attachment.name}" />
+									</row>
+								</rows>
+							</grid>
+						</listcell>
+						<listcell>
+							<toolbarbutton label="查看" image="/image/16/find.png" />
+							<toolbarbutton label="删除" image="/image/16/b_deltbl.png" />
+						</listcell>
+					</listitem>
+				</listbox>
+			</row>
+			<row align="center" spans="2">
+				<div>
+					<toolbarbutton label="保存" image="/image/common/export.png" forward="onSave" />
+					<toolbarbutton label="取消" image="/image/16/button_cancel.png">
+						<attribute name="onClick">
+	Events.sendEvent(Events.ON_CLOSE, winSurveyReportForm, null);</attribute>
+					</toolbarbutton>
+				</div>
+			</row>
+		</rows>
+
+	</grid>
+</window>

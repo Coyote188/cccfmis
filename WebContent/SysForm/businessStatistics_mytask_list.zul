@@ -1,0 +1,12 @@
+<window use="cccf.ma.bpm.MyTaskListStatisticsWindow" id="myTLSWindow"
+		 border="normal" sizable="false">
+		<listbox id="taskListbox"  mold="paging" pageSize="14">
+				<listhead sizable="true">
+					<listheader label="企业名称" width="30%" />
+					<listheader label="产品名称" width="30%" />
+					<listheader label="任务名称" width="20%" />
+					<listheader label="发起人员" width="10%" />
+					<listheader label="发起时间" width="10%" />
+				</listhead>
+		</listbox>
+</window>

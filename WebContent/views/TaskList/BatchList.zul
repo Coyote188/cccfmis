@@ -1,0 +1,37 @@
+<!-- 批次列表 -->
+<listbox checkmark="true" multiple="true" vflex="true" hflex="true">
+	<listhead>
+		<listheader label="批次号 " width="180px"></listheader>
+		<listheader label="批次名称" width="240px"></listheader>
+		<listheader label="创建时间" width="80px"></listheader>
+		<listheader label="创建人" width="80px"></listheader>
+		<listheader label="产品数 " width="40px"></listheader>
+		<listheader label="批次状态 " width="100px"></listheader>
+		<listheader label="备注" width="80px"></listheader>
+		<listheader></listheader>
+	</listhead>
+	<listitem self="@{each=item}" value="@{item}">
+		<!-- 批次号 -->
+		<listcell label="@{item.batch_no}"></listcell>
+		<!-- 批次名称 -->
+		<listcell label="@{item.batch_name}"></listcell>
+		<!-- 创建时间 -->
+		<listcell label="@{item.create_date}"></listcell>
+		<!-- 创建人-->
+		<listcell label="@{item.created}"></listcell>
+		<!-- 产品数  -->
+		<listcell label="@{item.productCount }"></listcell>
+		<!-- 批次状态-->
+		<listcell label="@{item.status}"></listcell>
+		<!-- 备注-->
+		<listcell label="@{item.nodes}"></listcell>
+		<listcell>
+			<button mold="trendy" label="@{itemButlabel}" forward="onDoSelfItem"></button>			 
+		</listcell>
+	</listitem>
+	<listfoot>
+		<listfooter span="8" style="margin: 0px; padding: 1px;">
+			<paging id="list_paging" pageSize="20" style="margin: 0px; padding: 0px;"></paging>
+		</listfooter>
+	</listfoot>
+</listbox>

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping SYSTEM "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+<hibernate-mapping>
+	<class name="cccf.ma.model.Contract" table="tb_contract">
+
+		<id name="id" type="string" unsaved-value="null" length="36" >
+			<column name="id" not-null="true" />
+			<generator class="uuid.hex" />
+		</id> 
+		
+		<property name="contractNo" length="40" unique="true" />
+	    <property name="agreedAuditTeams"  length="10" />
+	    <property name="auditYear" length="10" />
+	    <property name="auditMonth" length="10" />
+	    <property name="preverify" length="10" />
+	    <property name="preverifyYear" length="10" />
+	    <property name="preverifyMonth" length="10" />
+	    <property name="applyno" length="40" />
+	    <property name="createDate" />
+	    <property name="creater" length="40"  />
+	    <property name="status" />
+	     <property name="feeTotal" />
+	     
+		<many-to-one name="applicationPublicInfo" column="applicationPublicInfo_id"/> 
+	</class>
+</hibernate-mapping>

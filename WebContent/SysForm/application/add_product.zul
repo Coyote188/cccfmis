@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?init class="org.zkoss.zkplus.databind.AnnotateDataBinderInit" root="./addProWin"?>  
+<zk>
+<window id="addProWin" apply="cccf.ma.web.zk.AddApplyProductController"
+	title="添加申请产品" border="normal" closable="true" width="700px"  position="center,top" maximizable="true" contentStyle="overflow:auto;">
+<grid>
+		<columns>
+			<column width="200px" align="right"/>
+			<column label=""/>
+		</columns>
+		<rows>
+			<row>
+				<label value="产品类别" style="margin-right:10px;"/>
+				<label value="@{addProWin$composer.productCatalogInfo.productName}" style="font-weight:bold;color:RED;"/>
+			</row>
+			<row>
+				<label id="secondaryCbx" value="二级分类" style="margin-right:10px;"/>
+				<combobox model="@{addProWin$composer.secondaryCatalogue}" forward="onSelect=onSelectSecondaryCatalogue">
+						<comboitem self="@{each=product}" label="@{product.productName}" value="@{product}"></comboitem>
+				</combobox>
+			</row>
+			<row>
+				<label value="产品名称" style="margin-right:10px;"/>
+				<combobox id="prnameCbx" forward="onSelect=onSelectFlyersCatalogue">
+					<comboitem self="@{each=product}" label="@{product.productName}" value="@{product}"></comboitem>
+				</combobox>
+			</row>
+			<row>
+				<label value="检验报告" style="margin-right:10px;"/>
+				<combobox id="surveyReportCbx" forward="onSelect=onSelectSurveyReport">
+					<comboitem self="@{each=sur}" label="@{sur.surveyReportSN}" value="@{sur}"></comboitem>
+				</combobox>
+			</row>
+			<row>
+				<label value="生产厂名称" style="margin-right:10px;"/>
+				<label id="proLab"/>
+			</row>
+			<row>
+				<label value="制造商名称" style="margin-right:10px;"/>
+				<label id="manLab"/>
+			</row>
+			    <row spans="2">
+			        <listbox  id="pmLbx" style="border:0px;" checkmark="true" multiple="true" >
+						<listhead>
+						    <listheader label="产品名称"  
+								width="100px" />
+							<listheader label="规格型号" 
+								width="100px" />
+							<listheader label="特性描述" 
+								width="100px" />	
+							<listheader label="主/分型"  
+								width="100px" /> 
+							<listheader label="相关文件" /> 
+						</listhead>
+						<listitem self="@{each=productmodel}" value="@{productmodel }">
+						    <listcell label="@{productmodel.productName}" />
+							<listcell label="@{productmodel.specification}" />
+							<listcell label="@{productmodel.characterization}" />
+							<listcell label="@{productmodel.isMainModel}">
+									<attribute name="onCreate">
+									String iRet = self.getLabel();
+									if ("false".equals(iRet)) {
+										self.setLabel("分型");
+									} else {
+										self.setLabel("主型");
+									}
+								</attribute>
+							</listcell> 
+							<listcell>
+								<grid model="@{productmodel.productModelAttachment }"
+									style="border:0;">
+									<columns>
+										<column width="100px" />
+										<column />
+										<column />
+									</columns>
+									<rows>
+										<row self="@{each=attachment}">
+											<label value="@{attachment.name}" />
+											<label value="@{attachment.attachment_name}" />
+											<toolbarbutton label="查看" image="/image/16/find.png" />	
+										</row>
+									</rows>
+								</grid>
+							</listcell> 
+						</listitem> 
+					</listbox>  
+			</row>
+			<row spans="2">
+				<div align="center">
+						<button label="添加" image="/image/files/add-comment.gif" width="68px" id="btSubmit" height="26px" forward="onSave"/>
+						<button label="关闭" image="/image/common/close.png" width="68px" height="26px" onClick="addProWin.detach()"/>
+				</div>
+			</row>
+		</rows>
+	</grid>
+	
+</window>
+</zk>

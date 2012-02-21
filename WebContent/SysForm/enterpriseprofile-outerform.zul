@@ -1,0 +1,11 @@
+<?page title="new page title" contentType="text/html;charset=UTF-8"?>
+<zk>
+<window id="frmEnterpriseOuter" contentStyle="overflow:auto">
+	<attribute name="onCreate">
+		Window objWindow = (Window) Executions.createComponents(
+				"manufacture-manage.zul", null, null);
+		objWindow.setParent(self);
+		objWindow.doEmbedded();
+	</attribute>
+</window>
+</zk>

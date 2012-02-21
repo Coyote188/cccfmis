@@ -1,0 +1,26 @@
+#Wed Dec 01 12:33:36 CST 2010
+eclipse.preferences.version=1
+encoding//WebContent/SysForm/enterprise-active.zul=UTF-8
+encoding//WebContent/SysForm/enterprise-manage.zul=UTF-8
+encoding//WebContent/SysForm/enterprise-viewer.zul=UTF-8
+encoding//WebContent/WEB-INF/web.xml=UTF-8
+encoding//WebContent/enterpriseinfo-edit.zul=UTF-8
+encoding//metadata/Account.emf=UTF-8
+encoding//metadata/BusinessStatistics.emf=UTF-8
+encoding//metadata/EnterpriseProductModel.emf=UTF-8
+encoding//metadata/Location.emf=UTF-8
+encoding//metadata/ProductionEnterprise.emf=UTF-8
+encoding//metadata/enterprise-active.pmf=UTF-8
+encoding//metadata/enterprise-manage.pmf=UTF-8
+encoding//metadata/enterprise-test.pmf=UTF-8
+encoding//metadata/enterprise-viewer.pmf=UTF-8
+encoding//metadata/enterpriseinfo-edit.pmf=UTF-8
+encoding//src/cccf/ma/model/EnterpriseInfo.hbm.xml=UTF-8
+encoding//src/cccf/ma/model/EnterpriseNoticeInfo.hbm.xml=UTF-8
+encoding//src/cccf/ma/model/LocationInfo.hbm.xml=UTF-8
+encoding//src/cccf/ma/model/ManufactureInfo.hbm.xml=UTF-8
+encoding//src/cccf/ma/model/ProductionEnterpriseInfo.hbm.xml=UTF-8
+encoding//src/cccf/ma/model/StateInfo.hbm.xml=UTF-8
+encoding//src/openjframework/model/NoticeInfo.hbm.xml=UTF-8
+encoding//src/openjframework/model/ProfileInfo.hbm.xml=UTF-8
+encoding/<project>=UTF-8

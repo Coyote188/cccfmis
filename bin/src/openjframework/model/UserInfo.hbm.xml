@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping SYSTEM "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+<hibernate-mapping>
+  <class name="openjframework.model.UserInfo" table="user">  
+  
+    <id name="id" type="string" unsaved-value="null" >
+        <column name="id"  not-null="true"/>
+        <generator class="uuid.hex"/>
+    </id>
+    
+    <property name="userNo" type="string">
+         <column name="userNo"  not-null="true"/>
+     </property>
+    <property name="name" type="string">
+         <column name="name"  not-null="true"/>
+     </property>
+    <many-to-one name="sex" column="sex" lazy="false"/> 
+    <property name="nativePlace" type="string">
+         <column name="nativePlace"  not-null="false"/>
+     </property>
+     <property name="birthday">
+         <column name="birthday" sql-type="datetime" not-null="false"/>
+     </property>
+    <property name="idcardNo" type="string">
+         <column name="idcardNo"  not-null="false"/>
+     </property>
+    <many-to-one name="politicalStatus" column="politicalStatus" lazy="false"/> 
+    <many-to-one name="position" column="position" lazy="false"/> 
+    <many-to-one name="organization" column="organization" lazy="false"/> 
+    <many-to-one name="title" column="title" lazy="false"/> 
+    <property name="userName" type="string">
+         <column name="userName"  not-null="true"/>
+     </property>
+    <property name="password" type="string">
+         <column name="password"  not-null="false"/>
+     </property>
+    <many-to-one name="userStatus" column="userStatus" lazy="false"/> 
+    <set name="roleList" table="user_role_list" lazy="false" cascade="save-update">
+        <key column="userid" />
+        <many-to-many column="roleid" class="openjframework.model.RoleInfo" />
+    </set>
+  </class>   
+</hibernate-mapping>

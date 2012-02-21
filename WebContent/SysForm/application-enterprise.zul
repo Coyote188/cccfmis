@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?init class="cccf.ma.web.zk.ApplicationenterpriseWindowInit" arg0="applicationenterpriseWindow"?>
+<window use="cccf.ma.web.zk.ApplicationenterpriseWindow" xmlns:a="http://www.zkoss.org/2005/zk/annotation"
+	id="applicationenterpriseWindow" xmlns="http://www.zkoss.org/2005/zul" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.zkoss.org/2005/zul
+	http://www.zkoss.org/2005/zul/zul.xsd" hflex="true" vflex="true">
+	<vlayout hflex="true" vflex="true">
+		<div align="left">
+			<hbox>
+				<button label="发起新申请" mold="trendy" id="btAdd" image="/image/common/add.png" style="null" forward="onAdd" />
+				<button label="查看申请" mold="trendy" id="btDetail" image="/image/common/view.png" style="null" forward="onEdit" />
+				<button label="删除申请" mold="trendy" id="btDel" image="/image/common/delete.png" style="null" forward="onDelete"
+					disabled="true" />
+			</hbox>
+		</div>
+		<a:bind model="applicationInfoList" selectedItem="applicationenterpriseWindow.applicationInfo" />
+		<listbox hflex="true" vflex="true" mold="paging" id="applicationInfoListbox" pageSize="10" checkmark="false"
+			multiple="false">
+			<listhead sizable="true">
+
+				<listheader label="申请产品" width="30%" />
+
+				<listheader label="生产企业" width="30%" />
+
+				<listheader label="申请日期" width="20%" />
+
+				<listheader visible="false" label="通讯地址" width="40%" />
+
+				<listheader label="状态" width="20%" />
+
+
+			</listhead>
+			<a:bind _var="applicationInfo" />
+			<listitem value="@{applicationInfo.id}">
+				<listcell tooltiptext="@{applicationInfo.production.productName}">
+					<attribute name="onCreate">
+	{
+		if (self.getTooltiptext() != null)
+		{
+			if (self.getTooltiptext().length() > 12)
+				self.setLabel(self.getTooltiptext().substring(0, 12));
+			else
+				self.setLabel(self.getTooltiptext());
+		}
+	}</attribute>
+				</listcell>
+
+				<listcell tooltiptext="@{applicationInfo.productionEnterprise.name}">
+					<attribute name="onCreate">
+	{
+		if (self.getTooltiptext() != null)
+		{
+			if (self.getTooltiptext().length() > 12)
+				self.setLabel(self.getTooltiptext().substring(0, 12));
+			else
+				self.setLabel(self.getTooltiptext());
+		}
+	}</attribute>
+				</listcell>
+
+				<listcell label="@{applicationInfo.applyDate,converter='com.aidi.core.zk.DateConverter'}" />
+
+				<listcell visible="false" tooltiptext="@{applicationInfo.address}">
+					<attribute name="onCreate">
+	{
+		if (self.getTooltiptext() != null)
+		{
+			if (self.getTooltiptext().length() > 24)
+				self.setLabel(self.getTooltiptext().substring(0, 24));
+			else
+				self.setLabel(self.getTooltiptext());
+		}
+	}</attribute>
+				</listcell>
+				<a:bind label="applicationInfo.statusName" />
+				<listcell />
+			</listitem>
+		</listbox>
+	</vlayout>
+</window>

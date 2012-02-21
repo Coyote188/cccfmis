@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping SYSTEM "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+<hibernate-mapping>
+  <class name="cccf.ma.model.AttachFileMemoInfo" table="attachfilememo">  
+  
+    <id name="memoId" type="string" unsaved-value="null" >
+        <column name="ID"  not-null="true"/>
+        <generator class="uuid.hex"/>
+    </id>
+    
+    <property name="applicationId" type="string">
+         <column name="applicationId"  not-null="true"/>
+     </property>
+    <property name="taskInstanceId" type="java.lang.Long">
+         <column name="taskInstanceId"  not-null="true"/>
+     </property>
+    <property name="memo" type="string">
+         <column name="memo"  not-null="false"/>
+     </property>
+    <property name="fieldName" type="string">
+         <column name="fieldName"  not-null="true"/>
+     </property>
+    <property name="modelId" type="string">
+         <column name="modelId"  not-null="true"/>
+     </property>
+  </class>   
+</hibernate-mapping>

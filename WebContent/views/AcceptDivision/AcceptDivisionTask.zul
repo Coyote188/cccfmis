@@ -1,0 +1,81 @@
+<!-- 受理分工 -->
+<?init class="org.zkoss.zkplus.databind.AnnotateDataBinderInit" arg0="./AcceptDivisionTaskWin"?>
+<window vflex="true" hflex="true" title="受理分工" border="normal" id="AcceptDivisionTaskWin"
+	apply="cccf.mis.web.tsak.accept.AcceptDivisionTaskController"  forward="onCreate=onInited">
+	<vlayout spacing="0" vflex="true" hflex="true">
+		<toolbar style="border:1px solid #CCC;">
+			<button mold="trendy" image="/res/icons/page_find.png" label="查询" forward="onFind"></button>
+			<button mold="trendy" image="/res/icons/page_refresh.png" label="刷新"></button>
+			<button mold="trendy" image="/res/icons/page_paintbrush.png" label="清理"></button>
+			
+		</toolbar>
+		<grid hflex="true" style="border-top:0px solid #CCC;texta">
+			<columns>
+				<column width="70px" align="right"></column>
+				<column></column>
+				<column width="70px" align="right"></column>
+				<column></column>
+				<column width="70px" align="right"></column>
+				<column></column>
+				<column width="70px" align="right"></column>
+				<column></column>
+				<column width="70px" align="right"></column>
+				<column></column>
+			</columns>
+			<rows>
+				<row>				
+					<label value="申请号:"></label>
+					<combobox hflex="true" width="160px" id="no">
+						<comboitem></comboitem>
+					</combobox>
+					<label value="审请企业:"></label>
+					<combobox hflex="true" width="160px" id="enterprise">
+						<comboitem></comboitem>
+					</combobox>
+					<label value="所在地区:"></label>
+					<combobox hflex="true" id="region">
+						<comboitem></comboitem>
+					</combobox>
+					<label value="申请时间:"></label>					 
+					<datebox hflex="true" id="start_apply_date"></datebox>
+					<label value="至"></label>
+					<datebox hflex="true" id="end_apply_date"></datebox>					 
+				</row>
+				<row>
+					<label value="业务类型:"></label>
+					<combobox hflex="true" id="business_type">
+						<comboitem></comboitem>
+					</combobox>
+					<label value="产品类型:"></label>
+					<combobox hflex="true" id="product_catalog">
+						<comboitem></comboitem>
+					</combobox>
+					<label value="质检中心:"></label>
+					<combobox hflex="true" readonly="true" id="surver_orgname">
+						<comboitem label="所有"></comboitem>
+						<comboitem label="天津"></comboitem>
+						<comboitem label="沈阳"></comboitem>
+						<comboitem label="四川"></comboitem>
+						<comboitem label="上海"></comboitem>
+					</combobox>
+					<label value="申请类型:"></label>
+					<combobox hflex="true" id="apply_type">
+						<comboitem></comboitem>
+					</combobox>
+					<label value="流程状态:"></label>
+					<combobox hflex="true" readonly="true" value="待办" id="status">
+						<comboitem label="待办" value="0"></comboitem>
+						<comboitem label="已办" value="1"></comboitem>
+					</combobox>
+				</row>
+			</rows>
+		</grid>
+		<separator height="2px"></separator>
+		<vlayout vflex="true" hflex="true" spacing="0">
+			<toolbar style="border:1px solid #CCC;border-buttom:0px">
+				<button mold="trendy" image="/res/icons/accept.png" label="分工" forward="onDoSelectItems"></button>
+			</toolbar>
+			<vlayout vflex="true" hflex="true" id="includelayout"></vlayout>
+		</vlayout>
+	</vlayout>
+</window>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<window title="附件在线查看" border="normal"
+	width="800px" sizable="true" height="600"
+	closable="true" position="center" maximizable="true">
+	<attribute name="onMaximize">
+		downframe.setWidth(self.getWidth());
+		downframe.setHeight(self.getHeight());
+	</attribute>
+	<iframe id="downframe" height="600px" width="780px"></iframe>
+</window>
+
+

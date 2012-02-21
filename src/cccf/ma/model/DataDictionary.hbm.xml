@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping SYSTEM "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+<hibernate-mapping>
+  <class name="cccf.ma.model.DataDictionary" table="datadictionary">  
+   
+    <id name="id" column="id"  >
+        <generator class="native"/>
+    </id> 
+    <property name="typeCode" type="string">
+         <column name="typeCode"  not-null="false" length="50" unique-key="_typeid"/>
+     </property>
+      <property name="dataKey" type="string">
+         <column name="dataKey"  not-null="false" length="50" unique-key="_typeid"/>
+     </property>
+      <property name="dataValue" type="string">
+         <column name="dataValue"  not-null="false"/>
+     </property>
+  </class>   
+</hibernate-mapping>

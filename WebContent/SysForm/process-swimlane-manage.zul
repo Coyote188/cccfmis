@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?init class="openjframework.bpm.zk.SwimlaneManageInit" arg0="swimlaneManageWindow"?>
+<window title="泳道管理" border="normal"
+	apply="openjframework.bpm.zk.SwimlaneManageController"
+	xmlns:a="http://www.zkoss.org/2005/zk/annotation"
+	id="swimlaneManageWindow" width="520px" sizable="true"
+	closable="true">
+	<separator height="10px" />
+	<a:bind model="swimlaneList"/>
+	<listbox mold="paging" id="swimlaneListbox" width="100%"
+		pageSize="15" checkmark="true" multiple="true">
+		<listhead sizable="true">
+
+			<listheader label="ID" width="100px" />
+
+			<listheader label="泳道名称" width="400px" />
+
+		</listhead>
+		<a:bind _var="swimlane" />
+		<listitem value="@{swimlane}">
+
+			<listcell label="@{swimlane.id}" />
+			<listcell label="@{swimlane.name}" />
+
+		</listitem>
+	</listbox>
+
+	<separator height="5px" />
+	<div align="left">
+		<hbox>
+			<button label="增加" image="/image/common/add.png" id="btnAdd" 
+				width="68px" height="26px"/>
+			<button id="btnEdit" label="修改" 
+				image="/image/common/edit.png" width="68px" height="26px"/>
+			<button  label="删除" id="btnDelete" 
+				image="/image/common/delete.png" width="68px" height="26px"/>
+		</hbox>
+	</div>
+
+</window>

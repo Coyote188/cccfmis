@@ -1,0 +1,45 @@
+<zk>
+	<window title="工厂人员列表" border="normal" use="cccfmis.bpm.zk.FactoryCheckUser">
+		<hlayout>
+			<hbox>
+				<tree id="factorytree" rows="20" mold="paging" Zclass="z-dottree" pageSize="20" height="500px" width="560px">
+					<treecols>
+						<treecol label="单位人员" width="300px" />
+						<treecol label="人员性质" width="240px" />
+					</treecols>
+					<treechildren></treechildren>
+					<treefoot>
+						<treefooter span="2">
+							<label value="单位" />
+							<textbox id="org" />
+							<label value="人名" />
+							<textbox id="pname" />
+							<button label="查找" forward="onSearchUser" style="margin:0px 20px;" image="/image/common/search.png" />
+							<separator style="background-color:#666666;margin:3px 0px;" height="1px" />
+							<button label="新增人员" forward="onAddUser" image="/image/common/add_user.png" style="margin-right:20px;" />
+							<button label="资质管理" forward="onManageQual" image="/image/common/manage_nodes.png" />
+						</treefooter>
+					</treefoot>
+				</tree>
+				<panel border="normal" title="分组人员">
+					<panelchildren>
+						<vbox id="vbox" width="450px" height="438px" droppable="true" forward="onDrop=onDropItem" tooltiptext="请拖动人员到此处" />
+					</panelchildren>
+					<toolbar>
+						<label value="分组名称:" />
+						<textbox />
+						<button label="设组长" forward="onSetMaster" />
+						<button label="保存分组" style="margin-right:15px;" />
+						<checkbox id="cbx" label="全选/反选" forward="onChecked" style="color:red;" />
+						<button label="清除" forward="onDelSelect" />
+					</toolbar>
+				</panel>
+			</hbox>
+		</hlayout>
+		<menupopup id="editPopup">
+			<menuitem image="/image/treelink/tjbw.png" label="增加人员" forward="onAddOrgUser" />
+			<menuitem image="/image/16/edit.png" label="编辑人员" forward="onEditUser" />
+			<menuitem image="/image/16/button_cancel.png" label="删除人员" forward="onDelOrgUser" />
+		</menupopup>
+	</window>
+</zk>

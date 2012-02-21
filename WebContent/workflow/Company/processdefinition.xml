@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<process-definition xmlns="" name="工厂检查流程">
+
+
+	<start-state name="开始">
+		<transition to="派组安排"></transition>
+	</start-state>
+
+
+	<task-node name="文件审查">
+		<transition to="资料补充" name="需要补充"></transition>
+		<transition to="结束" name="通过"></transition>
+	</task-node>
+
+	<task-node name="资料补充">
+		<transition to="文件审查" name="提交"></transition>
+	</task-node>
+
+	<task-node name="派组审批">
+		<transition to="文件审查" name="同意"></transition>
+		<transition to="人员分配" name="不同意"></transition>
+	</task-node>
+
+	<task-node name="资质审核">
+		<transition to="派组审批" name="提交"></transition>
+		<transition to="人员分配" name="不通过"></transition>
+	</task-node>
+
+	<task-node name="人员分配">
+		<transition to="资质审核" name=" 通过"></transition>
+	</task-node>
+
+	<task-node name="派组安排">
+		<transition to="人员分配" name="提交"></transition>
+	</task-node>
+
+
+	<end-state name="结束"></end-state>
+
+
+</process-definition>

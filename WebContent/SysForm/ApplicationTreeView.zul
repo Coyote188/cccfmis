@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?init class="cccf.ma.web.zk.ApplicationTreeViewWindowInit" arg0="applicationTreeViewWindow"?>
+<zk>
+	<window style="width:100%;height:100%"
+		id="applicationTreeViewWindow"
+		apply="cccf.ma.web.zk.ApplicationTreeViewWindow" xmlns:n="native"
+		xmlns:w="client" xmlns:a="http://www.zkoss.org/2005/zk/annotation"
+		xmlns="http://www.zkoss.org/2005/zul"
+		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		xsi:schemaLocation=" http://www.zkoss.org/2005/zul http://www.zkoss.org/2005/zul/zul.xsd">
+		<borderlayout height="99%">
+			<west id="procWst" width="200px">
+				<div id="treeDiv"><!--Default:z-tree,Dot Tree:z-dottree,XP Explorer:z-filetree,Vista Explorer:z-vfiletree-->
+					<tree id="procTre" width="99%" zclass="z-dottree" height="500px">
+						<treecols>
+							<treecol label="产品目录"
+								style="font-size:25px;color:#FF0000;font-weight:bold;"
+								image="/image/16/blockdevice.png" />
+						</treecols>
+					</tree>
+
+				</div>
+			</west>
+			<center id="procCtr" flex="true">
+				<vbox width="100%">
+						<a:bind model="applicationInfoList"
+							selectedItem="applicationenterpriseWindow.applicationInfo" />
+						<listbox mold="paging" style="margin-left:10px;"
+							id="applicationInfoListbox" width="100%" pageSize="8"
+							checkmark="false" multiple="false">
+							<listhead sizable="true">
+
+								<listheader label="申请企业" width="33%" />
+
+								<listheader label="申请产品" width="30%" />
+
+								<listheader label="申请日期" width="20%" />
+
+								<listheader label="状态" width="15%" />
+
+
+							</listhead>
+							<a:bind _var="applicationInfo" />
+							<listitem value="@{applicationInfo.id}">
+
+								<a:bind
+									label="applicationInfo.enterprise.name" />
+								<listcell />
+
+								<a:bind
+									label="applicationInfo.production.productName" />
+								<listcell />
+
+								<listcell
+									label="@{applicationInfo.applyDate,converter='com.aidi.core.zk.DateConverter'}" />
+
+								<a:bind
+									label="applicationInfo.statusName" />
+								<listcell />
+
+							</listitem>
+						</listbox>
+
+					<separator height="2px" />
+					<div align="left">
+						<hbox>
+						<separator width="5px" />
+							<button label="受理分工" image="/image/16/up.png"
+								width="90px" id="btSubmit" height="26px" style=""
+								forward="onAccept" />
+						</hbox>
+					</div>
+				</vbox>
+			</center>
+
+		</borderlayout>
+	</window>
+</zk>

@@ -1,0 +1,57 @@
+<?init class="org.zkoss.zkplus.databind.AnnotateDataBinderInit" root="./divisionWin"?>
+<window id="divisionWin" apply="cccf.ma.web.zk.acceptdivision.AcceptDivisionListController" vflex="true" hflex="true">
+	<listbox id="applylistLbx" model="@{divisionWin$composer.tasklist}" checkmark="true" multiple="true" vflex="true"
+		hflex="true">
+		<listhead>
+			<listheader label="申请号" width="140px" />
+			<listheader label="企业名称 " />
+			<listheader label="地区" width="120px" />
+			<listheader label="业务类型 " width="80px" align="center" />
+			<listheader label="产品大类" />
+			<listheader label="申请类型" width="80px" align="center" />
+			<listheader label="申请时间 " width="80px" align="center" />
+		</listhead>
+		<listitem self="@{each=app }" value="@{app.tasks}">
+			<listcell label="@{app.applyno}" />
+			<listcell label="@{app.enterprisename}" />
+			<listcell>
+				<label value="@{app.enterpriseState}" />
+				<label value="·" style="fongt-size:14px;font-weight:bold;" />
+				<label value="@{app.enterpriseLocation}" />
+			</listcell>
+			<listcell label="@{app.businesstype}" />
+			<listcell label="@{app.productCatalog}" />
+			<listcell label="@{app.applytype}" />
+			<listcell label="@{app.applydate,converter='com.aidi.core.zk.DateConverter'}" />
+		</listitem>
+	</listbox>
+	<grid id="appoveGrid">
+		<columns>
+			<column width="100px" align="left"></column>
+			<column></column>
+		</columns>
+		<rows>
+			<row>
+				<label value="符合性审查人员:"></label>
+				<cell>
+					<combobox id="reveiwUser" model="@{reviewUserList}" constraint="no empty:请选择一位符合性审查人员" autodrop="true"
+						width="200px" readonly="true">
+						<comboitem self="@{each=person}" label="@{person.name}" value="@{person.id}" />
+					</combobox>
+					<button image="/res/icons/accept.png" mold="trendy" label="提交" width="68px" id="btSubmit" height="26px"
+						forward="onSubmit" />
+				</cell>
+			</row>
+			<row visible="false">
+				<label value="处理结论:" />
+				<listbox id="resultListbox" mold="select" rows="1" width="200">
+					<listitem label="进行符合性审查" selected="true" />
+				</listbox>
+			</row>
+			<row>
+				<label value="备注:" />
+				<textbox id="approveMemo" rows="4" hflex="true" />
+			</row>
+		</rows>
+	</grid>
+</window>

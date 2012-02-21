@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?init class="cccf.ma.web.zk.EnterpriseactiveWindowInit" arg0="enterpriseactiveWindow"?>
+<window title="" border="none"
+	use="cccf.ma.web.zk.EnterpriseactiveWindow"
+	xmlns:a="http://www.zkoss.org/2005/zk/annotation"
+	id="enterpriseactiveWindow" xmlns="http://www.zkoss.org/2005/zul"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.zkoss.org/2005/zul
+	http://www.zkoss.org/2005/zul/zul.xsd"
+	width="100%" sizable="true">
+
+	<grid id="grdEnterpriseActive" mold="paging" pageSize="15">
+		<auxhead>
+			<auxheader label="企业名称" />
+			<auxheader label="所在地区" />
+			<auxheader label="企业法人" />
+			<auxheader label="联系电话" />
+			<auxheader>
+				<div align="center">
+					<button id="btnAutoActive" label="自动/手动"
+						width="100px" height="20px" forward="onAutoActiveSwitch" />
+				</div>
+			</auxheader>
+		</auxhead>
+		<columns>
+			<!--			<column label="企业名称"/>-->
+			<!--			<column label="所在地区"/>-->
+			<!--			<column label="企业法人"/>-->
+			<!--			<column label="联系电话"/>-->
+			<!--			<column />-->
+		</columns>
+	</grid>
+</window>

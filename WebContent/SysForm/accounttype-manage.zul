@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?init class="cccf.ma.web.zk.AccounttypemanageWindowInit" arg0="accounttypemanageWindow"?>
+<window title="账目类别管理" border="normal" 
+	use="cccf.ma.web.zk.AccounttypemanageWindow"
+	xmlns:a="http://www.zkoss.org/2005/zk/annotation" id="accounttypemanageWindow"
+	xmlns="http://www.zkoss.org/2005/zul"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.zkoss.org/2005/zul
+	http://www.zkoss.org/2005/zul/zul.xsd"
+	width="520px"  sizable="true">
+	
+	<separator width="10px" />
+	
+	<a:bind model="accountTypeInfoList" selectedItem="accounttypemanageWindow.accountTypeInfo"/>
+    <listbox mold="paging" id="accountTypeInfoListbox" width="500px" pageSize="10" checkmark="true"  onSelect="accounttypemanageWindow.onListitemSelect()">
+		<listhead sizable="true" >
+					
+			<listheader label="名称" width="150px"/>
+			
+			<listheader  label="允许自定义" width="100px"/>
+					
+			<listheader label="描述"/>				
+			
+				
+		</listhead>
+			<a:bind _var="accountTypeInfo"/>
+			<listitem value="@{accountTypeInfo.atypeId}">
+			
+			    <a:bind label="accountTypeInfo.name"/>
+				<listcell/>
+				
+				 <listcell>
+			      	<a:bind checked="accountTypeInfo.isCustom"/>
+			      	<checkbox/>
+				</listcell>
+				
+			    <a:bind label="accountTypeInfo.desc"/>
+				<listcell/>			
+			   
+				
+			</listitem>
+	</listbox>
+	 
+	<separator width="10px" />
+	<div align="left">
+   <hbox>
+       <button label="增加" image="/image/common/add.png" width="68px" height="26px" style="null" forward="onAdd" id="btAdd"/>
+       <button id="btModify" label="修改" image="/image/common/edit.png" width="68px" height="26px" style="null" forward="onEdit"/>
+       <button id="btDel" label="删除" image="/image/common/delete.png"  width="68px" height="26px" style="null" forward="onDelete"/>
+    </hbox>
+   </div>
+</window>

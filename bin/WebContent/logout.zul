@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?page id="index" title="大理州国家税务局"  contentType="text/html;charset=UTF-8"?>
+<zk>
+<div align="center" height="100%" style="background:#79c0e0;">
+<!--首页大小已在1024×768下测试-->
+<window id="Indexwindow" 
+    xmlns:w="client" xmlns:n="native"
+	xmlns="http://www.zkoss.org/2005/zul"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation=" http://www.zkoss.org/2005/zul http://www.zkoss.org/2005/zul/zul.xsd"
+    width="100%" height="620px" position="center,top">
+      <borderlayout height="100%" style="background:#c5e6ef;">
+	   <north size="80px" border="0" style="background-image:url(image/files/banner.jpg)">
+		
+	   </north>
+	
+	<center style="background:#c5e6ef;">
+	<div align="center">
+	    <separator height="100px" />
+	    <hbox width="200px">
+	    	<image src="/image/files/confirm.gif"/>
+	    </hbox>
+
+	    <label value="注销成功!" style="font-size:26px;color:#5fff00;font-weight:bold;"/>
+	    <n:br/>
+	    <label value="您已经成功退出[协同办公系统]，谢谢使用!" style="font-size:12px;color:#009900;font-weight:bold;"/>
+	    <n:br/>
+	     <label value="出于安全考虑，请关闭您的浏览器。" style="font-size:12px;color:#009900;font-weight:bold;"/>
+	</div>
+	</center>
+	<south size="25px" border="0" style="background:#79c0e0;">
+		<toolbar mold="panel" align="center">
+			大理州国家税务局		
+		</toolbar>
+	  </south>
+     </borderlayout>
+</window>
+</div>
+</zk>

@@ -1,0 +1,8 @@
+<?page title="new page title" contentType="text/html;charset=UTF-8"?>
+<?init class="org.zkoss.zkplus.databind.AnnotateDataBinderInit" root="./frmContractInfoViewer"?>
+<zk>
+	<window id="frmContractInfoViewer" apply="cccf.ma.web.zk.ContractInfoViewerController" border="none" width="100%">
+		<div id="divApplicationViewer"></div>
+		<div id="divProductViewer"></div>
+	</window>
+</zk>

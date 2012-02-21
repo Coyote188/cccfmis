@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?init class="org.zkoss.zkplus.databind.AnnotateDataBinderInit" root="./prWnd" ?>
+<zk>
+<window id="prWnd" title="" border="normal"
+		apply="cccf.ma.web.zk.BusinessStatisticsPrComposer" >
+	<listbox id="prLbx" mold="paging" pageSize="14" model="@{prWnd$composer.eoaplist}">
+		<listhead>
+			<listheader label="企业名称"/>
+			<listheader label="产品名称" />
+			<listheader label="日期时间" width="120px"/>
+			<listheader label="备注" />
+		</listhead>
+		<listitem self="@{each=eoap}">
+			<listcell label="@{eoap.enterprise.name }" />
+			<listcell label="@{eoap.product.productName }" />
+			<listcell label="@{eoap.activatedate}" />
+			<listcell tooltiptext="@{eoap.description}">
+				<attribute name="onCreate">
+				{
+					if(self.getTooltiptext()!=null){
+						if (self.getTooltiptext().length() > 15)
+							self.setLabel(self.getTooltiptext().substring(0, 15)+"..");
+						else
+							self.setLabel(self.getTooltiptext());
+					}
+				}
+				</attribute>
+			</listcell>
+		</listitem>
+	</listbox>
+</window>
+</zk>

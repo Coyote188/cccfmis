@@ -1,0 +1,37 @@
+<!-- 单项产品任务 -->
+<listbox checkmark="true" multiple="true" vflex="true" hflex="true" id="batch_product_task_list">
+	<listhead>
+		<listheader label="任务号 " width="180px"></listheader>
+		<listheader label="企业名称" width="240px"></listheader>
+		<listheader label="产品类别" width="80px"></listheader>
+		<listheader label="地址" width="80px"></listheader>
+		<listheader label="派组日期 " width="160px"></listheader>
+		<listheader label="派组天数 " width="100px"></listheader>
+		<listheader label="备注" width="80px"></listheader>
+		<listheader></listheader>
+	</listhead>
+	<listitem self="@{each=item}" value="@{item}">
+		<!-- 合同号 -->
+		<listcell label="@{item.no}"></listcell>
+		<!-- 企业名称 -->
+		<listcell label="@{item.enterprise}"></listcell>
+		<!-- 产品大类 -->
+		<listcell label="@{item.product_catalog}"></listcell>
+		<!-- 地址 -->
+		<listcell label="@{item.address}"></listcell>
+		<!-- 派组日期-->
+		<listcell label="@{item.batch_date}"></listcell>
+		<!-- 派组天数  -->
+		<listcell label="@{item.days}"></listcell>
+		<!-- 备注-->
+		<listcell label="@{item.nodes}"></listcell>
+		<listcell>
+			<button mold="trendy" label="办理" forward="onDoSelfItem"></button>
+		</listcell>
+	</listitem>
+	<listfoot>
+		<listfooter span="8" style="margin: 0px; padding: 1px;">
+			<paging id="list_paging" pageSize="20" style="margin: 0px; padding: 0px;"></paging>
+		</listfooter>
+	</listfoot>
+</listbox>

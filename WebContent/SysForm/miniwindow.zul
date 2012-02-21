@@ -1,0 +1,52 @@
+<zk>
+<window id="bottomFixedLayout" sclass="bottom_fixed"  
+	xmlns:w="http://www.zkoss.org/2005/zk/annotation" 
+	xmlns="http://www.zkoss.org/2005/zul" 
+	xmlns:n="native" apply="openjframework.InstantMessage.PopupMessageComposer"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.zkoss.org/2005/zul http://www.zkoss.org/2005/zul/zul.xsd">
+	<div id="_mini_window" sclass="mini_window" visible="true">
+			<div sclass="mini_window_title">
+				<div style="float:left;font-weight:bold;">
+					<image src="/image/files/new3.gif" />
+					消息盒子
+				</div>
+				<div align="right" style="float:right;">
+					<image src="/image/files/close.gif" style="margin-top:2px;margin-right:2px;cursor:pointer;"
+						onClick='Clients.evalJavaScript("hideMini()")' hover="/image/16/button_cancel.png" tooltiptext=" 关闭消息盒子"/>
+				</div>
+			</div>
+			<div style="padding-bottom:20px">
+			<listbox style="border:0px" width="99%">
+				<listhead>
+					<listheader width="20px"/>
+					<listheader />
+				</listhead>
+				<listitem>
+					<listcell image="/image/InstantMessage/msg_new.png"/>
+					<listcell label="崔立刚[大理检验中心]&#160;&#160;(3)" />
+				</listitem>
+				
+			</listbox>
+
+			</div>
+	</div>
+</window>
+<style src="/css/global.css"/>
+<script type="text/javascript">   
+      <![CDATA[   
+               function showMini()   
+               {   
+                var $d=jq("$bottomFixedLayout");   
+                $d.show().slideDown("slow");
+                
+               }
+		       function hideMini()   
+		       {   
+		        var $d=jq("$bottomFixedLayout");   
+		        $d.slideUp("slow");
+		       }
+       ]]>    
+     </script>  
+
+</zk>

@@ -1,0 +1,64 @@
+<?page title="工厂检查-资料上传" contentType="text/html;charset=UTF-8"?>
+<?init class="org.zkoss.zkplus.databind.AnnotateDataBinderInit" arg0="./FactoryDataSendTsakWin"?>
+<window title="资料上传" border="normal" id="FactoryDataSendTsakWin"
+	apply="cccf.mis.web.tsak.factory.datasend.DataSendTsakController">
+	<vlayout spacing="0" vflex="true" hflex="true" forward="onCreate=onInited">
+		<toolbar style="border:1px solid #CCC;">
+			<button mold="trendy" image="/res/icons/page_find.png" label="查询" forward="onFind"></button>
+			<button mold="trendy" image="/res/icons/page_refresh.png" label="刷新"></button>
+			<button mold="trendy" image="/res/icons/page_paintbrush.png" label="清理"></button>
+		</toolbar>
+		<grid hflex="true" style="border-top:0px solid #CCC;texta">
+			<columns>
+				<column width="70px" align="right"></column>
+				<column></column>
+				<column width="70px" align="right"></column>
+				<column></column>
+				<column width="70px" align="right"></column>
+				<column></column>
+				<column width="70px" align="right"></column>
+				<column></column>
+			</columns>
+			<rows>
+				<row>
+					<label value="任务号:"></label>
+					<combobox hflex="true" width="160px" id="no">
+						<comboitem></comboitem>
+					</combobox>
+					<label value="企业名称:"></label>
+					<combobox hflex="true" width="160px" id="enterprise">
+						<comboitem></comboitem>
+					</combobox>
+					<label value="产品大类:"></label>
+					<combobox hflex="true" id="product_catalog">
+						<comboitem></comboitem>
+					</combobox>
+					<label value="地址"></label>
+					<combobox hflex="true" id="address">
+						<comboitem></comboitem>
+					</combobox>
+				</row>
+				<row>
+					<label value="流程状态:"></label>
+					<combobox hflex="true" readonly="true" value="待办" id="status">
+						<comboitem label="待办" value="0"></comboitem>
+						<comboitem label="已办" value="1"></comboitem>
+					</combobox>
+					<label value="申请时间:"></label>
+					<datebox hflex="true" id="start_batch_date"></datebox>
+					<label value="至"></label>
+					<datebox hflex="true" id="end_batch_date"></datebox>
+				</row>
+			</rows>
+		</grid>
+		<separator height="2px"></separator>
+		<vlayout vflex="true" hflex="true" spacing="0">
+			<toolbar style="border:1px solid #CCC;border-buttom:0px">
+				<button mold="trendy" image="/res/icons/accept.png" label="审查" forward="onDoSelectedItem"></button>
+			</toolbar>
+			<vlayout vflex="true" hflex="true" id="includelayout">
+
+			</vlayout>
+		</vlayout>
+	</vlayout>
+</window>

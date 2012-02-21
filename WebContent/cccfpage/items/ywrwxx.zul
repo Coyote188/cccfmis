@@ -1,0 +1,22 @@
+<borderlayout height="100%">
+	<center style="border:0px;" flex="true" autoscroll="false" border="normal">
+		<listbox mold="paging" width="100%" pageSize="10">
+			<listhead sizable="true">
+				<listheader label="任务名称" width="150px" />
+				<listheader label="执行人员" width="60px" />
+				<listheader label="完成日期" width="130px" />
+				<listheader label="执行结果" width="100px" />
+				<listheader label="意见" />
+				<listheader label="详细意见" width="60px" />
+			</listhead>
+			<listitem style="text-align:left;">
+				<listcell />
+				<listcell />
+				<listcell />
+				<listcell />
+				<listcell />
+				<listcell />
+			</listitem>
+		</listbox>
+	</center>
+</borderlayout>

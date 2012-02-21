@@ -1,0 +1,889 @@
+<?page title="new page title" contentType="text/html;charset=UTF-8"?>
+<?init class="org.zkoss.zkplus.databind.AnnotateDataBinderInit" root="./frmERF"?>
+<zk>
+	<window id="frmERF" apply="cccf.ma.web.zk.PEEditController"
+		width="99%">
+		<groupbox width="99%">
+			<caption label="生产企业信息" />
+			<vbox>
+				<checkbox id="btnSetSameOfEnterprise" label="同注册企业" />
+				<grid id="grdfacEditer" style="border: 0" width="100%"
+					align="left">
+					<columns>
+						<column width="30%" align="left" />
+						<column width="70%" align="left" />
+					</columns>
+					<rows>
+						<row>
+							<hbox align="center">
+								<label value="*" style="color:#ff0000" />
+								<label value="名称（主）:" />
+								<popup id="ppName">
+									<label
+										value="请填写生产企业名称，以中文为主，如果只有一个名字，不论中英文均填入主地址中。" />
+								</popup>
+							</hbox>
+							<textbox popup="ppName" id="tbx000"
+								constraint="no empty:必填项,不允许为空!"
+								value="@{frmERF$composer.fac.name }" width="350px" />
+
+						</row>
+						<row>
+							<hbox align="center">
+								<label value="名称(英文):" />
+								<popup id="ppNameEn">
+									<label
+										value="请填写生产企业英文名称，以中文为主，如果只有一个名字，不论中英文均填入主地址中。" />
+								</popup>
+							</hbox>
+							<textbox id="tbx001" popup="ppNameEn"
+								value="@{frmERF$composer.fac.facNameEn }"
+								width="350px" />
+
+						</row>
+						<row>
+							<hbox align="center">
+								<label value="*" style="color:#ff0000" />
+								<label value="组织机构代码:" />
+								<popup id="ppCode">
+									<label
+										value="请填写组织机构代码，按组织机构代码证相关代码填写，除去“-”，如“23122552-2”，则填为“231225522”(若是国外企业请填写(000000000))" />
+								</popup>
+							</hbox>
+							<textbox id="tbx002" popup="ppCode"
+								value="@{frmERF$composer.fac.facCode }"
+								width="350px" constraint="no empty:必填项,不允许为空!" />
+
+						</row>
+						<row>
+							<hbox>
+								<label value="*" style="color:#FF0000" />
+								企业组织性质代码:
+							</hbox>
+							<div>
+								<combobox id="cbxOrganizationNature"
+									readonly="true" autodrop="true" width="350px"
+									popup="ppOrganizationNature" constraint="no empty:必填项,不允许为空!"
+									value="@{frmERF$composer.fac.organizationNature }"
+									model="@{frmERF$composer.organizationNatureArray }">
+									<comboitem self="@{each=on }"
+										value="@{on }" label="@{on }" />
+								</combobox>
+								<popup id="ppOrganizationNature">
+									<label value="请选择组织性质代码" />
+								</popup>
+							</div>
+						</row>
+						<row>
+							<hbox>
+								<label value="*" style="color:#FF0000" />
+								企业规模:
+							</hbox>
+							<div>
+								<radiogroup id="rgpBusinessScope">
+									<radio label="大型" />
+									<radio label="中型" />
+									<radio label="小型" />
+								</radiogroup>
+							</div>
+						</row>
+						<row>
+							<hbox align="center">
+								<label value="*" style="color:#FF0000" />
+								<label value="法人(负责人):" />
+								<popup id="ppLegalPerson">
+									<label value="请填写生产企业法人（负责人）姓名。" />
+								</popup>
+							</hbox>
+							<textbox id="tbx003" popup="ppLegalPerson"
+								value="@{frmERF$composer.fac.facLegalPerson }"
+								constraint="no empty:必填项,不允许为空!" width="350px" />
+
+						</row>
+						<row>
+							<hbox align="center">
+								<label value="法人(负责人英文):" />
+								<popup id="ppLegalPersonEn">
+									<label value="请填写生产企业法人（负责人）英文姓名。" />
+								</popup>
+							</hbox>
+							<textbox id="tbx004" popup="ppLegalPerson"
+								value="@{frmERF$composer.fac.legalPersonEn }"
+								width="350px" />
+
+						</row>
+						<row>
+							<hbox>
+								<label value="*" style="color:#FF0000" />
+								法人联系地址:
+							</hbox>
+							<div>
+								<textbox id="tbx005" width="350px"
+									popup="ppContactAds"
+									value="@{frmERF$composer.fac.contactAddForLegal }"
+									constraint="no empty:必填项,不允许为空!" />
+								<popup id="ppcontactAddForLegal">
+									<label value="请填写企业法定代表人联系地址" />
+								</popup>
+							</div>
+						</row>
+						<row>
+							<hbox>法人联系地址(英文):</hbox>
+							<div>
+								<textbox id="tbx006" width="350px"
+									popup="ppContactAds"
+									value="@{frmERF$composer.fac.contactAddForLegalEn }" />
+								<popup id="ppcontactAddForLegalEn">
+									<label value="请填写企业法定代表人英文联系地址" />
+								</popup>
+							</div>
+						</row>
+						<row>
+							<hbox>
+								<label value="*" style="color:#FF0000" />
+								法人联系电话:
+							</hbox>
+							<div>
+								<textbox id="tbx007" width="350px"
+									popup="ppContactAds"
+									value="@{frmERF$composer.fac.telForLegal }"
+									constraint="no empty:必填项,不允许为空!" />
+								<popup id="pptelForLegal">
+									<label value="请填写申请企业法定代表人的联系电话" />
+								</popup>
+							</div>
+						</row>
+						<row>
+							<hbox>
+								<label value="*" style="color:#FF0000" />
+								法人手机:
+							</hbox>
+							<div>
+								<textbox id="tbx008" width="350px"
+									popup="ppContactAds"
+									value="@{frmERF$composer.fac.mobileForLegal }"
+									constraint="no empty:必填项,不允许为空!" />
+								<popup id="ppmobileForLegal">
+									<label value="请填写申请企业法定代表人的手机" />
+								</popup>
+							</div>
+						</row>
+						<!-- 2011.5.16 停用    start -->
+						<row visible="false">
+							<hbox align="center">
+								<label value="机构类型:" />
+								<popup id="ppType">
+									<label value="请填写生产修定机构类型。" />
+								</popup>
+							</hbox>
+							<textbox id="tbx009" popup="ppType"
+								value="@{frmERF$composer.fac.facType }"
+								width="350px" />
+
+						</row>
+						<row visible="false">
+							<hbox align="center">
+								<label value="经济行业:" />
+								<popup id="ppEcocalling">
+									<label value="请填写生产企业经济行业。" />
+								</popup>
+							</hbox>
+							<textbox id="tbx010" popup="ppEcocalling"
+								value="@{frmERF$composer.fac.facEcocalling }"
+								width="350px" />
+
+						</row>
+						<row visible="false">
+							<hbox align="center">
+								<label value="经济行业(新国标代码):" />
+								<popup id="ppEcocallingNew">
+									<label value="请填写生产企业经济行业（新国标代码）。" />
+								</popup>
+							</hbox>
+							<textbox popup="ppEcocallingNew"
+								value="@{frmERF$composer.fac.facEcocallingNew }"
+								width="350px" id="tbx011" />
+
+						</row>
+						<row visible="false">
+							<hbox align="center">
+								<label value="经济类型:" />
+								<popup id="ppEcotype">
+									<label value="请填写生产企业经济类型。" />
+								</popup>
+							</hbox>
+							<textbox popup="ppEcotype"
+								value="@{frmERF$composer.fac.facEcotype }"
+								width="350px" id="tbx012" />
+
+						</row>
+						<row visible="false">
+							<hbox align="center">
+								<label value="经济类型(新国标代码):" />
+								<popup id="ppEcoTypeNew">
+									<label value="请填写生产企业经济类型（新国标代码）。" />
+								</popup>
+							</hbox>
+							<textbox popup="ppEcoTypeNew"
+								value="@{frmERF$composer.fac.facEcoTypeNew }"
+								width="350px" id="tbx013" />
+
+						</row>
+						<!-- end -->
+						<row>
+							<hbox>
+								<label value="*" style="color:#FF0000" />
+								注册地址:
+							</hbox>
+							<div>
+								<textbox id="tbx014" width="350px"
+									popup="ppContactAds"
+									value="@{frmERF$composer.fac.registeredAddress }"
+									constraint="no empty:必填项,不允许为空!" />
+								<popup id="ppregisteredAddress">
+									<label value="请填写企业的注册地址（应与营业执照一致）" />
+								</popup>
+							</div>
+						</row>
+						<row>
+							<hbox>注册地址(英文):</hbox>
+							<div>
+								<textbox id="tbx015" width="350px"
+									popup="ppContactAds"
+									value="@{frmERF$composer.fac.registeredAddressEn }" />
+								<popup id="ppregisteredAddressEn">
+									<label
+										value="请填写企业的英文注册地址（应与营业执照一致）,强制性谁为必填项" />
+								</popup>
+							</div>
+						</row>
+						<row>
+							<hbox>
+								<label value="*" style="color:#FF0000" />
+								注册资金:
+							</hbox>
+							<div>
+								<textbox id="tbx016" width="350px"
+									popup="ppContactAds"
+									value="@{frmERF$composer.fac.registeredCapital }"
+									constraint="no empty:必填项,不允许为空!" />
+								<popup id="ppregisteredCapital">
+									<label value="请填写企业的注册资金" />
+								</popup>
+							</div>
+						</row>
+						<row>
+							<hbox align="center">
+								<label value="*" style="color:#FF0000" />
+								<label value="经营范围:" />
+								<popup id="ppWorkRange">
+									<label value="请填写生产企业经营范围。" />
+								</popup>
+							</hbox>
+							<textbox popup="ppWorkRange"
+								value="@{frmERF$composer.fac.facWorkRange }"
+								constraint="no empty:必填项,不允许为空!" width="350px" id="tbx017" />
+
+						</row>
+
+						<row visible="false">
+							<hbox align="center">
+								<label value="标志:" />
+								<popup id="ppFlag">
+									<label value="请填写生产企业标志。" />
+								</popup>
+							</hbox>
+							<textbox popup="ppFlag"
+								value="@{frmERF$composer.fac.facFlag }"
+								width="350px" id="tbx018" />
+
+						</row>
+						<row>
+							<hbox align="center">
+								<label value="*" style="color:#ff0000" />
+								<label value="所在国家地区:" />
+								<popup id="ppState">
+									<label value="请选择生产企业所在国家地区。" />
+								</popup>
+							</hbox>
+							<combobox id="cbxState" value="@{frmERF$composer.fac.facCountry }"
+								popup="ppState" readonly="true" width="100px"
+								model="@{frmERF$composer.sList }">
+								<comboitem self="@{each=state }"
+									label="@{state.name }">
+									<custom-attributes
+										stateInfo="@{state }" />
+								</comboitem>
+							</combobox>
+						</row>
+						<row>
+							<hbox align="center">
+								<label value="*" style="color:#ff0000" />
+								<label value="所在地区:" />
+								<popup id="ppDis">
+									<label value="请选择生产企业所在地区（省－市）。" />
+								</popup>
+								<popup id="ppLoc">
+									<label value="请填写生产企业所在地区。" />
+								</popup>
+							</hbox>
+							<div>
+								<hbox id="hLocation">
+									<combobox id="cbxProvince"
+										popup="ppDis" value="" readonly="true" width="100px"
+										model="@{frmERF$composer.pList }">
+										<comboitem
+											self="@{each=province }" label="@{province.name }">
+											<custom-attributes
+												province="@{province }" />
+										</comboitem>
+									</combobox>
+									<combobox id="cbxCity" value=""
+										popup="ppDis" readonly="true" width="100px"
+										model="@{frmERF$composer.cList }">
+										<comboitem self="@{each=city }"
+											label="@{city.name }">
+											<custom-attributes
+												city="@{city }" />
+										</comboitem>
+									</combobox>
+								</hbox>
+								<textbox visible="false" popup="ppLoc"
+									id="tbxLocation"
+									value="@{frmERF$composer.fac.facDistrict }"
+									width="350px" constraint="no empty:请填写生产企业所在地区。" />
+							</div>
+						</row>
+						<row>
+							<hbox>
+								<label value="*" style="color:#FF0000" />
+								通讯地址:
+							</hbox>
+							<div>
+								<textbox id="tbx019" width="350px"
+									popup="ppContactAds"
+									value="@{frmERF$composer.fac.contactAddress }"
+									constraint="no empty:必填项,不允许为空!" />
+								<popup id="ppContactAds">
+									<label value="请填写企业的通讯地址" />
+								</popup>
+							</div>
+						</row>
+						<row>
+							<hbox>通讯地址(英文):</hbox>
+							<div>
+								<textbox id="tbx020" width="350px"
+									popup="ppContactAds"
+									value="@{frmERF$composer.fac.contactAddressEn }" />
+								<popup id="ppContactAdsEn">
+									<label value="请填写企业的英文通讯地址" />
+								</popup>
+							</div>
+						</row>
+						<row>
+							<hbox align="center">
+								<label value="*" style="color:#ff0000" />
+								<label value="实际生产厂地址 :" />
+								<popup id="ppAdd">
+									<label
+										value="请填写生产企业所在地区地址，以中文为主，如果一个地址，不论中英文均填入主地址中。" />
+								</popup>
+							</hbox>
+							<textbox popup="ppAdd"
+								value="@{frmERF$composer.fac.realAdd }"
+								width="350px" id="tbx021" constraint="no empty:必填项,不允许为空!" />
+
+						</row>
+						<row>
+							<hbox align="center">
+								<label value="实际生产厂地址 (英文):" />
+								<popup id="ppAddEn">
+									<label
+										value="请填写生产企业所在地区地址，以中文为主，如果一个地址，不论中英文均填入主地址中。" />
+								</popup>
+							</hbox>
+							<textbox popup="ppAddEn"
+								value="@{frmERF$composer.fac.realAddEn }"
+								width="350px" id="tbx022" />
+
+						</row>
+						<row>
+							<hbox align="center">
+								<label value="*" style="color:#FF0000" />
+								<label value="实际生产厂 邮编:" />
+								<popup id="ppRealZip">
+									<label value="请填写生产企业所在地区邮政编码。" />
+								</popup>
+							</hbox>
+							<textbox popup="ppRealZip"
+								value="@{frmERF$composer.fac.realZip }"
+								constraint="no empty:必填项,不允许为空!" width="350px" id="tbx023" />
+
+						</row>
+						<row visible="false">
+							<hbox align="center">
+								<label value="编码:" />
+								<popup id="ppCoding">
+									<label value="请填写生产企业编码。" />
+								</popup>
+							</hbox>
+							<textbox popup="ppCoding"
+								value="@{frmERF$composer.fac.facCoding }"
+								width="350px" id="tbx024" />
+
+						</row>
+						<row>
+							<hbox align="center">
+								<label value="*" style="color:#FF0000" />
+								<label value="邮编:" />
+								<popup id="ppZip">
+									<label value="请填写生产企业编码。" />
+								</popup>
+							</hbox>
+							<textbox popup="ppZip"
+								value="@{frmERF$composer.fac.facZip }" width="350px"
+								id="tbx025" constraint="no empty:必填项,不允许为空!" />
+
+						</row>
+						<row>
+							<hbox align="center">
+								<label value="*" style="color:#FF0000" />
+								<label value="电子邮件:" />
+								<popup id="ppEmail">
+									<label
+										value="请填写生产企业电子邮件，如：abc@abc.com。" />
+								</popup>
+							</hbox>
+							<textbox popup="ppEmail"
+								value="@{frmERF$composer.fac.facEmail }"
+								constraint="no empty:必填项,不允许为空!" width="350px" id="tbx026" />
+
+						</row>
+						<row>
+							<hbox align="center">
+								<label value="*" style="color:#ff0000" />
+								<label value="联系人:" />
+								<popup id="ppLinkMan">
+									<label value="请填写生产企业联系人。" />
+								</popup>
+							</hbox>
+							<textbox popup="ppLinkMan"
+								value="@{frmERF$composer.fac.facLinkMan }"
+								width="350px" id="tbx027" constraint="no empty:必填项,不允许为空!" />
+
+						</row>
+						<row>
+							<hbox align="center">
+								<label value="联系人(英文):" />
+								<popup id="ppLinkManEn">
+									<label value="请填写联系人英文名" />
+								</popup>
+							</hbox>
+							<textbox popup="ppLinkMan"
+								value="@{frmERF$composer.fac.facLinkManEn }"
+								width="350px" id="tbx028"/>
+
+						</row>
+						<row>
+							<hbox align="center">
+								<label value="*" style="color:#ff0000" />
+								<label value="联系电话:" />
+								<popup id="ppTel">
+									<label
+										value="请填写生产企业联系电话，多个号码之间用“，”隔开。" />
+								</popup>
+							</hbox>
+							<textbox popup="ppTel"
+								value="@{frmERF$composer.fac.facTel }" width="350px"
+								id="tbx029" constraint="no empty:必填项,不允许为空!" />
+
+						</row>
+						<row>
+							<hbox align="center">
+								<label value="*" style="color:#ff0000" />
+								<label value="联系电话(手机):" />
+								<popup id="ppMob">
+									<label
+										value="请填写生产企业联系电话，多个号码之间用“，”隔开。" />
+								</popup>
+							</hbox>
+							<textbox popup="ppTel"
+								value="@{frmERF$composer.fac.facMob }" width="350px"
+								id="tbx030" constraint="no empty:必填项,不允许为空!" />
+
+						</row>
+						<row>
+							<hbox align="center">
+								<label value="*" style="color:#ff0000" />
+								<label value="传真:" />
+								<popup id="ppFax">
+									<label
+										value="请填写生产企业传真号码，多个号码之间用“，”隔开。" />
+								</popup>
+							</hbox>
+							<textbox
+								value="@{frmERF$composer.fac.facFax }" width="350px"
+								id="tbx031" popup="ppFax" constraint="no empty:必填项,不允许为空!" />
+
+						</row>
+						<row>
+							<hbox align="center">
+								<label value="网址:" />
+								<popup id="ppWebSite">
+									<label
+										value="请填写生产企业传真号码，多个号码之间用“，”隔开。" />
+								</popup>
+							</hbox>
+							<textbox
+								value="@{frmERF$composer.fac.webAddress }"
+								width="350px" id="tbx032" popup="ppFax" />
+
+						</row>
+						<row>
+							<hbox align="center">
+								<label value="简介：" />
+								<popup id="ppNote">
+									<label value="请填写企业简介信息" />
+								</popup>
+							</hbox>
+							<textbox multiline="true" height="100px"
+								width="400px" value="@{frmERF$composer.fac.note }"
+								id="tbx033" popup="ppFax" />
+						</row>
+					</rows>
+				</grid>
+
+
+				<!-- 2011.5.17 停用 start 
+					<grid id="grdfacEditer" style="border: 0" width="99%"
+					align="left">
+					<columns>
+					<column width="25%" align="left" />
+					<column width="75%" align="left" />
+					</columns>
+					<rows>
+					<row style="border: 0;background:white;">
+					<hbox align="center">
+					<label value="*" style="color:#ff0000" />
+					<label value="名称（主）:" />
+					<popup id="ppName">
+					<label
+					value="请填写生产企业名称，以中文为主，如果只有一个名字，不论中英文均填入主地址中。" />
+					</popup>
+					</hbox>
+					<textbox popup="ppName"
+					constraint="no empty:以中文名称为主，英文名称为次，如果只有一个名称，不论中英文均填入主地址中。"
+					value="@{frmERF$composer.fac.name }" width="200px"
+					id="tbx0" />
+					
+					</row>
+					<row style="border: 0;background:white;">
+					<hbox align="center">
+					<label value="名称(英文):" />
+					<popup id="ppNameEn">
+					<label
+					value="请填写生产企业英文名称，以中文为主，如果只有一个名字，不论中英文均填入主地址中。" />
+					</popup>
+					</hbox>
+					<textbox popup="ppNameEn"
+					value="@{frmERF$composer.fac.facNameEn }"
+					width="200px" id="tbx1" />
+					
+					</row>
+					<row style="border: 0;background:white;">
+					<hbox align="center">
+					<label value="*" style="color:#ff0000" />
+					<label value="组织机构代码:" />
+					<popup id="ppCode">
+					<label
+					value="请填写组织机构代码，按组织机构代码证相关代码填写，除去“-”，如“23122552-2”，则填为“231225522”(若是国外企业请填写(000000000))" />
+					</popup>
+					</hbox>
+					<textbox popup="ppCode"
+					value="@{frmERF$composer.fac.facCode }"
+					width="200px" id="tbx2"
+					constraint="no empty:请填写组织机构代码，按组织机构代码证相关代码填写
+					，除去“-”，如“23122552-2”，则填为“231225522”(若是国外企业请填写(000000000))" />
+					
+					</row>
+					<row style="border: 0;background:white;">
+					<hbox align="center">
+					<label value="法人(负责人):" />
+					<popup id="ppLegalPerson">
+					<label value="请填写生产企业法人（负责人）姓名。" />
+					</popup>
+					</hbox>
+					<textbox popup="ppLegalPerson"
+					value="@{frmERF$composer.fac.facLegalPerson }"
+					width="200px" id="tbx3" />
+					
+					</row>
+					<row style="border: 0;background:white;">
+					<hbox align="center">
+					<label value="机构类型:" />
+					<popup id="ppType">
+					<label value="请填写生产修定机构类型。" />
+					</popup>
+					</hbox>
+					<textbox popup="ppType"
+					value="@{frmERF$composer.fac.facType }"
+					width="200px" id="tbx4" />
+					
+					</row>
+					<row style="border: 0;background:white;">
+					<hbox align="center">
+					<label value="经济行业:" />
+					<popup id="ppEcocalling">
+					<label value="请填写生产企业经济行业。" />
+					</popup>
+					</hbox>
+					<textbox popup="ppEcocalling"
+					value="@{frmERF$composer.fac.facEcocalling }"
+					width="200px" id="tbx5" />
+					
+					</row>
+					<row style="border: 0;background:white;">
+					<hbox align="center">
+					<label value="经济行业(新国标代码):" />
+					<popup id="ppEcocallingNew">
+					<label value="请填写生产企业经济行业（新国标代码）。" />
+					</popup>
+					</hbox>
+					<textbox popup="ppEcocallingNew"
+					value="@{frmERF$composer.fac.facEcocallingNew }"
+					width="200px" id="tbx6" />
+					
+					</row>
+					<row style="border: 0;background:white;">
+					<hbox align="center">
+					<label value="经济类型:" />
+					<popup id="ppEcotype">
+					<label value="请填写生产企业经济类型。" />
+					</popup>
+					</hbox>
+					<textbox popup="ppEcotype"
+					value="@{frmERF$composer.fac.facEcotype }"
+					width="200px" id="tbx7" />
+					
+					</row>
+					<row style="border: 0;background:white;">
+					<hbox align="center">
+					<label value="经济类型(新国标代码):" />
+					<popup id="ppEcoTypeNew">
+					<label value="请填写生产企业经济类型（新国标代码）。" />
+					</popup>
+					</hbox>
+					<textbox popup="ppEcoTypeNew"
+					value="@{frmERF$composer.fac.facEcoTypeNew }"
+					width="200px" id="tbx8" />
+					
+					</row>
+					<row style="border: 0;background:white;">
+					<hbox align="center">
+					<label value="经营范围:" />
+					<popup id="ppWorkRange">
+					<label value="请填写生产企业经营范围。" />
+					</popup>
+					</hbox>
+					<textbox popup="ppWorkRange"
+					value="@{frmERF$composer.fac.facWorkRange }"
+					width="200px" id="tbx9" />
+					
+					</row>
+					<row style="border: 0;background:white;">
+					<hbox align="center">
+					<label value="标志:" />
+					<popup id="ppFlag">
+					<label value="请填写生产企业标志。" />
+					</popup>
+					</hbox>
+					<textbox popup="ppFlag"
+					value="@{frmERF$composer.fac.facFlag }"
+					width="200px" id="tbx10" />
+					
+					</row>
+					</rows>
+					</grid>
+					
+					
+					<grid id="grdfacEditer2" style="border: 0" width="100%"
+					align="left">
+					<columns>
+					<column width="25%" align="left" />
+					<column width="75%" align="left" />
+					</columns>
+					<rows>
+					
+					<row style="border: 0;background:white;">
+					<hbox align="center">
+					<label value="*" style="color:#ff0000" />
+					<label value="所在国家地区:" />
+					<popup id="ppState">
+					<label value="请选择生产企业所在国家地区。" />
+					</popup>
+					</hbox>
+					<combobox id="cbxState" value="—选择国家—"
+					popup="ppState" readonly="true" width="100px"
+					model="@{frmERF$composer.sList }">
+					<comboitem self="@{each=state }"
+					label="@{state.name }">
+					<custom-attributes
+					stateInfo="@{state }" />
+					</comboitem>
+					</combobox>
+					</row>
+					<row style="border: 0;background:white;">
+					<hbox align="center">
+					<label value="*" style="color:#ff0000" />
+					<label value="所在地区:" />
+					<popup id="ppDis">
+					<label value="请选择生产企业所在地区（省－市）。" />
+					</popup>
+					<popup id="ppLoc">
+					<label value="请填写生产企业所在地区。" />
+					</popup>
+					</hbox>
+					<div>
+					<hbox id="hLocation">
+					<combobox id="cbxProvince"
+					popup="ppDis" value="—选择省—" readonly="true" width="100px"
+					model="@{frmERF$composer.pList }">
+					<comboitem
+					self="@{each=province }" label="@{province.name }">
+					<custom-attributes
+					province="@{province }" />
+					</comboitem>
+					</combobox>
+					<combobox id="cbxCity" value="—选择市—"
+					popup="ppDis" readonly="true" width="100px"
+					model="@{frmERF$composer.cList }">
+					<comboitem self="@{each=city }"
+					label="@{city.name }">
+					<custom-attributes
+					city="@{city }" />
+					</comboitem>
+					</combobox>
+					</hbox>
+					<textbox visible="false" popup="ppLoc"
+					id="tbxLocation"
+					value="@{frmERF$composer.fac.facDistrict }"
+					width="200px" constraint="no empty:请填写生产企业所在地区。" />
+					</div>
+					</row>
+					<row style="border: 0;background:white;">
+					<hbox align="center">
+					<label value="*" style="color:#ff0000" />
+					<label value="地址:" />
+					<popup id="ppAdd">
+					<label
+					value="请填写生产企业所在地区地址，以中文为主，如果一个地址，不论中英文均填入主地址中。" />
+					</popup>
+					</hbox>
+					<textbox popup="ppAdd"
+					value="@{frmERF$composer.fac.contactAddress }"
+					width="200px" id="tbx12" constraint="no empty:请填写所在地地址" />
+					
+					</row>
+					<row style="border: 0;background:white;">
+					<hbox align="center">
+					<label value="地址(英文):" />
+					<popup id="ppAddEn">
+					<label
+					value="请填写生产企业所在地区地址，以中文为主，如果一个地址，不论中英文均填入主地址中。" />
+					</popup>
+					</hbox>
+					<textbox popup="ppAddEn"
+					value="@{frmERF$composer.fac.facAddressEn }"
+					width="200px" id="tbx13" />
+					
+					</row>
+					<row style="border: 0;background:white;">
+					<hbox align="center">
+					<label value="邮编:" />
+					<popup id="ppZip">
+					<label value="请填写生产企业所在地区邮政编码。" />
+					</popup>
+					</hbox>
+					<textbox popup="ppZip"
+					value="@{frmERF$composer.fac.facZip }" width="200px"
+					id="tbx14" />
+					
+					</row>
+					<row style="border: 0;background:white;">
+					<hbox align="center">
+					<label value="编码:" />
+					<popup id="ppCoding">
+					<label value="请填写生产企业编码。" />
+					</popup>
+					</hbox>
+					<textbox popup="ppCoding"
+					value="@{frmERF$composer.fac.facCoding }"
+					width="200px" id="tbx25" />
+					
+					</row>
+					<row style="border: 0;background:white;">
+					<hbox align="center">
+					<label value="电子邮件:" />
+					<popup id="ppEmail">
+					<label
+					value="请填写生产企业电子邮件，如：abc@abc.com。" />
+					</popup>
+					</hbox>
+					<textbox popup="ppEmail"
+					value="@{frmERF$composer.fac.facEmail }"
+					width="200px" id="tbx15" />
+					
+					</row>
+					<row style="border: 0;background:white;">
+					<hbox align="center">
+					<label value="*" style="color:#ff0000" />
+					<label value="联系人:" />
+					<popup id="ppLinkMan">
+					<label value="请填写生产企业联系人。" />
+					</popup>
+					</hbox>
+					<textbox popup="ppLinkMan"
+					value="@{frmERF$composer.fac.facLinkMan }"
+					width="200px" id="tbx16" constraint="no empty:请填写联系人" />
+					
+					</row>
+					<row style="border: 0;background:white;">
+					<hbox align="center">
+					<label value="*" style="color:#ff0000" />
+					<label value="联系电话:" />
+					<popup id="ppTel">
+					<label
+					value="请填写生产企业联系电话，多个号码之间用“，”隔开。" />
+					</popup>
+					</hbox>
+					<textbox popup="ppTel"
+					value="@{frmERF$composer.fac.facTel }" width="200px"
+					id="tbx17" constraint="no empty:请填写联系电话号码，多个号码之间用“，”隔开。" />
+					
+					</row>
+					<row style="border: 0;background:white;">
+					<hbox align="center">
+					<label value="*" style="color:#ff0000" />
+					<label value="传真:" />
+					<popup id="ppFax">
+					<label
+					value="请填写生产企业传真号码，多个号码之间用“，”隔开。" />
+					</popup>
+					</hbox>
+					<textbox
+					value="@{frmERF$composer.fac.facFax }" width="200px"
+					id="tbx18" popup="ppFax"
+					constraint="no empty:请填写传真号码，多个号码之间用“，”隔开。" />
+					
+					</row>
+					</rows>
+					</grid>
+				-->
+			</vbox>
+		</groupbox>
+		<div align="center">
+			<button id="btnSendEvent" width="68px" height="26px"
+				label="提交" />
+		</div>
+	</window>
+</zk>

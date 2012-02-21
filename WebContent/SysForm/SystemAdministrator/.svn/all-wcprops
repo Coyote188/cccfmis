@@ -1,0 +1,143 @@
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/dlyhc.cccfmis/!svn/ver/756/trunk/WebContent/SysForm/SystemAdministrator
+END
+politicalstatus-edit.zul
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/dlyhc.cccfmis/!svn/ver/139/trunk/WebContent/SysForm/SystemAdministrator/politicalstatus-edit.zul
+END
+politicalstatus-manage.zul
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/dlyhc.cccfmis/!svn/ver/756/trunk/WebContent/SysForm/SystemAdministrator/politicalstatus-manage.zul
+END
+resource-edit.zul
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/dlyhc.cccfmis/!svn/ver/286/trunk/WebContent/SysForm/SystemAdministrator/resource-edit.zul
+END
+permission-edit.zul
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/dlyhc.cccfmis/!svn/ver/286/trunk/WebContent/SysForm/SystemAdministrator/permission-edit.zul
+END
+ProfileInfo.zul
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/dlyhc.cccfmis/!svn/ver/234/trunk/WebContent/SysForm/SystemAdministrator/ProfileInfo.zul
+END
+role-distribute.zul
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/dlyhc.cccfmis/!svn/ver/352/trunk/WebContent/SysForm/SystemAdministrator/role-distribute.zul
+END
+org-manage.zul
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/dlyhc.cccfmis/!svn/ver/144/trunk/WebContent/SysForm/SystemAdministrator/org-manage.zul
+END
+resource-manage.zul
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/dlyhc.cccfmis/!svn/ver/286/trunk/WebContent/SysForm/SystemAdministrator/resource-manage.zul
+END
+organizationTreeview.zul
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/dlyhc.cccfmis/!svn/ver/353/trunk/WebContent/SysForm/SystemAdministrator/organizationTreeview.zul
+END
+organizationInfo.zul
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/dlyhc.cccfmis/!svn/ver/353/trunk/WebContent/SysForm/SystemAdministrator/organizationInfo.zul
+END
+registerUser.zul
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/dlyhc.cccfmis/!svn/ver/440/trunk/WebContent/SysForm/SystemAdministrator/registerUser.zul
+END
+role-edit.zul
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/dlyhc.cccfmis/!svn/ver/352/trunk/WebContent/SysForm/SystemAdministrator/role-edit.zul
+END
+user_permission.zul
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/dlyhc.cccfmis/!svn/ver/232/trunk/WebContent/SysForm/SystemAdministrator/user_permission.zul
+END
+usermanage.zul
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/dlyhc.cccfmis/!svn/ver/756/trunk/WebContent/SysForm/SystemAdministrator/usermanage.zul
+END
+position-edit.zul
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/dlyhc.cccfmis/!svn/ver/139/trunk/WebContent/SysForm/SystemAdministrator/position-edit.zul
+END
+organization-edit.zul
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/dlyhc.cccfmis/!svn/ver/210/trunk/WebContent/SysForm/SystemAdministrator/organization-edit.zul
+END
+userattribute-manage.zul
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/dlyhc.cccfmis/!svn/ver/756/trunk/WebContent/SysForm/SystemAdministrator/userattribute-manage.zul
+END
+user-role-distribute.zul
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/dlyhc.cccfmis/!svn/ver/239/trunk/WebContent/SysForm/SystemAdministrator/user-role-distribute.zul
+END
+position-manage.zul
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/dlyhc.cccfmis/!svn/ver/756/trunk/WebContent/SysForm/SystemAdministrator/position-manage.zul
+END
+organization-manage.zul
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/dlyhc.cccfmis/!svn/ver/756/trunk/WebContent/SysForm/SystemAdministrator/organization-manage.zul
+END
+organization-person-assign.zul
+K 25
+svn:wc:ra_dav:version-url
+V 103
+/dlyhc.cccfmis/!svn/ver/229/trunk/WebContent/SysForm/SystemAdministrator/organization-person-assign.zul
+END
+productuserslist.zul
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/dlyhc.cccfmis/!svn/ver/353/trunk/WebContent/SysForm/SystemAdministrator/productuserslist.zul
+END
+user_permissionmanage.zul
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/dlyhc.cccfmis/!svn/ver/756/trunk/WebContent/SysForm/SystemAdministrator/user_permissionmanage.zul
+END

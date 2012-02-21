@@ -1,0 +1,134 @@
+<?page title="发起申请" contentType="text/html;charset=UTF-8"?>
+<?init class="org.zkoss.zkplus.databind.AnnotateDataBinderInit" arg0="./newapplywin"?>
+<window id="newapplywin" width="800px" border="none" apply="cccf.mis.web.enterprise.ApplyController"
+	forward="onCreate=onInited">
+	<vlayout style="overflow:auto;" vflex="true" hflex="true">
+		<groupbox mold="3d" closable="false">
+			<caption label="一:基本信息" image="/res/icons/resultset_next.png"></caption>
+			<grid>
+				<columns>
+					<column width="120px"></column>
+					<column></column>
+				</columns>
+				<rows>
+					<row>
+						<label value="申请类型"></label>
+						<combobox id="applyType" readonly="true" width="350px" constraint="no empty:请选择一种申请类型">
+							<comboitem id="first" label="首次申请" />
+							<comboitem id="alter" label="变更申请" />
+						</combobox>
+					</row>
+					<row>
+						<label value="业务类型"></label>
+						<combobox id="businessType" readonly="true" width="350px" constraint="no empty:请选择业务一种类型">
+							<comboitem label="强制性认证" />
+							<comboitem label="型式认可" />
+						</combobox>
+					</row>
+					<row>
+						<label value="申请产品大类"></label>
+						<combobox id="production"  forward="onSelect=onSelectProductCatalog" 
+							constraint="no empty:请选择一种产品类别" autodrop="true" width="350px" readonly="true">
+							<comboitem self="@{each=production}" label="@{production.productName}" value="@{production}" />
+						</combobox>
+					</row>
+				</rows>
+			</grid>
+		</groupbox>
+		 
+		<groupbox mold="3d" open="true" closable="false">
+		    <caption label="二:申请产品列表" image="/res/icons/resultset_next.png">
+		       <button id="addproductBtn"  mold="trendy" label="添加产品" width="95px" height="26px"
+				image="/image/files/add-comment.gif" forward="onAddProducts" />
+		    </caption> 
+			<listbox id="productmodelLbx" checkmark="true">
+				<listhead>
+					<listheader label="产品名称" />
+					<listheader label="规格型号" />
+					<listheader label="特性描述" />
+					<listheader label="检验报告" />
+					<listheader label="生产厂" />
+					<listheader label="制造商" />
+					<listheader label="操作" width="80px" />
+				</listhead>
+				<listitem self="@{each=productmodel}">
+					<listcell label="@{productmodel.productName}" />
+					<listcell label="@{productmodel.specification}" />
+					<listcell label="@{productmodel.characterization}" />
+					<listcell>
+						<toolbarbutton label="@{productmodel.surveyReportSN}" forward="onReadSurveyReport">
+							<custom-attributes productmodel="@{productmodel}" />
+						</toolbarbutton>
+					</listcell>
+					<listcell label="@{productmodel.produtionName}" />
+					<listcell label="@{productmodel.manufactureName}" />
+					<listcell>
+						<toolbarbutton label="刪除" style="color:#888888" image="/image/16/stop.png"
+							forward="onDeleteProductModel">
+							<custom-attributes productmodel="@{productmodel}" />
+						</toolbarbutton>
+					</listcell>
+				</listitem>
+			</listbox>
+		</groupbox>
+		 
+		<groupbox mold="3d" closable="false">
+			<caption label="三:完善资料" image="/res/icons/resultset_next.png"></caption>
+			<grid id="filesgrid">
+				<columns>
+					<column align="left" width="180px" />
+					<column></column>
+				</columns>
+				<rows>
+					<row self="@{each=item}" value="@{item}">
+						<cell>
+							<label value="@{item.name}"></label>
+						</cell>
+						<cell>
+							<label value="@{item.filename}"></label>
+							<toolbarbutton visible="@{item.isFile}" image="/image/common/close.png"
+								forward="onRemoveUpload" tooltiptext="删除文件" />
+							<fileupload forward="onUpload=onUpload" label="上传..." />
+						</cell>
+					</row>
+				</rows>
+				<foot>
+					<footer span="2">
+						<label value="更多文件:"></label>
+						<textbox value="-重命名-" onFocus='if("-重命名-".equals(self.getValue())){self.setValue("");}'></textbox>
+						<fileupload forward="onUpload=onUploadOther" label="上传..." />
+					</footer>
+				</foot>
+			</grid>
+		</groupbox>
+		<groupbox mold="3d" closable="false">
+			<caption label="四:合同信息" image="/res/icons/resultset_next.png"></caption>
+			<vlayout>
+				<hbox align="start">
+					<label style="vertical-align: middle;" value="甲方是否同意由乙方按计划派遣审核组(乙方一般在收到甲方审核费后两周内发出审核计划)：" />
+					<radiogroup  id="contractAgree">
+						<radio disabled="true" label="同意" id="rb1" selected="true" />
+						<radio disabled="true" label="不同意" id="rb2" />
+					</radiogroup>
+				</hbox>
+				<hbox visible="false" align="start">
+					<label style="vertical-align: middle;" value="不同意乙方计划时，甲方希望正式审核时间在" />
+					<intbox width="30px" readonly="true" id="contractYear"></intbox>
+					<label style="vertical-align: middle;color:RED;"  value="年" />
+					<intbox width="30px" readonly="true" id="contractMonth"></intbox>
+					<label style="vertical-align: middle;color:RED;" value="月" />
+				</hbox>
+				<hbox align="start">
+					<label style="vertical-align: middle;" value="预审核（甲方决定）:" />
+					<radiogroup id="contractApprove">
+						<radio disabled="true"  label="需要" id="rb3" />
+						<radio disabled="true"  label="不需要" id="rb4" selected="true" />
+					</radiogroup>
+				</hbox>
+			</vlayout>
+		</groupbox>
+		<hlayout style="border:1px solid #CCC;">
+			<button mold="trendy" label="提交申请" image="/image/16/up.png" id="submitBtn" forward="onSubmit" />
+		</hlayout>
+	</vlayout>
+</window>

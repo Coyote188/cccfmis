@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?init class="openjframework.web.zk.OrganizationeditWindowInit" arg0="OrganizationEditWindow"?>
+<window title="部门编辑" border="normal" 
+	use="openjframework.web.zk.OrganizationeditWindow"
+	xmlns:a="http://www.zkoss.org/2005/zk/annotation" id="OrganizationEditWindow"
+	xmlns="http://www.zkoss.org/2005/zul"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.zkoss.org/2005/zul
+	http://www.zkoss.org/2005/zul/zul.xsd"
+	width="600px"  sizable="true">
+	
+<grid>
+  <rows>
+     <row>         
+       部门编号: 
+       <a:bind value="department.departmentNo"/>
+       <textbox id="departmentNo" width="100px"/>
+		 	
+     </row>	
+     <row>         
+       部门名称: 
+       <a:bind value="department.departmentName"/>
+       <textbox id="departmentName" width="100px"/>
+		 	
+     </row>	
+     <row>         
+       部门简称: 
+       <a:bind value="department.departmentSimp"/>
+       <textbox id="departmentSimp" width="100px"/>
+		 	
+     </row>	
+     <row>         
+       部门地址: 
+       <a:bind value="department.departmentAddr"/>
+       <textbox id="departmentAddr" width="100px"/>
+		 	
+     </row>	
+     <row>         
+       检验中心: 
+       <a:bind value="department.checkCenter"/>
+       <textbox id="checkCenter" width="100px"/>
+		 	
+     </row>	
+     <row>         
+       联系人: 
+       <a:bind value="department.contacts"/>
+       <textbox id="contacts" width="100px"/>
+		 	
+     </row>	
+     <row>         
+       联系电话: 
+       <a:bind value="department.telephone"/>
+       <textbox id="telephone" width="100px"/>
+		 	
+     </row>	
+     <row>         
+       传真: 
+       <a:bind value="department.fax"/>
+       <textbox id="fax" width="100px"/>
+		 	
+     </row>	
+     <row>         
+       邮件: 
+       <a:bind value="department.email"/>
+       <textbox id="email" width="100px"/>
+		 	
+     </row>	
+     <row>         
+       开户银行: 
+       <a:bind value="department.bank"/>
+       <textbox id="bank" width="100px"/>
+		 	
+     </row>	
+     <row>         
+       银行账号: 
+       <a:bind value="department.bankAccount"/>
+       <textbox id="bankAccount" width="100px"/>
+		 	
+     </row>	
+     <row>         
+       账户名: 
+       <a:bind value="department.accountName"/>
+       <textbox id="accountName" width="100px"/>
+		 	
+     </row>	
+  </rows>
+ </grid>
+<separator width="10px" />
+ <div align="left">
+   <hbox>
+       <button label="保存" image="/image/common/save.png"  width="70px" height="28px" style="null" forward="onSave"/>
+       <button label="关闭" image="/image/common/close.png"  width="70px" height="28px" style="null" forward="onCancel"/>  
+   </hbox>
+ </div>
+</window>			   

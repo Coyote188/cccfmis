@@ -1,0 +1,89 @@
+<?page title="评定安排" contentType="text/html;charset=UTF-8"?>
+<?init class="org.zkoss.zkplus.databind.AnnotateDataBinderInit" arg0="./EvaluationArrangeWin"?>
+<window closable="true" height="100%" width="100%" title="评定安排" border="normal" id="EvaluationArrangeWin"
+	apply="cccf.mis.web.tsak.evaluation.arrange.ArrangeController">
+	<vlayout hflex="true" vflex="true" style="overflow:auto;">
+		<include src="/views/public/Evaluation_msg.zul"></include>
+		<grid>
+			<auxhead>
+				<auxheader colspan="2" image="/res/icons/page.png" label="操作信息"></auxheader>
+			</auxhead>
+			<columns>
+				<column width="160px"></column>
+				<column></column>
+			</columns>
+			<rows>
+				<row>
+					<cell>
+						<label value="初评"></label>
+					</cell>
+					<cell>
+						<combobox id="cb_cp" model="@{reviewUserList}" constraint="no empty:评定人员" autodrop="true" width="200px"
+							readonly="true">
+							<comboitem self="@{each=person}" label="@{person.name}" value="@{person.id}" />
+						</combobox>
+					</cell>
+				</row>
+				<row>
+					<cell>
+						<label value="复评"></label>
+					</cell>
+					<cell>
+						<combobox id="cb_fp" model="@{reviewUserList}" constraint="no empty:评定人员" autodrop="true" width="200px"
+							readonly="true">
+							<comboitem self="@{each=person}" label="@{person.name}" value="@{person.id}" />
+						</combobox>
+					</cell>
+				</row>
+				<row>
+					<cell>
+						<label value="评定人员"></label>
+					</cell>
+					<cell>
+						<combobox id="cb_pd" model="@{reviewUserList}" constraint="no empty:评定人员" autodrop="true" width="200px"
+							readonly="true">
+							<comboitem self="@{each=person}" label="@{person.name}" value="@{person.id}" />
+						</combobox>
+					</cell>
+				</row>
+				<row>
+					<cell>
+						<label value="备注"></label>
+					</cell>
+					<cell>
+						<textbox id="tb_memo" multiline="true" rows="4" hflex="true"></textbox>
+					</cell>
+				</row>
+			</rows>
+		</grid>
+		<include src="/views/public/processlog.zul?sioid=${arg.report.applyno}"></include>
+		<grid id="appoveGrid">
+			<columns>
+				<column width="100px" align="left"></column>
+				<column></column>
+			</columns>
+			<rows>
+				<row>
+					<label value="下一步:"></label>
+					<cell>
+						<combobox visible="false" id="reveiwUser" model="@{reviewUserList}" constraint="no empty:派组人员"
+							autodrop="true" width="200px" readonly="true">
+							<comboitem self="@{each=person}" label="@{person.name}" value="@{person.id}" />
+						</combobox>
+						<button image="/res/icons/accept.png" mold="trendy" label="提交" width="68px" id="btSubmit" height="26px"
+							forward="onSubmit" />
+					</cell>
+				</row>
+				<row visible="false">
+					<label value="下一步:" />
+					<listbox id="resultListbox" mold="select" rows="1" width="200">
+					</listbox>
+				</row>
+				<row visible="false">
+					<label value="备注:" />
+					<textbox id="approveMemo" multiline="true" rows="4" hflex="true" />
+				</row>
+			</rows>
+		</grid>
+	</vlayout>
+</window>

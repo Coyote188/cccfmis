@@ -1,0 +1,89 @@
+K 25
+svn:wc:ra_dav:version-url
+V 49
+/dlyhc.cccfmis/!svn/ver/996/trunk/src/cccf/ma/bpm
+END
+EnterpriseMyTaskListWindow.java
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/dlyhc.cccfmis/!svn/ver/406/trunk/src/cccf/ma/bpm/EnterpriseMyTaskListWindow.java
+END
+MyTaskListInit.java
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/dlyhc.cccfmis/!svn/ver/212/trunk/src/cccf/ma/bpm/MyTaskListInit.java
+END
+MyTaskListWindow.java
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/dlyhc.cccfmis/!svn/ver/633/trunk/src/cccf/ma/bpm/MyTaskListWindow.java
+END
+MyEndTaskListController.java
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/dlyhc.cccfmis/!svn/ver/958/trunk/src/cccf/ma/bpm/MyEndTaskListController.java
+END
+OpenedTaskListInit.java
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/dlyhc.cccfmis/!svn/ver/243/trunk/src/cccf/ma/bpm/OpenedTaskListInit.java
+END
+OpenedTaskListController.java
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/dlyhc.cccfmis/!svn/ver/264/trunk/src/cccf/ma/bpm/OpenedTaskListController.java
+END
+CommonBpmUtil.java
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/dlyhc.cccfmis/!svn/ver/384/trunk/src/cccf/ma/bpm/CommonBpmUtil.java
+END
+MyTaskInstanceInfoUtil.java
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/dlyhc.cccfmis/!svn/ver/264/trunk/src/cccf/ma/bpm/MyTaskInstanceInfoUtil.java
+END
+ExtractProcessDiagramImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/dlyhc.cccfmis/!svn/ver/429/trunk/src/cccf/ma/bpm/ExtractProcessDiagramImpl.java
+END
+ExtractProcessDiagram.java
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/dlyhc.cccfmis/!svn/ver/457/trunk/src/cccf/ma/bpm/ExtractProcessDiagram.java
+END
+MyTaskInstanceInfo.java
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/dlyhc.cccfmis/!svn/ver/254/trunk/src/cccf/ma/bpm/MyTaskInstanceInfo.java
+END
+MyEndTaskListInit.java
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/dlyhc.cccfmis/!svn/ver/212/trunk/src/cccf/ma/bpm/MyEndTaskListInit.java
+END
+MyTaskListStatisticsWindow.java
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/dlyhc.cccfmis/!svn/ver/426/trunk/src/cccf/ma/bpm/MyTaskListStatisticsWindow.java
+END
+MyEndTaskListStatisticsController.java
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/dlyhc.cccfmis/!svn/ver/450/trunk/src/cccf/ma/bpm/MyEndTaskListStatisticsController.java
+END

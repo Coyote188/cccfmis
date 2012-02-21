@@ -1,0 +1,77 @@
+K 25
+svn:wc:ra_dav:version-url
+V 49
+/dlyhc.cccfmis/!svn/ver/771/trunk/src/cccf/myenum
+END
+AccountStatus.java
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/dlyhc.cccfmis/!svn/ver/185/trunk/src/cccf/myenum/AccountStatus.java
+END
+CommonStatusEnum.java
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/dlyhc.cccfmis/!svn/ver/102/trunk/src/cccf/myenum/CommonStatusEnum.java
+END
+ProductPersonType.java
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/dlyhc.cccfmis/!svn/ver/85/trunk/src/cccf/myenum/ProductPersonType.java
+END
+OrganizationNature.java
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/dlyhc.cccfmis/!svn/ver/760/trunk/src/cccf/myenum/OrganizationNature.java
+END
+ProductType.java
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/dlyhc.cccfmis/!svn/ver/41/trunk/src/cccf/myenum/ProductType.java
+END
+EnterpriseScale.java
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/dlyhc.cccfmis/!svn/ver/771/trunk/src/cccf/myenum/EnterpriseScale.java
+END
+TreatyType.java
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/dlyhc.cccfmis/!svn/ver/84/trunk/src/cccf/myenum/TreatyType.java
+END
+ActivateStatus.java
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/dlyhc.cccfmis/!svn/ver/133/trunk/src/cccf/myenum/ActivateStatus.java
+END
+ProductEnabledStatus.java
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/dlyhc.cccfmis/!svn/ver/98/trunk/src/cccf/myenum/ProductEnabledStatus.java
+END
+ApplicationStatusUtil.java
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/dlyhc.cccfmis/!svn/ver/596/trunk/src/cccf/myenum/ApplicationStatusUtil.java
+END
+ApplicationStatusEnum.java
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/dlyhc.cccfmis/!svn/ver/224/trunk/src/cccf/myenum/ApplicationStatusEnum.java
+END
+ApplicationChangeStatus.java
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/dlyhc.cccfmis/!svn/ver/102/trunk/src/cccf/myenum/ApplicationChangeStatus.java
+END

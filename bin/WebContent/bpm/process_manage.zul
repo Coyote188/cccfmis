@@ -1,0 +1,42 @@
+<?init class="com.aidi.bpm.zk.ProcessManageInit" arg0="./processManageWindow"?>
+<?page id="processPage" title="工作流管理"?>
+
+<window 
+	use="com.aidi.bpm.zk.ProcessManageWindow"
+	xmlns:a="http://www.zkoss.org/2005/zk/annotation" id="processManageWindow"
+	xmlns="http://www.zkoss.org/2005/zul"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.zkoss.org/2005/zul
+	http://www.zkoss.org/2005/zul/zul.xsd"
+	width="800px"  sizable="true">
+
+	<a:bind model="processList" selectedItem="processManageWindow.processDefinition"/>
+		<listbox mold="paging" id="processListbox" width="650px" pageSize="15" >
+			<listhead sizable="true" >
+				<listheader sort="auto" label="工作流名称"  width="450px" />
+				<listheader sort="auto" label="工作流版本" width="200px"/>
+			</listhead>
+			<a:bind _var="processDefinition"/>
+			<listitem value="@{processDefinition.id}">
+				<a:bind label="processDefinition.name"/>
+				<listcell/>
+				<a:bind label="processDefinition.version"/>
+				<listcell/>
+				
+			</listitem>
+		</listbox>
+		<separator width="10px" />
+		<div align="left">
+		<hbox>
+			<button label="添加" image="/image/common/add.png" upload="true"  onUpload="processManageWindow.uploadProcess(event)"/>
+				<separator width="10px" />
+			<button label="删除" image="/image/16/button_cancel.png"  forward="onDelete"/>
+			<separator width="10px" />
+			<button label="流程表单" image="/image/common/add_template.png"  forward="onManageForm"/>
+			<separator width="10px" />
+			<button label="任务表单" image="/image/common/add_template.png"  forward="onManageTask"/>
+		</hbox>
+		
+	        </div>
+
+</window>

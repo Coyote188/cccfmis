@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?init class="cccf.ma.web.zk.ApplicationAcceptWindowInit" arg0="creatContractWindow"?>
+<window title="合同审批" border="normal" apply="cccf.mis.web.tsak.contract.approval.ApprovalController"
+	xmlns:a="http://www.zkoss.org/2005/zk/annotation" id="creatContractWindow" width="100%" sizable="false" height="100%"
+	closable="true">
+	<style>tr.z-row td.z-row-inner { background: white; border: 0;margin: 0px; padding: 1px; }</style>
+	<vlayout spacing="3" vflex="true" hflex="true" style="overflow: auto;">
+		<include src="/views/public/Apply_msg.zul"></include>
+		<grid>
+			<columns>
+				<column label="合同信息" image="/res/icons/page.png"></column>
+			</columns>
+			<rows>
+				<row height="26px">
+					<hbox>
+						<label value="甲方是否同意由乙方按计划派遣审核组(乙方一般在收到甲方审核费后两周内发出审核计划):"></label>
+						<label value="@{applyInfo.contractAgree}"></label>
+					</hbox>
+				</row>
+				<row height="26px">
+					<hbox>
+						<label value="不同意乙方计划时，甲方希望正式审核时间在:"></label>
+						<label value="@{applyInfo.contractYear}" />
+						<label style="vertical-align: middle;" value="年" />
+						<label value="@{applyInfo.contractMonth}" />
+						<label style="vertical-align: middle;" value="月" />
+					</hbox>
+				</row>
+				<row height="26px">
+					<hbox>
+						<label value="预审核(甲方决定):"></label>
+						<label value="@{applyInfo.contractApprove}"></label>
+					</hbox>
+				</row>
+				<row height="26px">
+					<hbox>
+						<label style="vertical-align: middle;" value="预审时间(通常应比正式审核时间提前一个月以上):" />
+						<label value="@{applyInfo.preverifyYear}" />
+						<label style="vertical-align: middle;" value="年" />
+						<label value="@{applyInfo.preverifyMonth}" />
+						<label style="vertical-align: middle;" value="月" />
+					</hbox>
+				</row>
+			</rows>
+		</grid>
+		<include src="/views/public/Bills_read.zul"></include>
+		<grid>
+			<auxhead>
+				<auxheader colspan="4" image="/res/icons/page.png" label="相关合同"></auxheader>
+			</auxhead>
+			<columns>
+				<column label="合同编号"></column>
+				<column label="合同附件"></column>
+				<column label="创建人"></column>
+				<column label="创建日期"></column>
+			</columns>
+			<rows>
+				<row height="26px">
+					<cell>
+						<label value="${arg.contract.contractno}"></label>
+					</cell>
+					<cell>
+						<toolbarbutton forward="onOpenContract" image="/res/icons/page.png" label="打开下载"></toolbarbutton>
+					</cell>
+					<cell>
+						<label value="${arg.contract.creater }"></label>
+					</cell>
+					<cell>
+						<label value="${arg.contract.create_date}"></label>
+					</cell>
+				</row>
+				<row forEach="${contracts}">
+					<cell>
+						<label value="@{each.contractno}"></label>
+					</cell>
+					<cell>
+						<label value="打开/下载"></label>
+					</cell>
+					<cell>
+						<label value="-"></label>
+					</cell>
+					<cell>
+						<label value="-"></label>
+					</cell>
+				</row>
+			</rows>
+		</grid>
+		<grid>
+			<auxhead>
+				<auxheader colspan="6" image="/res/icons/page.png" label="相关收费单"></auxheader>
+			</auxhead>
+			<columns>
+				<column label="收费单号"></column>
+				<column label="金额"></column>
+				<column label="生成日期"></column>
+				<column label="收费日期"></column>
+				<column label="是否已收费"></column>
+				<column label="收费人"></column>
+			</columns>
+			<rows>
+				<row height="26px">
+					<cell>
+						<label value="${arg.contract.contractno}"></label>
+					</cell>
+					<cell>
+						<label value="${bills.feeTotal}"></label>
+					</cell>
+					<cell>
+						<label value="${arg.contract.create_date}"></label>
+					</cell>
+					<cell>
+						<label value="-"></label>
+					</cell>
+					<cell>
+						<label value="-"></label>
+					</cell>
+					<cell>
+						<label value="-"></label>
+					</cell>
+				</row>
+				<row height="26px">
+					<cell>
+						<label value="-"></label>
+					</cell>
+					<cell>
+						<label value="-"></label>
+					</cell>
+					<cell>
+						<label value="-"></label>
+					</cell>
+					<cell>
+						<label value="-"></label>
+					</cell>
+					<cell>
+						<label value="-"></label>
+					</cell>
+					<cell>
+						<label value="-"></label>
+					</cell>
+				</row>
+			</rows>
+		</grid>
+		<include src="/views/public/processlog.zul?sioid=${applyInfo.applyno}"></include>
+		<grid id="appoveGrid">
+			<columns>
+				<column width="80px" align="left"></column>
+				<column align="left"></column>
+			</columns>
+			<rows>
+				<row>
+					<label value="处理结论" />
+					<cell>
+						<listbox id="resultListbox" mold="select" rows="1" width="200" />
+						<button mold="trendy" label="提交" image="/image/16/up.png" id="submitBtn" forward="onSubmit" />
+					</cell>
+				</row>
+				<row align="left">
+					<label value="备注:" />
+					<textbox id="approveMemo" rows="4" cols="140" hflex="true" />
+				</row>
+			</rows>
+		</grid>
+		
+	</vlayout>
+</window>

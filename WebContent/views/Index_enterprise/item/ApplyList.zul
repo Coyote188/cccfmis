@@ -1,0 +1,56 @@
+<!-- 申请任务列表 -->
+<window apply="cccf.mis.web.index.EnterpriseApplyListController" closable="false" sizable="false" border="none">
+	<grid mold="paging" pageSize="10" vflex="true" hflex="true">
+		<auxhead>
+			<auxheader style="padding: 5px;" colspan="8" label="正在办理的审请"></auxheader>
+		</auxhead>
+		<columns sizable="true">
+			<column label="申请号" width="120px"></column>
+			<column label="业务类型" width="80px"></column>
+			<column label="产品大类"></column>
+			<column label="质检中心" width="160px"></column>
+			<column label="申请类型" width="80px"></column>
+			<column label="申请时间" width="78px"></column>
+			<column label="申请状态" width="78px"></column>
+			<column width="85px"></column>
+		</columns>
+		<rows>
+			<row height="26px" forEach="${running_apply}">
+				<!-- 申请号 -->
+				<cell>
+					<label value="${each.no}"></label>
+				</cell>
+				<!-- 业务类型-->
+				<cell>
+					<label value="${each.business_type}"></label>
+				</cell>
+				<!-- 产品大类 -->
+				<cell>
+					<label value="${each.product_catalog}"></label>
+				</cell>
+				<!-- 质检中心 -->
+				<cell>
+					<label value="${each.surver_orgname}"></label>
+				</cell>
+				<!-- 申请类型-->
+				<cell>
+					<label value="${each.apply_type}"></label>
+				</cell>
+				<!-- 申请时间-->
+				<cell>
+					<label value="${each.apply_date}" style="white-space: nowrap;"></label>
+				</cell>
+				<!-- 申请状态 -->
+				<cell>
+					<label value="${each.status}"></label>
+				</cell>
+				<!--   -->
+				<cell>
+					<toolbarbutton forward="onOpenApply" label="查看详情" style="color:blue;">
+						<custom-attributes applyno="${each.no}"/>						 
+					</toolbarbutton>
+				</cell>
+			</row>
+		</rows>
+	</grid>
+</window>

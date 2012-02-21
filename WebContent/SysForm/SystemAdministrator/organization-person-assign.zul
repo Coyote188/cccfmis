@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?init class="org.zkoss.zkplus.databind.AnnotateDataBinderInit" root="./assignUserWin" ?>
+<zk>
+<window id="assignUserWin" apply="openjframework.web.zk.OrganizationPersonAssignComposer"
+	xmlns:n="native"  
+    xmlns:w="client"
+	xmlns="http://www.zkoss.org/2005/zul"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation=" http://www.zkoss.org/2005/zul http://www.zkoss.org/2005/zul/zul.xsd">
+	<button id="backBtn" label="返回单位列表" style="color:Blue;height:26px;" image="/image/common/undo.png"/>
+	<div align="right" style="margin-right:20px">
+	 <label value="当前单位:"/>
+	 <label id="currentDepart" value="XXXX" style="color:Blue;font-weight:bold;"/>
+	</div>
+	<groupbox>
+	  <caption label="当前单位已有人员列表" style="color:GREEN;"/>
+	   <div id="own_Div" align="center">
+	 	 <label value="该单位还没有分配任何人员,请在可分配列表中拖拽添加!" style="color:#8F8F8F;font-weight:bold;"/>
+	  </div>
+	  <div id="own_Grd_Div">
+		  <grid id="ownGrd"  mold="paging" pageSize="5">
+			<columns>
+				<column />
+				<column />
+				<column />
+				<column />
+				<column />
+				<column />
+			</columns>
+		</grid>
+		<div  id="d_Btn_Div" align="center">
+			<button id="deleteBtn" label="移&#160;&#160;除" image="/image/files/x.png" style=""/>
+		</div>
+	  </div>
+	</groupbox>
+	
+	 <div align="left" style="margin-top:20px;margin-bottom:20px;margin-left:20px;">
+	 	操作说明:勾选复选框之后点击添加/移除按钮添加/移除选中的人员。
+	 </div>
+	
+	<groupbox>
+	  <caption label="还可分配的人员列表" style="color:GREEN;"/>
+	  <div id="enable_Div" align="center">
+	 	 <label value="目前已没有可以分配的人员,若要添加人员,请转到" style="color:#8F8F8F;font-weight:bold;"/>
+	 	 <toolbarbutton id="registTlb" label="用户注册" style="width:100px;text-Decoration:underline;color:Blue;font-weight:bold;" tooltiptext="转到用户注册"/>
+	  </div>
+	  <div id="enable_Grd_Div">
+		  <grid id="enableGrd"  mold="paging" pageSize="5">
+			<columns>
+				<column />
+				<column />
+				<column />
+				<column />
+				<column />
+				<column />
+			</columns>
+		</grid>
+		<div  id="a_Btn_Div" align="center" >
+			<button id="addBtn" label="添&#160;&#160;加" image="/image/files/s.png" style=""/>
+		</div>
+	  </div>
+	</groupbox>
+</window>
+</zk>

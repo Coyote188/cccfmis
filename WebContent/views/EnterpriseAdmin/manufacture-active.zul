@@ -1,0 +1,41 @@
+<?page title="new page title" contentType="text/html;charset=UTF-8"?>
+<?init class="org.zkoss.zkplus.databind.AnnotateDataBinderInit" root="./frmProductionManufacture"?>
+<zk>
+	<window title="" border="none" id="frmProductionManufacture" apply="cccf.ma.web.zk.ManufactureActiveController">
+		<vlayout vflex="true" hflex="true" style="border:1px solid #CCC;" spacing="1">
+			<toolbar>
+				<button mold="trendy" label="激活" image="/image/common/activate.png"></button>
+			</toolbar>
+			<listbox id="lbxManufacture" vflex="true" hflex="true" fixedLayout="true" height="200px"
+				model="@{frmProductionManufacture$composer.manuList }" checkmark="true" multiple="true" mold="paging" pageSize="10">
+				<listhead>
+					<listheader label="制造商名称 " width="45%" />
+					<listheader label="通讯地址" width="45%" />
+					<listheader label="操作" width="10%" />
+				</listhead>
+				<listitem self="@{each=pro }" value="@{pro}">
+					<listcell label="@{pro.name }" />
+					<listcell label="@{pro.contactAddress }" />
+					<listcell image="/image/files/activate.png" forward="onActiveManu()">
+						<custom-attributes manu="@{pro }" />
+					</listcell>
+				</listitem>
+			</listbox>
+			<listbox id="lbxProduction" vflex="true" hflex="true" fixedLayout="true" height="200px"
+				model="@{frmProductionManufacture$composer.proList }" checkmark="true" multiple="true" mold="paging" pageSize="10">
+				<listhead>
+					<listheader label="生产企业名称 " width="45%" />
+					<listheader label="通讯地址" width="45%" />
+					<listheader label="操作" width="10%" />
+				</listhead>
+				<listitem self="@{each=pro }" value="@{pro}">
+					<listcell label="@{pro.name }" />
+					<listcell label="@{pro.contactAddress }" />
+					<listcell image="/image/files/activate.png" forward="onActivePro()">
+						<custom-attributes pro="@{pro }" />
+					</listcell>
+				</listitem>
+			</listbox>
+		</vlayout>
+	</window>
+</zk>

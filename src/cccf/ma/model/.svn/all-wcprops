@@ -1,0 +1,623 @@
+K 25
+svn:wc:ra_dav:version-url
+V 52
+/dlyhc.cccfmis/!svn/ver/1467/trunk/src/cccf/ma/model
+END
+AssignPlan.java
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/dlyhc.cccfmis/!svn/ver/1200/trunk/src/cccf/ma/model/AssignPlan.java
+END
+ContractFeeItem.hbm.xml
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/dlyhc.cccfmis/!svn/ver/1405/trunk/src/cccf/ma/model/ContractFeeItem.hbm.xml
+END
+Contract.hbm.xml
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/dlyhc.cccfmis/!svn/ver/1130/trunk/src/cccf/ma/model/Contract.hbm.xml
+END
+ApplicationInfoProductModel.java
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/dlyhc.cccfmis/!svn/ver/1388/trunk/src/cccf/ma/model/ApplicationInfoProductModel.java
+END
+ObjectApproveInfo.hbm.xml
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/dlyhc.cccfmis/!svn/ver/1102/trunk/src/cccf/ma/model/ObjectApproveInfo.hbm.xml
+END
+FactoryCheckUser.java
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/dlyhc.cccfmis/!svn/ver/1323/trunk/src/cccf/ma/model/FactoryCheckUser.java
+END
+ProductionModelInfo.hbm.xml
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/dlyhc.cccfmis/!svn/ver/637/trunk/src/cccf/ma/model/ProductionModelInfo.hbm.xml
+END
+AssignBatchCheckUser.hbm.xml
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/dlyhc.cccfmis/!svn/ver/1323/trunk/src/cccf/ma/model/AssignBatchCheckUser.hbm.xml
+END
+Product_User_ListInfo.hbm.xml
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/dlyhc.cccfmis/!svn/ver/85/trunk/src/cccf/ma/model/Product_User_ListInfo.hbm.xml
+END
+TechnicalEvaluationReportOpinion.java
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/dlyhc.cccfmis/!svn/ver/1275/trunk/src/cccf/ma/model/TechnicalEvaluationReportOpinion.java
+END
+AccountTypeInfo.java
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/dlyhc.cccfmis/!svn/ver/278/trunk/src/cccf/ma/model/AccountTypeInfo.java
+END
+EnterpriseChecklist.java
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/dlyhc.cccfmis/!svn/ver/839/trunk/src/cccf/ma/model/EnterpriseChecklist.java
+END
+AccountItemInfo.hbm.xml
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/dlyhc.cccfmis/!svn/ver/295/trunk/src/cccf/ma/model/AccountItemInfo.hbm.xml
+END
+ApplicationPublicInfoAttachment.hbm.xml
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/dlyhc.cccfmis/!svn/ver/1382/trunk/src/cccf/ma/model/ApplicationPublicInfoAttachment.hbm.xml
+END
+Contract.java
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/dlyhc.cccfmis/!svn/ver/1120/trunk/src/cccf/ma/model/Contract.java
+END
+TechnicalEvaluationOpinion.java
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/dlyhc.cccfmis/!svn/ver/942/trunk/src/cccf/ma/model/TechnicalEvaluationOpinion.java
+END
+EnterpriseInfo.hbm.xml
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/dlyhc.cccfmis/!svn/ver/880/trunk/src/cccf/ma/model/EnterpriseInfo.hbm.xml
+END
+CommonTreatyInfo.hbm.xml
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/dlyhc.cccfmis/!svn/ver/1102/trunk/src/cccf/ma/model/CommonTreatyInfo.hbm.xml
+END
+EnterpriseNoticeInfo.hbm.xml
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/dlyhc.cccfmis/!svn/ver/266/trunk/src/cccf/ma/model/EnterpriseNoticeInfo.hbm.xml
+END
+DataDictionary.hbm.xml
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/dlyhc.cccfmis/!svn/ver/1102/trunk/src/cccf/ma/model/DataDictionary.hbm.xml
+END
+FactoryChecklist.hbm.xml
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/dlyhc.cccfmis/!svn/ver/839/trunk/src/cccf/ma/model/FactoryChecklist.hbm.xml
+END
+Product_User_ListInfo.java
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/dlyhc.cccfmis/!svn/ver/85/trunk/src/cccf/ma/model/Product_User_ListInfo.java
+END
+FactoryCheckTaskUser.java
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/dlyhc.cccfmis/!svn/ver/1358/trunk/src/cccf/ma/model/FactoryCheckTaskUser.java
+END
+FactoryCheckUser.hbm.xml
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/dlyhc.cccfmis/!svn/ver/1323/trunk/src/cccf/ma/model/FactoryCheckUser.hbm.xml
+END
+PumperDocumentsInfo.hbm.xml
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/dlyhc.cccfmis/!svn/ver/21/trunk/src/cccf/ma/model/PumperDocumentsInfo.hbm.xml
+END
+StateInfo.java
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/dlyhc.cccfmis/!svn/ver/13/trunk/src/cccf/ma/model/StateInfo.java
+END
+CommonTreatyInfo.java
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/dlyhc.cccfmis/!svn/ver/98/trunk/src/cccf/ma/model/CommonTreatyInfo.java
+END
+FactoryChecklist.java
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/dlyhc.cccfmis/!svn/ver/879/trunk/src/cccf/ma/model/FactoryChecklist.java
+END
+EnterpriseProductModel.java
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/dlyhc.cccfmis/!svn/ver/839/trunk/src/cccf/ma/model/EnterpriseProductModel.java
+END
+EnterpriseOwnActivatedProductListInfo.java
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/dlyhc.cccfmis/!svn/ver/122/trunk/src/cccf/ma/model/EnterpriseOwnActivatedProductListInfo.java
+END
+ApplicationPublicInfo.hbm.xml
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/dlyhc.cccfmis/!svn/ver/1292/trunk/src/cccf/ma/model/ApplicationPublicInfo.hbm.xml
+END
+ProductionEnterpriseInfo.java
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/dlyhc.cccfmis/!svn/ver/780/trunk/src/cccf/ma/model/ProductionEnterpriseInfo.java
+END
+FactoryInspection.java
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/dlyhc.cccfmis/!svn/ver/971/trunk/src/cccf/ma/model/FactoryInspection.java
+END
+CommonListModel.java
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/dlyhc.cccfmis/!svn/ver/41/trunk/src/cccf/ma/model/CommonListModel.java
+END
+ProductModelAttachment.java
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/dlyhc.cccfmis/!svn/ver/907/trunk/src/cccf/ma/model/ProductModelAttachment.java
+END
+ApplicationInfo.java
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/dlyhc.cccfmis/!svn/ver/823/trunk/src/cccf/ma/model/ApplicationInfo.java
+END
+ProcessLog.java
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/dlyhc.cccfmis/!svn/ver/1467/trunk/src/cccf/ma/model/ProcessLog.java
+END
+StateInfo.hbm.xml
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/dlyhc.cccfmis/!svn/ver/16/trunk/src/cccf/ma/model/StateInfo.hbm.xml
+END
+Certification.java
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/dlyhc.cccfmis/!svn/ver/976/trunk/src/cccf/ma/model/Certification.java
+END
+AssignPlan.hbm.xml
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/dlyhc.cccfmis/!svn/ver/1200/trunk/src/cccf/ma/model/AssignPlan.hbm.xml
+END
+ApplProductModelApproveInfo.java
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/dlyhc.cccfmis/!svn/ver/1388/trunk/src/cccf/ma/model/ApplProductModelApproveInfo.java
+END
+ApproveInfo.java
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/dlyhc.cccfmis/!svn/ver/1388/trunk/src/cccf/ma/model/ApproveInfo.java
+END
+ProductModelCertification.hbm.xml
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/dlyhc.cccfmis/!svn/ver/1102/trunk/src/cccf/ma/model/ProductModelCertification.hbm.xml
+END
+EnterpriseNoticeInfo.java
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/dlyhc.cccfmis/!svn/ver/266/trunk/src/cccf/ma/model/EnterpriseNoticeInfo.java
+END
+AppStatusRecordInfo.java
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/dlyhc.cccfmis/!svn/ver/259/trunk/src/cccf/ma/model/AppStatusRecordInfo.java
+END
+TechnicalEvaluationReport.hbm.xml
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/dlyhc.cccfmis/!svn/ver/1210/trunk/src/cccf/ma/model/TechnicalEvaluationReport.hbm.xml
+END
+ProductionModelInspection.java
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/dlyhc.cccfmis/!svn/ver/938/trunk/src/cccf/ma/model/ProductionModelInspection.java
+END
+FactoryCheckResult.java
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/dlyhc.cccfmis/!svn/ver/839/trunk/src/cccf/ma/model/FactoryCheckResult.java
+END
+ProductModelCertification.java
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/dlyhc.cccfmis/!svn/ver/932/trunk/src/cccf/ma/model/ProductModelCertification.java
+END
+PumperDocumentsInfo.java
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/dlyhc.cccfmis/!svn/ver/21/trunk/src/cccf/ma/model/PumperDocumentsInfo.java
+END
+TechnicalEvaluation.hbm.xml
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/dlyhc.cccfmis/!svn/ver/1102/trunk/src/cccf/ma/model/TechnicalEvaluation.hbm.xml
+END
+ManufactureInfo.hbm.xml
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/dlyhc.cccfmis/!svn/ver/780/trunk/src/cccf/ma/model/ManufactureInfo.hbm.xml
+END
+AssignBatch.hbm.xml
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/dlyhc.cccfmis/!svn/ver/1327/trunk/src/cccf/ma/model/AssignBatch.hbm.xml
+END
+FactoryCheckTaskUser.hbm.xml
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/dlyhc.cccfmis/!svn/ver/1358/trunk/src/cccf/ma/model/FactoryCheckTaskUser.hbm.xml
+END
+ApproveInfo.hbm.xml
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/dlyhc.cccfmis/!svn/ver/1388/trunk/src/cccf/ma/model/ApproveInfo.hbm.xml
+END
+SurveyReport.hbm.xml
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/dlyhc.cccfmis/!svn/ver/1405/trunk/src/cccf/ma/model/SurveyReport.hbm.xml
+END
+ApplicationPublicInfo.java
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/dlyhc.cccfmis/!svn/ver/875/trunk/src/cccf/ma/model/ApplicationPublicInfo.java
+END
+ObjectApproveInfo.java
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/dlyhc.cccfmis/!svn/ver/1388/trunk/src/cccf/ma/model/ObjectApproveInfo.java
+END
+CommentItemInfo.hbm.xml
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/dlyhc.cccfmis/!svn/ver/115/trunk/src/cccf/ma/model/CommentItemInfo.hbm.xml
+END
+AttachFileMemoInfo.hbm.xml
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/dlyhc.cccfmis/!svn/ver/1102/trunk/src/cccf/ma/model/AttachFileMemoInfo.hbm.xml
+END
+FeeDetailInfo.hbm.xml
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/dlyhc.cccfmis/!svn/ver/1102/trunk/src/cccf/ma/model/FeeDetailInfo.hbm.xml
+END
+ProductionModelInfo.java
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/dlyhc.cccfmis/!svn/ver/713/trunk/src/cccf/ma/model/ProductionModelInfo.java
+END
+LocationInfo.java
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/dlyhc.cccfmis/!svn/ver/66/trunk/src/cccf/ma/model/LocationInfo.java
+END
+ProductModel.hbm.xml
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/dlyhc.cccfmis/!svn/ver/1443/trunk/src/cccf/ma/model/ProductModel.hbm.xml
+END
+ProcessLogs.hbm.xml
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/dlyhc.cccfmis/!svn/ver/1120/trunk/src/cccf/ma/model/ProcessLogs.hbm.xml
+END
+ApplicationPublicInfoAttachment.java
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/dlyhc.cccfmis/!svn/ver/1382/trunk/src/cccf/ma/model/ApplicationPublicInfoAttachment.java
+END
+AccountItemInfo.java
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/dlyhc.cccfmis/!svn/ver/295/trunk/src/cccf/ma/model/AccountItemInfo.java
+END
+ProductionEnterpriseInfo.hbm.xml
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/dlyhc.cccfmis/!svn/ver/780/trunk/src/cccf/ma/model/ProductionEnterpriseInfo.hbm.xml
+END
+FactoryInspection.hbm.xml
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/dlyhc.cccfmis/!svn/ver/839/trunk/src/cccf/ma/model/FactoryInspection.hbm.xml
+END
+FactoryCheckTask.java
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/dlyhc.cccfmis/!svn/ver/1363/trunk/src/cccf/ma/model/FactoryCheckTask.java
+END
+FactoryCheckResult.hbm.xml
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/dlyhc.cccfmis/!svn/ver/839/trunk/src/cccf/ma/model/FactoryCheckResult.hbm.xml
+END
+Attachment.java
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/dlyhc.cccfmis/!svn/ver/1292/trunk/src/cccf/ma/model/Attachment.java
+END
+SurveyReport.java
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/dlyhc.cccfmis/!svn/ver/1405/trunk/src/cccf/ma/model/SurveyReport.java
+END
+CommentItemInfo.java
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/dlyhc.cccfmis/!svn/ver/115/trunk/src/cccf/ma/model/CommentItemInfo.java
+END
+AppPubAttachmentApproveInfo.hbm.xml
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/dlyhc.cccfmis/!svn/ver/1388/trunk/src/cccf/ma/model/AppPubAttachmentApproveInfo.hbm.xml
+END
+TechnicalEvaluationReportOpinion.hbm.xml
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/dlyhc.cccfmis/!svn/ver/1275/trunk/src/cccf/ma/model/TechnicalEvaluationReportOpinion.hbm.xml
+END
+AccountTypeInfo.hbm.xml
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/dlyhc.cccfmis/!svn/ver/1102/trunk/src/cccf/ma/model/AccountTypeInfo.hbm.xml
+END
+DataDictionary.java
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/dlyhc.cccfmis/!svn/ver/763/trunk/src/cccf/ma/model/DataDictionary.java
+END
+ProductModel.java
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/dlyhc.cccfmis/!svn/ver/1443/trunk/src/cccf/ma/model/ProductModel.java
+END
+TechnicalEvaluationOpinion.hbm.xml
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/dlyhc.cccfmis/!svn/ver/1102/trunk/src/cccf/ma/model/TechnicalEvaluationOpinion.hbm.xml
+END
+ApplicationInfo.hbm.xml
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/dlyhc.cccfmis/!svn/ver/823/trunk/src/cccf/ma/model/ApplicationInfo.hbm.xml
+END
+ProductCatalogueInfo.hbm.xml
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/dlyhc.cccfmis/!svn/ver/1102/trunk/src/cccf/ma/model/ProductCatalogueInfo.hbm.xml
+END
+Certification.hbm.xml
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/dlyhc.cccfmis/!svn/ver/1102/trunk/src/cccf/ma/model/Certification.hbm.xml
+END
+LocationInfo.hbm.xml
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/dlyhc.cccfmis/!svn/ver/66/trunk/src/cccf/ma/model/LocationInfo.hbm.xml
+END
+AppPubAttachmentApproveInfo.java
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/dlyhc.cccfmis/!svn/ver/1388/trunk/src/cccf/ma/model/AppPubAttachmentApproveInfo.java
+END
+ApplProductModelApproveInfo.hbm.xml
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/dlyhc.cccfmis/!svn/ver/1388/trunk/src/cccf/ma/model/ApplProductModelApproveInfo.hbm.xml
+END
+Attachment.hbm.xml
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/dlyhc.cccfmis/!svn/ver/760/trunk/src/cccf/ma/model/Attachment.hbm.xml
+END
+ContractFeeItem.java
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/dlyhc.cccfmis/!svn/ver/1405/trunk/src/cccf/ma/model/ContractFeeItem.java
+END
+FactoryCheckTask.hbm.xml
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/dlyhc.cccfmis/!svn/ver/1363/trunk/src/cccf/ma/model/FactoryCheckTask.hbm.xml
+END
+TechnicalEvaluationReport.java
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/dlyhc.cccfmis/!svn/ver/1210/trunk/src/cccf/ma/model/TechnicalEvaluationReport.java
+END
+ProductCatalogueInfo.java
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/dlyhc.cccfmis/!svn/ver/945/trunk/src/cccf/ma/model/ProductCatalogueInfo.java
+END
+TechnicalEvaluation.java
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/dlyhc.cccfmis/!svn/ver/932/trunk/src/cccf/ma/model/TechnicalEvaluation.java
+END
+AppStatusRecordInfo.hbm.xml
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/dlyhc.cccfmis/!svn/ver/102/trunk/src/cccf/ma/model/AppStatusRecordInfo.hbm.xml
+END
+ApplicationInfoProductModel.hbm.xml
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/dlyhc.cccfmis/!svn/ver/782/trunk/src/cccf/ma/model/ApplicationInfoProductModel.hbm.xml
+END
+AssignBatch.java
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/dlyhc.cccfmis/!svn/ver/1358/trunk/src/cccf/ma/model/AssignBatch.java
+END
+ManufactureInfo.java
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/dlyhc.cccfmis/!svn/ver/780/trunk/src/cccf/ma/model/ManufactureInfo.java
+END
+EnterpriseOwnActivatedProductListInfo.hbm.xml
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/dlyhc.cccfmis/!svn/ver/1102/trunk/src/cccf/ma/model/EnterpriseOwnActivatedProductListInfo.hbm.xml
+END
+EnterpriseProductModel.hbm.xml
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/dlyhc.cccfmis/!svn/ver/695/trunk/src/cccf/ma/model/EnterpriseProductModel.hbm.xml
+END
+ProductionModelInspection.hbm.xml
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/dlyhc.cccfmis/!svn/ver/713/trunk/src/cccf/ma/model/ProductionModelInspection.hbm.xml
+END
+EnterpriseInfo.java
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/dlyhc.cccfmis/!svn/ver/880/trunk/src/cccf/ma/model/EnterpriseInfo.java
+END
+FeeDetailInfo.java
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/dlyhc.cccfmis/!svn/ver/295/trunk/src/cccf/ma/model/FeeDetailInfo.java
+END
+ProductModelAttachment.hbm.xml
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/dlyhc.cccfmis/!svn/ver/1292/trunk/src/cccf/ma/model/ProductModelAttachment.hbm.xml
+END
+AttachFileMemoInfo.java
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/dlyhc.cccfmis/!svn/ver/386/trunk/src/cccf/ma/model/AttachFileMemoInfo.java
+END

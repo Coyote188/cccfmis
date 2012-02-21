@@ -1,0 +1,47 @@
+<?page title="new page title" contentType="text/html;charset=UTF-8"?>
+<?init class="org.zkoss.zkplus.databind.AnnotateDataBinderInit" root="./divAddRole"?>
+
+<zk>
+	<div id="divAddRole" align="center" width="99%" style="position:top"
+		apply="openjframework.web.zk.RoleAddController">
+		<groupbox>
+<!--			<style>-->
+<!--				tr.z-row td.z-row-inner { background: white; border: 0;-->
+<!--				}-->
+<!--			</style>-->
+			<grid id="grdAddNewRole" fixedLayout="true" width="99%" style="td.z-row td.z-row-inner { background: #ffffff; border: 1;}">
+				<columns>
+					<column label="" width="15%" />
+					<column label="" align="left"/>
+				</columns>
+				<rows>
+					<row>
+						<div>
+							<label value="*" style="color:#FF0000" />
+							<label value="角色名:" />
+						</div>
+						<div>
+							<textbox id="tbxRoleName" width="180px" constraint="no empty:请添写角色名称"
+								value="@{divAddRole$composer.role.name }" />
+							<label value="是否只读？"/>
+							<combobox id="cbxIsReadonly" width="50px" readonly="true">
+								<comboitem id="F" label="否" value="false"/>
+								<comboitem id="T" label="是" value="true"/>
+							</combobox>
+						</div>
+						
+					</row>
+				
+					<row style="background:#ffffff">
+						<label value="备注:" />
+						<textbox id="tbxRoleMemo" width="300px" multiline="true" height="100px"
+							value="@{divAddRole$composer.role.memo }" />
+					</row>
+				</rows>
+			</grid>
+			<button id="btnAddRole" label="保存" image="/image/common/save.png"/>
+			<space width="5px" />
+			<button id="btnClose" label="取消" image="/image/common/close.png"/>
+		</groupbox>
+	</div>
+</zk>

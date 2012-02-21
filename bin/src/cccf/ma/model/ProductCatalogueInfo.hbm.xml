@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping SYSTEM "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+<hibernate-mapping>
+  <class name="cccf.ma.model.ProductCatalogueInfo" table="productCatalogue">  
+  
+    <id name="id" type="string" unsaved-value="null" >
+        <column name="pid"  not-null="true"/>
+        <generator class="uuid.hex"/>
+    </id>
+    
+    <property name="productNo" type="string">
+         <column name="productNo"  not-null="true"/>
+     </property>
+    <property name="productName" type="string">
+         <column name="productName"  not-null="true"/>
+     </property>
+    <many-to-one name="productParent" column="productParent" lazy="false"/> 
+    <set name="productChildren" lazy="false" inverse="false" 
+            cascade="none">
+        <key column="" />
+        <one-to-many class="cccf.ma.model.ProductCatalogueInfo" />
+    </set>
+    <property name="activateStatus" type="java.lang.Integer">
+         <column name="activateStatus"  not-null="true"/>
+     </property>
+    <property name="observedStandard" type="string">
+         <column name="observedStandard"  not-null="false"/>
+     </property>
+    <property name="technicalRequirement" type="string">
+         <column name="technicalRequirement"  not-null="false"/>
+     </property>
+    <property name="certificatesNo" type="string">
+         <column name="certificatesNo"  not-null="false"/>
+     </property>
+    <property name="productDescribe" type="string">
+         <column name="productDescribe"  not-null="false"/>
+     </property>
+  </class>   
+</hibernate-mapping>

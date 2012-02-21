@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping SYSTEM "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+<hibernate-mapping>
+  <class name="cccf.ma.model.ProvinceInfo" table="province">  
+  
+    <id name="id" type="string" unsaved-value="null" >
+        <column name="pId"  not-null="true"/>
+        <generator class="uuid.hex"/>
+    </id>
+    
+    <property name="name" type="string">
+         <column name="NAME"  not-null="false"/>
+     </property>
+    <set name="city" lazy="false" inverse="false" 
+            cascade="none">
+        <key column="cId" />
+        <one-to-many class="cccf.ma.model.CityInfo" />
+    </set>
+  </class>   
+</hibernate-mapping>

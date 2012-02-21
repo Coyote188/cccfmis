@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?init class="com.aidi.bpm.zk.TaskFormEditInit" arg0="./taskFormWindow"?>
+
+<window title="任务定义" border="normal"
+	use="com.aidi.bpm.zk.TaskFormEditWindow"
+	xmlns:a="http://www.zkoss.org/2005/zk/annotation" id="taskFormWindow"
+	width="400px" closable="true" sizable="true">
+
+	<grid>
+		<columns>
+			<column label="" width="100px" />
+			<column label="" />
+		</columns>
+		<rows>
+			<row>
+				任务名称:
+				<a:bind value="task.name" />
+				<label id="name" />
+			</row>
+
+			<row>
+				外接表单URL:
+				<a:bind value="taskForm.formURL" />
+				<textbox id="formURL" width="150"/>
+			</row>
+			<row>
+				执行期限:
+				<hbox>
+					<intbox id="durationNum" width="50px" />
+					<combobox id="durationType" width="100px" readonly="true">
+						<comboitem label="天" value="days" />
+						<comboitem label="周" value="weeks" />
+						<comboitem label="月" value="months" />
+						<comboitem label="小时" value="hours" />
+						<comboitem label="秒" value="seconds" />
+					</combobox>
+				</hbox>
+			</row>
+			<row>
+				泳道:
+				<combobox id="cbSwimList" model="@{swimList}"
+					autodrop="true" width="200px" readonly="true">
+					<comboitem self="@{each=swim}"
+						label="@{swim.name}" value="@{swim}" />
+				</combobox>
+			</row>
+
+		</rows>
+	</grid>
+
+
+	<separator width="30px" />
+	<div align="center">
+		<hbox>
+			<button label="保存" image="/image/16/filesave.png"
+				forward="onSave" />
+			<separator width="10px" />
+			<button label="取消" image="/image/common/undo.png"
+				forward="onCancel" />
+		</hbox>
+	</div>
+</window>

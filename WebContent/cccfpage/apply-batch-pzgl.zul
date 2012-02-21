@@ -1,0 +1,119 @@
+<?page title="派组批次" contentType="text/html;charset=UTF-8"?>
+<?init class="org.zkoss.zkplus.databind.AnnotateDataBinderInit" arg0="./pineGrioupPzgl"?>
+<window id="pineGrioupPzgl" height="100%" title="派组批次" border="normal" apply="cccfmis.pinegroup.zk.PineGrioupPzglApply"
+	forward="onCreate=onCreated">
+	<borderlayout>
+		<north title="批次" flex="true" splittable="true">
+			<listbox style="border: 0px" id="batchslist">
+				<listhead sizable="true">
+					<listheader label="批次号"></listheader>
+					<listheader label="批次名称"></listheader>
+					<listheader label="创建时间"></listheader>
+					<listheader label="产品数"></listheader>
+					<listheader label="批次状态"></listheader>
+					<listheader label="备注"></listheader>
+					<listheader label="操作"></listheader>
+				</listhead>
+				<listitem>
+					<listcell></listcell>
+					<listcell></listcell>
+					<listcell>
+					</listcell>
+					<listcell label="@{batch.application_count}"></listcell>
+					<listcell label="@{batch.state}"></listcell>
+					<listcell>
+					</listcell>
+					<listcell>
+					</listcell>
+				</listitem>
+			</listbox>
+		</north>
+		<west title="未分配申请" width="45%" flex="true" splittable="true" collapsible="false">
+			<hlayout>
+				<listbox vflex="true" hflex="true" checkmark="true" multiple="true" id="appslist">
+					<listhead sizable="true">
+						<listheader label="申请号"></listheader>
+						<listheader label="申请企业"></listheader>
+						<listheader label="申请产品"></listheader>
+						<listheader label="生产厂"></listheader>
+						<listheader label="制造商"></listheader>
+						<listheader label="详细信息"></listheader>
+					</listhead>
+					<listitem self="@{each=item}" height="26px" value="@{item}">
+						<listcell label="@{item.sioid}" style="white-space: nowrap;"></listcell>
+						<listcell label="@{item.enterprise.name}" style="white-space: nowrap;"></listcell>
+						<listcell label="@{item.production.productName}" style="white-space: nowrap;"></listcell>
+						<listcell label="@{item.productionEnterprise.name}" style="white-space: nowrap;"></listcell>
+						<listcell label="@{item.manufacture.name}" style="white-space: nowrap;"></listcell>
+						<listcell>
+							<toolbarbutton label="查看"></toolbarbutton>
+						</listcell>
+					</listitem>
+				</listbox>
+				<vlayout vflex="true">
+					<button mold="trendy" label="《"></button>
+					<button mold="trendy" label="》"></button>
+				</vlayout>
+			</hlayout>
+		</west>
+		<center title="已分配申请" flex="true">
+			<listbox style="border: 0px" vflex="true" hflex="true" id="batchappslist">
+				<listhead sizable="true">
+					<listheader label="任务号"></listheader>
+					<listheader label="申请企业"></listheader>
+					<listheader label="地区"></listheader>
+					<listheader label="业务类型"></listheader>
+					<listheader label="产品大类"></listheader>
+					<listheader label="检查组组长"></listheader>
+					<listheader label="分配人员"></listheader>
+					<listheader label="详细信息"></listheader>
+				</listhead>
+				<listitem self="@{each=item}" height="26px" value="@{item}">
+					<listcell label="@{item.sioid}" style="white-space: nowrap;"></listcell>
+					<listcell label="@{item.enterprise.name}" style="white-space: nowrap;"></listcell>
+					<listcell label=""></listcell> 
+					<listcell label="@{item.production.productName}" style="white-space: nowrap;"></listcell>
+					<listcell label="@{item.productionEnterprise.name}" style="white-space: nowrap;"></listcell>
+					<listcell label="@{item.manufacture.name}" style="white-space: nowrap;"></listcell>
+					<listcell label="@{item.leader}" style="white-space: nowrap;"></listcell>
+					<listcell label="@{item.participants}" style="white-space: nowrap;"></listcell>
+					<listcell>
+						<toolbarbutton label="选择人员" popup="popup"></toolbarbutton>
+					</listcell>
+					<listcell>
+						<toolbarbutton label="查看"></toolbarbutton>
+					</listcell>
+				</listitem>
+			</listbox>
+		</center>
+	</borderlayout>
+	<popup id="popup" width="800px" forward="onOpen=onSelectParticipants">
+		<radiogroup id="zzradiogroup">
+			<listbox mold="paging" pageSize="20" id="participantlist" checkmark="true" multiple="true">
+				<listhead sizable="true">
+					<listheader label="人员" width="80px"></listheader>
+					<listheader label="性别" width="40px"></listheader>
+					<listheader label="资质" width="180px"></listheader>
+					<listheader label="级别" width="100px"></listheader>
+					<listheader label="单位" width="200px"></listheader>
+					<listheader label="年度检查次数" width="100px"></listheader>
+					<listheader label="组长" width="32px"></listheader>
+				</listhead>
+				<listitem self="@{each=part}" height="26px" value="@{part}">
+					<listcell label="@{part.name}"></listcell>
+					<listcell label="@{part.sex}"></listcell>
+					<listcell label="@{part.qualification}"></listcell>
+					<listcell></listcell>
+					<listcell label="@{part.organization}"></listcell>
+					<listcell></listcell>
+					<listcell>
+						<radio checked="@{part.iszz}" value="@{part.name}"></radio>
+					</listcell>
+				</listitem>
+			</listbox>
+			<div>
+				<button label="确定" forward="onSaveParticipants"></button>
+			</div>
+		</radiogroup>
+	</popup>
+</window>

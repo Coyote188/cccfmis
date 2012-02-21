@@ -1,0 +1,10 @@
+<?page title="new page title" contentType="text/html;charset=UTF-8"?>
+<zk>
+<window id="frmNoticeWindow" title="通知查看" border="normal" width="600px" height="" closable="true" maximizable="true">
+<attribute name="onCreate">
+	Window objWindow = (Window)
+	Executions.createComponents("/SysForm/EnterpriseNotice/notice-show-form.zul",frmNoticeWindow,null);
+	objWindow.doEmbedded();
+</attribute>
+</window>
+</zk>

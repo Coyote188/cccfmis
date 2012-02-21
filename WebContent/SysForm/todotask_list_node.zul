@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<z:treeitem forEach="${tasks}" value="${each}"
+	xmlns="http://www.w3.org/1999/xhtml" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:z="http://www.zkoss.org/2005/zul"
+	xsi:schemaLocation="http://www.zkoss.org/2005/zul http://www.zkoss.org/2005/zul/zul.xsd" open="false">
+	<z:treerow height="24px">
+		<z:treecell style="white-space: nowrap;" image="/res/icons/user.png" label="${each.name}"></z:treecell>
+		<z:treecell label="${each.qualification}"></z:treecell>
+		<z:treecell label="${each.telephone}"></z:treecell>
+	</z:treerow>
+</z:treeitem>

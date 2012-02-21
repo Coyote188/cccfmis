@@ -1,0 +1,18 @@
+<window use="cccf.ma.bpm.EnterpriseMyTaskListWindow" xmlns:a="http://www.zkoss.org/2005/zk/annotation" id="myTaskListWindow"
+	sizable="false" vflex="true" hflex="true">
+	<vlayout vflex="true" hflex="true" spacing="1">
+		<hlayout>
+			<button label="处理" mold="trendy" image="/image/common/post.png" forward="onDoTask" />
+			<button label="详细" mold="trendy" image="/image/common/view_templates.png" forward="onProcessDetail" />
+		</hlayout>		 
+		<listbox mold="paging" id="taskListbox" vflex="true" hflex="true" pageSize="6">
+			<listhead sizable="true">
+				<listheader label="企业名称" width="24%" />
+				<listheader label="产品名称" width="24%" />
+				<listheader label="任务名称" width="22%" />
+				<listheader label="发起人员" width="15%" />
+				<listheader label="发起时间" width="15%" />
+			</listhead>
+		</listbox>
+	</vlayout>
+</window>
